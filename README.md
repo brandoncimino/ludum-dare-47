@@ -2,5 +2,5 @@
 
 # Credits:
 
-## [Brandon Cimino](https://github.com/brandoncimino)
-## Michael
+- [Brandon Cimino](https://github.com/brandoncimino)
+- Michael

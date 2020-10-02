@@ -1,4 +1,6 @@
 # ludum-dare-47
-**Credits:**
 
-Michael
+# Credits:
+
+## [Brandon Cimino](https://github.com/brandoncimino)
+## Michael

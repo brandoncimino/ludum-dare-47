@@ -1,0 +1,20 @@
+{
+  "name": "com.fowlfever.ludum-dare-47.tests",
+  "references": [
+    "GUID:a381e0a6b3e05f54b8d81f126326be49",
+    "GUID:85dab32679ada7b4e936135d374fb966",
+    "GUID:e2ec7f5c6db56fe41b07b13f1531f007"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": true,
+  "precompiledReferences": [
+    "Newtonsoft.Json.dll",
+    "nunit.framework.dll"
+  ],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

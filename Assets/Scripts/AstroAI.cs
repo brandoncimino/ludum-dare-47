@@ -6,12 +6,11 @@ using UnityEngine;
 public class AstroAI : MonoBehaviour
 {
     // Start is called before the first frame update
-    public AstroStats myStats;
+    public AstroStats   myStats;
+    public AstroForeman Foreman;
     
-    void Start()
-    {
-        //Start where you want to be
-        myStats.targetLocation = transform.localPosition;
+    void Start() {
+        myStats.myBehaveStation = Foreman.AssignBehavior(gameObject);
     }
 
     // Update is called once per frame

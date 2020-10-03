@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+
+using Packages.BrandonUtils.Editor;
+
 using UnityEngine;
 using Random = System.Random;
 
@@ -31,6 +34,7 @@ public class AstronautVisuals : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.A)) {
             MoveTowardTarget();
         }
@@ -45,7 +49,7 @@ public class AstronautVisuals : MonoBehaviour
 
     }
 
-    void MoveTowardTarget() {
+    public void MoveTowardTarget() {
         if (Math.Abs(targetAngle - positionAngle) < 180) {
             positionAngle = (positionAngle + Math.Sign(targetAngle-positionAngle) * speedAngle) % 360;
         }
@@ -64,8 +68,8 @@ public class AstronautVisuals : MonoBehaviour
         transform.localEulerAngles = new Vector3(90, 0, positionAngle+90);
     }
     
-    
-    void MoveClockwise() {
+    [EditorInvocationButton]
+    public void MoveClockwise() {
         positionAngle = (positionAngle - speedAngle + 360) % 360;
         var angle = Math.PI * (positionAngle) / 180;
         transform.localPosition = new Vector3(
@@ -78,7 +82,8 @@ public class AstronautVisuals : MonoBehaviour
         transform.localEulerAngles = new Vector3(90, 0, positionAngle+90);
     }
     
-    void MoveCounterClockwise() {
+    [EditorInvocationButton]
+    public void MoveCounterClockwise() {
         positionAngle = (positionAngle + speedAngle) % 360;
         var angle = Math.PI * (positionAngle) / 180;
         transform.localPosition = new Vector3(
@@ -89,6 +94,37 @@ public class AstronautVisuals : MonoBehaviour
             
         // transform.Rotate(new Vector3(1, 0, 1), speedAngle);
         transform.localEulerAngles = new Vector3(90, 0, positionAngle+90);
+    }
+
+    public void SetTarget(float newAngle) {
+        targetAngle = newAngle;
+    }
+
+    public void SetTarget(Vector3 location) {
+        // TODO: once we have a space station class that knows about its rotation, this projection needs to be corrected
+        // right now this function assumes that the station is rotated so that its normal is the z-direction
+        
+        // get difference to center of the station
+        var diff = location - transform.parent.position;
+        
+        // project into 2-dim space
+        diff.z = 0;
+        
+        // project onto unit circle
+        if (diff.magnitude < 1e-14) {
+            // make sure we don't divide by zero
+            throw new ArithmeticException("In SetTarget: Projection onto spaceship-plane ended too close to the center");
+        }
+        diff /= diff.magnitude;
+        
+        // get angle as radian
+        var angle = Math.Acos(diff.x);
+        if (diff.y < 0) {
+            angle += Math.PI;
+        }
+        
+        // transform to degree
+        targetAngle = (float) ((float) angle * 180 / Math.PI);
     }
     
 }

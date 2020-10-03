@@ -1,73 +1,98 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+
+using DefaultNamespace;
+
 using UnityEngine;
 
+[RequireComponent(typeof(AstronautVisuals))]
 public class AstroAI : MonoBehaviour
 {
     // Start is called before the first frame update
-    public AstroStats myStats;
+    public  AstroStats       myStats;
+    public  AstroForeman     Foreman;
+    private AstronautVisuals myRotationData;
     
-    void Start()
-    {
-        //Start where you want to be
-        myStats.targetLocation = transform.localPosition;
+    void Start() {
+        myStats.myBehaveStation = Foreman.AssignBehavior(gameObject);
+        myRotationData          = gameObject.GetComponent<AstronautVisuals>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (myStats.myState)
-        {
-            case AstroStats.AIStates.Idle:
-                if (Vector3.Distance(transform.position,myStats.targetLocation)<AstroStats.interactDistance)
-                {
-                    myStats.currentIdleWait += Time.deltaTime;
-                    if (myStats.currentIdleWait >= myStats.maxIdleTime)
-                    {
-                        //TODO: Randomly generate new location into "targetLocation"
-                        myStats.currentIdleWait = 0f;
-                    }
+        //Transition
+        switch (myStats.myState) {
+            case AstroStats.AIStates.MoveToBehaving:
+                //When close enough, start working
+                if (IsAngularCloseEnough()) {
+                    //Astronaut within range
+                    myStats.myBehaveStation.currentState = BehaveStationStats.BehaveStationStates.Occupied;
+                    myStats.myState                      = AstroStats.AIStates.Behaving;
                 }
-                else
-                {
-                    //TODO: Move along ground towards "targetLocation"
-                }
+                //If too bored, start misbehaving
+                BoredomCheck();
                 break;
-            case AstroStats.AIStates.Tasked:
-                //TODO: Approach, interact, and complete task.
-                //TODO: After approach, if task is already being worked on, quit
+            case AstroStats.AIStates.Behaving:
+                BoredomCheck();
                 break;
-            case AstroStats.AIStates.Ejecting:
-                //Thrash uncontrollably, but Death is approaching
-                //TODO: If enough time has passed, transition to DeadOutside
+            case AstroStats.AIStates.MoveToMisbehaving:
                 break;
-            case AstroStats.AIStates.DeadInside:
-                if (!myStats.isInside)
-                {
-                    myStats.myState = AstroStats.AIStates.DeadOutside;
-                }
-                //Lie uncomfortably still
+            case AstroStats.AIStates.Misbehaving:
                 break;
-            case AstroStats.AIStates.DeadOutside:
-                //Careen gently away from space station
-                //TODO: Obtain direction away from center of station. Float that way
+            case AstroStats.AIStates.Fixing:
+                break;
+            case AstroStats.AIStates.Dead:
                 break;
             default:
-                throw new NotImplementedException();
+                throw new ArgumentOutOfRangeException();
+        }
+        //Process
+        switch (myStats.myState) {
+            case AstroStats.AIStates.MoveToBehaving:
+                //move towards station
+                //Get more bored
+                BoredomProgression();
+                break;
+            case AstroStats.AIStates.Behaving:
+                //work it, gurl
+                //Get more bored
+                BoredomProgression();
+                break;
+            case AstroStats.AIStates.MoveToMisbehaving:
+                break;
+            case AstroStats.AIStates.Misbehaving:
+                break;
+            case AstroStats.AIStates.Fixing:
+                break;
+            case AstroStats.AIStates.Dead:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
-    public void DyingInside()
-    {
-        if (myStats.myState!=AstroStats.AIStates.DeadInside || myStats.myState!=AstroStats.AIStates.DeadOutside)
-        {
-            //Oops, I died on the ship
-            myStats.myState = AstroStats.AIStates.DeadInside;
-            //TODO: Send Foreman resignation letter. effective immediately
-            //TODO: Send Foreman new Task: Stuff my corpse in airlock
+    private void BoredomCheck() {
+        if (myStats.timeUntilMisbehave <= 0f) {
+            myStats.myMisbehaveStation = Foreman.AssignMisbehavior(gameObject, myStats.myBehaveStation, myStats.myMisbehaveStation);
+            myStats.myState   = AstroStats.AIStates.MoveToMisbehaving;
         }
     }
-    
-    //TODO: May need PinkSlip function to be fired (Tasked >> Idle)
+
+    private bool IsAngularCloseEnough() {
+        //return Math.Abs(myAngle-targetAngle) <= interactAngle
+        return Mathf.Abs(myRotationData.positionAngle - myStats.targetAngle) <= myStats.interactAngle;
+    }
+
+    private void BoredomProgression() {
+        //Probably could use different numbers
+        //This would also be where gradual difficulty increase could come into effect
+        myStats.timeUntilMisbehave -= Time.deltaTime;
+    }
+
+    private float GetNewTargetAngle(ActivityStation newStation) {
+        //Either the new Station has the angle baked in, or use a function to find the angle
+        return 20f;
+    }
 }

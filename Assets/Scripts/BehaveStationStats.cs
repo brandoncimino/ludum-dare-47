@@ -9,6 +9,7 @@ using UnityEngine;
 public class BehaveStationStats : ActivityStation
 {
     public enum BehaveStationStates {
+        Claimed,
         Occupied,
         Abandoned
     }
@@ -19,5 +20,9 @@ public class BehaveStationStats : ActivityStation
 
     public void Abandon() {
         currentState = BehaveStationStates.Abandoned;
+    }
+
+    public void Arrived() {
+        currentState = BehaveStationStates.Occupied;
     }
 }

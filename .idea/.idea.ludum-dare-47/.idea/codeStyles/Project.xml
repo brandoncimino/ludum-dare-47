@@ -1,6 +1,9 @@
 ﻿<component name="ProjectCodeStyleConfiguration">
   <code_scheme name="Project" version="173">
     <option name="LINE_SEPARATOR" value="&#10;" />
+    <MarkdownNavigatorCodeStyleSettings>
+      <option name="RIGHT_MARGIN" value="72" />
+    </MarkdownNavigatorCodeStyleSettings>
     <Properties>
       <option name="KEEP_BLANK_LINES" value="true" />
     </Properties>

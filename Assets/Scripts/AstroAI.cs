@@ -16,57 +16,50 @@ public class AstroAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (myStats.myState)
-        {
-            case AstroStats.AIStates.Idle:
-                if (Vector3.Distance(transform.position,myStats.targetLocation)<AstroStats.interactDistance)
-                {
-                    myStats.currentIdleWait += Time.deltaTime;
-                    if (myStats.currentIdleWait >= myStats.maxIdleTime)
-                    {
-                        //TODO: Randomly generate new location into "targetLocation"
-                        myStats.currentIdleWait = 0f;
-                    }
+        //Transition
+        switch (myStats.myState) {
+            case AstroStats.AIStates.MoveToBehaving:
+                //When close enough, start working
+                if (Vector3.Distance(transform.localPosition,myStats.targetLocation) < myStats.interactDistance) {
+                    //Astronaut within range
+                    myStats.myState = AstroStats.AIStates.Behaving;
                 }
-                else
-                {
-                    //TODO: Move along ground towards "targetLocation"
+                //If too bored, start misbehaving
+                if (myStats.timeUntilMisbehave <= 0f) {
+                    myStats.myMisbehaveStation = Foreman.AssignMisbehavior(gameObject, myStats.myBehaveStation, myStats.myMisbehaveStation);
+                    myStats.myState   = AstroStats.AIStates.MoveToMisbehaving;
                 }
                 break;
-            case AstroStats.AIStates.Tasked:
-                //TODO: Approach, interact, and complete task.
-                //TODO: After approach, if task is already being worked on, quit
+            case AstroStats.AIStates.Behaving:
                 break;
-            case AstroStats.AIStates.Ejecting:
-                //Thrash uncontrollably, but Death is approaching
-                //TODO: If enough time has passed, transition to DeadOutside
+            case AstroStats.AIStates.MoveToMisbehaving:
                 break;
-            case AstroStats.AIStates.DeadInside:
-                if (!myStats.isInside)
-                {
-                    myStats.myState = AstroStats.AIStates.DeadOutside;
-                }
-                //Lie uncomfortably still
+            case AstroStats.AIStates.Misbehaving:
                 break;
-            case AstroStats.AIStates.DeadOutside:
-                //Careen gently away from space station
-                //TODO: Obtain direction away from center of station. Float that way
+            case AstroStats.AIStates.Fixing:
+                break;
+            case AstroStats.AIStates.Dead:
                 break;
             default:
-                throw new NotImplementedException();
+                throw new ArgumentOutOfRangeException();
+        }
+        //Process
+        switch (myStats.myState) {
+            case AstroStats.AIStates.MoveToBehaving:
+                //move towards station
+                break;
+            case AstroStats.AIStates.Behaving:
+                break;
+            case AstroStats.AIStates.MoveToMisbehaving:
+                break;
+            case AstroStats.AIStates.Misbehaving:
+                break;
+            case AstroStats.AIStates.Fixing:
+                break;
+            case AstroStats.AIStates.Dead:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
-
-    public void DyingInside()
-    {
-        if (myStats.myState!=AstroStats.AIStates.DeadInside || myStats.myState!=AstroStats.AIStates.DeadOutside)
-        {
-            //Oops, I died on the ship
-            myStats.myState = AstroStats.AIStates.DeadInside;
-            //TODO: Send Foreman resignation letter. effective immediately
-            //TODO: Send Foreman new Task: Stuff my corpse in airlock
-        }
-    }
-    
-    //TODO: May need PinkSlip function to be fired (Tasked >> Idle)
 }

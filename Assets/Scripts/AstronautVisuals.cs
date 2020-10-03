@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+
+using Packages.BrandonUtils.Editor;
+
 using UnityEngine;
 using Random = System.Random;
 
@@ -21,7 +24,6 @@ public class AstronautVisuals : MonoBehaviour
     
     // target location
     public float   targetAngle = 90;
-    public Vector3 targetPosition;
     
     // Start is called before the first frame update
     void Start()
@@ -32,10 +34,6 @@ public class AstronautVisuals : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.S)) {
-            SetTarget(targetPosition);
-        }
         
         if (Input.GetKeyDown(KeyCode.A)) {
             MoveTowardTarget();
@@ -70,7 +68,7 @@ public class AstronautVisuals : MonoBehaviour
         transform.localEulerAngles = new Vector3(90, 0, positionAngle+90);
     }
     
-    
+    [EditorInvocationButton]
     public void MoveClockwise() {
         positionAngle = (positionAngle - speedAngle + 360) % 360;
         var angle = Math.PI * (positionAngle) / 180;
@@ -84,6 +82,7 @@ public class AstronautVisuals : MonoBehaviour
         transform.localEulerAngles = new Vector3(90, 0, positionAngle+90);
     }
     
+    [EditorInvocationButton]
     public void MoveCounterClockwise() {
         positionAngle = (positionAngle + speedAngle) % 360;
         var angle = Math.PI * (positionAngle) / 180;

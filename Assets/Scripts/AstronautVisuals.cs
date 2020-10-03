@@ -21,9 +21,8 @@ public class AstronautVisuals : MonoBehaviour
     {
         transform.localEulerAngles = new Vector3(0,0,Vector3.Angle(transform.position, transform.parent.position));
         //unfinished testing if statements
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            transform.position
+        if (Input.GetKeyDown(KeyCode.A)) {
+            //transform.position;
         }
     }
 }

@@ -20,10 +20,10 @@ public class AstroStats : MonoBehaviour
     //Time until Astronaut misbehaves
     public float timeUntilMisbehave = Random.Range(20.0f, 45.0f);
     //Location that I want to move towards
-    public Vector3 targetLocation;
+    public float targetAngle;
     
     //Distance until I can interact with something
-    public float interactDistance = .05f;
+    public float interactAngle = .05f;
     //Station that I am navigating towards, behaving at, or misbehaving at
     public BehaveStationStats    myBehaveStation;
     public MisbehaveStationStats myMisbehaveStation;

@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f500449084fe64489c7a0d4748f083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateIntensity: 0.0004
+  rotateIntensity: 0.0005
 --- !u!135 &1658321961
 SphereCollider:
   m_ObjectHideFlags: 0

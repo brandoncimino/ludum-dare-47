@@ -6,17 +6,17 @@ using DefaultNamespace;
 
 using UnityEngine;
 
-[RequireComponent(typeof(AstronautVisuals))]
+[RequireComponent(typeof(Creature))]
 public class AstroAI : MonoBehaviour
 {
     // Start is called before the first frame update
     public  AstroStats       myStats;
-    private AstronautVisuals myRotationData;
+    private Creature myRotationData;
     public  bool             hasBeenChastised = false;
     
     void Start() {
         myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
-        myRotationData          = gameObject.GetComponent<AstronautVisuals>();
+        myRotationData          = gameObject.GetComponent<Creature>();
     }
 
     // Update is called once per frame
@@ -104,7 +104,7 @@ public class AstroAI : MonoBehaviour
     
     private bool IsAngularCloseEnough() {
         //return Math.Abs(myAngle-targetAngle) <= interactAngle
-        return Mathf.Abs(myRotationData.positionAngle - myStats.targetAngle) <= myStats.interactAngle;
+        return myRotationData.Distance2TargetAsAngle() <= myStats.interactAngle;
     }
 
     private float GetNewTargetAngle(ActivityStation newStation) {

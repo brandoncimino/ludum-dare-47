@@ -18,7 +18,7 @@ public class AstroAI : MonoBehaviour
     public  float      currentHitPoints;
     
     void Start() {
-        myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
+        ConvertingToGood();
         myRotationData          = gameObject.GetComponent<Astronaut>();
     }
 
@@ -43,7 +43,7 @@ public class AstroAI : MonoBehaviour
             case AstroStats.AIStates.MoveToMisbehaving:
                 //If you've been touched, go back to work
                 if (hasBeenChastised) {
-                    
+                    ConvertingToGood();
                 }
                 //When close enough, start being a mischievous little devil
                 if (IsAngularCloseEnough()) {
@@ -120,6 +120,11 @@ public class AstroAI : MonoBehaviour
         return 20f;
     }
 
+    private void ConvertingToGood() {
+        myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
+        myStats.myState         = AstroStats.AIStates.MoveToBehaving;
+        currentHitPoints        = maxHitPoints;
+    }
     private void OnMouseDown() {
         hasBeenChastised = true;
     }

@@ -58,6 +58,10 @@ public class AstroAI : MonoBehaviour
                 }
                 break;
             case AstroStats.AIStates.Fixing:
+                //Once the station is fixed, return to normal behavior
+                if (myStats.myMisbehaveStation.currentState == MisbehaveStation.MisbehaveStationStates.Fixed) {
+                    ConvertingToGood();
+                }
                 break;
             case AstroStats.AIStates.Dead:
                 break;
@@ -86,6 +90,8 @@ public class AstroAI : MonoBehaviour
                 myStats.myMisbehaveStation.remainingBreakTime -= Time.deltaTime;
                 break;
             case AstroStats.AIStates.Fixing:
+                //Fix the machine a little
+                myStats.myMisbehaveStation.RepairUnit(Time.deltaTime);
                 break;
             case AstroStats.AIStates.Dead:
                 break;

@@ -45,7 +45,7 @@ public class Creature : MonoBehaviour
         if (Distance2TargetAsAngle() > speedAngle) {
             MoveTowardTarget();
         }
-        
+
     }
     public void ChangeLayer(int newLayer) {
         layer = newLayer;
@@ -145,5 +145,15 @@ public class Creature : MonoBehaviour
 
     public float Distance2Target() {
         return home.radius * ((float) Math.PI) * Distance2TargetAsAngle() / 180f;
+    }
+    
+    private void OnMouseDown() {
+        if (Input.GetMouseButtonDown(0)) {
+            
+            // TODO: change AI behaviour
+
+            // randomly assign a new color
+            mySpriteRenderer.color = new Color(rando.Next(0, 255)/255f, rando.Next(0, 255)/255f, rando.Next(0,255)/255f);
+        }
     }
 }

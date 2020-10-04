@@ -6,7 +6,7 @@ using DefaultNamespace;
 
 using UnityEngine;
 
-[RequireComponent(typeof(Creature))]
+[RequireComponent(typeof(Astronaut))]
 public class AstroAI : MonoBehaviour
 {
     // Start is called before the first frame update

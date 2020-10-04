@@ -78,7 +78,7 @@ public class Creature : MonoBehaviour {
         Transform transform1;
         (transform1 = transform).localPosition = new Vector3(
             (float) (home.radius * Math.Cos(angle)),
-            -(home.depth / 2) + layer * home.depth / home.noAstronauts,
+            -(home.depth / 2) + layer * home.depth / home.noLayers,
             (float) (home.radius * Math.Sin(angle))
         );
 

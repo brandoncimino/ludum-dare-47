@@ -3,6 +3,7 @@ namespace DefaultNamespace {
         Bridge,
         Rec,
         Kitchen,
-        Lab
+        Lab,
+        Engine
     }
 }

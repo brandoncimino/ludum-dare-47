@@ -99,13 +99,19 @@ MonoBehaviour:
   home: {fileID: 0}
   mySpriteRenderer: {fileID: 3424702222072115097}
   PositionAngle: 0
+  OffsetDistance: 0
+  OffsetAngle: 12
   PositionLayer: 0
   DoorSign: 0
-  BrideSprite: {fileID: 21300000, guid: 0e7b84cfdc60ded4fa3dfab4ef325fba, type: 3}
+  BridgeSprite: {fileID: 21300000, guid: 186ae82c552af98498b10013bdcabf91, type: 3}
   KitchenSprite: {fileID: 21300000, guid: 0e7b84cfdc60ded4fa3dfab4ef325fba, type: 3}
-  LabSprite: {fileID: 21300000, guid: 0e7b84cfdc60ded4fa3dfab4ef325fba, type: 3}
-  RecSprite: {fileID: 21300000, guid: 0e7b84cfdc60ded4fa3dfab4ef325fba, type: 3}
+  LabSprite: {fileID: 21300000, guid: 08094a619eb21a345849a3b6d57d2550, type: 3}
+  RecSprite: {fileID: 21300000, guid: cd36898e14e474e419d030e4a286c31a, type: 3}
+  EngineSprite: {fileID: 21300000, guid: 08094a619eb21a345849a3b6d57d2550, type: 3}
   behaveTwin: {fileID: 0}
+  isLethal: 1
   maxTimeToBreak: 8
   remainingBreakTime: 0
+  maxTimeToFix: 5
+  remainingFixTime: 0
   currentState: 0

@@ -11,12 +11,12 @@ public class AstroAI : MonoBehaviour
 {
     // Start is called before the first frame update
     public  AstroStats       myStats;
-    private Creature myRotationData;
+    private Astronaut myRotationData;
     public  bool             hasBeenChastised = false;
     
     void Start() {
         myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
-        myRotationData          = gameObject.GetComponent<Creature>();
+        myRotationData          = gameObject.GetComponent<Astronaut>();
     }
 
     // Update is called once per frame

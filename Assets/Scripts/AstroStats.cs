@@ -19,6 +19,8 @@ public class AstroStats : MonoBehaviour
     public AIStates myState = AIStates.MoveToBehaving;
     //Time until Astronaut misbehaves
     public float timeUntilMisbehave = Random.Range(20.0f, 45.0f);
+    //Time until Astronaut dies due to misbehaving
+    public float timeUntilDeath = 5f;
     //Location that I want to move towards
     public float targetAngle;
     

@@ -19,9 +19,11 @@ namespace DefaultNamespace {
         public int            noAstronauts = 5;
         
         // information about the station's spin
-        private       float Speed              = 0.1f; // degrees per time step
-        private const float Acceleration       = 1f;
-        private       int   ActiveAccelerations = 0;
+        private       float  idealSpeed          = 0.1f;
+        public       float  Speed               = 0.1f; // degrees per time step
+        private const float  AccelerationMod        = 0.1f;
+        private       int    ActiveAccelerations = 0;
+        private const float xRotationMod        = 0.3f;
         
         void Start() {
             // spawn astronauts
@@ -38,10 +40,12 @@ namespace DefaultNamespace {
         void Update() {
             
             // compute speed (explicit Euler - exact if the acceleration is piecewise constant)
-            Speed += Time.deltaTime * Acceleration * ActiveAccelerations;
+            Speed       += Time.deltaTime * AccelerationMod * ActiveAccelerations;
             
             // rotate
-            transform.Rotate(0, Speed, 0);
+            transform.Rotate(0,                                        Speed, 0);
+            //transform.Rotate(Speed * (float) Math.Sin(Time.time) * xRotationMod, 0,     0, Space.World);
+            // TODO: tumbling, needs some fine-tuning
         }
         
         [EditorInvocationButton]

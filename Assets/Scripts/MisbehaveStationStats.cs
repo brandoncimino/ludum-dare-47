@@ -12,12 +12,17 @@ public class MisbehaveStationStats : ActivityStation
         Broken
     }
     
-    public static GameObject         BehaveTwin;
-    private       BehaveStationStats BehaveTwinStats = BehaveTwin.GetComponent<BehaveStationStats>();
-
-    public BehaveStationStats GetTwinStats() {
-        return BehaveTwinStats;
+    public BehaveStationStats behaveTwin;
+    
+    public override bool CanRegister() {
+        return behaveTwin;
     }
     
+    
+
+    //Time in seconds it takes to break;
+    public float maxTimeToBreak = 8f;
+    public float remainingBreakTime;
+
     public MisbehaveStationStates currentState = MisbehaveStationStates.Fixed;
 }

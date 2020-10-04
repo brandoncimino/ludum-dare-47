@@ -88,7 +88,7 @@ public class AstroAI : MonoBehaviour
                 //Break the station a little
                 //Good point of entry to add escalating difficulty
                 //Logic is placeholder until balancing
-                myStats.myMisbehaveStation.BreakUnit(Time.deltaTime);
+                currentHitPoints -= myStats.myMisbehaveStation.BreakUnit(Time.deltaTime);
                 if (currentHitPoints <=0) {
                     hasBeenKilled = true;
                 }

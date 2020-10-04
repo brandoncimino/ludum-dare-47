@@ -19,7 +19,8 @@ public class MisbehaveStation : ActivityStation
         return behaveTwin;
     }
     
-    
+    //If this machine breaks, will it harm and eventually kill the astronaut?
+    public bool isLethal = true;
 
     //Time in seconds it takes to break;
     public float maxTimeToBreak = 8f;
@@ -44,7 +45,9 @@ public class MisbehaveStation : ActivityStation
         }
     }
 
-    public void BreakUnit(float deltaTime) {
+    
+    public float BreakUnit(float deltaTime) {
+        //This is where we would do unholy maths upon deltaTime to determine damages
         switch (currentState) {
             case MisbehaveStationStates.Fixed:
                 remainingBreakTime -= deltaTime;
@@ -52,9 +55,11 @@ public class MisbehaveStation : ActivityStation
                     remainingBreakTime = maxTimeToBreak;
                     currentState       = MisbehaveStationStates.Broken;
                 }
+                return 0f;
                 break;
             case MisbehaveStationStates.Broken:
                 //Astronauts that are still at a location when it's broken slowly die
+                return isLethal ? deltaTime : 0f;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

@@ -96,6 +96,9 @@ namespace DefaultNamespace {
                         transform.localScale *= 2;
                         PositionLayer        -= 1;
                     }
+                    else {
+                        transform.localScale *= 1.2f;
+                    }
                     break;
                 case ActivityRoom.Engine:
                     mySpriteRenderer.sprite = EngineSprite;

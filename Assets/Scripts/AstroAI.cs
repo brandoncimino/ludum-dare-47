@@ -64,6 +64,7 @@ public class AstroAI : MonoBehaviour
                 }
                 break;
             case AstroStats.AIStates.Dead:
+                //Once you become dead, there's no escape. This transition is intentionally left blank
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -87,13 +88,17 @@ public class AstroAI : MonoBehaviour
                 //Break the station a little
                 //Good point of entry to add escalating difficulty
                 //Logic is placeholder until balancing
-                myStats.myMisbehaveStation.remainingBreakTime -= Time.deltaTime;
+                myStats.myMisbehaveStation.BreakUnit(Time.deltaTime);
+                if (currentHitPoints <=0) {
+                    hasBeenKilled = true;
+                }
                 break;
             case AstroStats.AIStates.Fixing:
                 //Fix the machine a little
                 myStats.myMisbehaveStation.RepairUnit(Time.deltaTime);
                 break;
             case AstroStats.AIStates.Dead:
+                //There is no afterlife to do tasks. This process is intentionally left blank
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

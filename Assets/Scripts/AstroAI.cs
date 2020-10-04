@@ -10,12 +10,15 @@ using UnityEngine;
 public class AstroAI : MonoBehaviour
 {
     // Start is called before the first frame update
-    public  AstroStats       myStats;
-    private Astronaut myRotationData;
-    public  bool             hasBeenChastised = false;
+    public  AstroStats myStats;
+    private Astronaut  myRotationData;
+    public  bool       hasBeenChastised = false;
+    public  bool       hasBeenKilled    = false;
+    public  float      maxHitPoints     = 5f;
+    public  float      currentHitPoints;
     
     void Start() {
-        myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
+        ConvertingToGood();
         myRotationData          = gameObject.GetComponent<Astronaut>();
     }
 
@@ -40,7 +43,7 @@ public class AstroAI : MonoBehaviour
             case AstroStats.AIStates.MoveToMisbehaving:
                 //If you've been touched, go back to work
                 if (hasBeenChastised) {
-                    
+                    ConvertingToGood();
                 }
                 //When close enough, start being a mischievous little devil
                 if (IsAngularCloseEnough()) {
@@ -48,10 +51,20 @@ public class AstroAI : MonoBehaviour
                 }
                 break;
             case AstroStats.AIStates.Misbehaving:
+                //If ya dead, ya dead
+                if (hasBeenKilled) {
+                    //Become unassigned from all stations
+                    myStats.myState = AstroStats.AIStates.Dead;
+                }
                 break;
             case AstroStats.AIStates.Fixing:
+                //Once the station is fixed, return to normal behavior
+                if (myStats.myMisbehaveStation.currentState == MisbehaveStation.MisbehaveStationStates.Fixed) {
+                    ConvertingToGood();
+                }
                 break;
             case AstroStats.AIStates.Dead:
+                //Once you become dead, there's no escape. This transition is intentionally left blank
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -75,11 +88,17 @@ public class AstroAI : MonoBehaviour
                 //Break the station a little
                 //Good point of entry to add escalating difficulty
                 //Logic is placeholder until balancing
-                myStats.myMisbehaveStation.remainingBreakTime -= Time.deltaTime;
+                myStats.myMisbehaveStation.BreakUnit(Time.deltaTime);
+                if (currentHitPoints <=0) {
+                    hasBeenKilled = true;
+                }
                 break;
             case AstroStats.AIStates.Fixing:
+                //Fix the machine a little
+                myStats.myMisbehaveStation.RepairUnit(Time.deltaTime);
                 break;
             case AstroStats.AIStates.Dead:
+                //There is no afterlife to do tasks. This process is intentionally left blank
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -112,6 +131,11 @@ public class AstroAI : MonoBehaviour
         return 20f;
     }
 
+    private void ConvertingToGood() {
+        myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
+        myStats.myState         = AstroStats.AIStates.MoveToBehaving;
+        currentHitPoints        = maxHitPoints;
+    }
     private void OnMouseDown() {
         hasBeenChastised = true;
     }

@@ -12,12 +12,29 @@ using UnityEngine;
 public class AstroForeman : MonoBehaviour
 {
     public List<AstroAI> StationedAstronauts = new List<AstroAI>();
-    public List<BehaveStationStats> BehaveStations = new List<BehaveStationStats>();
-    public List<MisbehaveStationStats> MisbehaveStations = new List<MisbehaveStationStats>();
+    public List<BehaveStation> BehaveStations = new List<BehaveStation>();
+    public List<MisbehaveStation> MisbehaveStations = new List<MisbehaveStation>();
     //ASSUMES that BehaveStation[X] is in the same room as MisbehaveStation[X]
-    
-    
-    public MisbehaveStationStats AssignMisbehavior(GameObject thisAstronaut, BehaveStationStats myBehaveStation, MisbehaveStationStats myMisbehaveStation) {
+
+    public static AstroForeman Single;
+
+    private void Awake() {
+        if (Single == null) {
+            Single = this;
+        }
+        else {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void Register(BehaveStation applyingStation) {
+        BehaveStations.Add(applyingStation);
+    }
+    public void Register(MisbehaveStation applyingStation) {
+        MisbehaveStations.Add(applyingStation);
+    }
+
+    public MisbehaveStation AssignMisbehavior(GameObject thisAstronaut, BehaveStation myBehaveStation, MisbehaveStation myMisbehaveStation) {
         //Set Behavior Station to Abandoned
         //BehaveStations.FindIndex(Equals(myBehaveStation)).currentState = BehaveStationStats.BehaveStationStates.Abandoned;
         //myBehaveStation.currentState = BehaveStationStats.BehaveStationStates.Abandoned;
@@ -27,26 +44,26 @@ public class AstroForeman : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    public BehaveStationStats AvailableBehaveStation() {
+    public BehaveStation AvailableBehaveStation() {
         return BehaveStations
-               .Where(station => station.currentState == BehaveStationStats.BehaveStationStates.Abandoned)
+               .Where(station => station.currentState == BehaveStation.BehaveStationStates.Abandoned)
                .Random();
     }
 
-    public MisbehaveStationStats DistantMisbehaveStation(BehaveStationStats currentLocation) {
-        return MisbehaveStations.Where(station => station.GetTwinStats() != currentLocation).Random();
+    public MisbehaveStation DistantMisbehaveStation(BehaveStation currentLocation) {
+        return MisbehaveStations.Where(station => station.behaveTwin != currentLocation).Random();
     }
 
-    public BehaveStationStats AssignBehavior(GameObject astronaut) {
+    public BehaveStation AssignBehavior(GameObject astronaut) {
         //Sort stations by distance
         BehaveStations = BehaveStations.OrderBy(
             station => (station.transform.localPosition - astronaut.gameObject.transform.localPosition).sqrMagnitude
         ).ToList();
         //Find closest abandoned station
         foreach (var station in BehaveStations) {
-            if (station.currentState == BehaveStationStats.BehaveStationStates.Abandoned) {
+            if (station.currentState == BehaveStation.BehaveStationStates.Abandoned) {
                 //set astronaut's station to that station
-                station.currentState = BehaveStationStats.BehaveStationStates.Occupied;
+                station.currentState = BehaveStation.BehaveStationStates.Occupied;
                 return station;
             }
         }

@@ -8,11 +8,12 @@ using UnityEngine;
 
 public class MisbehaveStation : ActivityStation
 {
+    // public float OffsetAngle = -12;
     public enum MisbehaveStationStates {
         Fixed,
         Broken
     }
-    
+
     public BehaveStation behaveTwin;
     
     public override bool CanRegister() {
@@ -65,5 +66,9 @@ public class MisbehaveStation : ActivityStation
                 throw new ArgumentOutOfRangeException();
         }
         
+    }
+    
+    protected override bool IsBehaviourStation() {
+        return false;
     }
 }

@@ -11,15 +11,18 @@ namespace DefaultNamespace {
         public SpriteRenderer mySpriteRenderer;
 
         // positional and type information
-        public float         PositionAngle;
-        public int           PositionLayer;
+        public float        PositionAngle;
+        public float        OffsetDistance;
+        public float        OffsetAngle;
+        public int          PositionLayer;
         public ActivityRoom DoorSign;
         
         // the sprites for the different stations
-        public Sprite BrideSprite;
+        public Sprite BridgeSprite;
         public Sprite KitchenSprite;
         public Sprite LabSprite;
         public Sprite RecSprite;
+        public Sprite EngineSprite;
         private void Awake() {
             //Let foreman know you exist
             
@@ -31,25 +34,34 @@ namespace DefaultNamespace {
         }
         
         public void PlaceDown(float newAngle, int newLayer, SpaceStation newHome, ActivityRoom newDoorSign) {
-            PositionAngle = newAngle;
-            PositionLayer = newLayer;
-            home          = newHome;
-            DoorSign      = newDoorSign;
-
-            PlaceSprite();
+            
+            DoorSign       = newDoorSign;
+            PositionAngle  = (newAngle + OffsetAngle) % 360;
+            PositionLayer  = newLayer;
+            home           = newHome;
+            
+            OffsetDistance = home.radius * ((float) Math.PI) * OffsetAngle / 180f;
+            NameOnDoor(); // also corrects offsetDistance for some room types
+            // OffsetDistance = 0.2f;
+            
             Transform transform1;
-            var       angle = Math.PI * (PositionAngle) / 180;
+            var       angle = Math.PI * (newAngle) / 180;
             
             (transform1 = transform).localScale *= transform1.parent.transform.localScale.x;
             
             transform1.localPosition = new Vector3(
                 (float) (home.radius * Math.Cos(angle)),
-                -(home.depth / 2) + PositionLayer * home.depth / home.noAstronauts,
+                -(home.depth / 2) + PositionLayer * home.depth / home.noLayers,
                 (float) (home.radius * Math.Sin(angle))
             );
-            
-            transform1.localEulerAngles = new Vector3(90, 0, PositionAngle+90);
-            
+
+            transform1.localEulerAngles = new Vector3(90, 0, newAngle + 90);
+
+            transform1.localPosition += new Vector3(
+                (float) (- OffsetDistance * Math.Sin(angle)),
+                0,
+                (float) (+ OffsetDistance * Math.Cos(angle))
+            );
             
         }
 
@@ -61,11 +73,15 @@ namespace DefaultNamespace {
         }
         */
 
-        protected void PlaceSprite() {
+        protected void NameOnDoor() {
         
             switch (DoorSign) {
                 case ActivityRoom.Bridge:
-                    mySpriteRenderer.sprite = BrideSprite;
+                    mySpriteRenderer.sprite = BridgeSprite;
+                    OffsetDistance          = 0;
+                    if (!IsBehaviourStation()) {
+                        mySpriteRenderer.enabled = false;
+                    }
                     break;
                 case ActivityRoom.Kitchen:
                     mySpriteRenderer.sprite = KitchenSprite;
@@ -75,11 +91,25 @@ namespace DefaultNamespace {
                     break;
                 case ActivityRoom.Rec:
                     mySpriteRenderer.sprite = RecSprite;
+                    if (!IsBehaviourStation()) {
+                        OffsetDistance       =  0;
+                        transform.localScale *= 2;
+                        PositionLayer        -= 1;
+                    }
+                    break;
+                case ActivityRoom.Engine:
+                    mySpriteRenderer.sprite = EngineSprite;
                     break;
                 default:
-                    mySpriteRenderer.sprite = BrideSprite;
+                    mySpriteRenderer.sprite = BridgeSprite;
+                    OffsetAngle             = 0;
                     break;
             }
         }
+
+        protected virtual bool IsBehaviourStation() {
+            throw new NotImplementedException("needs to be implemented in subclass");
+        }
+        
     }
 }

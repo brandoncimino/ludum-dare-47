@@ -9,7 +9,8 @@ using UnityEditor.Compilation;
 using UnityEngine;
 
 public class BehaveStation : ActivityStation {
-    
+
+    // public float OffsetAngle = 12
     public enum BehaveStationStates {
         Claimed,
         Occupied,
@@ -17,8 +18,6 @@ public class BehaveStation : ActivityStation {
     }
 
     public BehaveStationStates currentState = BehaveStationStates.Abandoned;
-
-    
 
     public void Abandon() {
         currentState = BehaveStationStates.Abandoned;
@@ -28,7 +27,9 @@ public class BehaveStation : ActivityStation {
         currentState = BehaveStationStates.Occupied;
     }
     
-    
+    protected override bool IsBehaviourStation() {
+        return true;
+    }
 }
 
 

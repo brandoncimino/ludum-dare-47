@@ -824,5 +824,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Space Station
       objectReference: {fileID: 0}
+    - target: {fileID: 8519636459610089742, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}

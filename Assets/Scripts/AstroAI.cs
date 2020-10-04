@@ -10,9 +10,12 @@ using UnityEngine;
 public class AstroAI : MonoBehaviour
 {
     // Start is called before the first frame update
-    public  AstroStats       myStats;
-    private Astronaut myRotationData;
-    public  bool             hasBeenChastised = false;
+    public  AstroStats myStats;
+    private Astronaut  myRotationData;
+    public  bool       hasBeenChastised = false;
+    public  bool       hasBeenKilled    = false;
+    public  float      maxHitPoints     = 5f;
+    public  float      currentHitPoints;
     
     void Start() {
         myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
@@ -48,6 +51,11 @@ public class AstroAI : MonoBehaviour
                 }
                 break;
             case AstroStats.AIStates.Misbehaving:
+                //If ya dead, ya dead
+                if (hasBeenKilled) {
+                    //Become unassigned from all stations
+                    myStats.myState = AstroStats.AIStates.Dead;
+                }
                 break;
             case AstroStats.AIStates.Fixing:
                 break;

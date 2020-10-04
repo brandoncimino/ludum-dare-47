@@ -25,4 +25,8 @@ public class MisbehaveStationStats : ActivityStation
     public float remainingBreakTime;
 
     public MisbehaveStationStates currentState = MisbehaveStationStates.Fixed;
+
+    void Awake() {
+        remainingBreakTime = maxTimeToBreak;
+    }
 }

@@ -58,10 +58,10 @@ public class Creature : MonoBehaviour
         // TODO: change direction into which the astronaut looks
         
         if (Math.Abs(targetAngle - positionAngle) < 180) {
-            positionAngle = (positionAngle + Math.Sign(targetAngle-positionAngle) * speedAngle) % 360;
+            positionAngle = (positionAngle + Math.Sign(targetAngle-positionAngle) * speedAngle * Time.deltaTime) % 360;
         }
         else {
-            positionAngle = (positionAngle - Math.Sign(targetAngle-positionAngle) * speedAngle + 360) % 360;
+            positionAngle = (positionAngle - Math.Sign(targetAngle-positionAngle) * speedAngle * Time.deltaTime + 360) % 360;
         }
             
         var       angle = Math.PI * (positionAngle) / 180;

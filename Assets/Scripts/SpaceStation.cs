@@ -45,10 +45,24 @@ namespace DefaultNamespace {
             }
             
             // spawn activity stations
-            var newStation = Instantiate(BehaveStationPrefab).GetComponent<BehaveStation>();
-            newStation.transform.parent = transform;
-            newStation.PlaceDown(0, -1, this, ActivityRoom.Kitchen);
-            BehaveStations.Add(newStation);
+            var angle = 0f;
+            foreach (ActivityRoom doorSign in Enum.GetValues(typeof(ActivityRoom))) {
+                
+                // add Behave Stations
+                var newBehaveStation = Instantiate(BehaveStationPrefab).GetComponent<BehaveStation>();
+                newBehaveStation.transform.parent = transform;
+                newBehaveStation.PlaceDown(angle, -1, this, doorSign);
+                BehaveStations.Add(newBehaveStation);
+                
+                // add Misbehave Stations
+                var newMisbehaveStation = Instantiate(MisbehaveStationPrefab).GetComponent<MisbehaveStation>();
+                newMisbehaveStation.transform.parent = transform;
+                newMisbehaveStation.PlaceDown(angle + 25, -1, this, doorSign);
+                MisbehaveStations.Add(newMisbehaveStation);
+
+                angle += 72;
+            }
+            
         }
 
         void Update() {

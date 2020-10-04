@@ -37,17 +37,18 @@ namespace DefaultNamespace {
             DoorSign      = newDoorSign;
 
             PlaceSprite();
-
-            var transform1 = transform;
-            transform1.localScale *= transform1.parent.transform.localScale.x;
+            Transform transform1;
+            var       angle = Math.PI * (PositionAngle) / 180;
             
-            transform.localPosition = new Vector3(
-                (float) (home.radius * Math.Cos(PositionAngle)),
+            (transform1 = transform).localScale *= transform1.parent.transform.localScale.x;
+            
+            transform1.localPosition = new Vector3(
+                (float) (home.radius * Math.Cos(angle)),
                 -(home.depth / 2) + PositionLayer * home.depth / home.noAstronauts,
-                (float) (home.radius * Math.Sin(PositionAngle))
+                (float) (home.radius * Math.Sin(angle))
             );
             
-            transform.localEulerAngles = new Vector3(90, 0, PositionAngle+90);
+            transform1.localEulerAngles = new Vector3(90, 0, PositionAngle+90);
             
             
         }

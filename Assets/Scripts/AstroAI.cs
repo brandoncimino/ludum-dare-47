@@ -72,7 +72,7 @@ public class AstroAI : MonoBehaviour
         //Process
         switch (myStats.myState) {
             case AstroStats.AIStates.MoveToBehaving:
-                //move towards station
+                //move towards station (executed by Astronaut:Creature's Update(); )
                 //Get more bored
                 MisbehaveProgression();
                 break;
@@ -82,7 +82,7 @@ public class AstroAI : MonoBehaviour
                 MisbehaveProgression();
                 break;
             case AstroStats.AIStates.MoveToMisbehaving:
-                //Move towards station
+                //Move towards station (executed by Astronaut:Creature's Update(); )
                 break;
             case AstroStats.AIStates.Misbehaving:
                 //Break the station a little
@@ -110,6 +110,7 @@ public class AstroAI : MonoBehaviour
     private void MisbehaveCheck() {
         if (myStats.timeUntilMisbehave <= 0f) {
             myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior(gameObject, myStats.myBehaveStation, myStats.myMisbehaveStation);
+            GetNewTargetAngle(myStats.myMisbehaveStation);
             myRotationData.SetTarget(myStats.myMisbehaveStation.transform.localPosition);
             myStats.myState   = AstroStats.AIStates.MoveToMisbehaving;
         }
@@ -126,13 +127,14 @@ public class AstroAI : MonoBehaviour
         return myRotationData.Distance2TargetAsAngle() <= myStats.interactAngle;
     }
 
-    private float GetNewTargetAngle(ActivityStation newStation) {
+    private void GetNewTargetAngle(ActivityStation newStation) {
         //Either the new Station has the angle baked in, or use a function to find the angle
-        return 20f;
+        myRotationData.SetTarget(newStation.PositionAngle);
     }
 
     private void ConvertingToGood() {
         myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
+        GetNewTargetAngle(myStats.myBehaveStation);
         myStats.myState         = AstroStats.AIStates.MoveToBehaving;
         currentHitPoints        = maxHitPoints;
     }

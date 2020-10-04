@@ -19,11 +19,13 @@ namespace DefaultNamespace {
         public int            noAstronauts = 5;
         
         // information about the station's spin
-        private       float  idealSpeed          = 0.1f;
-        public       float  Speed               = 0.1f; // degrees per time step
-        private const float  AccelerationMod        = 0.1f;
-        private       int    ActiveAccelerations = 0;
+        private       float idealSpeed          = 10f;
+        public        float Speed               = 10f; // degrees per time step
+        private const float AccelerationMod     = 10f;
+        private       int   ActiveAccelerations = 0;
         private const float xRotationMod        = 0.3f;
+        private       float tumbleDegree        = 0;
+        private       bool  tumble2Player       = true;
         
         void Start() {
             // spawn astronauts
@@ -43,8 +45,9 @@ namespace DefaultNamespace {
             Speed       += Time.deltaTime * AccelerationMod * ActiveAccelerations;
             
             // rotate
-            transform.Rotate(0,                                        Speed, 0);
-            //transform.Rotate(Speed * (float) Math.Sin(Time.time) * xRotationMod, 0,     0, Space.World);
+            transform.Rotate(0, Speed * Time.deltaTime, 0);
+            
+            // transform.Rotate(Speed * (float) Math.Sin(Time.time) * xRotationMod, 0,     0, Space.World);
             // TODO: tumbling, needs some fine-tuning
         }
         

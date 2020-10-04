@@ -891,18 +891,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1913484352}
     m_Modifications:
+    - target: {fileID: 1126349372312075342, guid: 25ba91ada86004114847296db432953e, type: 3}
+      propertyPath: myStation
+      value: 
+      objectReference: {fileID: 1551106590}
+    - target: {fileID: 1126349372312075342, guid: 25ba91ada86004114847296db432953e, type: 3}
+      propertyPath: home
+      value: 
+      objectReference: {fileID: 1551106591}
     - target: {fileID: 2191667903187328276, guid: 25ba91ada86004114847296db432953e, type: 3}
       propertyPath: m_Name
       value: Astronaut
       objectReference: {fileID: 0}
-    - target: {fileID: 2191667903187328277, guid: 25ba91ada86004114847296db432953e, type: 3}
-      propertyPath: widthSpacestation
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2191667903187328277, guid: 25ba91ada86004114847296db432953e, type: 3}
-      propertyPath: home
-      value: 
-      objectReference: {fileID: 1551106591}
     - target: {fileID: 2191667903187328279, guid: 25ba91ada86004114847296db432953e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5906486e-15
@@ -947,17 +947,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7772222769987139506, guid: 25ba91ada86004114847296db432953e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772222769987139506, guid: 25ba91ada86004114847296db432953e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772222769987139506, guid: 25ba91ada86004114847296db432953e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 25ba91ada86004114847296db432953e, type: 3}

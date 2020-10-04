@@ -47,7 +47,7 @@ public class Creature : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // the creature moves toward its target location
-        if (Distance2TargetAsAngle() > speedAngle) {
+        if (Distance2TargetAsAngle() > speedAngle * Time.deltaTime) {
             MoveTowardTarget();
         }
     }
@@ -159,8 +159,8 @@ public class Creature : MonoBehaviour {
     public float Distance2Target() {
         return home.radius * ((float) Math.PI) * Distance2TargetAsAngle() / 180f;
     }
-
-    private void OnMouseDown() {
+    
+    public void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
             // TODO: change AI behaviour
 

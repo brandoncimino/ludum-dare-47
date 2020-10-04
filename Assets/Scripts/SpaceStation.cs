@@ -6,17 +6,24 @@ using UnityEngine;
 
 namespace DefaultNamespace {
     public class SpaceStation : MonoBehaviour {
-        // geoometric information about the space station
+        #region Geometric information about the space station
+
         // space station floor is assumed as a cylinder for simplicity
         public float radius = 14.1033f;
         public float depth  = 6f;
 
-        // information about the astronauts living on the space station
+        #endregion
+
+        #region information about the astronauts living on the space station
+
         public GameObject     AstronautPrefab;
         public List<Creature> Astronauts;
         public int            noAstronauts = 5;
 
-        // information about the station's spin
+        #endregion
+
+        #region information about the station's yaw
+
         private       float idealSpeed          = 10f;
         public        float Speed               = 10f; // degrees per time step
         private const float AccelerationMod     = 10f;
@@ -24,6 +31,8 @@ namespace DefaultNamespace {
         private const float xRotationMod        = 0.3f;
         private       float tumbleDegree        = 0;
         private       bool  tumble2Player       = true;
+
+        #endregion
 
         void Start() {
             // spawn astronauts

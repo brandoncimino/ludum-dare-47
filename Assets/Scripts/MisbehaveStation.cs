@@ -5,14 +5,14 @@ using DefaultNamespace;
 
 using UnityEngine;
 
-public class MisbehaveStationStats : ActivityStation
+public class MisbehaveStation : ActivityStation
 {
     public enum MisbehaveStationStates {
         Fixed,
         Broken
     }
     
-    public BehaveStationStats behaveTwin;
+    public BehaveStation behaveTwin;
     
     public override bool CanRegister() {
         return behaveTwin;
@@ -29,4 +29,6 @@ public class MisbehaveStationStats : ActivityStation
     void Awake() {
         remainingBreakTime = maxTimeToBreak;
     }
+    
+    
 }

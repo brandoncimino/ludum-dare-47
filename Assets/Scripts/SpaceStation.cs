@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using Packages.BrandonUtils.Editor;
@@ -8,6 +9,7 @@ namespace DefaultNamespace {
     public class SpaceStation : MonoBehaviour {
         #region Geometric information about the space station
 
+        // geoometric information about the space station
         // space station floor is assumed as a cylinder for simplicity
         public float radius = 14.1033f;
         public float depth  = 6f;
@@ -31,7 +33,13 @@ namespace DefaultNamespace {
         private const float xRotationMod        = 0.3f;
         private       float tumbleDegree        = 0;
         private       bool  tumble2Player       = true;
-
+        #endregion
+        
+        #region information about the station's workstations
+        public GameObject             BehaveStationPrefab;
+        public GameObject             MisbehaveStationPrefab;
+        public List<BehaveStation>    BehaveStations;
+        public List<MisbehaveStation> MisbehaveStations;
         #endregion
 
         void Start() {
@@ -43,9 +51,30 @@ namespace DefaultNamespace {
                 newAstronaut.GiveHome(this);
                 Astronauts.Add(newAstronaut);
             }
+            
+            // spawn activity stations
+            var angle = 0f;
+            foreach (ActivityRoom doorSign in Enum.GetValues(typeof(ActivityRoom))) {
+                
+                // add Behave Stations
+                var newBehaveStation = Instantiate(BehaveStationPrefab).GetComponent<BehaveStation>();
+                newBehaveStation.transform.parent = transform;
+                newBehaveStation.PlaceDown(angle, -1, this, doorSign);
+                BehaveStations.Add(newBehaveStation);
+                
+                // add Misbehave Stations
+                var newMisbehaveStation = Instantiate(MisbehaveStationPrefab).GetComponent<MisbehaveStation>();
+                newMisbehaveStation.transform.parent = transform;
+                newMisbehaveStation.PlaceDown(angle + 25, -1, this, doorSign);
+                MisbehaveStations.Add(newMisbehaveStation);
+
+                angle += 72;
+            }
+            
         }
 
         void Update() {
+            
             // compute speed (explicit Euler - exact if the acceleration is piecewise constant)
             Speed += Time.deltaTime * AccelerationMod * ActiveAccelerations;
 

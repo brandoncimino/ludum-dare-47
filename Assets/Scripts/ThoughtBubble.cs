@@ -65,17 +65,21 @@ namespace DefaultNamespace {
         [EditorInvocationButton]
         private void SnapToThinker() {
             var thinkerRenderer = Thinker.GetComponent<SpriteRenderer>();
-            var bounds          = thinkerRenderer.bounds;
+            /*
+             * This stuff was a massively over-complicated way to position the thought bubble that only worked if the astronaut never rotated.
+             */
+            // var bounds          = thinkerRenderer.bounds;
             // LogUtils.Log($"center = {bounds.center}",
             //              "extends = "+bounds.extents,
             //              "min = "+bounds.min,
             //              "max = "+bounds.max,
             //              "size = "+bounds.size);
-            transform.position = new Vector3(
-                bounds.center.x,
-                bounds.center.y + bounds.extents.y,
-                Thinker.transform.position.z
-            );
+            // transform.position = new Vector3(
+            //     bounds.center.x,
+            //     bounds.center.y + bounds.extents.y,
+            //     Thinker.transform.position.z
+            // );
+            transform.localPosition = Vector3.up;
         }
     }
 }

@@ -103,6 +103,7 @@ MonoBehaviour:
   MemesSprite: {fileID: 21300000, guid: c2f9d462195e92a4bace26f3f59023c4, type: 3}
   ThoughtRenderer: {fileID: 2504940264796305528}
   BubbleRenderer: {fileID: 4284161878243975510}
+  Thinker: {fileID: 0}
   ThinkDuration: 0
 --- !u!1 &6696753295628164021
 GameObject:
@@ -174,7 +175,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5cce681defb3f99498bdf91c2567fe91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

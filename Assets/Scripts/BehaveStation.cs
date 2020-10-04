@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 using DefaultNamespace;
 
+using UnityEditor.Compilation;
+
 using UnityEngine;
 
-public class BehaveStationStats : ActivityStation
-{
+public class BehaveStation : ActivityStation {
+    
     public enum BehaveStationStates {
         Claimed,
         Occupied,
@@ -25,4 +27,8 @@ public class BehaveStationStats : ActivityStation
     public void Arrived() {
         currentState = BehaveStationStates.Occupied;
     }
+    
+    
 }
+
+

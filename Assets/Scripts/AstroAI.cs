@@ -28,7 +28,7 @@ public class AstroAI : MonoBehaviour
                 //When close enough, start working
                 if (IsAngularCloseEnough()) {
                     //Astronaut within range
-                    myStats.myBehaveStation.currentState = BehaveStationStats.BehaveStationStates.Occupied;
+                    myStats.myBehaveStation.currentState = BehaveStation.BehaveStationStates.Occupied;
                     myStats.myState                      = AstroStats.AIStates.Behaving;
                 }
                 //If too bored, start misbehaving

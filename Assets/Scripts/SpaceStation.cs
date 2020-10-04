@@ -26,6 +26,13 @@ namespace DefaultNamespace {
         private const float xRotationMod        = 0.3f;
         private       float tumbleDegree        = 0;
         private       bool  tumble2Player       = true;
+
+        #region information about the station's workstations
+        public GameObject             BehaveStationPrefab;
+        public GameObject             MisbehaveStationPrefab;
+        public List<BehaveStation>    BehaveStations;
+        public List<MisbehaveStation> MisbehaveStations;
+        #endregion
         
         void Start() {
             // spawn astronauts
@@ -37,6 +44,11 @@ namespace DefaultNamespace {
                 Astronauts.Add(newAstronaut);
             }
             
+            // spawn activity stations
+            var newStation = Instantiate(BehaveStationPrefab).GetComponent<BehaveStation>();
+            newStation.transform.parent = transform;
+            newStation.PlaceDown(0, -1, this, ActivityRoom.Kitchen);
+            BehaveStations.Add(newStation);
         }
 
         void Update() {

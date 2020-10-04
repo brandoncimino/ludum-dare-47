@@ -15,8 +15,25 @@ public class AstroForeman : MonoBehaviour
     public List<BehaveStationStats> BehaveStations = new List<BehaveStationStats>();
     public List<MisbehaveStationStats> MisbehaveStations = new List<MisbehaveStationStats>();
     //ASSUMES that BehaveStation[X] is in the same room as MisbehaveStation[X]
-    
-    
+
+    public static AstroForeman Single;
+
+    private void Awake() {
+        if (Single == null) {
+            Single = this;
+        }
+        else {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void Register(BehaveStationStats applyingStation) {
+        BehaveStations.Add(applyingStation);
+    }
+    public void Register(MisbehaveStationStats applyingStation) {
+        MisbehaveStations.Add(applyingStation);
+    }
+
     public MisbehaveStationStats AssignMisbehavior(GameObject thisAstronaut, BehaveStationStats myBehaveStation, MisbehaveStationStats myMisbehaveStation) {
         //Set Behavior Station to Abandoned
         //BehaveStations.FindIndex(Equals(myBehaveStation)).currentState = BehaveStationStats.BehaveStationStates.Abandoned;
@@ -34,7 +51,7 @@ public class AstroForeman : MonoBehaviour
     }
 
     public MisbehaveStationStats DistantMisbehaveStation(BehaveStationStats currentLocation) {
-        return MisbehaveStations.Where(station => station.GetTwinStats() != currentLocation).Random();
+        return MisbehaveStations.Where(station => station.behaveTwin != currentLocation).Random();
     }
 
     public BehaveStationStats AssignBehavior(GameObject astronaut) {

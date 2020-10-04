@@ -11,11 +11,11 @@ public class AstroAI : MonoBehaviour
 {
     // Start is called before the first frame update
     public  AstroStats       myStats;
-    public  AstroForeman     Foreman;
     private AstronautVisuals myRotationData;
+    public  bool             hasBeenChastised = false;
     
     void Start() {
-        myStats.myBehaveStation = Foreman.AssignBehavior(gameObject);
+        myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
         myRotationData          = gameObject.GetComponent<AstronautVisuals>();
     }
 
@@ -38,6 +38,14 @@ public class AstroAI : MonoBehaviour
                 MisbehaveCheck();
                 break;
             case AstroStats.AIStates.MoveToMisbehaving:
+                //If you've been touched, go back to work
+                if (hasBeenChastised) {
+                    
+                }
+                //When close enough, start being a mischievous little devil
+                if (IsAngularCloseEnough()) {
+                    myStats.myState = AstroStats.AIStates.Misbehaving;
+                }
                 break;
             case AstroStats.AIStates.Misbehaving:
                 break;
@@ -61,8 +69,13 @@ public class AstroAI : MonoBehaviour
                 MisbehaveProgression();
                 break;
             case AstroStats.AIStates.MoveToMisbehaving:
+                //Move towards station
                 break;
             case AstroStats.AIStates.Misbehaving:
+                //Break the station a little
+                //Good point of entry to add escalating difficulty
+                //Logic is placeholder until balancing
+                myStats.myMisbehaveStation.remainingBreakTime -= Time.deltaTime;
                 break;
             case AstroStats.AIStates.Fixing:
                 break;
@@ -71,11 +84,14 @@ public class AstroAI : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        //Clean-up
+        hasBeenChastised = false;
     }
 
     private void MisbehaveCheck() {
         if (myStats.timeUntilMisbehave <= 0f) {
-            myStats.myMisbehaveStation = Foreman.AssignMisbehavior(gameObject, myStats.myBehaveStation, myStats.myMisbehaveStation);
+            myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior(gameObject, myStats.myBehaveStation, myStats.myMisbehaveStation);
+            myRotationData.SetTarget(myStats.myMisbehaveStation.transform.localPosition);
             myStats.myState   = AstroStats.AIStates.MoveToMisbehaving;
         }
     }
@@ -91,14 +107,12 @@ public class AstroAI : MonoBehaviour
         return Mathf.Abs(myRotationData.positionAngle - myStats.targetAngle) <= myStats.interactAngle;
     }
 
-    private void BoredomProgression() {
-        //Probably could use different numbers
-        //This would also be where gradual difficulty increase could come into effect
-        myStats.timeUntilMisbehave -= Time.deltaTime;
-    }
-
     private float GetNewTargetAngle(ActivityStation newStation) {
         //Either the new Station has the angle baked in, or use a function to find the angle
         return 20f;
+    }
+
+    private void OnMouseDown() {
+        hasBeenChastised = true;
     }
 }

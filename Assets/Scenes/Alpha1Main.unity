@@ -545,6 +545,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1551106590 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dca5929798df7bd4ab15512b8b60317f, type: 3}
+  m_PrefabInstance: {fileID: 1913484351}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1551106591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551106590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 946005a101354bc7bc6d4bf9aa6ca1d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 14.1033
+  depth: 6
+  AstronautPrefab: {fileID: 2191667903187328276, guid: 25ba91ada86004114847296db432953e, type: 3}
+  Astronauts: []
+  noAstronauts: 5
 --- !u!1 &1658321959
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,6 +876,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut
       objectReference: {fileID: 0}
+    - target: {fileID: 2191667903187328277, guid: 25ba91ada86004114847296db432953e, type: 3}
+      propertyPath: widthSpacestation
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191667903187328277, guid: 25ba91ada86004114847296db432953e, type: 3}
+      propertyPath: home
+      value: 
+      objectReference: {fileID: 1551106591}
     - target: {fileID: 2191667903187328279, guid: 25ba91ada86004114847296db432953e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5906486e-15

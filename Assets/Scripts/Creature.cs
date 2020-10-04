@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using DefaultNamespace;
+
 using Packages.BrandonUtils.Editor;
 
 using UnityEngine;
@@ -13,23 +15,27 @@ public class Creature : MonoBehaviour
     public GameObject myStation;
     Random rando = new Random();
 
-    // degree of speed, as an element between 0 and 360 degree, for the moment as int
-    public float speedAngle = 1;
-    
-    // angle that describes where I am on the circle that is my space station
+    // movement and positional information
     public float positionAngle = 0;
-    
-    // radius of the space station
-    public float radiusSpacestation = 14.1033f;
+    public float speedAngle    = 1;
+    public int   layer         = 0;
     
     // target location
-    public float   targetAngle = 90;
+    public float targetAngle = 90;
+    
+    // informationo about the space station
+    // TODO: call SpaceStation class instad
+    public SpaceStation home;
+    
     
     // Start is called before the first frame update
     void Start()
     {
         // randomly assign a color
         mySpriteRenderer.color = new Color(rando.Next(0,255)/255f,rando.Next(0,255)/255f,rando.Next(0,255)/255f);
+        
+        // resize to the correct size (relative to parent space station)
+        transform.localScale = new Vector3(5.243802f, 5.243802f, 5.243802f);
     }
 
     // Update is called once per frame
@@ -41,9 +47,16 @@ public class Creature : MonoBehaviour
         }
         
     }
+    public void ChangeLayer(int newLayer) {
+        layer = newLayer;
+    }
 
-    public void MoveTowardTarget() {
-
+    public void GiveHome(SpaceStation newHome) {
+        home = newHome;
+    }
+    private void MoveTowardTarget() {
+        // TODO: change direction into which the astronaut looks
+        
         if (Math.Abs(targetAngle - positionAngle) < 180) {
             positionAngle = (positionAngle + Math.Sign(targetAngle-positionAngle) * speedAngle) % 360;
         }
@@ -54,9 +67,9 @@ public class Creature : MonoBehaviour
         var       angle = Math.PI * (positionAngle) / 180;
         Transform transform1;
         (transform1 = transform).localPosition = new Vector3(
-            (float) (radiusSpacestation * Math.Cos(angle)),
-            0,
-            (float) (radiusSpacestation * Math.Sin(angle))
+            (float) (home.radius * Math.Cos(angle)),
+            -(home.depth/2) + layer * home.depth / home.noAstronauts,
+            (float) (home.radius * Math.Sin(angle))
         );
             
         // transform.Rotate(new Vector3(1, 0, 1), speedAngle);
@@ -69,9 +82,9 @@ public class Creature : MonoBehaviour
         var       angle = Math.PI * (positionAngle) / 180;
         Transform transform1;
         (transform1 = transform).localPosition = new Vector3(
-            (float) (radiusSpacestation * Math.Cos(angle)),
+            (float) (home.radius * Math.Cos(angle)),
             0,
-            (float) (radiusSpacestation * Math.Sin(angle))
+            (float) (home.radius * Math.Sin(angle))
         );
             
         // transform.Rotate(new Vector3(1, 0, 1), speedAngle);
@@ -85,9 +98,9 @@ public class Creature : MonoBehaviour
         Transform transform1;
         
         (transform1 = transform).localPosition = new Vector3(
-            (float) (radiusSpacestation * Math.Cos(angle)),
+            (float) (home.radius * Math.Cos(angle)),
             0,
-            (float) (radiusSpacestation * Math.Sin(angle))
+            (float) (home.radius * Math.Sin(angle))
         );
             
         // transform.Rotate(new Vector3(1, 0, 1), speedAngle);
@@ -131,6 +144,6 @@ public class Creature : MonoBehaviour
     }
 
     public float Distance2Target() {
-        return radiusSpacestation * ((float) Math.PI) * Distance2TargetAsAngle() / 180f;
+        return home.radius * ((float) Math.PI) * Distance2TargetAsAngle() / 180f;
     }
 }

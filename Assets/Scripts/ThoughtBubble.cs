@@ -71,11 +71,12 @@ namespace DefaultNamespace {
             //              "min = "+bounds.min,
             //              "max = "+bounds.max,
             //              "size = "+bounds.size);
-            transform.position = new Vector3(
-                bounds.center.x,
-                bounds.center.y + bounds.extents.y,
-                Thinker.transform.position.z
-            );
+            // transform.position = new Vector3(
+            //     bounds.center.x,
+            //     bounds.center.y + bounds.extents.y,
+            //     Thinker.transform.position.z
+            // );
+            transform.localPosition = Vector3.up;
         }
     }
 }

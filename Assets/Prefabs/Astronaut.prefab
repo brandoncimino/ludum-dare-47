@@ -101,7 +101,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 2191667903187328278}
   myStation: {fileID: 0}
   positionAngle: 270
-  speedAngle: 1
+  speedAngle: 15
   layer: 0
   targetAngle: 180
   home: {fileID: 0}

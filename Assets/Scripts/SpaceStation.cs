@@ -46,6 +46,10 @@ namespace DefaultNamespace {
             
             // rotate
             transform.Rotate(0, Speed * Time.deltaTime, 0);
+
+            if (tumble2Player) {
+                tumbleDegree += Speed * Time.deltaTime;
+            }
             
             // transform.Rotate(Speed * (float) Math.Sin(Time.time) * xRotationMod, 0,     0, Space.World);
             // TODO: tumbling, needs some fine-tuning

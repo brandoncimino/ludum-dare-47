@@ -5886,7 +5886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8519636460647756523, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
       propertyPath: noAstronauts
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8519636460647756523, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
       propertyPath: Wobbler
@@ -5900,5 +5900,9 @@ PrefabInstance:
       propertyPath: depth
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8519636460647756523, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
+      propertyPath: MonsterPrefab
+      value: 
+      objectReference: {fileID: 4046356228371668270, guid: 53fae9015f18940089dda8205f1613b6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}

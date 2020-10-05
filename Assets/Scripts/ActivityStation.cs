@@ -79,7 +79,6 @@ namespace DefaultNamespace {
                 case ActivityRoom.Bridge:
                     mySpriteRenderer.sprite = BridgeSprite;
                     if (!IsBehaviourStation()) {
-                        //OffsetDistance       =  0;
                         PositionLayer        -= 1;
                     }
                     break;
@@ -121,23 +120,13 @@ namespace DefaultNamespace {
         }
 
         public virtual bool Arrive(AstroAI astronaut) {
-            if (!Assignees.Contains(astronaut)) {
-                Assignees.Add(astronaut);
-                return true;
-            }
-            else {
-                return false;
-            }
+            
+            throw new NotImplementedException("Arrive: Needs to be implemented in subclass");
         }
         
         public virtual bool Leave(AstroAI astronaut) {
         
-            if (Assignees.Contains(astronaut)) {
-                Assignees.Remove(astronaut);
-                return true;
-            }
-
-            return false;
+            throw new NotImplementedException("Leave: Needs to be implemented in subclass");
 
         }
         

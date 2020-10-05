@@ -16,6 +16,7 @@ public class AstroStats : MonoBehaviour
         MoveToMisbehaving,
         Misbehaving,
         Fixing,
+        Fleeing,
         Dead
     }
     //Start Idle

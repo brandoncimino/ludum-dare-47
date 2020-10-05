@@ -26,18 +26,14 @@ public class MisbehaveStation : ActivityStation
     public bool isLethal = true;
 
     //Time in seconds it takes to break;
-    public float maxTimeToBreak = 8f;
-    public float remainingBreakTime;
-    
-    //Time in seconds to fix
-    public float maxTimeToFix = 5f;
-    public float remainingFixTime;
+    public  float maxTimeToBreak = 8f;
+    public  float remainingBreakTime;
+    private bool  MonsterInStorage = true;
 
     public MisbehaveStationStates currentState = MisbehaveStationStates.Fixed;
 
     void Awake() {
         remainingBreakTime = maxTimeToBreak;
-        remainingFixTime   = maxTimeToFix;
         AstroForeman.Single.Register(this);
         
     }
@@ -53,7 +49,12 @@ public class MisbehaveStation : ActivityStation
         remainingBreakTime += deltaTime;
         if (remainingBreakTime >= maxTimeToBreak) {
             remainingBreakTime = maxTimeToBreak;
-            currentState     = MisbehaveStationStates.Fixed;
+            currentState       = MisbehaveStationStates.Fixed;
+
+            if (DoorSign == ActivityRoom.Lab) {
+                MonsterInStorage = true;
+            }
+            
         }
     }
 
@@ -183,7 +184,7 @@ public class MisbehaveStation : ActivityStation
         // fire in the kitchen harms the astronauts
         // at the moment: only damages the astronauts at the misbehave station, not the one cooking next to it
         foreach (var astronaut in Assignees) {
-            astronaut.TakeDamage(timePassed);
+            astronaut.myRotationData.TakeDamage(timePassed);
         }
         
         // fire doesn't cause acceleration
@@ -198,13 +199,14 @@ public class MisbehaveStation : ActivityStation
         currentState       =  MisbehaveStationStates.Damaged;
 
         // check if broken
-        if (remainingBreakTime <= 0) {
+        if (MonsterInStorage && remainingBreakTime <= 0) {
             
             currentState       = MisbehaveStationStates.Broken;
             remainingBreakTime = 0;
 
-            // TODO: spawn monster
-            // TODO: implement monster
+            // spawn monster
+            home.SpawnMonster(PositionAngle);
+            MonsterInStorage = false;
 
         }
         

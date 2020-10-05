@@ -18,10 +18,12 @@ namespace DefaultNamespace {
 
         #region information about the astronauts living on the space station
 
-        public GameObject     AstronautPrefab;
-        public List<Creature> Astronauts;
-        public int            noAstronauts = 2;
-        public int            noLayers     = 7;
+        public GameObject      AstronautPrefab;
+        public GameObject      MonsterPrefab;
+        public List<Astronaut> Astronauts;
+        public List<Monster>   Monsters;
+        public int             noAstronauts = 2;
+        public int             noLayers     = 7;
 
         #endregion
 
@@ -35,7 +37,7 @@ namespace DefaultNamespace {
         public        float AccelerationMod      = 0f;
         public        float ActiveAcceleration   = 0f;
         public        float ActiveDeceleration   = 0f;
-        private const float InherentAcceleration = 1f; // TODO: noAstronauts / 2.0f
+        private const float InherentAcceleration = 2.5f; // TODO: noAstronauts / 2.0f
         #endregion
         
         #region information about the station's workstations
@@ -49,7 +51,7 @@ namespace DefaultNamespace {
             
             // spawn astronauts
             for (int i = 0; i < noAstronauts; i++) {
-                var newAstronaut = Instantiate(AstronautPrefab).GetComponent<Creature>();
+                var newAstronaut = Instantiate(AstronautPrefab).GetComponent<Astronaut>();
                 newAstronaut.transform.parent = transform;
                 newAstronaut.ChangeLayer(noLayers - i);
                 newAstronaut.GiveHome(this);
@@ -138,6 +140,18 @@ namespace DefaultNamespace {
             
             // provide excess data to the Wobbler
             Wobbler.Convert2Wobbling(ActiveAcceleration, ActiveDeceleration, excessAcceleration);
+            
+        }
+
+        public void SpawnMonster(float angle = 0) {
+            
+            // spawn (another??) monster
+            var newMonster = Instantiate(MonsterPrefab).GetComponent<Monster>();
+            newMonster.transform.parent = transform;
+            newMonster.ChangeLayer(noLayers);
+            newMonster.GiveHome(this);
+            newMonster.positionAngle = angle;
+            Monsters.Add(newMonster);
             
         }
     }

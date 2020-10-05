@@ -40,8 +40,8 @@ public class AstroForeman : MonoBehaviour
         //myBehaveStation.currentState = BehaveStationStats.BehaveStationStates.Abandoned;
         myBehaveStation.Abandon();
         //Return random Misbehavior Station
-        myMisbehaveStation = DistantMisbehaveStation(myBehaveStation);
-        throw new NotImplementedException();
+        return myMisbehaveStation = DistantMisbehaveStation(myBehaveStation);
+        //throw new NotImplementedException();
     }
 
     public BehaveStation AvailableBehaveStation() {

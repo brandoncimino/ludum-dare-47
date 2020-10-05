@@ -30,6 +30,10 @@ public class BehaveStation : ActivityStation {
     protected override bool IsBehaviourStation() {
         return true;
     }
+
+    void Awake() {
+        AstroForeman.Single.Register(this);
+    }
 }
 
 

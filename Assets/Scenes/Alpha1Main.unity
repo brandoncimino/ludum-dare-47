@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 907580493}
   - component: {fileID: 907580492}
   - component: {fileID: 907580496}
+  - component: {fileID: 907580497}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
@@ -301,6 +302,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateIntensity: 0.0003
+--- !u!114 &907580497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907580491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d13e62555b07094f8920239b1f4caa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StationedAstronauts: []
+  BehaveStations: []
+  MisbehaveStations: []
 --- !u!1 &1026636824
 GameObject:
   m_ObjectHideFlags: 0

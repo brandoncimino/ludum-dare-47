@@ -18,7 +18,7 @@ public class AstroStats : MonoBehaviour
     //Start Idle
     public AIStates myState = AIStates.MoveToBehaving;
     //Time until Astronaut misbehaves
-    public float timeUntilMisbehave = Random.Range(20.0f, 45.0f);
+    public float timeUntilMisbehave;
     //Time until Astronaut dies due to misbehaving
     public float timeUntilDeath = 5f;
     //Location that I want to move towards
@@ -31,5 +31,8 @@ public class AstroStats : MonoBehaviour
     public MisbehaveStation myMisbehaveStation;
 
     //Unused. Will be used to randomly generate my space suit's color. Poorly executed, probably.
-    public Color myColor = new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f));
+    //public Color myColor = new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f));
+    void Awake() {
+        timeUntilMisbehave = Random.Range(20.0f, 45.0f);
+    }
 }

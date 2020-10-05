@@ -7,3 +7,4 @@
 - [Brandon Cimino](https://github.com/brandoncimino)
 - Michael
 - David
+- [Nicole Aretz](https://github.com/nicolearetz)

@@ -75,6 +75,7 @@ namespace DefaultNamespace {
                 newMisbehaveStation.behaveTwin = newBehaveStation;
                 
                 // add to station list
+                // TODO: write setter routine, make twinStations private property
                 BehaveStations.Add(newBehaveStation);
                 MisbehaveStations.Add(newMisbehaveStation);
 

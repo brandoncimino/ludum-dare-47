@@ -50,9 +50,9 @@ public class MisbehaveStation : ActivityStation
     }
 
     public void Repair(float deltaTime) {
-        remainingFixTime -= deltaTime;
-        if (remainingFixTime <= 0) {
-            remainingFixTime = maxTimeToFix;
+        remainingBreakTime += deltaTime;
+        if (remainingBreakTime >= maxTimeToBreak) {
+            remainingBreakTime = maxTimeToBreak;
             currentState     = MisbehaveStationStates.Fixed;
         }
     }

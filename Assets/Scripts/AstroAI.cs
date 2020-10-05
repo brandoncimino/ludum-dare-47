@@ -6,6 +6,8 @@ using DefaultNamespace;
 
 using UnityEngine;
 
+using Random = UnityEngine.Random;
+
 [RequireComponent(typeof(Astronaut))]
 public class AstroAI : MonoBehaviour
 {
@@ -134,10 +136,12 @@ public class AstroAI : MonoBehaviour
     }
 
     private void ConvertingToGood() {
+        //Debug.Log(AstroForeman.Single);
         myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
         GetNewTargetAngle(myStats.myBehaveStation);
-        myStats.myState         = AstroStats.AIStates.MoveToBehaving;
-        currentHitPoints        = maxHitPoints;
+        myStats.myState            = AstroStats.AIStates.MoveToBehaving;
+        currentHitPoints           = maxHitPoints;
+        myStats.timeUntilMisbehave = Random.Range(15f, 23f);
     }
     private void OnMouseDown() {
         hasBeenChastised = true;

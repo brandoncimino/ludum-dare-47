@@ -54,11 +54,10 @@ public class AstroForeman : MonoBehaviour
         return MisbehaveStations.Where(station => station.behaveTwin != currentLocation).Random();
     }
 
-    public BehaveStation AssignBehavior(GameObject astronaut) {
+    public BehaveStation AssignBehavior(AstroAI astronaut) {
         //Sort stations by distance
         BehaveStations = BehaveStations.OrderBy(
-            station => (station.transform.localPosition - astronaut.gameObject.transform.localPosition).sqrMagnitude
-        ).ToList();
+            station => astronaut.myRotationData.Distance2Angle(station.PositionAngle)).ToList();
         //Find closest abandoned station
         foreach (var station in BehaveStations) {
             if (station.currentState == BehaveStation.BehaveStationStates.Abandoned) {

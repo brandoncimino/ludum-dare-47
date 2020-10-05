@@ -162,6 +162,14 @@ public class Creature : MonoBehaviour {
     public float Distance2Target() {
         return home.radius * ((float) Math.PI) * Distance2TargetAsAngle() / 180f;
     }
+    
+    public float Distance2AngleAsAngle(float angle) {
+        return Math.Min(Math.Abs(angle - positionAngle), 360f - Math.Abs(targetAngle - positionAngle));
+    }
+
+    public float Distance2Angle(float angle) {
+        return home.radius * ((float) Math.PI) * Distance2AngleAsAngle(angle) / 180f;
+    }
 
     public void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {

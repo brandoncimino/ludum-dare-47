@@ -120,6 +120,10 @@ public class MisbehaveStation : ActivityStation
     public override float DetermineConsequences(float timePassed) {
         // returns average acceleration over last time interval
 
+        if (Assignees.Count == 0) {
+            return 0;
+        }
+        
         switch (DoorSign) {
             case ActivityRoom.Bridge:
                 // misbehaviour on the bridge causes double acceleration

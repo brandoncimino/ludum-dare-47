@@ -148,7 +148,7 @@ public class AstroAI : MonoBehaviour
         myStats.myMisbehaveStation?.Leave(this);
         
         // find new good behaviour
-        myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
+        myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(this);
         GetNewTargetAngle(myStats.myBehaveStation);
         myStats.myState            = AstroStats.AIStates.MoveToBehaving;
         currentHitPoints           = maxHitPoints;

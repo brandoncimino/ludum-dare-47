@@ -69,19 +69,22 @@ public class BehaveStation : ActivityStation {
     }
 
     public override float DetermineConsequences(float timePassed) {
-        if (behaveTwin.currentState != MisbehaveStation.MisbehaveStationStates.Fixed) {
-            // if the station next to you is broken, repair it first
-            RepairTwin(timePassed);
+        if (currentState == BehaveStationStates.Occupied) {
+            if (behaveTwin.currentState != MisbehaveStation.MisbehaveStationStates.Fixed) {
+                // if the station next to you is broken, repair it first
+                RepairTwin(timePassed);
             
-            // while repairing, we cannot put active work into deceleration
-            return 0;
+                // while repairing, we cannot put active work into deceleration
+                return 0;
+            }
+
+            // TODO: do "good" science
+        
+            // all other stations cause deceleration as positive work effect
+            return -1;
         }
 
-        // TODO: do "good" science
-        
-        // all other stations cause deceleration as positive work effect
-        return -1;
-
+        return 0;
     }
     
     private void RepairTwin(float deltaTime) {

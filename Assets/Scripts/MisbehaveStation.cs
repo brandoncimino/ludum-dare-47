@@ -169,8 +169,7 @@ public class MisbehaveStation : ActivityStation
             
             // TODO: tell the game that it's over (unless we decide a completely broken window is no reason to end it)
             
-            // a broken window causes maximum acceleration (btw)
-            return float.MaxValue / 2f;
+            return 0;
         }
         
         // an intact window doesn't cause acceleration

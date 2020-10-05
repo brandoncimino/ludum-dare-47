@@ -13,12 +13,11 @@ public class AstroAI : MonoBehaviour
 {
     // Start is called before the first frame update
     public  AstroStats myStats;
-    public Astronaut  myRotationData;
-    public  bool       hasBeenChastised = false;
-    public  bool       hasBeenKilled    = false;
-    public  float      maxHitPoints     = 5f;
-    public  float      currentHitPoints;
-    
+    public  Astronaut  myRotationData;
+    public  bool       hasBeenChastised  = false;
+    private float      remainingFleeTime = 0;
+    private float      maxFleeTime       = 5.0f;
+
     void Start() {
         myStats        = gameObject.GetComponent<AstroStats>();
         myRotationData = gameObject.GetComponent<Astronaut>();
@@ -28,6 +27,15 @@ public class AstroAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!myRotationData.alive) {
+            //If ya dead, ya dead
+            myStats.myState = AstroStats.AIStates.Dead;
+            
+            //Become unassigned from all stations
+            myStats.myBehaveStation.Leave(this);
+            myStats.myMisbehaveStation.Leave(this);
+        }
+        
         //Transition
         switch (myStats.myState) {
             case AstroStats.AIStates.MoveToBehaving:
@@ -36,7 +44,7 @@ public class AstroAI : MonoBehaviour
                     //Astronaut within range
                     myRotationData.ChangeThought(Thought.Boredom);
                     myStats.myBehaveStation.Arrive(this);
-                    myStats.myState                      = AstroStats.AIStates.Behaving;
+                    myStats.myState = AstroStats.AIStates.Behaving;
                 }
                 //If too bored, start misbehaving
                 MisbehaveCheck();
@@ -56,13 +64,7 @@ public class AstroAI : MonoBehaviour
                 }
                 break;
             case AstroStats.AIStates.Misbehaving:
-                //If ya dead, ya dead
-                if (hasBeenKilled) {
-                    //Become unassigned from all stations
-                    myStats.myState = AstroStats.AIStates.Dead;
-                    myStats.myBehaveStation.Leave(this);
-                    myStats.myMisbehaveStation.Leave(this);
-                }
+                
                 if (hasBeenChastised) {
                     ConvertingToGood();
                 }
@@ -72,6 +74,12 @@ public class AstroAI : MonoBehaviour
                 //Once the station is fixed, return to normal behavior
                 if (myStats.myMisbehaveStation.currentState == MisbehaveStation.MisbehaveStationStates.Fixed) {
                     ConvertingToGood();
+                }
+                break;
+            case AstroStats.AIStates.Fleeing:
+                remainingFleeTime = Math.Max(remainingFleeTime - Time.deltaTime, 0);
+                if (remainingFleeTime == 0) {
+                    StopFleeing();
                 }
                 break;
             case AstroStats.AIStates.Dead:
@@ -102,6 +110,8 @@ public class AstroAI : MonoBehaviour
                 //Fix the machine a little
                 // Nicole: changed so that repairing is part of behaving - no separate state needed
                 // myStats.myMisbehaveStation.RepairUnit(Time.deltaTime);
+                break;
+            case AstroStats.AIStates.Fleeing:
                 break;
             case AstroStats.AIStates.Dead:
                 //There is no afterlife to do tasks. This process is intentionally left blank
@@ -151,19 +161,26 @@ public class AstroAI : MonoBehaviour
         myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(this);
         GetNewTargetAngle(myStats.myBehaveStation);
         myStats.myState            = AstroStats.AIStates.MoveToBehaving;
-        currentHitPoints           = maxHitPoints;
+        myRotationData.Heal();
         myStats.timeUntilMisbehave = Random.Range(15f, 23f);
     }
     private void OnMouseDown() {
         hasBeenChastised = true;
     }
 
-    public void TakeDamage(float dmg) {
+    public void StartFleeing(bool monsterMovingRight) {
+        myStats.myState             =  AstroStats.AIStates.Fleeing;
+        myRotationData.FleeingRight =  monsterMovingRight;
+        remainingFleeTime           =  maxFleeTime;
+        myRotationData.ChangeThought(Thought.Alarm);
         
-        currentHitPoints -= dmg;
-        if (currentHitPoints <=0) {
-            hasBeenKilled = true;
-            myRotationData.Kill();
-        }
+        //Become unassigned from all stations
+        myStats.myBehaveStation.Leave(this);
+        myStats.myMisbehaveStation?.Leave(this);
     }
+
+    private void StopFleeing() {
+        ConvertingToGood();
+    }
+
 }

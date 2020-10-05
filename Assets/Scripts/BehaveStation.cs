@@ -13,7 +13,7 @@ using UnityEngine;
 public class BehaveStation : ActivityStation {
 
     public MisbehaveStation behaveTwin;
-    public int           AssigneesMax = 1;
+    public List<AstroAI>    OnTheirWay;
     // public float OffsetAngle = 12
     public enum BehaveStationStates {
         Claimed,
@@ -25,10 +25,11 @@ public class BehaveStation : ActivityStation {
 
     public override bool Leave(AstroAI astronaut) {
         
-        if (Assignees.Contains(astronaut)) {
+        if (Assignees.Contains(astronaut) || OnTheirWay.Contains(astronaut)) {
             Assignees.Remove(astronaut);
+            OnTheirWay.Remove(astronaut);
             
-            if (Assignees.Count == 0) {
+            if (Assignees.Count + OnTheirWay.Count == 0) {
                 currentState = BehaveStationStates.Abandoned;
             }
 
@@ -40,19 +41,22 @@ public class BehaveStation : ActivityStation {
     }
 
     public override bool Arrive(AstroAI astronaut) {
-        if (Assignees.Count < AssigneesMax) {
+
+        if (OnTheirWay.Contains(astronaut)) {
+            OnTheirWay.Remove(astronaut);
             Assignees.Add(astronaut);
             currentState = BehaveStationStates.Occupied;
             return true;
         }
         else {
-            return false;
+            throw new ArgumentException("Arrive: Astronaut arrived without claiming first!");
         }
     }
 
-    public bool Claim([CanBeNull] AstroAI astronaut = null) {
+    public bool Claim(AstroAI astronaut = null) {
         if (currentState == BehaveStationStates.Abandoned) {
             currentState = BehaveStationStates.Claimed;
+            OnTheirWay.Add(astronaut);
             return true;
         }
         else {

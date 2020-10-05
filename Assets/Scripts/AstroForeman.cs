@@ -62,7 +62,7 @@ public class AstroForeman : MonoBehaviour
         foreach (var station in BehaveStations) {
             if (station.currentState == BehaveStation.BehaveStationStates.Abandoned) {
                 //set astronaut's station to that station
-                station.Claim();
+                station.Claim(astronaut);
                 return station;
             }
         }

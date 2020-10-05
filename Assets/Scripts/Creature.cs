@@ -2,8 +2,6 @@
 
 using DefaultNamespace;
 
-using Packages.BrandonUtils.Editor;
-
 using UnityEngine;
 
 using Random = System.Random;
@@ -28,7 +26,7 @@ public class Creature : MonoBehaviour {
     // information about the space station
     // TODO: call SpaceStation class instead
     public SpaceStation home;
-    
+
     // damage and stuff
     public    float maxHitPoints = 5f;
     public    float currentHitPoints;
@@ -36,8 +34,8 @@ public class Creature : MonoBehaviour {
     protected float dmgVisualizationTime    = 0;
     protected float maxDmgVisualizationTime = 0.25f;
     protected Color colorBeforeDmg;
-    protected bool  needColorChange    = false;
-    protected float dmgImmunityTime    = 0;
+    protected bool  needColorChange = false;
+    protected float dmgImmunityTime = 0;
 
 
     // Start is called before the first frame update
@@ -52,7 +50,7 @@ public class Creature : MonoBehaviour {
 
         // resize to the correct size (relative to parent space station)
         transform.localScale = new Vector3(5.243802f, 5.243802f, 5.243802f);
-        
+
         // set hit points
         currentHitPoints = maxHitPoints;
     }
@@ -64,14 +62,14 @@ public class Creature : MonoBehaviour {
 
         // check for end-of-damage-color time
         dmgVisualizationTime = Math.Max(dmgVisualizationTime - Time.deltaTime, 0);
-        if (needColorChange  && dmgVisualizationTime == 0) {
+        if (needColorChange && dmgVisualizationTime == 0) {
             mySpriteRenderer.color = colorBeforeDmg;
             needColorChange        = false;
         }
 
         // damage immunity wears off
         dmgImmunityTime = Math.Max(dmgImmunityTime - Time.deltaTime, 0);
-        
+
         // individual update methods from subclasses
         IndividualUpdate();
     }
@@ -84,6 +82,7 @@ public class Creature : MonoBehaviour {
     protected virtual void IndividualUpdate() {
         // not in the base class
     }
+
     public void ChangeLayer(int newLayer) {
         layer = newLayer;
     }
@@ -123,11 +122,11 @@ public class Creature : MonoBehaviour {
         transform1.localEulerAngles = new Vector3(90, 0, positionAngle + 90);
     }
 
-    [EditorInvocationButton]
+    //[EditorInvocationButton]
     public void MoveClockwise() {
         positionAngle = (positionAngle - speedAngle * Time.deltaTime + 360) % 360;
-        var       angle = Math.PI * (positionAngle) / 180;
-        
+        var angle = Math.PI * (positionAngle) / 180;
+
         Transform transform1;
         (transform1 = transform).localPosition = new Vector3(
             (float) (home.radius * Math.Cos(angle)),
@@ -139,7 +138,7 @@ public class Creature : MonoBehaviour {
         transform1.localEulerAngles = new Vector3(90, 0, positionAngle + 90);
     }
 
-    [EditorInvocationButton]
+    //[EditorInvocationButton]
     public void MoveCounterClockwise() {
         positionAngle = (positionAngle + speedAngle * Time.deltaTime) % 360;
         var       angle = Math.PI * (positionAngle) / 180;
@@ -219,7 +218,7 @@ public class Creature : MonoBehaviour {
 
     public virtual void Kill() {
         alive = false;
-        
+
         // no more moving around when you are dead! (for now)
         speedAngle = 0;
 
@@ -232,24 +231,22 @@ public class Creature : MonoBehaviour {
     }
 
     public void TakeDamage(float dmg, float maxDmgImmunityTime = 0) {
-
         if (dmgImmunityTime == 0) {
             // deliver the damage
             currentHitPoints -= dmg;
-        
+
             // visualization
             dmgVisualizationTime   = maxDmgVisualizationTime;
             colorBeforeDmg         = mySpriteRenderer.color;
             mySpriteRenderer.color = new Color(1, 0, 0);
             needColorChange        = true;
-        
-            if (currentHitPoints <=0) {
+
+            if (currentHitPoints <= 0) {
                 Kill();
             }
 
             dmgImmunityTime = maxDmgImmunityTime;
         }
-        
     }
 
     public void Heal() {
@@ -257,5 +254,4 @@ public class Creature : MonoBehaviour {
         mySpriteRenderer.color = colorBeforeDmg;
         needColorChange        = false;
     }
-
 }

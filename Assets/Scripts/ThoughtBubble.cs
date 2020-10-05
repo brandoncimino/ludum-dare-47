@@ -1,5 +1,4 @@
-﻿using Packages.BrandonUtils.Editor;
-using Packages.BrandonUtils.Runtime.Enums;
+﻿using Packages.BrandonUtils.Runtime.Enums;
 
 using UnityEngine;
 
@@ -57,12 +56,12 @@ namespace DefaultNamespace {
             ThoughtRenderer.enabled = BubbleRenderer.enabled;
         }
 
-        [EditorInvocationButton]
+        //[EditorInvocationButton]
         public void NextThought() {
             Think(Thinker.CurrentThought.Next());
         }
 
-        [EditorInvocationButton]
+        //[EditorInvocationButton]
         private void SnapToThinker() {
             var thinkerRenderer = Thinker.GetComponent<SpriteRenderer>();
             /*

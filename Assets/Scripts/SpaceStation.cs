@@ -30,6 +30,7 @@ namespace DefaultNamespace {
         private Wobbler Wobbler;
 
         private       float MaxSpeed             = 50f;
+        private       float MinSpeed             = 5f;
         public        float Speed                = 10f; // degrees per time step
         public        float AccelerationMod      = 0f;
         public        float ActiveAcceleration   = 0f;
@@ -113,10 +114,24 @@ namespace DefaultNamespace {
         }
 
         private void ChangeSpeed() {
+            
+            // Combine all sources for speed change
             GatherAcceleratons();
             
-            // compute speed (explicit Euler - exact if the acceleration is piecewise constant)
-            Speed += Time.deltaTime * AccelerationMod;
+            // Compute new speed
+            // acceleration is the derivative of speed, here speed is computed with forward Euler
+            var newSpeed1 = Speed + Time.deltaTime * AccelerationMod;
+            
+            // acceleration is only converted into speed until maximum or minimum speed is achieved
+            // compute how much excess acceleration or deceleration has been caused
+            var newSpeed2 = Math.Min(newSpeed1, MaxSpeed);
+            Speed = Math.Max(MinSpeed, newSpeed2);
+            var excessSpeed        = newSpeed1 - Speed;
+            var excessAcceleration = excessSpeed / Time.deltaTime;
+            
+            // provide excess data to the Wobbler
+            Wobbler.Convert2Wobbling(ActiveAcceleration, ActiveDeceleration, excessAcceleration);
+            
         }
     }
 }

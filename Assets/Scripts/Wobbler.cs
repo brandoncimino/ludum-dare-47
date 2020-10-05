@@ -46,5 +46,10 @@ namespace DefaultNamespace {
         private void Update() {
             transform.localRotation = TargetRotation;
         }
+
+        public void Convert2Wobbling(float acceleration, float deceleration, float excess) {
+            // TODO: Implement how acceleration, ..., is converted to wobbling.
+            // excess is the accelation that was caused but not converted into speed
+        }
     }
 }

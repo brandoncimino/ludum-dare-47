@@ -135,7 +135,7 @@ MonoBehaviour:
   maxHitPoints: 5
   currentHitPoints: 0
   alive: 1
-  myThinkingPart: {fileID: 2191667903187328272}
+  myThoughtBubble: {fileID: 942153712612779653}
   myBrain: {fileID: -4968243827662646839}
   FleeingRight: 1
 --- !u!114 &-4968243827662646839
@@ -183,14 +183,6 @@ PrefabInstance:
       propertyPath: Thinker
       value: 
       objectReference: {fileID: 2191667903187328272}
-    - target: {fileID: 1403273257159448751, guid: eba4b537167a3cb4facc23d760cec847, type: 3}
-      propertyPath: ThinkDuration
-      value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: 2504940264796305528, guid: eba4b537167a3cb4facc23d760cec847, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5cce681defb3f99498bdf91c2567fe91, type: 3}
     - target: {fileID: 5086185067191907841, guid: eba4b537167a3cb4facc23d760cec847, type: 3}
       propertyPath: m_Name
       value: ThoughtBubble
@@ -246,3 +238,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8482007865607571864, guid: eba4b537167a3cb4facc23d760cec847, type: 3}
   m_PrefabInstance: {fileID: 2191667904944209450}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &942153712612779653 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1403273257159448751, guid: eba4b537167a3cb4facc23d760cec847, type: 3}
+  m_PrefabInstance: {fileID: 2191667904944209450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a6c66805dc49fb99e340877baef4e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

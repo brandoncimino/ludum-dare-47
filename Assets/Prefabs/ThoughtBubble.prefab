@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8482007865607571864}
   - component: {fileID: 4284161878243975510}
   - component: {fileID: 1403273257159448751}
+  - component: {fileID: 2756484787814523032}
   m_Layer: 0
   m_Name: ThoughtBubble
   m_TagString: Untagged
@@ -105,6 +106,17 @@ MonoBehaviour:
   BubbleRenderer: {fileID: 4284161878243975510}
   Thinker: {fileID: 0}
   ThinkDuration: 0
+--- !u!210 &2756484787814523032
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5086185067191907841}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &6696753295628164021
 GameObject:
   m_ObjectHideFlags: 0

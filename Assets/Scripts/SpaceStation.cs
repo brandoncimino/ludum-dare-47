@@ -57,7 +57,7 @@ namespace DefaultNamespace {
             }
             
             // spawn activity stations
-            var angle = 0f;
+            var angle = 12f;
             foreach (ActivityRoom doorSign in Enum.GetValues(typeof(ActivityRoom))) {
                 
                 // add Behave Stations

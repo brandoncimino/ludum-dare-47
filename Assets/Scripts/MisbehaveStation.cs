@@ -115,7 +115,7 @@ public class MisbehaveStation : ActivityStation
         // returns acceleration caused in the process
         
         // damage the window
-        remainingBreakTime -= timePassed;
+        remainingBreakTime -= timePassed * Assignees.Count;
 
         // check if broken
         if (remainingBreakTime <= 0) {
@@ -153,7 +153,7 @@ public class MisbehaveStation : ActivityStation
         // returns acceleration caused in the process
         
         // damage the incarnation tube
-        remainingBreakTime -= timePassed;
+        remainingBreakTime -= timePassed * Assignees.Count;
 
         // check if broken
         if (remainingBreakTime <= 0) {

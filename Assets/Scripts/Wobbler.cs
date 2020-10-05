@@ -30,6 +30,8 @@ namespace DefaultNamespace {
         /// </summary>
         public float MaxYawSpeed = 200;
 
+        public bool CompensateYaw = true;
+
         private float TargetPitch => Mathf.Lerp(0, MaxPitch, WobbleLerpAmount);
         private float TargetYaw   => Time.time * YawSpeed;
         private float YawSpeed    => Mathf.Lerp(0, MaxYawSpeed, WobbleLerpAmount);
@@ -38,13 +40,25 @@ namespace DefaultNamespace {
             get {
                 var quatToYaw   = Quaternion.AngleAxis(TargetYaw,   Vector3.up);
                 var quatToPitch = Quaternion.AngleAxis(TargetPitch, Vector3.right);
-                var quatYawComp = Quaternion.AngleAxis(-TargetYaw,  Vector3.up);
-                return quatToYaw * quatToPitch * quatYawComp;
+
+                var quatRotation = quatToYaw * quatToPitch;
+
+                if (CompensateYaw) {
+                    var quatYawComp = Quaternion.AngleAxis(-TargetYaw, Vector3.up);
+                    quatRotation *= quatYawComp;
+                }
+
+                return quatRotation;
             }
         }
 
         private void Update() {
             transform.localRotation = TargetRotation;
+        }
+
+        public void Convert2Wobbling(float acceleration, float deceleration, float excess) {
+            // TODO: Implement how acceleration, ..., is converted to wobbling.
+            // excess is the accelation that was caused but not converted into speed
         }
     }
 }

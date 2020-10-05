@@ -9,9 +9,8 @@ using UnityEngine;
 using Random = System.Random;
 
 public class Creature : MonoBehaviour {
-    public SpriteRenderer mySpriteRenderer;
-    public GameObject     myStation;
-    Random                rando = new Random();
+    public    SpriteRenderer mySpriteRenderer;
+    protected Random         rando = new Random();
 
     // movement and positional information
 
@@ -29,6 +28,16 @@ public class Creature : MonoBehaviour {
     // information about the space station
     // TODO: call SpaceStation class instead
     public SpaceStation home;
+    
+    // damage and stuff
+    public    float maxHitPoints = 5f;
+    public    float currentHitPoints;
+    public    bool  alive                   = true;
+    protected float dmgVisualizationTime    = 0;
+    protected float maxDmgVisualizationTime = 0.25f;
+    protected Color colorBeforeDmg;
+    protected bool  needColorChange    = false;
+    protected float dmgImmunityTime    = 0;
 
 
     // Start is called before the first frame update
@@ -39,19 +48,42 @@ public class Creature : MonoBehaviour {
             rando.Next(0, 255) / 255f,
             rando.Next(0, 255) / 255f
         );
+        colorBeforeDmg = mySpriteRenderer.color;
 
         // resize to the correct size (relative to parent space station)
         transform.localScale = new Vector3(5.243802f, 5.243802f, 5.243802f);
+        
+        // set hit points
+        currentHitPoints = maxHitPoints;
     }
 
     // Update is called once per frame
     void Update() {
-        // the creature moves toward its target location
-        if (Distance2TargetAsAngle() > speedAngle * Time.deltaTime) {
-            MoveTowardTarget();
+        // apply movement rule
+        MovementRule();
+
+        // check for end-of-damage-color time
+        dmgVisualizationTime = Math.Max(dmgVisualizationTime - Time.deltaTime, 0);
+        if (needColorChange  && dmgVisualizationTime == 0) {
+            mySpriteRenderer.color = colorBeforeDmg;
+            needColorChange        = false;
         }
+
+        // damage immunity wears off
+        dmgImmunityTime = Math.Max(dmgImmunityTime - Time.deltaTime, 0);
+        
+        // individual update methods from subclasses
+        IndividualUpdate();
     }
 
+    protected virtual void MovementRule() {
+        // the creature moves toward its target location
+        MoveTowardTarget();
+    }
+
+    protected virtual void IndividualUpdate() {
+        // not in the base class
+    }
     public void ChangeLayer(int newLayer) {
         layer = newLayer;
     }
@@ -60,18 +92,23 @@ public class Creature : MonoBehaviour {
         home = newHome;
     }
 
-    private void MoveTowardTarget() {
+    protected void MoveTowardTarget() {
         // TODO: change direction into which the astronaut looks
 
-        if (Math.Abs(targetAngle - positionAngle) < 180) {
-            positionAngle = (positionAngle + Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime) %
-                            360;
-            mySpriteRenderer.flipX = true;
+        if (Math.Abs((targetAngle - positionAngle + 360) % 360) < speedAngle * Time.deltaTime) {
+            positionAngle = targetAngle;
         }
         else {
-            positionAngle =
-                (positionAngle - Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime + 360) % 360;
-            mySpriteRenderer.flipX = false;
+            if (Math.Abs(targetAngle - positionAngle) < 180) {
+                positionAngle = (positionAngle + Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime) %
+                                360;
+                mySpriteRenderer.flipX = Math.Sign(targetAngle - positionAngle) <= 0;
+            }
+            else {
+                positionAngle = (positionAngle - Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime +
+                                 360) % 360;
+                mySpriteRenderer.flipX = Math.Sign(targetAngle - positionAngle) >= 0;
+            }
         }
 
         var       angle = Math.PI * (positionAngle) / 180;
@@ -88,12 +125,13 @@ public class Creature : MonoBehaviour {
 
     [EditorInvocationButton]
     public void MoveClockwise() {
-        positionAngle = (positionAngle - speedAngle + 360) % 360;
+        positionAngle = (positionAngle - speedAngle * Time.deltaTime + 360) % 360;
         var       angle = Math.PI * (positionAngle) / 180;
+        
         Transform transform1;
         (transform1 = transform).localPosition = new Vector3(
             (float) (home.radius * Math.Cos(angle)),
-            0,
+            -(home.depth / 2) + layer * home.depth / home.noLayers,
             (float) (home.radius * Math.Sin(angle))
         );
 
@@ -103,13 +141,13 @@ public class Creature : MonoBehaviour {
 
     [EditorInvocationButton]
     public void MoveCounterClockwise() {
-        positionAngle = (positionAngle + speedAngle) % 360;
+        positionAngle = (positionAngle + speedAngle * Time.deltaTime) % 360;
         var       angle = Math.PI * (positionAngle) / 180;
         Transform transform1;
 
         (transform1 = transform).localPosition = new Vector3(
             (float) (home.radius * Math.Cos(angle)),
-            0,
+            -(home.depth / 2) + layer * home.depth / home.noLayers,
             (float) (home.radius * Math.Sin(angle))
         );
 
@@ -159,12 +197,18 @@ public class Creature : MonoBehaviour {
     public float Distance2Target() {
         return home.radius * ((float) Math.PI) * Distance2TargetAsAngle() / 180f;
     }
-    
-    public void OnMouseDown() {
-        if (Input.GetMouseButtonDown(0)) {
-            // TODO: change AI behaviour
 
-            // randomly assign a new color
+    public float Distance2AngleAsAngle(float angle) {
+        return Math.Min(Math.Abs(angle - positionAngle), 360f - Math.Abs(targetAngle - positionAngle));
+    }
+
+    public float Distance2Angle(float angle) {
+        return home.radius * ((float) Math.PI) * Distance2AngleAsAngle(angle) / 180f;
+    }
+
+    public virtual void OnMouseDown() {
+        if (Input.GetMouseButtonDown(0)) {
+            // randomly assign a new color, because it's fun. And for visual feedback, of course.
             mySpriteRenderer.color = new Color(
                 rando.Next(0, 255) / 255f,
                 rando.Next(0, 255) / 255f,
@@ -172,4 +216,46 @@ public class Creature : MonoBehaviour {
             );
         }
     }
+
+    public virtual void Kill() {
+        alive = false;
+        
+        // no more moving around when you are dead! (for now)
+        speedAngle = 0;
+
+        // let's make you a skeleton
+        mySpriteRenderer.color = new Color(1, 1, 1);
+        // TODO: Sprite for dead creature
+
+        // collapse to the ground, be ejected into space, ...
+        // TODO: write movement rule for when killed
+    }
+
+    public void TakeDamage(float dmg, float maxDmgImmunityTime = 0) {
+
+        if (dmgImmunityTime == 0) {
+            // deliver the damage
+            currentHitPoints -= dmg;
+        
+            // visualization
+            dmgVisualizationTime   = maxDmgVisualizationTime;
+            colorBeforeDmg         = mySpriteRenderer.color;
+            mySpriteRenderer.color = new Color(1, 0, 0);
+            needColorChange        = true;
+        
+            if (currentHitPoints <=0) {
+                Kill();
+            }
+
+            dmgImmunityTime = maxDmgImmunityTime;
+        }
+        
+    }
+
+    public void Heal() {
+        currentHitPoints       = maxHitPoints;
+        mySpriteRenderer.color = colorBeforeDmg;
+        needColorChange        = false;
+    }
+
 }

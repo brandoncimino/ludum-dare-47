@@ -78,9 +78,8 @@ namespace DefaultNamespace {
             switch (DoorSign) {
                 case ActivityRoom.Bridge:
                     mySpriteRenderer.sprite = BridgeSprite;
-                    OffsetDistance          = 0;
                     if (!IsBehaviourStation()) {
-                        mySpriteRenderer.enabled = false;
+                        PositionLayer        -= 1;
                     }
                     break;
                 case ActivityRoom.Kitchen:
@@ -97,7 +96,7 @@ namespace DefaultNamespace {
                         PositionLayer        -= 1;
                     }
                     else {
-                        transform.localScale *= 1.2f;
+                        transform.localScale *= 1.5f;
                     }
                     break;
                 case ActivityRoom.Engine:
@@ -112,6 +111,23 @@ namespace DefaultNamespace {
 
         protected virtual bool IsBehaviourStation() {
             throw new NotImplementedException("needs to be implemented in subclass");
+        }
+
+        public virtual float DetermineConsequences(float timePassed) {
+            // returns average acceleration over last time interval
+            // here, accelation is modelled as piecewise constant - hence timePassed cancels out
+            return Assignees.Count * ( IsBehaviourStation() ? -1.0f : +1.0f);
+        }
+
+        public virtual bool Arrive(AstroAI astronaut) {
+            
+            throw new NotImplementedException("Arrive: Needs to be implemented in subclass");
+        }
+        
+        public virtual bool Leave(AstroAI astronaut) {
+        
+            throw new NotImplementedException("Leave: Needs to be implemented in subclass");
+
         }
         
     }

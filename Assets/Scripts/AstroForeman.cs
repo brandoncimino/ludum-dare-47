@@ -34,14 +34,14 @@ public class AstroForeman : MonoBehaviour
         MisbehaveStations.Add(applyingStation);
     }
 
-    public MisbehaveStation AssignMisbehavior(GameObject thisAstronaut, BehaveStation myBehaveStation, MisbehaveStation myMisbehaveStation) {
+    public MisbehaveStation AssignMisbehavior(AstroAI thisAstronaut, BehaveStation myBehaveStation, MisbehaveStation myMisbehaveStation) {
         //Set Behavior Station to Abandoned
         //BehaveStations.FindIndex(Equals(myBehaveStation)).currentState = BehaveStationStats.BehaveStationStates.Abandoned;
         //myBehaveStation.currentState = BehaveStationStats.BehaveStationStates.Abandoned;
-        myBehaveStation.Abandon();
+        myBehaveStation.Leave(thisAstronaut);
         //Return random Misbehavior Station
-        myMisbehaveStation = DistantMisbehaveStation(myBehaveStation);
-        throw new NotImplementedException();
+        return myMisbehaveStation = DistantMisbehaveStation(myBehaveStation);
+        //throw new NotImplementedException();
     }
 
     public BehaveStation AvailableBehaveStation() {
@@ -54,16 +54,15 @@ public class AstroForeman : MonoBehaviour
         return MisbehaveStations.Where(station => station.behaveTwin != currentLocation).Random();
     }
 
-    public BehaveStation AssignBehavior(GameObject astronaut) {
+    public BehaveStation AssignBehavior(AstroAI astronaut) {
         //Sort stations by distance
         BehaveStations = BehaveStations.OrderBy(
-            station => (station.transform.localPosition - astronaut.gameObject.transform.localPosition).sqrMagnitude
-        ).ToList();
+            station => astronaut.myRotationData.Distance2Angle(station.PositionAngle)).ToList();
         //Find closest abandoned station
         foreach (var station in BehaveStations) {
             if (station.currentState == BehaveStation.BehaveStationStates.Abandoned) {
                 //set astronaut's station to that station
-                station.currentState = BehaveStation.BehaveStationStates.Occupied;
+                station.Claim(astronaut);
                 return station;
             }
         }

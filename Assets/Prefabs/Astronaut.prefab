@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2191667903187328272}
   - component: {fileID: -7907076016485333574}
   - component: {fileID: 1126349372312075342}
+  - component: {fileID: -4968243827662646839}
+  - component: {fileID: -882634792319656042}
   m_Layer: 0
   m_Name: Astronaut
   m_TagString: Untagged
@@ -43,8 +45,8 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2191667903187328276}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -54,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d87c2e3eba610be408aaf884fe9f9e3e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,12 +127,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySpriteRenderer: {fileID: 2191667903187328278}
-  myStation: {fileID: 0}
   positionAngle: 0
   speedAngle: 12
   layer: 0
   targetAngle: -90
   home: {fileID: 0}
+  maxHitPoints: 5
+  currentHitPoints: 0
+  alive: 1
+  myThinkingPart: {fileID: 2191667903187328272}
+  myBrain: {fileID: -4968243827662646839}
+  FleeingRight: 1
+--- !u!114 &-4968243827662646839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2191667903187328276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed7c0af3b89f8640a1fd13a788f33ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myStats: {fileID: 0}
+  myRotationData: {fileID: 0}
+  hasBeenChastised: 0
+--- !u!114 &-882634792319656042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2191667903187328276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ebcdf32a719c2741a04c8f46258002b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myState: 0
+  timeUntilMisbehave: 0
+  timeUntilDeath: 0
+  targetAngle: 0
+  interactAngle: 0
+  myBehaveStation: {fileID: 0}
+  myMisbehaveStation: {fileID: 0}
 --- !u!1001 &2191667904944209450
 PrefabInstance:
   m_ObjectHideFlags: 0

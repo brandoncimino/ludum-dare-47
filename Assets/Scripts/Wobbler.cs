@@ -1,6 +1,7 @@
 ﻿using System;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DefaultNamespace {
     /// <summary>
@@ -18,7 +19,6 @@ namespace DefaultNamespace {
         [Range(0, 1)]
         public float WobbleLerpAmount;
         public float WobbleSpeed = 0;
-        public float myExcess    = 0;
 
         /// <summary>
         /// The maximum pitch that the station can ever wobble (i.e. <see cref="WobbleLerpAmount"/> = 1)
@@ -58,18 +58,26 @@ namespace DefaultNamespace {
 
         private void Update() {
             transform.localRotation = TargetRotation;
+            if (isGameOver) {
+                timeUntilReset -= Time.deltaTime;
+                if (timeUntilReset <=0) {
+                    SceneManager.LoadScene("TitleScreen");
+                }
+            }
         }
 
         public void Convert2Wobbling(float excessSpeed) {
 
-            myExcess = excessSpeed;
-            
-            WobbleSpeed      += excessSpeed;
-            WobbleLerpAmount = (float) (Math.Abs(2 * Math.Atan(WobbleSpeed * 1e-1) / Math.PI));
+            WobbleSpeed      += Math.Max(excessSpeed, 0);
+            WobbleLerpAmount =  (float) (Math.Abs(2 * Math.Atan(WobbleSpeed * 1e-1) / Math.PI));
 
-            if (WobbleLerpAmount > 0.9) {
-                // TODO: End game
+            if (WobbleLerpAmount > 0.70) {
+                // End game
+                isGameOver = true;
             }
         }
+
+        public float timeUntilReset = 10f;
+        public bool  isGameOver     = false;
     }
 }

@@ -97,14 +97,19 @@ public class AstroAI : MonoBehaviour
                 //Good point of entry to add escalating difficulty
                 //Logic is placeholder until balancing
                 
+                /*
+                NOTE (Nicole):
+                I'm taking this part out because it should be the Misbehave station that decides how it deals with the people at it, not the other way around.
+                 
                 currentHitPoints -= myStats.myMisbehaveStation.BreakUnit(Time.deltaTime);
                 if (currentHitPoints <=0) {
                     hasBeenKilled = true;
-                }
+                }*/
                 
                 break;
             case AstroStats.AIStates.Fixing:
                 //Fix the machine a little
+                // note: this state is never reached as far as I can make out (Nicole, Monday 15:10)
                 myStats.myMisbehaveStation.RepairUnit(Time.deltaTime);
                 break;
             case AstroStats.AIStates.Dead:

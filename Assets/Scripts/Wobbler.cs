@@ -16,7 +16,7 @@ namespace DefaultNamespace {
         /// <summary>
         /// The amount of wobble, where 0 is the minimum wobble (0) and 1 is the <see cref="MaxPitch"/> (where a player would lose)
         /// </summary>
-        [Range(0, 1)]
+        //[Range(0, 1)]
         public float WobbleLerpAmount;
         public float WobbleSpeed = 0;
 
@@ -26,7 +26,7 @@ namespace DefaultNamespace {
         /// <remarks>
         /// This would correspond to a <b>loss</b> of the game, in theory
         /// </remarks>
-        [Range(1, 180)]
+        //[Range(1, 180)]
         public float MaxPitch = 30;
 
         /// <summary>

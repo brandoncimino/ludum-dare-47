@@ -136,10 +136,10 @@ namespace DefaultNamespace {
             var newSpeed2 = Math.Min(newSpeed1, MaxSpeed);
             Speed = Math.Max(MinSpeed, newSpeed2);
             var excessSpeed        = newSpeed1 - Speed;
-            var excessAcceleration = excessSpeed / Time.deltaTime;
+            // var excessAcceleration = excessSpeed / Time.deltaTime;
             
             // provide excess data to the Wobbler
-            Wobbler.Convert2Wobbling(ActiveAcceleration, ActiveDeceleration, excessAcceleration);
+            Wobbler.Convert2Wobbling(excessSpeed);
             
         }
 

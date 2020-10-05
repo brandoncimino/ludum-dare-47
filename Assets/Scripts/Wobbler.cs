@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+
+using UnityEngine;
 
 namespace DefaultNamespace {
     /// <summary>
@@ -15,6 +17,8 @@ namespace DefaultNamespace {
         /// </summary>
         [Range(0, 1)]
         public float WobbleLerpAmount;
+        public float WobbleSpeed = 0;
+        public float myExcess    = 0;
 
         /// <summary>
         /// The maximum pitch that the station can ever wobble (i.e. <see cref="WobbleLerpAmount"/> = 1)
@@ -56,9 +60,16 @@ namespace DefaultNamespace {
             transform.localRotation = TargetRotation;
         }
 
-        public void Convert2Wobbling(float acceleration, float deceleration, float excess) {
-            // TODO: Implement how acceleration, ..., is converted to wobbling.
-            // excess is the accelation that was caused but not converted into speed
+        public void Convert2Wobbling(float excessSpeed) {
+
+            myExcess = excessSpeed;
+            
+            WobbleSpeed      += excessSpeed;
+            WobbleLerpAmount = (float) (Math.Abs(2 * Math.Atan(WobbleSpeed * 1e-1) / Math.PI));
+
+            if (WobbleLerpAmount > 0.9) {
+                // TODO: End game
+            }
         }
     }
 }

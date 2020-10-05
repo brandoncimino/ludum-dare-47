@@ -14,9 +14,10 @@ public class AstroAI : MonoBehaviour
     // Start is called before the first frame update
     public  AstroStats myStats;
     public  Astronaut  myRotationData;
-    public  bool       hasBeenChastised  = false;
-    private float      remainingFleeTime = 0;
-    private float      maxFleeTime       = 5.0f;
+    public  bool       hasBeenChastised   = false;
+    private float      remainingFleeTime  = 0;
+    private float      maxFleeTime        = 5.0f;
+    private float      timeBeforeDelete = 5f;
 
     void Start() {
         myStats        = gameObject.GetComponent<AstroStats>();
@@ -115,6 +116,11 @@ public class AstroAI : MonoBehaviour
                 break;
             case AstroStats.AIStates.Dead:
                 //There is no afterlife to do tasks. This process is intentionally left blank
+                timeBeforeDelete -= Time.deltaTime;
+                if (timeBeforeDelete < 0) {
+                    myRotationData.home.Astronauts.Remove(myRotationData);
+                    Destroy(this.gameObject);
+                }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

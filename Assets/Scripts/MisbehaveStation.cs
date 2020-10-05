@@ -183,7 +183,7 @@ public class MisbehaveStation : ActivityStation
         // fire in the kitchen harms the astronauts
         // at the moment: only damages the astronauts at the misbehave station, not the one cooking next to it
         foreach (var astronaut in Assignees) {
-            astronaut.takeDamage(timePassed);
+            astronaut.TakeDamage(timePassed);
         }
         
         // fire doesn't cause acceleration

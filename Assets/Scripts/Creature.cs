@@ -173,14 +173,24 @@ public class Creature : MonoBehaviour {
 
     public void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
-            // TODO: change AI behaviour
-
-            // randomly assign a new color
+            // randomly assign a new color, because it's fun.
             mySpriteRenderer.color = new Color(
                 rando.Next(0, 255) / 255f,
                 rando.Next(0, 255) / 255f,
                 rando.Next(0, 255) / 255f
             );
         }
+    }
+
+    public void Kill() {
+        // no more moving around when you are dead! (for now)
+        speedAngle = 0;
+        
+        // let's make you a skeleton
+        mySpriteRenderer.color = new Color(1, 1, 1);
+        // TODO: Sprite for dead creature
+        
+        // collapse to the ground, be ejected into space, ...
+        // TODO: write movement rule for when killed
     }
 }

@@ -158,11 +158,12 @@ public class AstroAI : MonoBehaviour
         hasBeenChastised = true;
     }
 
-    public void takeDamage(float dmg) {
+    public void TakeDamage(float dmg) {
         
         currentHitPoints -= dmg;
         if (currentHitPoints <=0) {
             hasBeenKilled = true;
+            myRotationData.Kill();
         }
     }
 }

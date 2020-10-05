@@ -18,8 +18,9 @@ public class AstroAI : MonoBehaviour
     public  float      currentHitPoints;
     
     void Start() {
+        myStats        = gameObject.GetComponent<AstroStats>();
+        myRotationData = gameObject.GetComponent<Astronaut>();
         ConvertingToGood();
-        myRotationData          = gameObject.GetComponent<Astronaut>();
     }
 
     // Update is called once per frame

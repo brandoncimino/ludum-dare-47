@@ -1,6 +1,7 @@
 ﻿using System;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DefaultNamespace {
     /// <summary>
@@ -57,6 +58,12 @@ namespace DefaultNamespace {
 
         private void Update() {
             transform.localRotation = TargetRotation;
+            if (isGameOver) {
+                timeUntilReset -= Time.deltaTime;
+                if (timeUntilReset <=0) {
+                    SceneManager.LoadScene("TitleScreen");
+                }
+            }
         }
 
         public void Convert2Wobbling(float excessSpeed) {
@@ -65,8 +72,12 @@ namespace DefaultNamespace {
             WobbleLerpAmount =  (float) (Math.Abs(2 * Math.Atan(WobbleSpeed * 1e-1) / Math.PI));
 
             if (WobbleLerpAmount > 0.70) {
-                // TODO: End game
+                // End game
+                isGameOver = true;
             }
         }
+
+        public float timeUntilReset = 10f;
+        public bool  isGameOver     = false;
     }
 }

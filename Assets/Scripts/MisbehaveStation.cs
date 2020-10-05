@@ -9,6 +9,7 @@ using UnityEngine;
 public class MisbehaveStation : ActivityStation
 {
     // public float OffsetAngle = -12;
+    public Sprite BridgeSpriteCat;
     public enum MisbehaveStationStates {
         Fixed,
         Damaged,
@@ -87,6 +88,10 @@ public class MisbehaveStation : ActivityStation
             if (DoorSign == ActivityRoom.Kitchen) {
                 astronaut.myRotationData.ChangeThought(Thought.Pyromania);
             }
+
+            if (DoorSign == ActivityRoom.Bridge) {
+                mySpriteRenderer.sprite = BridgeSpriteCat;
+            }
             
             Assignees.Add(astronaut);
             return true;
@@ -94,6 +99,22 @@ public class MisbehaveStation : ActivityStation
         else {
             return false;
         }
+    }
+    
+    public override bool Leave(AstroAI astronaut) {
+        
+        if (Assignees.Contains(astronaut)) {
+            
+            if (DoorSign == ActivityRoom.Bridge) {
+                mySpriteRenderer.sprite = BridgeSprite;
+            }
+            
+            Assignees.Remove(astronaut);
+            return true;
+        }
+
+        return false;
+
     }
     
     public override float DetermineConsequences(float timePassed) {

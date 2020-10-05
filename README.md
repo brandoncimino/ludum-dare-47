@@ -16,3 +16,4 @@
 - BrandonUtils referenced NUnit in 1 Runtime file, which is not allowed
 - BrandonUtils had .tests.asmdef (which referenced NUnit) being included in ANY platform (not just the Editor)
 - BrandonUtils custom attribute for EditorInvocationButton couldn't compile because it was editor-only
+- Can only build for mac on mac

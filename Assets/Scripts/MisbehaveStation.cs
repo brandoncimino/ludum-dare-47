@@ -36,6 +36,8 @@ public class MisbehaveStation : ActivityStation
     void Awake() {
         remainingBreakTime = maxTimeToBreak;
         remainingFixTime   = maxTimeToFix;
+        AstroForeman.Single.Register(this);
+        
     }
 
     public void RepairUnit(float deltaTime) {

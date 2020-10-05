@@ -8,3 +8,11 @@
 - Michael
 - David
 - [Nicole Aretz](https://github.com/nicolearetz)
+
+
+
+## Problems that arose during the Build process:
+(Solutions will be written up later)
+- BrandonUtils referenced NUnit in 1 Runtime file, which is not allowed
+- BrandonUtils had .tests.asmdef (which referenced NUnit) being included in ANY platform (not just the Editor)
+- BrandonUtils custom attribute for EditorInvocationButton couldn't compile because it was editor-only

@@ -105,7 +105,7 @@ MonoBehaviour:
   ThoughtRenderer: {fileID: 2504940264796305528}
   BubbleRenderer: {fileID: 4284161878243975510}
   Thinker: {fileID: 0}
-  ThinkDuration: 0
+  ThinkDuration: 3
 --- !u!210 &2756484787814523032
 SortingGroup:
   m_ObjectHideFlags: 0

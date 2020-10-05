@@ -11,8 +11,8 @@ namespace DefaultNamespace {
 
         // geoometric information about the space station
         // space station floor is assumed as a cylinder for simplicity
-        public float radius = 14.1033f;
-        public float depth  = 6f;
+        public float radius = 2*14.1033f;
+        public float depth  = 4f;
 
         #endregion
 
@@ -57,7 +57,7 @@ namespace DefaultNamespace {
             }
             
             // spawn activity stations
-            var angle = 12f;
+            var angle = 18f;
             foreach (ActivityRoom doorSign in Enum.GetValues(typeof(ActivityRoom))) {
                 
                 // add Behave Stations

@@ -610,5 +610,13 @@ PrefabInstance:
       propertyPath: Wobbler
       value: 
       objectReference: {fileID: 165722244}
+    - target: {fileID: 8519636460647756523, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
+      propertyPath: radius
+      value: 18.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8519636460647756523, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
+      propertyPath: depth
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}

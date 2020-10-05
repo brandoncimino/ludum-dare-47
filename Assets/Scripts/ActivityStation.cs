@@ -79,7 +79,7 @@ namespace DefaultNamespace {
                 case ActivityRoom.Bridge:
                     mySpriteRenderer.sprite = BridgeSprite;
                     if (!IsBehaviourStation()) {
-                        OffsetDistance       =  0;
+                        //OffsetDistance       =  0;
                         PositionLayer        -= 1;
                     }
                     break;
@@ -97,7 +97,7 @@ namespace DefaultNamespace {
                         PositionLayer        -= 1;
                     }
                     else {
-                        transform.localScale *= 1.2f;
+                        transform.localScale *= 1.5f;
                     }
                     break;
                 case ActivityRoom.Engine:

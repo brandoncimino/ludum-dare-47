@@ -64,7 +64,7 @@ namespace DefaultNamespace {
             WobbleSpeed      += Math.Max(excessSpeed, 0);
             WobbleLerpAmount =  (float) (Math.Abs(2 * Math.Atan(WobbleSpeed * 1e-1) / Math.PI));
 
-            if (WobbleLerpAmount > 0.9) {
+            if (WobbleLerpAmount > 0.70) {
                 // TODO: End game
             }
         }

@@ -47,9 +47,7 @@ public class Creature : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // the creature moves toward its target location
-        if (Distance2TargetAsAngle() > speedAngle * Time.deltaTime) {
-            MoveTowardTarget();
-        }
+        MoveTowardTarget();
     }
 
     public void ChangeLayer(int newLayer) {
@@ -63,15 +61,20 @@ public class Creature : MonoBehaviour {
     private void MoveTowardTarget() {
         // TODO: change direction into which the astronaut looks
 
-        if (Math.Abs(targetAngle - positionAngle) < 180) {
-            positionAngle = (positionAngle + Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime) %
-                            360;
-            mySpriteRenderer.flipX = true;
+        if (Math.Abs((targetAngle - positionAngle + 360) % 360) < speedAngle * Time.deltaTime) {
+            positionAngle = targetAngle;
         }
         else {
-            positionAngle =
-                (positionAngle - Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime + 360) % 360;
-            mySpriteRenderer.flipX = false;
+            if (Math.Abs(targetAngle - positionAngle) < 180) {
+                positionAngle = (positionAngle + Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime) %
+                                360;
+                mySpriteRenderer.flipX = true;
+            }
+            else {
+                positionAngle =
+                    (positionAngle - Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime + 360) % 360;
+                mySpriteRenderer.flipX = false;
+            }
         }
 
         var       angle = Math.PI * (positionAngle) / 180;
@@ -159,7 +162,7 @@ public class Creature : MonoBehaviour {
     public float Distance2Target() {
         return home.radius * ((float) Math.PI) * Distance2TargetAsAngle() / 180f;
     }
-    
+
     public void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
             // TODO: change AI behaviour

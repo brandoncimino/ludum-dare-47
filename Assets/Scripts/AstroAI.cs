@@ -34,7 +34,7 @@ public class AstroAI : MonoBehaviour
                 //When close enough, start working
                 if (IsAngularCloseEnough()) {
                     //Astronaut within range
-                    myStats.myBehaveStation.currentState = BehaveStation.BehaveStationStates.Occupied;
+                    myStats.myBehaveStation.Arrive(this);
                     myStats.myState                      = AstroStats.AIStates.Behaving;
                 }
                 //If too bored, start misbehaving
@@ -50,6 +50,7 @@ public class AstroAI : MonoBehaviour
                 }
                 //When close enough, start being a mischievous little devil
                 if (IsAngularCloseEnough()) {
+                    myStats.myMisbehaveStation.Arrive(this);
                     myStats.myState = AstroStats.AIStates.Misbehaving;
                 }
                 break;
@@ -112,7 +113,7 @@ public class AstroAI : MonoBehaviour
 
     private void MisbehaveCheck() {
         if (myStats.timeUntilMisbehave <= 0f) {
-            myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior(gameObject, myStats.myBehaveStation, myStats.myMisbehaveStation);
+            myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior(this, myStats.myBehaveStation, myStats.myMisbehaveStation);
             GetNewTargetAngle(myStats.myMisbehaveStation);
             myRotationData.SetTarget(myStats.myMisbehaveStation.transform.localPosition);
             myStats.myState   = AstroStats.AIStates.MoveToMisbehaving;
@@ -137,6 +138,11 @@ public class AstroAI : MonoBehaviour
 
     private void ConvertingToGood() {
         //Debug.Log(AstroForeman.Single);
+
+        // leave the misbehave station if there
+        myStats.myMisbehaveStation?.Leave(this);
+        
+        // find new good behaviour
         myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(gameObject);
         GetNewTargetAngle(myStats.myBehaveStation);
         myStats.myState            = AstroStats.AIStates.MoveToBehaving;

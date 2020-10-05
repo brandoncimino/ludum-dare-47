@@ -34,11 +34,11 @@ public class AstroForeman : MonoBehaviour
         MisbehaveStations.Add(applyingStation);
     }
 
-    public MisbehaveStation AssignMisbehavior(GameObject thisAstronaut, BehaveStation myBehaveStation, MisbehaveStation myMisbehaveStation) {
+    public MisbehaveStation AssignMisbehavior(AstroAI thisAstronaut, BehaveStation myBehaveStation, MisbehaveStation myMisbehaveStation) {
         //Set Behavior Station to Abandoned
         //BehaveStations.FindIndex(Equals(myBehaveStation)).currentState = BehaveStationStats.BehaveStationStates.Abandoned;
         //myBehaveStation.currentState = BehaveStationStats.BehaveStationStates.Abandoned;
-        myBehaveStation.Abandon();
+        myBehaveStation.Leave(thisAstronaut);
         //Return random Misbehavior Station
         return myMisbehaveStation = DistantMisbehaveStation(myBehaveStation);
         //throw new NotImplementedException();
@@ -63,7 +63,7 @@ public class AstroForeman : MonoBehaviour
         foreach (var station in BehaveStations) {
             if (station.currentState == BehaveStation.BehaveStationStates.Abandoned) {
                 //set astronaut's station to that station
-                station.currentState = BehaveStation.BehaveStationStates.Occupied;
+                station.Claim();
                 return station;
             }
         }

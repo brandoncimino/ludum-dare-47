@@ -20,20 +20,22 @@ namespace DefaultNamespace {
 
         public GameObject     AstronautPrefab;
         public List<Creature> Astronauts;
-        public int            noAstronauts = 5;
+        public int            noAstronauts = 2;
         public int            noLayers     = 7;
 
         #endregion
 
-        #region information about the station's yaw
+        #region information about the station's yaw and Wobbler
 
-        private       float idealSpeed          = 10f;
-        public        float Speed               = 10f; // degrees per time step
-        private const float AccelerationMod     = 10f;
-        private       int   ActiveAccelerations = 0;
-        private const float xRotationMod        = 0.3f;
-        private       float tumbleDegree        = 0;
-        private       bool  tumble2Player       = true;
+        private Wobbler Wobbler;
+
+        private       float MaxSpeed             = 50f;
+        public        float Speed                = 10f; // degrees per time step
+        public        float AccelerationMod      = 0f;
+        public        float ActiveAcceleration   = 0f;
+        public        float ActiveDeceleration   = 0f;
+        private const float InherentAcceleration = 1f; // TODO: noAstronauts / 2f
+        private       int   ActiveAccelerations  = 0;
         #endregion
         
         #region information about the station's workstations
@@ -44,6 +46,7 @@ namespace DefaultNamespace {
         #endregion
 
         void Start() {
+            
             // spawn astronauts
             for (int i = 0; i < noAstronauts; i++) {
                 var newAstronaut = Instantiate(AstronautPrefab).GetComponent<Creature>();
@@ -76,28 +79,44 @@ namespace DefaultNamespace {
 
         void Update() {
             
-            // compute speed (explicit Euler - exact if the acceleration is piecewise constant)
-            Speed += Time.deltaTime * AccelerationMod * ActiveAccelerations;
-
+            // update the speed based on current accelerations and decelerations
+            ChangeSpeed();
+            
             // rotate
             transform.Rotate(0, Speed * Time.deltaTime, 0);
-
-            if (tumble2Player) {
-                tumbleDegree += Speed * Time.deltaTime;
-            }
-
-            // transform.Rotate(Speed * (float) Math.Sin(Time.time) * xRotationMod, 0,     0, Space.World);
-            // TODO: tumbling, needs some fine-tuning
         }
 
         [EditorInvocationButton]
         public void Accelerate() {
-            ActiveAccelerations++;
+            AccelerationMod++;
         }
 
         [EditorInvocationButton]
         public void Decelerate() {
-            ActiveAccelerations--;
+            AccelerationMod--;
+        }
+
+        private void GatherAcceleratons() {
+
+            ActiveAcceleration = 0f;
+            ActiveDeceleration = 0f;
+            
+            foreach (var station in BehaveStations) {
+                ActiveDeceleration += station.SpeedInfluence(Time.deltaTime);
+            }
+            
+            foreach (var station in MisbehaveStations) {
+                ActiveAcceleration += station.SpeedInfluence(Time.deltaTime);
+            }
+
+            AccelerationMod = ActiveAcceleration + ActiveDeceleration + InherentAcceleration;
+        }
+
+        private void ChangeSpeed() {
+            GatherAcceleratons();
+            
+            // compute speed (explicit Euler - exact if the acceleration is piecewise constant)
+            Speed += Time.deltaTime * AccelerationMod;
         }
     }
 }

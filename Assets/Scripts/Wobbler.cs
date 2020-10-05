@@ -18,7 +18,6 @@ namespace DefaultNamespace {
         [Range(0, 1)]
         public float WobbleLerpAmount;
         public float WobbleSpeed = 0;
-        public float myExcess    = 0;
 
         /// <summary>
         /// The maximum pitch that the station can ever wobble (i.e. <see cref="WobbleLerpAmount"/> = 1)
@@ -62,12 +61,10 @@ namespace DefaultNamespace {
 
         public void Convert2Wobbling(float excessSpeed) {
 
-            myExcess = excessSpeed;
-            
-            WobbleSpeed      += excessSpeed;
-            WobbleLerpAmount = (float) (Math.Abs(2 * Math.Atan(WobbleSpeed * 1e-1) / Math.PI));
+            WobbleSpeed      += Math.Max(excessSpeed, 0);
+            WobbleLerpAmount =  (float) (Math.Abs(2 * Math.Atan(WobbleSpeed * 1e-1) / Math.PI));
 
-            if (WobbleLerpAmount > 0.9) {
+            if (WobbleLerpAmount > 0.70) {
                 // TODO: End game
             }
         }

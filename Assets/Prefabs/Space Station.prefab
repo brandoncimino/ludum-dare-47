@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948876825877959889}
-  m_Mesh: {fileID: 6754032902624588796, guid: 9bed7a3bd6dcfa14cab0a2069ab0c2c4, type: 3}
+  m_Mesh: {fileID: 6754032902624588796, guid: 38fbadb30ca07254995aabd652e5ce7f, type: 3}
 --- !u!23 &8698557437791789691
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60,6 +60,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e6720aad7d5fefb4c85103208fa6c5bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,6 +160,7 @@ MonoBehaviour:
   WobbleLerpAmount: 0
   MaxPitch: 30
   MaxYawSpeed: 200
+  CompensateYaw: 1
 --- !u!1 &8861604025734560154
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +208,9 @@ MonoBehaviour:
   radius: 14.1033
   depth: 6
   AstronautPrefab: {fileID: 2191667903187328276, guid: 25ba91ada86004114847296db432953e, type: 3}
+  MonsterPrefab: {fileID: 0}
   Astronauts: []
+  Monsters: []
   noAstronauts: 5
   noLayers: 7
   Wobbler: {fileID: 0}

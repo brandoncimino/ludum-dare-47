@@ -27,7 +27,7 @@ namespace DefaultNamespace {
 
         #region information about the station's yaw and Wobbler
 
-        private Wobbler Wobbler;
+        public Wobbler Wobbler;
 
         private       float MaxSpeed             = 50f;
         private       float MinSpeed             = 5f;
@@ -35,8 +35,7 @@ namespace DefaultNamespace {
         public        float AccelerationMod      = 0f;
         public        float ActiveAcceleration   = 0f;
         public        float ActiveDeceleration   = 0f;
-        private const float InherentAcceleration = 1f; // TODO: noAstronauts / 2f
-        private       int   ActiveAccelerations  = 0;
+        private const float InherentAcceleration = 1f; // TODO: noAstronauts / 2.0f
         #endregion
         
         #region information about the station's workstations

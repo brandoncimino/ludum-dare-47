@@ -100,7 +100,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 150159376651867994}
   PositionAngle: 0
   OffsetDistance: 0
-  OffsetAngle: -12
+  OffsetAngle: -9
   PositionLayer: 0
   DoorSign: 0
   BridgeSprite: {fileID: 21300000, guid: d20b291096061114db479363ce83bf5d, type: 3}

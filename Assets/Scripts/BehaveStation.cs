@@ -12,7 +12,8 @@ using UnityEngine;
 
 public class BehaveStation : ActivityStation {
 
-    public int AssigneesMax = 1;
+    public MisbehaveStation behaveTwin;
+    public int           AssigneesMax = 1;
     // public float OffsetAngle = 12
     public enum BehaveStationStates {
         Claimed,
@@ -65,6 +66,26 @@ public class BehaveStation : ActivityStation {
 
     void Awake() {
         AstroForeman.Single.Register(this);
+    }
+
+    public override float DetermineConsequences(float timePassed) {
+        if (behaveTwin.currentState == MisbehaveStation.MisbehaveStationStates.Broken) {
+            // if the station next to you is broken, repair it first
+            RepairTwin(timePassed);
+            
+            // while repairing, we cannot put active work into deceleration
+            return 0;
+        }
+
+        // TODO: do "good" science
+        
+        // all other stations cause deceleration as positive work effect
+        return -1;
+
+    }
+    
+    private void RepairTwin(float deltaTime) {
+        behaveTwin.Repair(deltaTime);
     }
 }
 

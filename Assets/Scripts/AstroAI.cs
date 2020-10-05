@@ -96,24 +96,12 @@ public class AstroAI : MonoBehaviour
                 //Move towards station (executed by Astronaut:Creature's Update(); )
                 break;
             case AstroStats.AIStates.Misbehaving:
-                //Break the station a little
-                //Good point of entry to add escalating difficulty
-                //Logic is placeholder until balancing
-                
-                /*
-                NOTE (Nicole):
-                I'm taking this part out because it should be the Misbehave station that decides how it deals with the people at it, not the other way around.
-                 
-                currentHitPoints -= myStats.myMisbehaveStation.BreakUnit(Time.deltaTime);
-                if (currentHitPoints <=0) {
-                    hasBeenKilled = true;
-                }*/
-                
+                // conseqences of misbehaving are determined in the station, nothing active to do here
                 break;
             case AstroStats.AIStates.Fixing:
                 //Fix the machine a little
-                // note: this state is never reached as far as I can make out (Nicole, Monday 15:10)
-                myStats.myMisbehaveStation.RepairUnit(Time.deltaTime);
+                // Nicole: changed so that repairing is part of behaving - no separate state needed
+                // myStats.myMisbehaveStation.RepairUnit(Time.deltaTime);
                 break;
             case AstroStats.AIStates.Dead:
                 //There is no afterlife to do tasks. This process is intentionally left blank

@@ -47,7 +47,7 @@ public class MisbehaveStation : ActivityStation
         
     }
 
-    public void RepairUnit(float deltaTime) {
+    public void Repair(float deltaTime) {
         remainingFixTime -= deltaTime;
         if (remainingFixTime <= 0) {
             remainingFixTime = maxTimeToFix;
@@ -74,7 +74,6 @@ public class MisbehaveStation : ActivityStation
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        
     }
     
     protected override bool IsBehaviourStation() {
@@ -138,9 +137,9 @@ public class MisbehaveStation : ActivityStation
             remainingBreakTime = maxTimeToBreak;
             currentState       = MisbehaveStationStates.Broken;
             
-            // TODO: kill all astronauts
+            // TODO: kill all astronauts (or let them die slowly)
             
-            // TODO: tell the game that it's over
+            // TODO: tell the game that it's over (unless we decide a completely broken window is no reason to end it)
             
             // a broken window causes maximum acceleration (btw)
             return float.MaxValue / 2f;

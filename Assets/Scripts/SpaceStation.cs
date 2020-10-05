@@ -64,14 +64,21 @@ namespace DefaultNamespace {
                 var newBehaveStation = Instantiate(BehaveStationPrefab).GetComponent<BehaveStation>();
                 newBehaveStation.transform.parent = transform;
                 newBehaveStation.PlaceDown(angle, 1, this, doorSign);
-                BehaveStations.Add(newBehaveStation);
                 
                 // add Misbehave Stations
                 var newMisbehaveStation = Instantiate(MisbehaveStationPrefab).GetComponent<MisbehaveStation>();
                 newMisbehaveStation.transform.parent = transform;
                 newMisbehaveStation.PlaceDown(angle, 1, this, doorSign);
+
+                // inform about their twins
+                newBehaveStation.behaveTwin    = newMisbehaveStation;
+                newMisbehaveStation.behaveTwin = newBehaveStation;
+                
+                // add to station list
+                BehaveStations.Add(newBehaveStation);
                 MisbehaveStations.Add(newMisbehaveStation);
 
+                // change where to position the next station center
                 angle += 72;
             }
             

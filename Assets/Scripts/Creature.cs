@@ -10,7 +10,6 @@ using Random = System.Random;
 
 public class Creature : MonoBehaviour {
     public SpriteRenderer mySpriteRenderer;
-    public GameObject     myStation;
     Random                rando = new Random();
 
     // movement and positional information
@@ -68,12 +67,12 @@ public class Creature : MonoBehaviour {
             if (Math.Abs(targetAngle - positionAngle) < 180) {
                 positionAngle = (positionAngle + Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime) %
                                 360;
-                mySpriteRenderer.flipX = true;
+                mySpriteRenderer.flipX = Math.Sign(targetAngle - positionAngle) <= 0 ;
             }
             else {
                 positionAngle =
                     (positionAngle - Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime + 360) % 360;
-                mySpriteRenderer.flipX = false;
+                mySpriteRenderer.flipX = Math.Sign(targetAngle - positionAngle) >= 0;
             }
         }
 
@@ -173,7 +172,7 @@ public class Creature : MonoBehaviour {
 
     public void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
-            // randomly assign a new color, because it's fun.
+            // randomly assign a new color, because it's fun. And for visual feedback, of course.
             mySpriteRenderer.color = new Color(
                 rando.Next(0, 255) / 255f,
                 rando.Next(0, 255) / 255f,

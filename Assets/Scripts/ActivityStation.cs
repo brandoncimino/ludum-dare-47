@@ -78,9 +78,9 @@ namespace DefaultNamespace {
             switch (DoorSign) {
                 case ActivityRoom.Bridge:
                     mySpriteRenderer.sprite = BridgeSprite;
-                    OffsetDistance          = 0;
                     if (!IsBehaviourStation()) {
-                        mySpriteRenderer.enabled = false;
+                        OffsetDistance       =  0;
+                        PositionLayer        -= 1;
                     }
                     break;
                 case ActivityRoom.Kitchen:

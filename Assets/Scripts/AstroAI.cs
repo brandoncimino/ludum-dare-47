@@ -13,7 +13,7 @@ public class AstroAI : MonoBehaviour
 {
     // Start is called before the first frame update
     public  AstroStats myStats;
-    private Astronaut  myRotationData;
+    public Astronaut  myRotationData;
     public  bool       hasBeenChastised = false;
     public  bool       hasBeenKilled    = false;
     public  float      maxHitPoints     = 5f;
@@ -34,6 +34,7 @@ public class AstroAI : MonoBehaviour
                 //When close enough, start working
                 if (IsAngularCloseEnough()) {
                     //Astronaut within range
+                    myRotationData.ChangeThought(Thought.Boredom);
                     myStats.myBehaveStation.Arrive(this);
                     myStats.myState                      = AstroStats.AIStates.Behaving;
                 }
@@ -126,6 +127,7 @@ public class AstroAI : MonoBehaviour
 
     private void MisbehaveCheck() {
         if (myStats.timeUntilMisbehave <= 0f) {
+            myRotationData.ChangeThought(Thought.Mischief);
             myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior(this, myStats.myBehaveStation, myStats.myMisbehaveStation);
             GetNewTargetAngle(myStats.myMisbehaveStation);
             myRotationData.SetTarget(myStats.myMisbehaveStation.PositionAngle);
@@ -152,6 +154,7 @@ public class AstroAI : MonoBehaviour
 
     private void ConvertingToGood() {
         //Debug.Log(AstroForeman.Single);
+        myRotationData.ChangeThought(Thought.Memes);
 
         // leave the misbehave station if there
         myStats.myMisbehaveStation?.Leave(this);

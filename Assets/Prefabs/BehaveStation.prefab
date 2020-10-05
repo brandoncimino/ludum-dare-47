@@ -103,9 +103,10 @@ MonoBehaviour:
   OffsetAngle: -12
   PositionLayer: 0
   DoorSign: 0
-  BridgeSprite: {fileID: 21300000, guid: 8d205f286fdfade46a865e2fdc0dc7f7, type: 3}
+  BridgeSprite: {fileID: 21300000, guid: d20b291096061114db479363ce83bf5d, type: 3}
   KitchenSprite: {fileID: 21300000, guid: ce73067a469644740aa2074ca1688f6c, type: 3}
-  LabSprite: {fileID: 21300000, guid: 045fe178716bfb94195a0be377721efd, type: 3}
+  LabSprite: {fileID: 21300000, guid: e0ab29ceee9c932419c6a0a865ab0eed, type: 3}
   RecSprite: {fileID: 21300000, guid: e0f9b38750000914da03a6828b1cf95b, type: 3}
   EngineSprite: {fileID: 21300000, guid: 045fe178716bfb94195a0be377721efd, type: 3}
+  AssigneesMax: 1
   currentState: 2

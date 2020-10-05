@@ -81,6 +81,21 @@ public class MisbehaveStation : ActivityStation
         return false;
     }
     
+    public override bool Arrive(AstroAI astronaut) {
+        if (!Assignees.Contains(astronaut)) {
+
+            if (DoorSign == ActivityRoom.Kitchen) {
+                astronaut.myRotationData.ChangeThought(Thought.Pyromania);
+            }
+            
+            Assignees.Add(astronaut);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
     public override float DetermineConsequences(float timePassed) {
         // returns average acceleration over last time interval
 

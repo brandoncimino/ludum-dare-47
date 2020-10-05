@@ -69,7 +69,7 @@ public class BehaveStation : ActivityStation {
     }
 
     public override float DetermineConsequences(float timePassed) {
-        if (behaveTwin.currentState == MisbehaveStation.MisbehaveStationStates.Broken) {
+        if (behaveTwin.currentState != MisbehaveStation.MisbehaveStationStates.Fixed) {
             // if the station next to you is broken, repair it first
             RepairTwin(timePassed);
             

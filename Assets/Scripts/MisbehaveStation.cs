@@ -11,6 +11,7 @@ public class MisbehaveStation : ActivityStation
     // public float OffsetAngle = -12;
     public enum MisbehaveStationStates {
         Fixed,
+        Damaged,
         Broken
     }
 
@@ -130,12 +131,13 @@ public class MisbehaveStation : ActivityStation
         
         // damage the window
         remainingBreakTime -= timePassed * Assignees.Count;
+        currentState       =  MisbehaveStationStates.Damaged;
 
         // check if broken
         if (remainingBreakTime <= 0) {
             
-            remainingBreakTime = maxTimeToBreak;
             currentState       = MisbehaveStationStates.Broken;
+            remainingBreakTime = 0;
             
             // TODO: kill all astronauts (or let them die slowly)
             
@@ -168,16 +170,17 @@ public class MisbehaveStation : ActivityStation
         
         // damage the incarnation tube
         remainingBreakTime -= timePassed * Assignees.Count;
+        currentState       =  MisbehaveStationStates.Damaged;
 
         // check if broken
         if (remainingBreakTime <= 0) {
             
-            remainingBreakTime = maxTimeToBreak;
             currentState       = MisbehaveStationStates.Broken;
-            
+            remainingBreakTime = 0;
+
             // TODO: spawn monster
             // TODO: implement monster
-            
+
         }
         
         // freeing a monster doesn't cause acceleration

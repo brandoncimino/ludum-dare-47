@@ -102,11 +102,11 @@ namespace DefaultNamespace {
             ActiveDeceleration = 0f;
             
             foreach (var station in BehaveStations) {
-                ActiveDeceleration += station.SpeedInfluence(Time.deltaTime);
+                ActiveDeceleration += station.DetermineConsequences(Time.deltaTime);
             }
             
             foreach (var station in MisbehaveStations) {
-                ActiveAcceleration += station.SpeedInfluence(Time.deltaTime);
+                ActiveAcceleration += station.DetermineConsequences(Time.deltaTime);
             }
 
             AccelerationMod = ActiveAcceleration + ActiveDeceleration + InherentAcceleration;

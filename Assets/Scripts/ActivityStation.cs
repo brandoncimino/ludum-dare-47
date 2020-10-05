@@ -7,7 +7,6 @@ namespace DefaultNamespace {
     public abstract class ActivityStation : MonoBehaviour {
         
         public List<AstroAI>  Assignees;
-        public int            AssigneesCount;
         public SpaceStation   home;
         public SpriteRenderer mySpriteRenderer;
 
@@ -115,16 +114,15 @@ namespace DefaultNamespace {
             throw new NotImplementedException("needs to be implemented in subclass");
         }
 
-        public virtual float SpeedInfluence(float timePassed) {
-            // average acceleration over last time interval
+        public virtual float DetermineConsequences(float timePassed) {
+            // returns average acceleration over last time interval
             // here, accelation is modelled as piecewise constant - hence timePassed cancels out
-            return AssigneesCount * ( IsBehaviourStation() ? -1.0f : +1.0f);
+            return Assignees.Count * ( IsBehaviourStation() ? -1.0f : +1.0f);
         }
 
         public virtual bool Arrive(AstroAI astronaut) {
             if (!Assignees.Contains(astronaut)) {
                 Assignees.Add(astronaut);
-                AssigneesCount++;
                 return true;
             }
             else {
@@ -136,7 +134,6 @@ namespace DefaultNamespace {
         
             if (Assignees.Contains(astronaut)) {
                 Assignees.Remove(astronaut);
-                AssigneesCount--;
                 return true;
             }
 

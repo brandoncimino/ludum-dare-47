@@ -26,9 +26,8 @@ public class BehaveStation : ActivityStation {
         
         if (Assignees.Contains(astronaut)) {
             Assignees.Remove(astronaut);
-            AssigneesCount--;
             
-            if (AssigneesCount == 0) {
+            if (Assignees.Count == 0) {
                 currentState = BehaveStationStates.Abandoned;
             }
 
@@ -40,10 +39,9 @@ public class BehaveStation : ActivityStation {
     }
 
     public override bool Arrive(AstroAI astronaut) {
-        if (AssigneesCount < AssigneesMax) {
+        if (Assignees.Count < AssigneesMax) {
             Assignees.Add(astronaut);
             currentState = BehaveStationStates.Occupied;
-            AssigneesCount++;
             return true;
         }
         else {

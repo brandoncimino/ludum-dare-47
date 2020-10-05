@@ -40,6 +40,13 @@ public class MisbehaveStation : ActivityStation
         
     }
 
+    private void Update() {
+
+        // TODO: change sprites
+        // TODO: update health bars
+        
+    }
+
     public void RepairUnit(float deltaTime) {
         remainingFixTime -= deltaTime;
         if (remainingFixTime <= 0) {
@@ -72,5 +79,94 @@ public class MisbehaveStation : ActivityStation
     
     protected override bool IsBehaviourStation() {
         return false;
+    }
+    
+    public override float DetermineConsequences(float timePassed) {
+        // returns average acceleration over last time interval
+
+        switch (DoorSign) {
+            case ActivityRoom.Bridge:
+                // misbehaviour on the bridge causes double acceleration
+                return 2*Assignees.Count;
+                break;
+            case ActivityRoom.Rec:
+                // misbehaviour in the rec room causes damage to the window
+                return BreakWindow(timePassed);
+                break;
+            case ActivityRoom.Kitchen:
+                // misbehaviour in the kitchen sets fire which hurts the astronauts
+                return SetFire(timePassed);
+                break;
+            case ActivityRoom.Lab:
+                // misbehaviour in the lab frees the Monster
+                return FreeMonster(timePassed);
+                break;
+            case ActivityRoom.Engine:
+                // misbehaviour in the engine room causes double acceleration
+                return 2*Assignees.Count;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+    }
+
+    private float BreakWindow(float timePassed) {
+        // returns acceleration caused in the process
+        
+        // damage the window
+        remainingBreakTime -= timePassed;
+
+        // check if broken
+        if (remainingBreakTime <= 0) {
+            
+            remainingBreakTime = maxTimeToBreak;
+            currentState       = MisbehaveStationStates.Broken;
+            
+            // TODO: kill all astronauts
+            
+            // TODO: tell the game that it's over
+            
+            // a broken window causes maximum acceleration (btw)
+            return float.MaxValue / 2f;
+        }
+        
+        // an intact window doesn't cause acceleration
+        // TODO: maybe a percentage?
+        return 0;
+    }
+    
+    private float SetFire(float timePassed) {
+        // returns acceleration caused in the process
+
+        // fire in the kitchen harms the astronauts
+        // at the moment: only damages the astronauts at the misbehave station, not the one cooking next to it
+        foreach (var astronaut in Assignees) {
+            astronaut.takeDamage(timePassed);
+        }
+        
+        // fire doesn't cause acceleration
+        return 0;
+    }
+    
+    private float FreeMonster(float timePassed) {
+        // returns acceleration caused in the process
+        
+        // damage the incarnation tube
+        remainingBreakTime -= timePassed;
+
+        // check if broken
+        if (remainingBreakTime <= 0) {
+            
+            remainingBreakTime = maxTimeToBreak;
+            currentState       = MisbehaveStationStates.Broken;
+            
+            // TODO: spawn monster
+            // TODO: implement monster
+            
+        }
+        
+        // freeing a monster doesn't cause acceleration
+        return 0;
     }
 }

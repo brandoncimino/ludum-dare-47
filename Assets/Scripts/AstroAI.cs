@@ -59,6 +59,8 @@ public class AstroAI : MonoBehaviour
                 if (hasBeenKilled) {
                     //Become unassigned from all stations
                     myStats.myState = AstroStats.AIStates.Dead;
+                    myStats.myBehaveStation.Leave(this);
+                    myStats.myMisbehaveStation.Leave(this);
                 }
                 if (hasBeenChastised) {
                     ConvertingToGood();
@@ -163,5 +165,13 @@ public class AstroAI : MonoBehaviour
     }
     private void OnMouseDown() {
         hasBeenChastised = true;
+    }
+
+    public void takeDamage(float dmg) {
+        
+        currentHitPoints -= dmg;
+        if (currentHitPoints <=0) {
+            hasBeenKilled = true;
+        }
     }
 }

@@ -60,6 +60,10 @@ public class AstroAI : MonoBehaviour
                     //Become unassigned from all stations
                     myStats.myState = AstroStats.AIStates.Dead;
                 }
+                if (hasBeenChastised) {
+                    ConvertingToGood();
+                }
+                
                 break;
             case AstroStats.AIStates.Fixing:
                 //Once the station is fixed, return to normal behavior
@@ -92,10 +96,12 @@ public class AstroAI : MonoBehaviour
                 //Break the station a little
                 //Good point of entry to add escalating difficulty
                 //Logic is placeholder until balancing
+                
                 currentHitPoints -= myStats.myMisbehaveStation.BreakUnit(Time.deltaTime);
                 if (currentHitPoints <=0) {
                     hasBeenKilled = true;
                 }
+                
                 break;
             case AstroStats.AIStates.Fixing:
                 //Fix the machine a little
@@ -115,8 +121,9 @@ public class AstroAI : MonoBehaviour
         if (myStats.timeUntilMisbehave <= 0f) {
             myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior(this, myStats.myBehaveStation, myStats.myMisbehaveStation);
             GetNewTargetAngle(myStats.myMisbehaveStation);
-            myRotationData.SetTarget(myStats.myMisbehaveStation.transform.localPosition);
+            myRotationData.SetTarget(myStats.myMisbehaveStation.PositionAngle);
             myStats.myState   = AstroStats.AIStates.MoveToMisbehaving;
+            myStats.myBehaveStation.Leave(this);
         }
     }
 

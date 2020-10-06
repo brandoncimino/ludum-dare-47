@@ -39,7 +39,7 @@ namespace DefaultNamespace {
             foreach (var astronaut in home.Astronauts) {
                 
                 // only scare astronauts that aren't fleeing already
-                if (astronaut.myBrain.myStats.myState != AstroStats.AIStates.Fleeing && astronaut.myBrain.myStats.myState != AstroStats.AIStates.Dead) {
+                if (astronaut.alive && !astronaut.fleeing) {
                     
                     // compute distance to them
                     var distance = Distance2AngleAsAngle(astronaut.positionAngle);
@@ -48,7 +48,7 @@ namespace DefaultNamespace {
                     if (distance < FleeAuraAngle) {
                         
                         // cause to flee
-                        astronaut.myBrain.StartFleeing(MovingRight);
+                        astronaut.Scare(MovingRight);
                         
                         if (distance < DmgAuraAngle) {
                             // deliver damage

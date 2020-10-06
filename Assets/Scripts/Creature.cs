@@ -8,15 +8,17 @@ using Random = System.Random;
 
 public class Creature : MonoBehaviour {
     public    SpriteRenderer mySpriteRenderer;
+    public    CreatureAI     myBrain;
     protected Random         rando = new Random();
 
     // movement and positional information
 
     #region Movement & Position
 
-    public float positionAngle = 0;
-    public float speedAngle    = 1;
-    public int   layer         = 0;
+    public  float positionAngle = 0;
+    public  float speedAngle    = 1;
+    public  int   layer         = 0;
+    protected bool  hasArrived    = false;
 
     #endregion
 
@@ -76,7 +78,9 @@ public class Creature : MonoBehaviour {
 
     protected virtual void MovementRule() {
         // the creature moves toward its target location
-        MoveTowardTarget();
+        if (!hasArrived) {
+            MoveTowardTarget();
+        }
     }
 
     protected virtual void IndividualUpdate() {
@@ -92,10 +96,11 @@ public class Creature : MonoBehaviour {
     }
 
     protected void MoveTowardTarget() {
-        // TODO: change direction into which the astronaut looks
 
         if (Math.Abs((targetAngle - positionAngle + 360) % 360) < speedAngle * Time.deltaTime) {
             positionAngle = targetAngle;
+            hasArrived    = true;
+            myBrain.AnnounceArrival();
         }
         else {
             if (Math.Abs(targetAngle - positionAngle) < 180) {
@@ -156,6 +161,7 @@ public class Creature : MonoBehaviour {
 
     public void SetTarget(float newAngle) {
         targetAngle = Math.Abs(newAngle) % 360f;
+        hasArrived  = false;
     }
 
     public void SetTarget(Vector3 location) {
@@ -218,6 +224,7 @@ public class Creature : MonoBehaviour {
 
     public virtual void Kill() {
         alive = false;
+        myBrain.AnnounceDeath();
 
         // no more moving around when you are dead! (for now)
         speedAngle = 0;
@@ -253,5 +260,9 @@ public class Creature : MonoBehaviour {
         currentHitPoints       = maxHitPoints;
         mySpriteRenderer.color = colorBeforeDmg;
         needColorChange        = false;
+    }
+
+    public float getDmgVisualTime() {
+        return maxDmgVisualizationTime;
     }
 }

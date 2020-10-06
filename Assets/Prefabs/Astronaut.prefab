@@ -152,8 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myStats: {fileID: 0}
-  myRotationData: {fileID: 0}
-  hasBeenChastised: 0
+  myBody: {fileID: 1126349372312075342}
 --- !u!114 &-882634792319656042
 MonoBehaviour:
   m_ObjectHideFlags: 0

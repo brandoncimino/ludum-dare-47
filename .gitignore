@@ -138,3 +138,4 @@ fabric.properties
 
 # Use this folder for things you want to play with locally but not commit
 Assets/Scripts/Runtime/Sketchbook/
+/Ludum Dare 47 Final Build/

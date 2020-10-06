@@ -261,4 +261,8 @@ public class Creature : MonoBehaviour {
         mySpriteRenderer.color = colorBeforeDmg;
         needColorChange        = false;
     }
+
+    public float getDmgVisualTime() {
+        return maxDmgVisualizationTime;
+    }
 }

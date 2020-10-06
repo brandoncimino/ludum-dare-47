@@ -107,7 +107,7 @@ MonoBehaviour:
   KitchenSprite: {fileID: 21300000, guid: ce73067a469644740aa2074ca1688f6c, type: 3}
   LabSprite: {fileID: 21300000, guid: e0ab29ceee9c932419c6a0a865ab0eed, type: 3}
   RecSprite: {fileID: 21300000, guid: e0f9b38750000914da03a6828b1cf95b, type: 3}
-  EngineSprite: {fileID: 21300000, guid: 045fe178716bfb94195a0be377721efd, type: 3}
+  EngineSprite: {fileID: 21300000, guid: f22af276518496d459a50e0de69f36e5, type: 3}
   behaveTwin: {fileID: 0}
-  AssigneesMax: 1
+  OnTheirWay: []
   currentState: 2

@@ -28,8 +28,9 @@ namespace DefaultNamespace {
         #region information about the station's yaw and Wobbler
 
         public Wobbler Wobbler;
+        public Canvas  Canvas;
 
-        private       float MaxSpeed              = 50f;
+        private       float MaxSpeed              = 80f;
         private       float MinSpeed              = 5f;
         private       float MaxStableAcceleration = 5f;
         private       float MinStableDeceleration = -1;

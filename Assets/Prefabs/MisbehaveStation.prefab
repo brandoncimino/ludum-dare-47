@@ -107,12 +107,10 @@ MonoBehaviour:
   KitchenSprite: {fileID: 21300000, guid: 0e7b84cfdc60ded4fa3dfab4ef325fba, type: 3}
   LabSprite: {fileID: 21300000, guid: 08094a619eb21a345849a3b6d57d2550, type: 3}
   RecSprite: {fileID: 21300000, guid: cd36898e14e474e419d030e4a286c31a, type: 3}
-  EngineSprite: {fileID: 21300000, guid: 045fe178716bfb94195a0be377721efd, type: 3}
+  EngineSprite: {fileID: 21300000, guid: f22af276518496d459a50e0de69f36e5, type: 3}
   BridgeSpriteCat: {fileID: 21300000, guid: 186ae82c552af98498b10013bdcabf91, type: 3}
   behaveTwin: {fileID: 0}
   isLethal: 1
   maxTimeToBreak: 8
   remainingBreakTime: 0
-  maxTimeToFix: 5
-  remainingFixTime: 0
   currentState: 0

@@ -1,4 +1,8 @@
-﻿using Packages.BrandonUtils.Runtime;
+﻿using System.Collections.Generic;
+using System.Linq;
+
+using Packages.BrandonUtils.Runtime;
+using Packages.BrandonUtils.Runtime.Collections;
 using Packages.BrandonUtils.Runtime.UI;
 
 using UnityEngine;
@@ -18,11 +22,38 @@ public class TitleScreenFooter : MonoBehaviour {
 
     public TextAnchor FooterAnchor;
 
-    public string VersionNumber => $"Version {Application.version}";
+    public string VersionString => $" Version {Application.version} ";
+
+    private static readonly Author Nicole = new Author("Nicole", "Aretz", "Github", "https://github.com/nicolearetz");
+
+    private static readonly Author Brandon = new Author(
+        "Brandon",
+        "Cimino",
+        "brandoncimino.com",
+        "http://brandoncimino.com/"
+    );
+
+    private static readonly Author Michael = new Author(
+        "Michael",
+        "Rawls",
+        "Github",
+        "https://github.com/MichaelBRawls"
+    );
+
+    private static Author David = new Author("David", "Rawls", "Github", "https://github.com/GuyWithPasta");
+
+    public List<Author> Authors => new List<Author> {
+        Brandon,
+        Nicole,
+        Michael,
+        David
+    };
+
+    public string AuthorString => Authors.Select(author => author.Citation()).JoinString(", ");
 
     // Start is called before the first frame update
     private void Start() {
-        UpdateFooterText();
+        UpdateFooter();
     }
 
     [EditorInvocationButton]
@@ -40,6 +71,8 @@ public class TitleScreenFooter : MonoBehaviour {
     }
 
     private void UpdateFooterText() {
-        FooterText.text = VersionNumber;
+        var lines = new List<string>()
+            {VersionString.Stylize(FontStyle.BoldAndItalic).Colorize(Color.cyan), AuthorString};
+        FooterText.text = lines.JoinString("\n");
     }
 }

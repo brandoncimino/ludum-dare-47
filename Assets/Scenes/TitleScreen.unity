@@ -272,10 +272,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WobbleLerpAmount: 1
   WobbleSpeed: 0
-  myExcess: 0
   MaxPitch: 30
   MaxYawSpeed: 200
   CompensateYaw: 0
+  timeUntilReset: 10
+  isGameOver: 0
 --- !u!23 &40671063
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -966,9 +967,9 @@ RectTransform:
   m_Father: {fileID: 1929273075}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -427.5, y: -125}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 103, y: 100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1010570758
@@ -1251,10 +1252,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WobbleLerpAmount: 1
   WobbleSpeed: 0
-  myExcess: 0
   MaxPitch: 30
   MaxYawSpeed: 1
   CompensateYaw: 1
+  timeUntilReset: 10
+  isGameOver: 0
 --- !u!1 &1266659320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,7 +1448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80.5, y: 129.38}
+  m_AnchoredPosition: {x: 103, y: 130}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1391631375

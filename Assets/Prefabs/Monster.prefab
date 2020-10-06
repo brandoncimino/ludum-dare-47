@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4046356228371668268}
   - component: {fileID: 4046356228371668271}
   - component: {fileID: -8972926446850566288}
+  - component: {fileID: 7404517934247834591}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -97,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySpriteRenderer: {fileID: 4046356228371668268}
+  myBrain: {fileID: 7404517934247834591}
   positionAngle: 359
   speedAngle: 15
   layer: 0
@@ -118,3 +120,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 3, z: 0.2}
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &7404517934247834591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046356228371668270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a78880b728814087af8d07a0a1be7d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

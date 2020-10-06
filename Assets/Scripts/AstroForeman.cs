@@ -57,7 +57,7 @@ public class AstroForeman : MonoBehaviour
     public BehaveStation AssignBehavior(AstroAI astronaut) {
         //Sort stations by distance
         BehaveStations = BehaveStations.OrderBy(
-            station => astronaut.myRotationData.Distance2Angle(station.PositionAngle)).ToList();
+            station => astronaut.myBody.Distance2Angle(station.PositionAngle)).ToList();
         //Find closest abandoned station
         foreach (var station in BehaveStations) {
             if (station.currentState == BehaveStation.BehaveStationStates.Abandoned) {

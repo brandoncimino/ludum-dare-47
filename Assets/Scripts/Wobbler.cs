@@ -18,7 +18,10 @@ namespace DefaultNamespace {
         /// </summary>
         //[Range(0, 1)]
         public float WobbleLerpAmount;
-        public float WobbleSpeed = 0;
+        public  float WobbleSpeed       = 0;
+        public  float WobbleSpeedChange = 0;
+        private float MaxRecTime        = 2;
+        private float RemainingRecTime  = 0;
 
         /// <summary>
         /// The maximum pitch that the station can ever wobble (i.e. <see cref="WobbleLerpAmount"/> = 1)
@@ -68,8 +71,21 @@ namespace DefaultNamespace {
 
         public void Convert2Wobbling(float excessSpeed) {
 
-            WobbleSpeed      += Math.Max(excessSpeed, 0);
-            WobbleLerpAmount =  (float) (Math.Abs(2 * Math.Atan(WobbleSpeed * 1e-1) / Math.PI));
+            if (Math.Abs(excessSpeed) < 1e-4) {
+                RemainingRecTime -= Time.deltaTime;
+                if (RemainingRecTime <= 0) {
+                    // once enough time has passed, the wobble speed recovers exponentially fast (v(t) = C*exp(-t))
+                    // here, we compute this with implicit Euler for the ODE \dot{x} = -x
+                    WobbleSpeed /= (1 + Time.deltaTime);
+                }
+            }
+            else {
+                WobbleSpeedChange =  excessSpeed;
+                WobbleSpeed       += excessSpeed;
+                RemainingRecTime  =  MaxRecTime;
+            }
+            
+            WobbleLerpAmount = (float) (Math.Abs(2 * Math.Atan(WobbleSpeed * 5e-2) / Math.PI));
 
             if (WobbleLerpAmount > 0.70) {
                 // End game

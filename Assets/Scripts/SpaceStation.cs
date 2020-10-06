@@ -29,13 +29,15 @@ namespace DefaultNamespace {
 
         public Wobbler Wobbler;
 
-        private       float MaxSpeed             = 50f;
-        private       float MinSpeed             = 5f;
-        public        float Speed                = 10f; // degrees per time step
-        public        float AccelerationMod      = 0f;
-        public        float ActiveAcceleration   = 0f;
-        public        float ActiveDeceleration   = 0f;
-        private const float InherentAcceleration = 2.5f; // TODO: noAstronauts / 2.0f
+        private       float MaxSpeed              = 50f;
+        private       float MinSpeed              = 5f;
+        private       float MaxStableAcceleration = 5f;
+        private       float MinStableDeceleration = -1;
+        public        float Speed                 = 10f; // degrees per time step
+        public        float AccelerationMod       = 0f;
+        public        float ActiveAcceleration    = 0f;
+        public        float ActiveDeceleration    = 0f;
+        private const float InherentAcceleration  = 2.5f; // TODO: noAstronauts / 2.0f
 
         #endregion
 
@@ -122,6 +124,12 @@ namespace DefaultNamespace {
             // Combine all sources for speed change
             GatherAcceleratons();
 
+            // gather what is outside the acceleration bounds
+            var newAcc1 = AccelerationMod;
+            AccelerationMod = Math.Min(AccelerationMod, MaxStableAcceleration);
+            AccelerationMod = Math.Max(AccelerationMod, MinStableDeceleration);
+            var excessSpeed = (newAcc1 - AccelerationMod) * Time.deltaTime;
+            
             // Compute new speed
             // acceleration is the derivative of speed, here speed is computed with forward Euler
             var newSpeed1 = Speed + Time.deltaTime * AccelerationMod;
@@ -130,7 +138,7 @@ namespace DefaultNamespace {
             // compute how much excess acceleration or deceleration has been caused
             var newSpeed2 = Math.Min(newSpeed1, MaxSpeed);
             Speed = Math.Max(MinSpeed, newSpeed2);
-            var excessSpeed = newSpeed1 - Speed;
+            excessSpeed += (newSpeed1 - Speed);
             // var excessAcceleration = excessSpeed / Time.deltaTime;
 
             // provide excess data to the Wobbler

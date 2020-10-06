@@ -70,12 +70,20 @@ public class AstroAI : CreatureAI
 
     private void MisbehaveCheck() {
         if (myStats.timeUntilMisbehave <= 0f) {
-            myBody.ChangeThought(Thought.Mischief);
-            myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior(this, myStats.myBehaveStation, myStats.myMisbehaveStation);
-            GetNewTargetAngle(myStats.myMisbehaveStation);
-            myBody.SetTarget(myStats.myMisbehaveStation.PositionAngle);
-            myStats.myState   = AstroStats.AIStates.MoveToMisbehaving;
+            
+            // stopping old behaviour
             myStats.myBehaveStation.Leave(this);
+            
+            // finding new behaviour
+            myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior(this, myStats.myBehaveStation, myStats.myMisbehaveStation);
+            myStats.myState = AstroStats.AIStates.MoveToMisbehaving;
+            
+            // new target for movement
+            myBody.SetTarget(myStats.myMisbehaveStation.PositionAngle + Random.Range(-5, 5));
+            // the random float is added so that the astronauts form a group rather than a queue in front of the misbehave station
+            
+            // what do you think about that?
+            myBody.ChangeThought(Thought.Mischief);
         }
     }
 

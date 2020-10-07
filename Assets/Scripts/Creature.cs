@@ -59,6 +59,7 @@ public class Creature : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
         // apply movement rule
         MovementRule();
 

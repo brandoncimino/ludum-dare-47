@@ -6,10 +6,14 @@ using DefaultNamespace;
 
 using UnityEngine;
 
+using Random = System.Random;
+
+
 public class MisbehaveStation : ActivityStation
 {
     // public float OffsetAngle = -12;
-    public Sprite BridgeSpriteCat;
+    public    Sprite BridgeSpriteCat;
+    protected Random Random = new Random();
     public enum MisbehaveStationStates {
         Fixed,
         Damaged,
@@ -180,9 +184,11 @@ public class MisbehaveStation : ActivityStation
     private float SetFire(float timePassed) {
         // returns acceleration caused in the process
 
-        // fire in the kitchen harms the astronauts
-        // at the moment: only damages the astronauts at the misbehave station, not the one cooking next to it
-        foreach (var astronaut in Assignees) {
+        // fire in the kitchen harms a random astronaut at the arson spot
+        // the random choice prevents an error where an astronaut dies from fire damage, gets unassigned from the
+        // arson spot, which changes the Assignees list and hence breaks the for-loop over its items
+        if (Random.Next(0, 100) == 0) {
+            var astronaut = Assignees[Random.Next(0, Assignees.Count)];
             astronaut.myBody.TakeDamage(0.5f, 1.5f*astronaut.myBody.getDmgVisualTime());
         }
         

@@ -9,6 +9,7 @@ namespace DefaultNamespace {
         public Sprite PyromaniaSprite;
         public Sprite AlarmSprite;
         public Sprite MemesSprite;
+        public Sprite HungrySprite;
 
         public       SpriteRenderer ThoughtRenderer;
         public       SpriteRenderer BubbleRenderer;

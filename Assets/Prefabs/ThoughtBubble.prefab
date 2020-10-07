@@ -102,6 +102,7 @@ MonoBehaviour:
   PyromaniaSprite: {fileID: 21300000, guid: 3318eb22e59ccae44bb7616e644c4162, type: 3}
   AlarmSprite: {fileID: 21300000, guid: 34ae9296db9907e42a272269d78a04ff, type: 3}
   MemesSprite: {fileID: 21300000, guid: c2f9d462195e92a4bace26f3f59023c4, type: 3}
+  HungrySprite: {fileID: 21300000, guid: 9b5ba3fb5e3e16442a48fff4580c037f, type: 3}
   ThoughtRenderer: {fileID: 2504940264796305528}
   BubbleRenderer: {fileID: 4284161878243975510}
   Thinker: {fileID: 0}

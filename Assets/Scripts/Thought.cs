@@ -4,6 +4,7 @@
         Mischief,
         Pyromania,
         Alarm,
-        Memes
+        Memes,
+        Hungry
     }
 }

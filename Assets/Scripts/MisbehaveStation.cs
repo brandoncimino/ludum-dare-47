@@ -32,7 +32,6 @@ public class MisbehaveStation : ActivityStation
     //Time in seconds it takes to break;
     public  float maxTimeToBreak = 8f;
     public  float remainingBreakTime;
-    private bool  MonsterInStorage = true;
 
     public MisbehaveStationStates currentState = MisbehaveStationStates.Fixed;
 
@@ -54,11 +53,10 @@ public class MisbehaveStation : ActivityStation
         if (remainingBreakTime >= maxTimeToBreak) {
             remainingBreakTime = maxTimeToBreak;
             currentState       = MisbehaveStationStates.Fixed;
+        }
 
-            if (DoorSign == ActivityRoom.Lab) {
-                MonsterInStorage = true;
-            }
-            
+        if (DoorSign == ActivityRoom.Lab) {
+            behaveTwin.MonsterInStorage = true;
         }
     }
 
@@ -73,11 +71,9 @@ public class MisbehaveStation : ActivityStation
                     currentState       = MisbehaveStationStates.Broken;
                 }
                 return 0f;
-                break;
             case MisbehaveStationStates.Broken:
                 //Astronauts that are still at a location when it's broken slowly die
                 return isLethal ? deltaTime : 0f;
-                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -133,23 +129,18 @@ public class MisbehaveStation : ActivityStation
             case ActivityRoom.Bridge:
                 // misbehaviour on the bridge causes double acceleration
                 return 2*Assignees.Count;
-                break;
             case ActivityRoom.Rec:
                 // misbehaviour in the rec room causes damage to the window
                 return BreakWindow(timePassed);
-                break;
             case ActivityRoom.Kitchen:
                 // misbehaviour in the kitchen sets fire which hurts the astronauts
                 return SetFire(timePassed);
-                break;
             case ActivityRoom.Lab:
                 // misbehaviour in the lab frees the Monster
                 return FreeMonster(timePassed);
-                break;
             case ActivityRoom.Engine:
                 // misbehaviour in the engine room causes double acceleration
                 return 2*Assignees.Count;
-                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -204,14 +195,14 @@ public class MisbehaveStation : ActivityStation
         currentState       =  MisbehaveStationStates.Damaged;
 
         // check if broken
-        if (MonsterInStorage && remainingBreakTime <= 0) {
+        if (behaveTwin.MonsterInStorage && remainingBreakTime <= 0) {
             
             currentState       = MisbehaveStationStates.Broken;
             remainingBreakTime = 0;
 
             // spawn monster
             home.SpawnMonster(PositionAngle);
-            MonsterInStorage = false;
+            behaveTwin.MonsterInStorage = false;
 
         }
         

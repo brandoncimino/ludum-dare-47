@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using Packages.BrandonUtils.Runtime;
+
 using UnityEngine;
 
 namespace DefaultNamespace {
@@ -38,7 +40,7 @@ namespace DefaultNamespace {
         public        float AccelerationMod       = 0f;
         public        float ActiveAcceleration    = 0f;
         public        float ActiveDeceleration    = 0f;
-        private const float InherentAcceleration  = 2.5f; // TODO: noAstronauts / 2.0f
+        private const float InherentAcceleration  = 2.5f;
 
         #endregion
 
@@ -51,16 +53,9 @@ namespace DefaultNamespace {
 
         #endregion
 
-        void Start() {
-            // spawn astronauts
-            for (int i = 0; i < noAstronauts; i++) {
-                var newAstronaut = Instantiate(AstronautPrefab).GetComponent<Astronaut>();
-                newAstronaut.transform.parent = transform;
-                newAstronaut.ChangeLayer(noLayers - i);
-                newAstronaut.GiveHome(this);
-                Astronauts.Add(newAstronaut);
-            }
-
+        private void Start() {
+            noLayers = noAstronauts + 2;
+            
             // spawn activity stations
             var angle = 18f;
             foreach (ActivityRoom doorSign in Enum.GetValues(typeof(ActivityRoom))) {
@@ -85,6 +80,15 @@ namespace DefaultNamespace {
 
                 // change where to position the next station center
                 angle += 72;
+            }
+            
+            // spawn astronauts
+            for (int i = 0; i < noAstronauts; i++) {
+                var newAstronaut = Instantiate(AstronautPrefab).GetComponent<Astronaut>();
+                newAstronaut.transform.parent = transform;
+                newAstronaut.ChangeLayer(noLayers - i);
+                newAstronaut.GiveHome(this);
+                Astronauts.Add(newAstronaut);
             }
         }
 
@@ -154,6 +158,34 @@ namespace DefaultNamespace {
             newMonster.GiveHome(this);
             newMonster.positionAngle = angle;
             Monsters.Add(newMonster);
+        }
+
+        public void Tragedy(Astronaut deadBody) {
+            Astronauts.Remove(deadBody);
+            noAstronauts--;
+            
+            for (int i = 0; i < noAstronauts; i++) {
+                var astronaut = Astronauts[i];
+                astronaut.ChangeLayer(noLayers - i);
+            }
+        }
+        
+        public void SpawnAstronaut(float angle = 0) {
+            
+            // make new astronaut
+            var newAstronaut = Instantiate(AstronautPrefab).GetComponent<Astronaut>();
+            newAstronaut.transform.parent = transform;
+            newAstronaut.GiveHome(this);
+            newAstronaut.positionAngle = angle;
+            Astronauts.Add(newAstronaut);
+            
+            // distribute evenly
+            noAstronauts++;
+            for (int i = 0; i < noAstronauts; i++) {
+                var astronaut = Astronauts[i];
+                astronaut.ChangeLayer(noLayers - i);
+            }
+
         }
     }
 }

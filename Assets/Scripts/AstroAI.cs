@@ -20,8 +20,8 @@ public class AstroAI : CreatureAI
     private float      timeBeforeDelete = 5f;
 
     void Start() {
-        myStats        = gameObject.GetComponent<AstroStats>();
-        myBody = gameObject.GetComponent<Astronaut>();
+        myStats = gameObject.GetComponent<AstroStats>();
+        myBody  = gameObject.GetComponent<Astronaut>();
         ConvertingToGood();
     }
 
@@ -54,11 +54,17 @@ public class AstroAI : CreatureAI
                     StopFleeing();
                 }
                 break;
+            case AstroStats.AIStates.Idle:
+                //Get more bored: a bit faster because idle
+                MisbehaveProgression(1.2f);
+                //If too bored, start misbehaving
+                MisbehaveCheck();
+                break;
             case AstroStats.AIStates.Dead:
                 //There is no afterlife to do tasks.
                 timeBeforeDelete -= Time.deltaTime;
                 if (timeBeforeDelete < 0) {
-                    myBody.home.Astronauts.Remove(myBody);
+                    myBody.home.Tragedy(myBody);
                     Destroy(this.gameObject);
                 }
                 break;
@@ -72,10 +78,12 @@ public class AstroAI : CreatureAI
         if (myStats.timeUntilMisbehave <= 0f) {
             
             // stopping old behaviour
-            myStats.myBehaveStation.Leave(this);
-            
+            if (myStats.myState != AstroStats.AIStates.Idle) {
+                myStats.myBehaveStation.Leave(this);
+            }
+
             // finding new behaviour
-            myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior(this, myStats.myBehaveStation, myStats.myMisbehaveStation);
+            myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior(myStats.myBehaveStation);
             myStats.myState = AstroStats.AIStates.MoveToMisbehaving;
             
             // new target for movement
@@ -87,10 +95,10 @@ public class AstroAI : CreatureAI
         }
     }
 
-    private void MisbehaveProgression() {
+    private void MisbehaveProgression(float multiplier = 1f) {
         //Probably could use different numbers
         //This would also be where gradual difficulty increase could come into effect
-        myStats.timeUntilMisbehave -= Time.deltaTime;
+        myStats.timeUntilMisbehave -= (Time.deltaTime * multiplier);
     }
     
     private bool IsAngularCloseEnough() {
@@ -111,11 +119,21 @@ public class AstroAI : CreatureAI
         myStats.myMisbehaveStation?.Leave(this);
         
         // find new good behaviour
-        myStats.myBehaveStation = AstroForeman.Single.AssignBehavior(this);
-        GetNewTargetAngle(myStats.myBehaveStation);
-        myStats.myState            = AstroStats.AIStates.MoveToBehaving;
-        myBody.Heal();
-        myStats.timeUntilMisbehave = Random.Range(15f, 23f);
+        if (AstroForeman.Single.AssignBehavior(this)) {
+            // free behave station was found
+            GetNewTargetAngle(myStats.myBehaveStation);
+            myStats.myState = AstroStats.AIStates.MoveToBehaving;
+            myBody.Heal();
+            myStats.timeUntilMisbehave = Random.Range(15f, 23f);
+        }
+        else {
+            // no free behave station was found
+            myBody.SetTarget(myBody.positionAngle + Random.Range(-100f, 100f));
+            myStats.myState = AstroStats.AIStates.Idle;
+            myBody.Heal();
+            myStats.timeUntilMisbehave = Random.Range(15f, 23f);
+        }
+        
     }
     private void OnMouseDown() {
         if (myStats.myState == AstroStats.AIStates.Misbehaving ||
@@ -152,6 +170,20 @@ public class AstroAI : CreatureAI
             myStats.myState = AstroStats.AIStates.Misbehaving;
             myStats.myMisbehaveStation.Arrive(this);
             return;
+        }
+
+        if (myStats.myState == AstroStats.AIStates.Idle) {
+            if (AstroForeman.Single.AssignBehavior(this)) {
+                // free behave station was found
+                GetNewTargetAngle(myStats.myBehaveStation);
+                myStats.myState = AstroStats.AIStates.MoveToBehaving;
+                return;
+            }
+            else {
+                // no free behave station was found
+                myBody.SetTarget(Random.Range(0f, 360f));
+                return;
+            }
         }
         throw new ConstraintException("Astronaut announced arrival without being on their way.");
     }

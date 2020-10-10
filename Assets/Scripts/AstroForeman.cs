@@ -5,6 +5,8 @@ using System.Linq;
 
 using DefaultNamespace;
 
+using JetBrains.Annotations;
+
 using Packages.BrandonUtils.Runtime.Collections;
 
 using UnityEngine;
@@ -34,14 +36,9 @@ public class AstroForeman : MonoBehaviour
         MisbehaveStations.Add(applyingStation);
     }
 
-    public MisbehaveStation AssignMisbehavior(AstroAI thisAstronaut, BehaveStation myBehaveStation, MisbehaveStation myMisbehaveStation) {
-        //Set Behavior Station to Abandoned
-        //BehaveStations.FindIndex(Equals(myBehaveStation)).currentState = BehaveStationStats.BehaveStationStates.Abandoned;
-        //myBehaveStation.currentState = BehaveStationStats.BehaveStationStates.Abandoned;
-        myBehaveStation.Leave(thisAstronaut);
+    public MisbehaveStation AssignMisbehavior([CanBeNull] BehaveStation myBehaveStation) {
         //Return random Misbehavior Station
-        return myMisbehaveStation = DistantMisbehaveStation(myBehaveStation);
-        //throw new NotImplementedException();
+        return myBehaveStation is null ? MisbehaveStations.Random() : DistantMisbehaveStation(myBehaveStation);
     }
 
     public BehaveStation AvailableBehaveStation() {
@@ -54,7 +51,7 @@ public class AstroForeman : MonoBehaviour
         return MisbehaveStations.Where(station => station.behaveTwin != currentLocation).Random();
     }
 
-    public BehaveStation AssignBehavior(AstroAI astronaut) {
+    public bool AssignBehavior(AstroAI astronaut) {
         //Sort stations by distance
         BehaveStations = BehaveStations.OrderBy(
             station => astronaut.myBody.Distance2Angle(station.PositionAngle)).ToList();
@@ -63,10 +60,12 @@ public class AstroForeman : MonoBehaviour
             if (station.currentState == BehaveStation.BehaveStationStates.Abandoned) {
                 //set astronaut's station to that station
                 station.Claim(astronaut);
-                return station;
+                astronaut.myStats.myBehaveStation = station;
+                return true;
             }
         }
-        throw new Exception("No abandoned stations found!");
+        // no free behave station was found
+        return false;
     }
 
     //Negative Modulus is stupid. This adds the divider back into the answer if the answer is negative to create the 

@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using DefaultNamespace;
 
 public class BehaveStation : ActivityStation {
-    public MisbehaveStation behaveTwin;
-    public List<AstroAI>    OnTheirWay;
-
+    public  MisbehaveStation behaveTwin;
+    public  List<AstroAI>    OnTheirWay;
+    private float            IncarnationProcess = 0;
+    private float            IncarnationTime    = 30f;
+    public  bool             MonsterInStorage   = true;
+    
     // public float OffsetAngle = 12
     public enum BehaveStationStates {
         Claimed,
@@ -72,10 +75,21 @@ public class BehaveStation : ActivityStation {
                 return 0;
             }
 
-            // TODO: do "good" science
-
-            // all other stations cause deceleration as positive work effect
-            return -1;
+            switch (DoorSign) {
+                case ActivityRoom.Bridge:
+                    return -1.5f;
+                case ActivityRoom.Rec:
+                    return -1f;
+                case ActivityRoom.Kitchen:
+                    return -1f;
+                case ActivityRoom.Lab:
+                    // do "good" science
+                    return ScienceUp(timePassed);
+                case ActivityRoom.Engine:
+                    return -2f;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         return 0;
@@ -83,5 +97,17 @@ public class BehaveStation : ActivityStation {
 
     private void RepairTwin(float deltaTime) {
         behaveTwin.Repair(deltaTime);
+    }
+
+    private float ScienceUp(float timePassed) {
+        IncarnationProcess += timePassed;
+        
+        if (IncarnationProcess >= IncarnationTime) {
+            home.SpawnAstronaut(PositionAngle);
+            IncarnationProcess = 0;
+            MonsterInStorage   = false;
+        }
+        
+        return 0;
     }
 }

@@ -12,7 +12,7 @@
     "Behave_Recreation": [
       "$NAME is working out.",
       "$NAME is getting swole.",
-      "$NAME hates doing cardio, but they're doing it anyway. Good for them.",
+      "$NAME hates cardio, but they're doing it anyway. Good for them.",
       "$NAME is leisurely walking while listening to murder mystery podcasts."
     ],
     "Behave_Lab": [
@@ -33,7 +33,7 @@
       "$NAME used too much tabasco!"
     ],
     "Misbehave_Bridge": [
-      "$NAME is on watching cat videos!"
+      "$NAME is watching cat videos!"
     ],
     "Misbehave_Lab": [
       "$NAME is asking questions they aren't prepared to have answered!",

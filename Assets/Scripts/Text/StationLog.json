@@ -44,7 +44,8 @@
     ],
     "Misbehave_Engine": [
       "$NAME has an extra screw!",
-      "$NAME is pushing all of the buttons!"
+      "$NAME is pushing all of the buttons!",
+      "$NAME can't find the manual!"
     ],
     "Astronaut_Bored": [
       "$NAME is bored!",

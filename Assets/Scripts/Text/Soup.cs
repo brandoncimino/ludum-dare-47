@@ -5,7 +5,7 @@ using Packages.BrandonUtils.Runtime.Collections;
 
 namespace DefaultNamespace.Text {
     /// <summary>
-    /// Contains information about a soup sourced from Wikipedia's <a href="https://en.wikipedia.org/wiki/List_of_soups">List of Soups</a>.
+    /// Contains information about a <a href="https://en.wikipedia.org/wiki/Soup">soup</a> sourced from Wikipedia's <a href="https://en.wikipedia.org/wiki/List_of_soups">List of Soups</a>.
     /// </summary>
     public class Soup : IAlertReplacements {
         public string Name;

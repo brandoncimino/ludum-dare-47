@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine;
 
-using JetBrains.Annotations;
-
-using UnityEngine;
-using Random = UnityEngine.Random;
-
-public class AstroStats : MonoBehaviour
-{
-    public enum AIStates
-    {
+public class AstroStats : MonoBehaviour {
+    public enum AIStates {
         MoveToBehaving,
         Behaving,
         MoveToMisbehaving,
@@ -20,6 +11,7 @@ public class AstroStats : MonoBehaviour
         Idle,
         Dead
     }
+
     //Start Idle
     public AIStates myState = AIStates.MoveToBehaving;
     //Time until Astronaut misbehaves
@@ -28,12 +20,12 @@ public class AstroStats : MonoBehaviour
     public float timeUntilDeath = 5f;
     //Location that I want to move towards
     public float targetAngle;
-    
+
     //Distance until I can interact with something
     public float interactAngle = .05f;
     //Station that I am navigating towards, behaving at, or misbehaving at
-    public  BehaveStation    myBehaveStation;
-    [CanBeNull] public MisbehaveStation myMisbehaveStation = null;
+    public BehaveStation    myBehaveStation;
+    public MisbehaveStation myMisbehaveStation;
 
     //Unused. Will be used to randomly generate my space suit's color. Poorly executed, probably.
     //public Color myColor = new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f));

@@ -12,11 +12,15 @@ namespace DefaultNamespace {
 
         protected override void MovementRule() {
             if (fleeing) {
+                // look into the direction you are fleeing
+                mySpriteRenderer.flipX = !FleeingRight;
+
+                // move into the direction you are fleeing, a bit faster than usual
                 if (FleeingRight) {
-                    MoveClockwise();
+                    MoveCounterClockwise(1.3f);
                 }
                 else {
-                    MoveCounterClockwise();
+                    MoveClockwise(1.3f);
                 }
             }
             else {
@@ -44,8 +48,16 @@ namespace DefaultNamespace {
             myBrain.AnnounceDeath();
         }
 
-        public void Scare(bool monsterMovingRight) {
-            myBrain.StartFleeing(monsterMovingRight);
+        public void Scare(float monsterAngle) {
+            var fleeRight = false;
+            if (monsterAngle - positionAngle > 0) {
+                fleeRight = monsterAngle - positionAngle > 180;
+            }
+            else {
+                fleeRight = true;
+            }
+
+            myBrain.StartFleeing(fleeRight);
         }
     }
 }

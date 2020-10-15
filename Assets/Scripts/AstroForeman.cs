@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-
-using DefaultNamespace;
 
 using JetBrains.Annotations;
 
@@ -11,11 +7,10 @@ using Packages.BrandonUtils.Runtime.Collections;
 
 using UnityEngine;
 
-public class AstroForeman : MonoBehaviour
-{
-    public List<AstroAI> StationedAstronauts = new List<AstroAI>();
-    public List<BehaveStation> BehaveStations = new List<BehaveStation>();
-    public List<MisbehaveStation> MisbehaveStations = new List<MisbehaveStation>();
+public class AstroForeman : MonoBehaviour {
+    public List<AstroAI>          StationedAstronauts = new List<AstroAI>();
+    public List<BehaveStation>    BehaveStations      = new List<BehaveStation>();
+    public List<MisbehaveStation> MisbehaveStations   = new List<MisbehaveStation>();
     //ASSUMES that BehaveStation[X] is in the same room as MisbehaveStation[X]
 
     public static AstroForeman Single;
@@ -32,19 +27,22 @@ public class AstroForeman : MonoBehaviour
     public void Register(BehaveStation applyingStation) {
         BehaveStations.Add(applyingStation);
     }
+
     public void Register(MisbehaveStation applyingStation) {
         MisbehaveStations.Add(applyingStation);
     }
 
-    public MisbehaveStation AssignMisbehavior([CanBeNull] BehaveStation myBehaveStation) {
+    public MisbehaveStation AssignMisbehavior(
+        [CanBeNull]
+        BehaveStation myBehaveStation = null
+    ) {
         //Return random Misbehavior Station
         return myBehaveStation is null ? MisbehaveStations.Random() : DistantMisbehaveStation(myBehaveStation);
     }
 
     public BehaveStation AvailableBehaveStation() {
-        return BehaveStations
-               .Where(station => station.currentState == BehaveStation.BehaveStationStates.Abandoned)
-               .Random();
+        return BehaveStations.Where(station => station.currentState == BehaveStation.BehaveStationStates.Abandoned)
+                             .Random();
     }
 
     public MisbehaveStation DistantMisbehaveStation(BehaveStation currentLocation) {
@@ -53,8 +51,8 @@ public class AstroForeman : MonoBehaviour
 
     public bool AssignBehavior(AstroAI astronaut) {
         //Sort stations by distance
-        BehaveStations = BehaveStations.OrderBy(
-            station => astronaut.myBody.Distance2Angle(station.PositionAngle)).ToList();
+        BehaveStations = BehaveStations.OrderBy(station => astronaut.myBody.Distance2Angle(station.PositionAngle))
+                                       .ToList();
         //Find closest abandoned station
         foreach (var station in BehaveStations) {
             if (station.currentState == BehaveStation.BehaveStationStates.Abandoned) {
@@ -64,6 +62,7 @@ public class AstroForeman : MonoBehaviour
                 return true;
             }
         }
+
         // no free behave station was found
         return false;
     }

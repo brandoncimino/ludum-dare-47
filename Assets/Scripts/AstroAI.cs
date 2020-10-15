@@ -18,8 +18,9 @@ public class AstroAI : CreatureAI {
     private float      timeBeforeDelete  = 5f;
 
     void Start() {
-        myStats = gameObject.GetComponent<AstroStats>();
-        myBody  = gameObject.GetComponent<Astronaut>();
+        myStats                    = gameObject.GetComponent<AstroStats>();
+        myBody                     = gameObject.GetComponent<Astronaut>();
+        myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior();
         ConvertingToGood();
     }
 
@@ -115,7 +116,7 @@ public class AstroAI : CreatureAI {
         myBody.ChangeThought(Thought.Memes);
 
         // leave the misbehave station if there
-        myStats.myMisbehaveStation?.Leave(this);
+        myStats.myMisbehaveStation.Leave(this);
 
         // find new good behaviour
         if (AstroForeman.Single.AssignBehavior(this)) {
@@ -141,16 +142,16 @@ public class AstroAI : CreatureAI {
         }
     }
 
-    public override void StartFleeing(bool monsterMovingRight = true) {
+    public override void StartFleeing(bool fleeRight = true) {
         myStats.myState     = AstroStats.AIStates.Fleeing;
-        myBody.FleeingRight = monsterMovingRight;
+        myBody.FleeingRight = fleeRight;
         remainingFleeTime   = maxFleeTime;
         myBody.ChangeThought(Thought.Alarm);
         myBody.fleeing = true;
 
         //Become unassigned from all stations
         myStats.myBehaveStation.Leave(this);
-        myStats.myMisbehaveStation?.Leave(this);
+        myStats.myMisbehaveStation.Leave(this);
     }
 
     private void StopFleeing() {

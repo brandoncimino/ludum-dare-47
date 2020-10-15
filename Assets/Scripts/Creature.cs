@@ -15,9 +15,9 @@ public class Creature : MonoBehaviour {
 
     #region Movement & Position
 
-    public  float positionAngle = 0;
-    public  float speedAngle    = 1;
-    public  int   layer         = 0;
+    public    float positionAngle = 0;
+    public    float speedAngle    = 1;
+    public    int   layer         = 0;
     protected bool  hasArrived    = false;
 
     #endregion
@@ -59,7 +59,6 @@ public class Creature : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
         // apply movement rule
         MovementRule();
 
@@ -97,7 +96,6 @@ public class Creature : MonoBehaviour {
     }
 
     protected void MoveTowardTarget() {
-
         if (Math.Abs((targetAngle - positionAngle + 360) % 360) < speedAngle * Time.deltaTime) {
             positionAngle = targetAngle;
             hasArrived    = true;
@@ -129,8 +127,8 @@ public class Creature : MonoBehaviour {
     }
 
     //[EditorInvocationButton]
-    public void MoveClockwise() {
-        positionAngle = (positionAngle - speedAngle * Time.deltaTime + 360) % 360;
+    public void MoveClockwise(float mod = 1f) {
+        positionAngle = (positionAngle - speedAngle * Time.deltaTime * mod + 360) % 360;
         var angle = Math.PI * (positionAngle) / 180;
 
         Transform transform1;
@@ -145,8 +143,8 @@ public class Creature : MonoBehaviour {
     }
 
     //[EditorInvocationButton]
-    public void MoveCounterClockwise() {
-        positionAngle = (positionAngle + speedAngle * Time.deltaTime) % 360;
+    public void MoveCounterClockwise(float mod = 1f) {
+        positionAngle = (positionAngle + speedAngle * Time.deltaTime * mod) % 360;
         var       angle = Math.PI * (positionAngle) / 180;
         Transform transform1;
 

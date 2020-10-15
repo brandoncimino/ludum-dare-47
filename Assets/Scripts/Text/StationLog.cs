@@ -69,10 +69,13 @@ namespace DefaultNamespace.Text {
         /// <param name="inputs"></param>
         /// <returns></returns>
         public static Dictionary<string, string> GetReplacements(IEnumerable<IAlertReplacements> inputs) {
-            return inputs.Aggregate(
-                new Dictionary<string, string>(),
-                (current, it) => (Dictionary<string, string>) current.Concat(it.GetAlertReplacements())
-            );
+            var result = new Dictionary<string, string>();
+
+            foreach (var input in inputs) {
+                result = result.Concat(input.GetAlertReplacements()).ToDictionary(pair => pair.Key, pair => pair.Value);
+            }
+
+            return result;
         }
     }
 }

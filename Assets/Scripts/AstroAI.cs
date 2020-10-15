@@ -91,7 +91,7 @@ public class AstroAI : CreatureAI {
             myBody.ChangeThought(Thought.Mischief);
 
             // send a message about boredom
-            StationLogger.Log(StationAlertType.Astronaut_Bored, this);
+            StationLogger.Alert(StationAlertType.Astronaut_Bored, this);
         }
     }
 

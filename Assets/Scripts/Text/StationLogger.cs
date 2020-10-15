@@ -35,7 +35,7 @@ namespace DefaultNamespace.Text {
             }
         }
 
-        public static void Log(StationAlertType alertType, params IAlertReplacements[] replacementSources) {
+        public static void Alert(StationAlertType alertType, params IAlertReplacements[] replacementSources) {
             string message;
             try {
                 var alert = Single.StationLog.Alerts[alertType].Random();

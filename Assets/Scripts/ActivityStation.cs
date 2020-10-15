@@ -139,7 +139,7 @@ namespace DefaultNamespace {
         }
 
         protected void AlertArrival(params IAlertReplacements[] replacementSources) {
-            StationLogger.Log(GetAlert(DoorSign, IsBehaviourStation()), replacementSources);
+            StationLogger.Alert(GetAlert(DoorSign, IsBehaviourStation()), replacementSources);
         }
 
         public abstract bool Arrive(AstroAI astronaut);

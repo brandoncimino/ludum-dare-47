@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-
-using Packages.BrandonUtils.Runtime;
+using System.Linq;
 
 using UnityEngine;
 
@@ -18,12 +17,15 @@ namespace DefaultNamespace {
 
         #region information about the astronauts living on the space station
 
-        public GameObject      AstronautPrefab;
-        public GameObject      MonsterPrefab;
-        public List<Astronaut> Astronauts;
-        public List<Monster>   Monsters;
-        public int             noAstronauts = 2;
-        public int             noLayers     = 7;
+        public  GameObject      AstronautPrefab;
+        public  GameObject      MonsterPrefab;
+        public  List<Astronaut> Astronauts;
+        public  List<Monster>   Monsters;
+        public  int             noAstronauts        = 2;
+        public  int             noLayers            = 7;
+        private float           MaxMonsterSpawnTime = 1f;
+        public  float           MonsterSpawnTime    = 0f;
+        private float           MonsterBreakAngle   = -1f;
 
         #endregion
 
@@ -55,7 +57,7 @@ namespace DefaultNamespace {
 
         private void Start() {
             noLayers = noAstronauts + 2;
-            
+
             // spawn activity stations
             var angle = 18f;
             foreach (ActivityRoom doorSign in Enum.GetValues(typeof(ActivityRoom))) {
@@ -81,7 +83,7 @@ namespace DefaultNamespace {
                 // change where to position the next station center
                 angle += 72;
             }
-            
+
             // spawn astronauts
             for (int i = 0; i < noAstronauts; i++) {
                 var newAstronaut = Instantiate(AstronautPrefab).GetComponent<Astronaut>();
@@ -98,6 +100,16 @@ namespace DefaultNamespace {
 
             // rotate
             transform.Rotate(0, Speed * Time.deltaTime, 0);
+
+            // check for monster
+            if (MonsterBreakAngle != -1f) {
+                MonsterSpawnTime += Time.deltaTime;
+                if (MonsterSpawnTime >= MaxMonsterSpawnTime) {
+                    MonsterSpawnTime = 0;
+                    SpawnMonster(MonsterBreakAngle);
+                    MonsterBreakAngle = -1f;
+                }
+            }
         }
 
         //[EditorInvocationButton]
@@ -134,7 +146,7 @@ namespace DefaultNamespace {
             AccelerationMod = Math.Min(AccelerationMod, MaxStableAcceleration);
             AccelerationMod = Math.Max(AccelerationMod, MinStableDeceleration);
             var excessSpeed = (newAcc1 - AccelerationMod) * Time.deltaTime;
-            
+
             // Compute new speed
             // acceleration is the derivative of speed, here speed is computed with forward Euler
             var newSpeed1 = Speed + Time.deltaTime * AccelerationMod;
@@ -142,7 +154,7 @@ namespace DefaultNamespace {
             // acceleration is only converted into speed until maximum or minimum speed is achieved
             // compute how much excess acceleration or deceleration has been caused
             var newSpeed2 = Math.Min(newSpeed1, MaxSpeed);
-            Speed = Math.Max(MinSpeed, newSpeed2);
+            Speed       =  Math.Max(MinSpeed, newSpeed2);
             excessSpeed += (newSpeed1 - Speed);
             // var excessAcceleration = excessSpeed / Time.deltaTime;
 
@@ -163,29 +175,39 @@ namespace DefaultNamespace {
         public void Tragedy(Astronaut deadBody) {
             Astronauts.Remove(deadBody);
             noAstronauts--;
-            
+
             for (int i = 0; i < noAstronauts; i++) {
                 var astronaut = Astronauts[i];
                 astronaut.ChangeLayer(noLayers - i);
             }
         }
-        
+
         public void SpawnAstronaut(float angle = 0) {
-            
             // make new astronaut
             var newAstronaut = Instantiate(AstronautPrefab).GetComponent<Astronaut>();
             newAstronaut.transform.parent = transform;
             newAstronaut.GiveHome(this);
             newAstronaut.positionAngle = angle;
             Astronauts.Add(newAstronaut);
-            
+
             // distribute evenly
             noAstronauts++;
             for (int i = 0; i < noAstronauts; i++) {
                 var astronaut = Astronauts[i];
                 astronaut.ChangeLayer(noLayers - i);
             }
+        }
 
+        public void JailBreak(float angle = 0) {
+            // alert everyone of approaching danger
+            foreach (var astronaut in Astronauts.Where(
+                astronaut => astronaut.alive && astronaut.Distance2AngleAsAngle(angle) < 20f
+            )) {
+                // cause to flee
+                astronaut.Scare(angle);
+            }
+
+            MonsterBreakAngle = angle;
         }
     }
 }

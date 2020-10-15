@@ -100,7 +100,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 4046356228371668268}
   myBrain: {fileID: 7404517934247834591}
   positionAngle: 359
-  speedAngle: 15
+  speedAngle: 20
   layer: 0
   targetAngle: 90
   home: {fileID: 0}

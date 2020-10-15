@@ -42,7 +42,7 @@ namespace DefaultNamespace {
 
                         if (distance < DmgAuraAngle) {
                             // deliver damage
-                            astronaut.TakeDamage(2.0f, 1.0f);
+                            astronaut.TakeDamage(6.0f);
                         }
                     }
                 }

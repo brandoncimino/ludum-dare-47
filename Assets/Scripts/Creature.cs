@@ -203,7 +203,11 @@ public class Creature : MonoBehaviour {
     }
 
     public float Distance2AngleAsAngle(float angle) {
-        return Math.Min(Math.Abs(angle - positionAngle), 360f - Math.Abs(targetAngle - positionAngle));
+        return Math.Min(Math.Abs(angle - positionAngle), 360f - Math.Abs(angle - positionAngle));
+    }
+
+    public static float Distance2AngleAsAngle(float angle1, float angle2) {
+        return Math.Min(Math.Abs(angle1 - angle2), 360f - Math.Abs(angle1 - angle2));
     }
 
     public float Distance2Angle(float angle) {

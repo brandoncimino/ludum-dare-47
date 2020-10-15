@@ -17,7 +17,7 @@ public class AstroAI : CreatureAI {
     private float      maxFleeTime       = 5.0f;
     private float      timeBeforeDelete  = 5f;
 
-    void Start() {
+    private void Start() {
         myStats                    = gameObject.GetComponent<AstroStats>();
         myBody                     = gameObject.GetComponent<Astronaut>();
         myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior();

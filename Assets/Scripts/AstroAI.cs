@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 
 using DefaultNamespace;
@@ -10,14 +8,13 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Astronaut))]
-public class AstroAI : CreatureAI
-{
+public class AstroAI : CreatureAI {
     // Start is called before the first frame update
     public  AstroStats myStats;
     public  Astronaut  myBody;
-    private float      remainingFleeTime  = 0;
-    private float      maxFleeTime        = 5.0f;
-    private float      timeBeforeDelete = 5f;
+    private float      remainingFleeTime = 0;
+    private float      maxFleeTime       = 5.0f;
+    private float      timeBeforeDelete  = 5f;
 
     void Start() {
         myStats = gameObject.GetComponent<AstroStats>();
@@ -26,9 +23,7 @@ public class AstroAI : CreatureAI
     }
 
     // Update is called once per frame
-    private void Update()
-    {
-        
+    private void Update() {
         switch (myStats.myState) {
             case AstroStats.AIStates.MoveToBehaving:
                 //Get more bored
@@ -53,6 +48,7 @@ public class AstroAI : CreatureAI
                 if (remainingFleeTime == 0) {
                     StopFleeing();
                 }
+
                 break;
             case AstroStats.AIStates.Idle:
                 //Get more bored: a bit faster because idle
@@ -67,16 +63,15 @@ public class AstroAI : CreatureAI
                     myBody.home.Tragedy(myBody);
                     Destroy(this.gameObject);
                 }
+
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        
     }
 
     private void MisbehaveCheck() {
         if (myStats.timeUntilMisbehave <= 0f) {
-            
             // stopping old behaviour
             if (myStats.myState != AstroStats.AIStates.Idle) {
                 myStats.myBehaveStation.Leave(this);
@@ -84,12 +79,12 @@ public class AstroAI : CreatureAI
 
             // finding new behaviour
             myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior(myStats.myBehaveStation);
-            myStats.myState = AstroStats.AIStates.MoveToMisbehaving;
-            
+            myStats.myState            = AstroStats.AIStates.MoveToMisbehaving;
+
             // new target for movement
             myBody.SetTarget(myStats.myMisbehaveStation.PositionAngle + Random.Range(-5, 5));
             // the random float is added so that the astronauts form a group rather than a queue in front of the misbehave station
-            
+
             // what do you think about that?
             myBody.ChangeThought(Thought.Mischief);
         }
@@ -100,7 +95,7 @@ public class AstroAI : CreatureAI
         //This would also be where gradual difficulty increase could come into effect
         myStats.timeUntilMisbehave -= (Time.deltaTime * multiplier);
     }
-    
+
     private bool IsAngularCloseEnough() {
         //return Math.Abs(myAngle-targetAngle) <= interactAngle
         return myBody.Distance2TargetAsAngle() <= myStats.interactAngle;
@@ -117,7 +112,7 @@ public class AstroAI : CreatureAI
 
         // leave the misbehave station if there
         myStats.myMisbehaveStation?.Leave(this);
-        
+
         // find new good behaviour
         if (AstroForeman.Single.AssignBehavior(this)) {
             // free behave station was found
@@ -128,13 +123,13 @@ public class AstroAI : CreatureAI
         }
         else {
             // no free behave station was found
-            myBody.SetTarget(myBody.positionAngle + Random.Range(-100f, 100f));
+            myBody.SetTarget(myBody.positionAngle + Random.Range(-50f, 50f));
             myStats.myState = AstroStats.AIStates.Idle;
             myBody.Heal();
             myStats.timeUntilMisbehave = Random.Range(15f, 23f);
         }
-        
     }
+
     private void OnMouseDown() {
         if (myStats.myState == AstroStats.AIStates.Misbehaving ||
             myStats.myState == AstroStats.AIStates.MoveToMisbehaving) {
@@ -143,12 +138,12 @@ public class AstroAI : CreatureAI
     }
 
     public override void StartFleeing(bool monsterMovingRight = true) {
-        myStats.myState             =  AstroStats.AIStates.Fleeing;
-        myBody.FleeingRight =  monsterMovingRight;
-        remainingFleeTime           =  maxFleeTime;
+        myStats.myState     = AstroStats.AIStates.Fleeing;
+        myBody.FleeingRight = monsterMovingRight;
+        remainingFleeTime   = maxFleeTime;
         myBody.ChangeThought(Thought.Alarm);
         myBody.fleeing = true;
-        
+
         //Become unassigned from all stations
         myStats.myBehaveStation.Leave(this);
         myStats.myMisbehaveStation?.Leave(this);
@@ -166,6 +161,7 @@ public class AstroAI : CreatureAI
             myStats.myBehaveStation.Arrive(this);
             return;
         }
+
         if (myStats.myState == AstroStats.AIStates.MoveToMisbehaving) {
             myStats.myState = AstroStats.AIStates.Misbehaving;
             myStats.myMisbehaveStation.Arrive(this);
@@ -185,21 +181,20 @@ public class AstroAI : CreatureAI
                 return;
             }
         }
+
         throw new ConstraintException("Astronaut announced arrival without being on their way.");
     }
 
     public override void AnnounceDeath() {
-        
         if (myBody.alive) {
             throw new ConstraintException("Astronaut announced death without dying first.");
         }
-        
+
         //If ya dead, ya dead
         myStats.myState = AstroStats.AIStates.Dead;
-            
+
         //Become unassigned from all stations
         myStats.myBehaveStation.Leave(this);
         myStats.myMisbehaveStation.Leave(this);
     }
-
 }

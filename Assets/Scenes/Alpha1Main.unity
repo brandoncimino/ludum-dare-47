@@ -6062,7 +6062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8519636460647756523, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
       propertyPath: noAstronauts
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8519636460647756523, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
       propertyPath: Wobbler

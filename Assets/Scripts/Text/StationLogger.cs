@@ -41,7 +41,7 @@ namespace DefaultNamespace.Text {
                 var alert = Single.StationLog.Alerts[alertType].Random();
                 message = StationLog.FormatAlert(alert, replacementSources);
             }
-            catch (KeyNotFoundException e) {
+            catch (KeyNotFoundException) {
                 var error = $"Missing {alertType.GetType().Name}".Colorize(Color.red);
                 message = $"{error}: {alertType}";
             }

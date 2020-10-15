@@ -385,7 +385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: STATION LOG
+  m_text: <style=title>STATION LOG</style>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 435e5fdec6f6dad4dbac6664f379322a, type: 2}
   m_sharedMaterial: {fileID: 4330994952916560589, guid: 435e5fdec6f6dad4dbac6664f379322a, type: 2}
@@ -412,8 +412,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -6368,15 +6368,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 61914599086448972, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 158.4
       objectReference: {fileID: 0}
     - target: {fileID: 61914599086448972, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 61914599086448972, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 316.8
       objectReference: {fileID: 0}
     - target: {fileID: 61914599086448972, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}
       propertyPath: m_SizeDelta.y
@@ -6388,7 +6388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 61914599086448972, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61914599086448972, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6396,7 +6396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 61914599086448972, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61914599086448972, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}
       propertyPath: m_Pivot.x
@@ -6409,6 +6409,10 @@ PrefabInstance:
     - target: {fileID: 1230911608180861529, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}
       propertyPath: m_Name
       value: Alert
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230911608180861529, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}

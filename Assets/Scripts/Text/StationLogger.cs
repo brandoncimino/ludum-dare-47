@@ -9,6 +9,7 @@ using UnityEngine;
 namespace DefaultNamespace.Text {
     public class StationLogger : MonoBehaviour {
         public TextAsset StationLogAsset;
+        public TextAsset SoupDatabaseAsset;
         public TMP_Text  StationLogMesh;
 
         private StationLog _StationLog;
@@ -16,6 +17,11 @@ namespace DefaultNamespace.Text {
             _StationLog ?? (_StationLog = JsonConvert.DeserializeObject<StationLog>(StationLogAsset.text));
 
         public static StationLogger Single;
+
+        private SoupDatabase _SoupDatabase;
+        private SoupDatabase SoupDatabase => _SoupDatabase ??
+                                             (_SoupDatabase =
+                                                  JsonConvert.DeserializeObject<SoupDatabase>(SoupDatabaseAsset.text));
 
         private void Awake() {
             if (Single == null) {
@@ -26,9 +32,9 @@ namespace DefaultNamespace.Text {
             }
         }
 
-        public static void Log(StationAlertType alertType, CreatureAI astronaut = null) {
+        public static void Log(StationAlertType alertType, params IAlertReplacements[] replacementSources) {
             var alert     = Single.StationLog.Alerts[alertType].Random();
-            var formatted = StationLog.FormatAlert(alert, astronaut);
+            var formatted = StationLog.FormatAlert(alert, replacementSources);
             Single.StationLogMesh.text += $"\n{formatted}";
         }
     }

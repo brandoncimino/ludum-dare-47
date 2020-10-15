@@ -35,6 +35,9 @@
     "Misbehave_Bridge": [
       "$NAME is watching cat videos!"
     ],
+    "Misbehave_Recreation": [
+      "$NAME is getting some \"fresh air\"."
+    ],
     "Misbehave_Lab": [
       "$NAME is asking questions they aren't prepared to have answered!",
       "$NAME is playing god!",

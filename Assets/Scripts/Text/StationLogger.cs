@@ -19,9 +19,9 @@ namespace DefaultNamespace.Text {
         public static StationLogger Single;
 
         private SoupDatabase _SoupDatabase;
-        private SoupDatabase SoupDatabase => _SoupDatabase ??
-                                             (_SoupDatabase =
-                                                  JsonConvert.DeserializeObject<SoupDatabase>(SoupDatabaseAsset.text));
+        public SoupDatabase SoupDatabase => _SoupDatabase ??
+                                            (_SoupDatabase =
+                                                 JsonConvert.DeserializeObject<SoupDatabase>(SoupDatabaseAsset.text));
 
         private void Awake() {
             if (Single == null) {

@@ -1,1262 +1,1264 @@
-[
+{
+  "Soups": [
     {
-        "Name": "Aguadito",
-        "Origin": "Peru",
-        "Type": "Chunky",
-        "Details": "Peruvian green soup usually made with cilantro, carrot, peas, potatoes and can have chicken, hen, mussels or fish. It also contains ají amarillo (yellow chili pepper) and various other vegetables and spices. The green color is due to cilantro. It is known for having a potential for easing or alleviating symptoms associated with the hangover."
+      "Name": "Aguadito",
+      "Origin": "Peru",
+      "Type": "Chunky",
+      "Details": "Peruvian green soup usually made with cilantro, carrot, peas, potatoes and can have chicken, hen, mussels or fish. It also contains ají amarillo (yellow chili pepper) and various other vegetables and spices. The green color is due to cilantro. It is known for having a potential for easing or alleviating symptoms associated with the hangover."
     },
     {
-        "Name": "Ajiaco",
-        "Origin": "Colombia",
-        "Type": "Chunky",
-        "Details": "In the Colombian capital of Bogotá, ajiaco is typically made with chicken, three varieties of potatoes, and the Galinsoga parviflora herb commonly referred to in Colombia as guascas. In Cuba, it is a hearty stew made from beef, pork, chicken, vegetables, and a variety of starchy roots and tubers classified as viandas."
+      "Name": "Ajiaco",
+      "Origin": "Colombia",
+      "Type": "Chunky",
+      "Details": "In the Colombian capital of Bogotá, ajiaco is typically made with chicken, three varieties of potatoes, and the Galinsoga parviflora herb commonly referred to in Colombia as guascas. In Cuba, it is a hearty stew made from beef, pork, chicken, vegetables, and a variety of starchy roots and tubers classified as viandas."
     },
     {
-        "Name": "Açorda",
-        "Origin": "Portugal",
-        "Type": "Chunky",
-        "Details": "A typical Portuguese dish composed of thinly sliced bread with garlic, much finely chopped coriander, olive oil, vinegar, water, white pepper, salt and poached eggs."
+      "Name": "Açorda",
+      "Origin": "Portugal",
+      "Type": "Chunky",
+      "Details": "A typical Portuguese dish composed of thinly sliced bread with garlic, much finely chopped coriander, olive oil, vinegar, water, white pepper, salt and poached eggs."
     },
     {
-        "Name": "Acquacotta",
-        "Origin": "Italy (Kalona)",
-        "Type": "Chunky",
-        "Details": "Originally a peasant food, historically, its primary ingredients were water, stale bread, onion, tomato, olive oil and any spare vegetables or leftovers. It has been described as an ancient dish."
+      "Name": "Acquacotta",
+      "Origin": "Italy (Kalona)",
+      "Type": "Chunky",
+      "Details": "Originally a peasant food, historically, its primary ingredients were water, stale bread, onion, tomato, olive oil and any spare vegetables or leftovers. It has been described as an ancient dish."
     },
     {
-        "Name": "Amish preaching soup",
-        "Origin": "United States",
-        "Type": "Chunky",
-        "Details": "Typically served preceding or following Amish church services. Some versions are prepared with beans and ham hocks."
+      "Name": "Amish preaching soup",
+      "Origin": "United States",
+      "Type": "Chunky",
+      "Details": "Typically served preceding or following Amish church services. Some versions are prepared with beans and ham hocks."
     },
     {
-        "Name": "Analı kızlı soup",
-        "Origin": "Turkey",
-        "Type": "Chunky",
-        "Details": "Bulgur meatballs and chickpeas in gravy with yogurt"
+      "Name": "Analı kızlı soup",
+      "Origin": "Turkey",
+      "Type": "Chunky",
+      "Details": "Bulgur meatballs and chickpeas in gravy with yogurt"
     },
     {
-        "Name": "Ash-e doogh",
-        "Origin": "Iran",
-        "Type": "Yogurt soup",
-        "Details": "Consists of yogurt and leafy vegetables. Served hot."
+      "Name": "Ash-e doogh",
+      "Origin": "Iran",
+      "Type": "Yogurt soup",
+      "Details": "Consists of yogurt and leafy vegetables. Served hot."
     },
     {
-        "Name": "Avgolemono",
-        "Origin": "Greece",
-        "Type": "Potage",
-        "Details": "Chicken broth, rice or orzo, and lemon, thickened with tempered eggs"
+      "Name": "Avgolemono",
+      "Origin": "Greece",
+      "Type": "Potage",
+      "Details": "Chicken broth, rice or orzo, and lemon, thickened with tempered eggs"
     },
     {
-        "Name": "Avocado soup",
-        "Origin": "",
-        "Type": "",
-        "Details": "Can be prepared and served as a cold or hot soup"
+      "Name": "Avocado soup",
+      "Origin": "",
+      "Type": "",
+      "Details": "Can be prepared and served as a cold or hot soup"
     },
     {
-        "Name": "Bacon soup",
-        "Origin": "Europe",
-        "Type": "Chunky",
-        "Details": "Bacon, vegetables, and a thickening agent. Pictured is celery and bacon soup."
+      "Name": "Bacon soup",
+      "Origin": "Europe",
+      "Type": "Chunky",
+      "Details": "Bacon, vegetables, and a thickening agent. Pictured is celery and bacon soup."
     },
     {
-        "Name": "Bak kut teh",
-        "Origin": "Indonesia, Malaysia  and Singapore",
-        "Type": "Herbal",
-        "Details": "Consists of meaty pork ribs simmered in a complex broth of herbs and spices (including star anise, cinnamon, cloves, dang gui, fennel seeds and garlic) for hours."
+      "Name": "Bak kut teh",
+      "Origin": "Indonesia, Malaysia  and Singapore",
+      "Type": "Herbal",
+      "Details": "Consists of meaty pork ribs simmered in a complex broth of herbs and spices (including star anise, cinnamon, cloves, dang gui, fennel seeds and garlic) for hours."
     },
     {
-        "Name": "Bakso",
-        "Origin": "Indonesia",
-        "Type": "Meatballs soup",
-        "Details": "Meatball noodle soup in rich beef broth, sometimes include bok choy, noodles, tofu, hard-boiled egg, fried shallots and wontons."
+      "Name": "Bakso",
+      "Origin": "Indonesia",
+      "Type": "Meatballs soup",
+      "Details": "Meatball noodle soup in rich beef broth, sometimes include bok choy, noodles, tofu, hard-boiled egg, fried shallots and wontons."
     },
     {
-        "Name": "Barley",
-        "Origin": "Ancient",
-        "Type": "Chunky",
-        "Details": "Barley, vegetables, and broth"
+      "Name": "Barley",
+      "Origin": "Ancient",
+      "Type": "Chunky",
+      "Details": "Barley, vegetables, and broth"
     },
     {
-        "Name": "Beef noodle soup",
-        "Origin": "East Asia",
-        "Type": "Noodle",
-        "Details": "Stewed or red braised beef, beef broth, vegetables and Chinese noodles. It exists in various forms throughout East Asia and Southeast Asia, and is popular as a Chinese and Taiwanese noodle soup."
+      "Name": "Beef noodle soup",
+      "Origin": "East Asia",
+      "Type": "Noodle",
+      "Details": "Stewed or red braised beef, beef broth, vegetables and Chinese noodles. It exists in various forms throughout East Asia and Southeast Asia, and is popular as a Chinese and Taiwanese noodle soup."
     },
     {
-        "Name": "Beer soup",
-        "Origin": "Europe",
-        "Type": "Beverage soup",
-        "Details": "Recipe from the middle ages using heated beer and pieces of bread; though other ingredients were also used."
+      "Name": "Beer soup",
+      "Origin": "Europe",
+      "Type": "Beverage soup",
+      "Details": "Recipe from the middle ages using heated beer and pieces of bread; though other ingredients were also used."
     },
     {
-        "Name": "Bergen fish soup",
-        "Origin": "Norway",
-        "Type": "Fish",
-        "Details": "White fish (haddock, halibut, cod) and various vegetables in a heavy cream"
+      "Name": "Bergen fish soup",
+      "Origin": "Norway",
+      "Type": "Fish",
+      "Details": "White fish (haddock, halibut, cod) and various vegetables in a heavy cream"
     },
     {
-        "Name": "Binignit",
-        "Origin": "Philippines",
-        "Type": "Dessert",
-        "Details": "Coconut milk, fruits and tapioca pearls, served hot but sometimes chilled"
+      "Name": "Binignit",
+      "Origin": "Philippines",
+      "Type": "Dessert",
+      "Details": "Coconut milk, fruits and tapioca pearls, served hot but sometimes chilled"
     },
     {
-        "Name": "Bird\u0027s nest soup",
-        "Origin": "China",
-        "Type": "Gelatinous",
-        "Details": "Edible bird\u0027s nest, an expensive delicacy valued for its unusual texture"
+      "Name": "Bird\u0027s nest soup",
+      "Origin": "China",
+      "Type": "Gelatinous",
+      "Details": "Edible bird\u0027s nest, an expensive delicacy valued for its unusual texture"
     },
     {
-        "Name": "Borscht",
-        "Origin": "Eastern Europe",
-        "Type": "Chunky",
-        "Details": "Cabbage and beet-based soup with meat. Often eaten hot or cold. A national Russian, Belorussian, Ukrainian and Polish (without cabbage but with mushrooms, served on the Christmas Eve) dish."
+      "Name": "Borscht",
+      "Origin": "Eastern Europe",
+      "Type": "Chunky",
+      "Details": "Cabbage and beet-based soup with meat. Often eaten hot or cold. A national Russian, Belorussian, Ukrainian and Polish (without cabbage but with mushrooms, served on the Christmas Eve) dish."
     },
     {
-        "Name": "Bouillabaisse",
-        "Origin": "France",
-        "Type": "Fish",
-        "Details": "Fish soup"
+      "Name": "Bouillabaisse",
+      "Origin": "France",
+      "Type": "Fish",
+      "Details": "Fish soup"
     },
     {
-        "Name": "Bouillon (soup)",
-        "Origin": "Haiti",
-        "Type": "",
-        "Details": "Sliced meat, potatoes, sliced plantains, yam, kelp, cabbage, and celery. Traditionally prepared on Saturdays"
+      "Name": "Bouillon (soup)",
+      "Origin": "Haiti",
+      "Type": "",
+      "Details": "Sliced meat, potatoes, sliced plantains, yam, kelp, cabbage, and celery. Traditionally prepared on Saturdays"
     },
     {
-        "Name": "Bourou-Bourou",
-        "Origin": "Greece (Corfu)",
-        "Type": "Potage",
-        "Details": "Vegetable and pasta"
+      "Name": "Bourou-Bourou",
+      "Origin": "Greece (Corfu)",
+      "Type": "Potage",
+      "Details": "Vegetable and pasta"
     },
     {
-        "Name": "Bread soup",
-        "Origin": "Germany",
-        "Type": "Bread",
-        "Details": "Stale bread in a broth"
+      "Name": "Bread soup",
+      "Origin": "Germany",
+      "Type": "Bread",
+      "Details": "Stale bread in a broth"
     },
     {
-        "Name": "Brenebon",
-        "Origin": "The Netherlands and Indonesia",
-        "Type": "Beans",
-        "Details": "Kidney bean soup served in pig\u0027s trotters broth, spiced with shallot, garlic, salt, sugar, pepper, nutmeg and clove. Mixed with chopped green beans, celery and scallion."
+      "Name": "Brenebon",
+      "Origin": "The Netherlands and Indonesia",
+      "Type": "Beans",
+      "Details": "Kidney bean soup served in pig\u0027s trotters broth, spiced with shallot, garlic, salt, sugar, pepper, nutmeg and clove. Mixed with chopped green beans, celery and scallion."
     },
     {
-        "Name": "Brown veal",
-        "Origin": "",
-        "Type": "Clear or Stock",
-        "Details": "Veal"
+      "Name": "Brown veal",
+      "Origin": "",
+      "Type": "Clear or Stock",
+      "Details": "Veal"
     },
     {
-        "Name": "Brown Windsor soup",
-        "Origin": "England",
-        "Type": "Chunky",
-        "Details": "Lamb or beef steak, parsnips, carrots, leeks, bouquet garni, Madeira wine; popular in England during the Victorian and Edwardian eras"
+      "Name": "Brown Windsor soup",
+      "Origin": "England",
+      "Type": "Chunky",
+      "Details": "Lamb or beef steak, parsnips, carrots, leeks, bouquet garni, Madeira wine; popular in England during the Victorian and Edwardian eras"
     },
     {
-        "Name": "Bun bo Hue",
-        "Origin": "Vietnam",
-        "Type": "Noodle",
-        "Details": "A noodle soup from central Vietnam, with beef."
+      "Name": "Bun bo Hue",
+      "Origin": "Vietnam",
+      "Type": "Noodle",
+      "Details": "A noodle soup from central Vietnam, with beef."
     },
     {
-        "Name": "Buridda",
-        "Origin": "Italy (Liguria)",
-        "Type": "Chunky",
-        "Details": "seafood soup or stew"
+      "Name": "Buridda",
+      "Origin": "Italy (Liguria)",
+      "Type": "Chunky",
+      "Details": "seafood soup or stew"
     },
     {
-        "Name": "Butajiru",
-        "Origin": "Japan",
-        "Type": "Chunky",
-        "Details": "Pork soup"
+      "Name": "Butajiru",
+      "Origin": "Japan",
+      "Type": "Chunky",
+      "Details": "Pork soup"
     },
     {
-        "Name": "Cabbage soup, kapusniak, kapustnica, zelnacka",
-        "Origin": "Poland, Slovakia, Russia, Ukraine, Czech Republic",
-        "Type": "Chunky",
-        "Details": "Sauerkraut, meat"
+      "Name": "Cabbage soup, kapusniak, kapustnica, zelnacka",
+      "Origin": "Poland, Slovakia, Russia, Ukraine, Czech Republic",
+      "Type": "Chunky",
+      "Details": "Sauerkraut, meat"
     },
     {
-        "Name": "Caldillo de congrio",
-        "Origin": "Chile",
-        "Type": "",
-        "Details": "Conger eel heads, garlic, onion, coriander, carrots, pepper, chopped tomatoes, cream, boiled potatoes, and conger meat."
+      "Name": "Caldillo de congrio",
+      "Origin": "Chile",
+      "Type": "",
+      "Details": "Conger eel heads, garlic, onion, coriander, carrots, pepper, chopped tomatoes, cream, boiled potatoes, and conger meat."
     },
     {
-        "Name": "Caldillo de perro",
-        "Origin": "Spain (southern)",
-        "Type": "",
-        "Details": "Seafood, hake, garlic, olive oil, lemons, and Seville oranges. It is customarily served with sour orange juice."
+      "Name": "Caldillo de perro",
+      "Origin": "Spain (southern)",
+      "Type": "",
+      "Details": "Seafood, hake, garlic, olive oil, lemons, and Seville oranges. It is customarily served with sour orange juice."
     },
     {
-        "Name": "Caldo verde",
-        "Origin": "Portugal",
-        "Type": "Chunky",
-        "Details": "Potatoes, thinly sliced kale, with slices of chouriço added before serving."
+      "Name": "Caldo verde",
+      "Origin": "Portugal",
+      "Type": "Chunky",
+      "Details": "Potatoes, thinly sliced kale, with slices of chouriço added before serving."
     },
     {
-        "Name": "Callaloo",
-        "Origin": "Caribbean",
-        "Type": "Chowder",
-        "Details": "Taro leaf or other leafy greens, usually with pork or crab added for flavor. The greens referred to as callaloo vary from island to island depending on availability."
+      "Name": "Callaloo",
+      "Origin": "Caribbean",
+      "Type": "Chowder",
+      "Details": "Taro leaf or other leafy greens, usually with pork or crab added for flavor. The greens referred to as callaloo vary from island to island depending on availability."
     },
     {
-        "Name": "Canh chua",
-        "Origin": "Vietnam",
-        "Type": "Fish",
-        "Details": "A fish soup from southern Vietnam, made sour with tamarind."
+      "Name": "Canh chua",
+      "Origin": "Vietnam",
+      "Type": "Fish",
+      "Details": "A fish soup from southern Vietnam, made sour with tamarind."
     },
     {
-        "Name": "Canja de Galinha",
-        "Origin": "Portugal, Brazil, Cape Verde",
-        "Type": "Chunky",
-        "Details": "Chicken, pasta and lemon, particularly popular in the states of Minas Gerais and Goiás"
+      "Name": "Canja de Galinha",
+      "Origin": "Portugal, Brazil, Cape Verde",
+      "Type": "Chunky",
+      "Details": "Chicken, pasta and lemon, particularly popular in the states of Minas Gerais and Goiás"
     },
     {
-        "Name": "Carp soup [cs]",
-        "Origin": "Czech Republic",
-        "Type": "Fish",
-        "Details": "Carp\u0027s head and offal, onion and vegetable. Part of traditional Czech Christmas Eve dinner."
+      "Name": "Carp soup [cs]",
+      "Origin": "Czech Republic",
+      "Type": "Fish",
+      "Details": "Carp\u0027s head and offal, onion and vegetable. Part of traditional Czech Christmas Eve dinner."
     },
     {
-        "Name": "Carrot soup",
-        "Origin": "",
-        "Type": "",
-        "Details": "Prepared with carrot as a primary ingredient, it can be prepared as a cream-style soup and as a broth-style soup."
+      "Name": "Carrot soup",
+      "Origin": "",
+      "Type": "",
+      "Details": "Prepared with carrot as a primary ingredient, it can be prepared as a cream-style soup and as a broth-style soup."
     },
     {
-        "Name": "Cazuela",
-        "Origin": "Spain",
-        "Type": "Chunky",
-        "Details": "Clear broth, rice, potato, squash or pumpkin, corn and chicken or beef. Eaten in South America and Spain, it combines native and introduced ingredients. Pictured is an Ecuadorian cazuela."
+      "Name": "Cazuela",
+      "Origin": "Spain",
+      "Type": "Chunky",
+      "Details": "Clear broth, rice, potato, squash or pumpkin, corn and chicken or beef. Eaten in South America and Spain, it combines native and introduced ingredients. Pictured is an Ecuadorian cazuela."
     },
     {
-        "Name": "Chestnut bisque",
-        "Origin": "France",
-        "Type": "Bisque",
-        "Details": "Chestnuts are a primary ingredient"
+      "Name": "Chestnut bisque",
+      "Origin": "France",
+      "Type": "Bisque",
+      "Details": "Chestnuts are a primary ingredient"
     },
     {
-        "Name": "Chicken noodle soup",
-        "Origin": "",
-        "Type": "Noodle",
-        "Details": "Chicken, stock, noodles, such as egg noodles"
+      "Name": "Chicken noodle soup",
+      "Origin": "",
+      "Type": "Noodle",
+      "Details": "Chicken, stock, noodles, such as egg noodles"
     },
     {
-        "Name": "Chicken soup",
-        "Origin": "",
-        "Type": "Clear or Stock",
-        "Details": "Made from chicken that\u0027s simmered with various other ingredients. Pictured is southern Chinese style chicken soup with mushrooms and corn."
+      "Name": "Chicken soup",
+      "Origin": "",
+      "Type": "Clear or Stock",
+      "Details": "Made from chicken that\u0027s simmered with various other ingredients. Pictured is southern Chinese style chicken soup with mushrooms and corn."
     },
     {
-        "Name": "Chicken vegetable soup",
-        "Origin": "",
-        "Type": "Vegetable soup",
-        "Details": "Chicken, stock, onion, green beans, carrots, potato"
+      "Name": "Chicken vegetable soup",
+      "Origin": "",
+      "Type": "Vegetable soup",
+      "Details": "Chicken, stock, onion, green beans, carrots, potato"
     },
     {
-        "Name": "Chupe",
-        "Origin": "Peru",
-        "Type": "Chowder",
-        "Details": "Thin, milky seafood soup, also referred to as Chupe de Mariscos"
+      "Name": "Chupe",
+      "Origin": "Peru",
+      "Type": "Chowder",
+      "Details": "Thin, milky seafood soup, also referred to as Chupe de Mariscos"
     },
     {
-        "Name": "Chupe Andino",
-        "Origin": "Andes",
-        "Type": "",
-        "Details": "Refers to various soups and stews that are prepared in Andes Mountains region of South America"
+      "Name": "Chupe Andino",
+      "Origin": "Andes",
+      "Type": "",
+      "Details": "Refers to various soups and stews that are prepared in Andes Mountains region of South America"
     },
     {
-        "Name": "Cioppino",
-        "Origin": "San Francisco, California",
-        "Type": "Fish",
-        "Details": "Fish stew with tomatoes and a variety of fish and shellfish (Italian-American)"
+      "Name": "Cioppino",
+      "Origin": "San Francisco, California",
+      "Type": "Fish",
+      "Details": "Fish stew with tomatoes and a variety of fish and shellfish (Italian-American)"
     },
     {
-        "Name": "Cock-a-leekie",
-        "Origin": "Scotland",
-        "Type": "Chunky",
-        "Details": "Leek and potato soup made with chicken stock"
+      "Name": "Cock-a-leekie",
+      "Origin": "Scotland",
+      "Type": "Chunky",
+      "Details": "Leek and potato soup made with chicken stock"
     },
     {
-        "Name": "Cold borscht / Šaltibarščiai",
-        "Origin": "Lithuania",
-        "Type": "Cold (chilled)",
-        "Details": "Beetroot (or sometimes tomato), popular in Eastern Europe. A Lithuanian specialty, usually made in summer time in one varietiy, almost always cold. Based on beets, usually served with either hot boiled or fried potatoes."
+      "Name": "Cold borscht / Šaltibarščiai",
+      "Origin": "Lithuania",
+      "Type": "Cold (chilled)",
+      "Details": "Beetroot (or sometimes tomato), popular in Eastern Europe. A Lithuanian specialty, usually made in summer time in one varietiy, almost always cold. Based on beets, usually served with either hot boiled or fried potatoes."
     },
     {
-        "Name": "Consommé",
-        "Origin": "France",
-        "Type": "Clear or Stock",
-        "Details": null
+      "Name": "Consommé",
+      "Origin": "France",
+      "Type": "Clear or Stock",
+      "Details": null
     },
     {
-        "Name": "Corn chowder",
-        "Origin": "United States (New England)",
-        "Type": "Chowder",
-        "Details": "Similar to New England clam chowder, with corn substituted for clams in the recipe"
+      "Name": "Corn chowder",
+      "Origin": "United States (New England)",
+      "Type": "Chowder",
+      "Details": "Similar to New England clam chowder, with corn substituted for clams in the recipe"
     },
     {
-        "Name": "Crab bisque",
-        "Origin": "France",
-        "Type": "Bisque",
-        "Details": "Crab stock and heavy cream"
+      "Name": "Crab bisque",
+      "Origin": "France",
+      "Type": "Bisque",
+      "Details": "Crab stock and heavy cream"
     },
     {
-        "Name": "Cream of apple soup",
-        "Origin": "",
-        "Type": "Cream",
-        "Details": "Granny Smith apples, stock, cream, spices"
+      "Name": "Cream of apple soup",
+      "Origin": "",
+      "Type": "Cream",
+      "Details": "Granny Smith apples, stock, cream, spices"
     },
     {
-        "Name": "Cream of asparagus",
-        "Origin": "",
-        "Type": "Cream",
-        "Details": "Onions, asparagus, chicken broth, heavy cream"
+      "Name": "Cream of asparagus",
+      "Origin": "",
+      "Type": "Cream",
+      "Details": "Onions, asparagus, chicken broth, heavy cream"
     },
     {
-        "Name": "Cream of broccoli",
-        "Origin": "",
-        "Type": "Cream",
-        "Details": "Broccoli, stock, and milk or cream as primary ingredients"
+      "Name": "Cream of broccoli",
+      "Origin": "",
+      "Type": "Cream",
+      "Details": "Broccoli, stock, and milk or cream as primary ingredients"
     },
     {
-        "Name": "Cream of celery",
-        "Origin": "",
-        "Type": "Cream",
-        "Details": null
+      "Name": "Cream of celery",
+      "Origin": "",
+      "Type": "Cream",
+      "Details": null
     },
     {
-        "Name": "Cream of chicken",
-        "Origin": "",
-        "Type": "Cream",
-        "Details": "Mass-produced in a condensed soup form, various non-commercial and homemade variations also exist"
+      "Name": "Cream of chicken",
+      "Origin": "",
+      "Type": "Cream",
+      "Details": "Mass-produced in a condensed soup form, various non-commercial and homemade variations also exist"
     },
     {
-        "Name": "Cream of potato",
-        "Origin": "",
-        "Type": "Cream",
-        "Details": null
+      "Name": "Cream of potato",
+      "Origin": "",
+      "Type": "Cream",
+      "Details": null
     },
     {
-        "Name": "Cream of tomato",
-        "Origin": "",
-        "Type": "Cream",
-        "Details": null
+      "Name": "Cream of tomato",
+      "Origin": "",
+      "Type": "Cream",
+      "Details": null
     },
     {
-        "Name": "Cream of Crab",
-        "Origin": "France",
-        "Type": "Bisque",
-        "Details": "Pictured is Maryland cream of crab soup."
+      "Name": "Cream of Crab",
+      "Origin": "France",
+      "Type": "Bisque",
+      "Details": "Pictured is Maryland cream of crab soup."
     },
     {
-        "Name": "Cream of mushroom",
-        "Origin": "",
-        "Type": "Cream",
-        "Details": null
+      "Name": "Cream of mushroom",
+      "Origin": "",
+      "Type": "Cream",
+      "Details": null
     },
     {
-        "Name": "Crème Ninon",
-        "Origin": "Sweden",
-        "Type": "Bisque",
-        "Details": "Base of a heavy stock purée of green peas and dry champagne"
+      "Name": "Crème Ninon",
+      "Origin": "Sweden",
+      "Type": "Bisque",
+      "Details": "Base of a heavy stock purée of green peas and dry champagne"
     },
     {
-        "Name": "Cucumber soup",
-        "Origin": "",
-        "Type": "Cold (chilled)",
-        "Details": "Cucumber soup is known in various cuisines."
+      "Name": "Cucumber soup",
+      "Origin": "",
+      "Type": "Cold (chilled)",
+      "Details": "Cucumber soup is known in various cuisines."
     },
     {
-        "Name": "Cullen skink",
-        "Origin": "Scotland",
-        "Type": "Fish",
-        "Details": "Smoked haddock, potatoes, onions and cream"
+      "Name": "Cullen skink",
+      "Origin": "Scotland",
+      "Type": "Fish",
+      "Details": "Smoked haddock, potatoes, onions and cream"
     },
     {
-        "Name": "Curry Mee",
-        "Origin": "Indonesia and Malaysia",
-        "Type": "Noodle",
-        "Details": "thin yellow noodles or/and string thin mee-hoon (rice vermicelli) with spicy curry soup, chilli/sambal, coconut milk, and a choice of dried tofu, prawns, cuttlefish, chicken, egg, mint leaves and cockle."
+      "Name": "Curry Mee",
+      "Origin": "Indonesia and Malaysia",
+      "Type": "Noodle",
+      "Details": "thin yellow noodles or/and string thin mee-hoon (rice vermicelli) with spicy curry soup, chilli/sambal, coconut milk, and a choice of dried tofu, prawns, cuttlefish, chicken, egg, mint leaves and cockle."
     },
     {
-        "Name": "Dalithoy",
-        "Origin": "India (Konkan region)",
-        "Type": "Hot, Vegetable",
-        "Details": "Soup made with split yellow lentils and spices. It is a Konkani staple that is often served over rice."
+      "Name": "Dalithoy",
+      "Origin": "India (Konkan region)",
+      "Type": "Hot, Vegetable",
+      "Details": "Soup made with split yellow lentils and spices. It is a Konkani staple that is often served over rice."
     },
     {
-        "Name": "Dashi",
-        "Origin": "Japan",
-        "Type": "Cold (chilled)",
-        "Details": "Clear fish stock made with kombu (sea kelp) and katsuobushi (smoked bonito flakes). Dashi broth is often used as a base for miso soup and other Japanese soup broths."
+      "Name": "Dashi",
+      "Origin": "Japan",
+      "Type": "Cold (chilled)",
+      "Details": "Clear fish stock made with kombu (sea kelp) and katsuobushi (smoked bonito flakes). Dashi broth is often used as a base for miso soup and other Japanese soup broths."
     },
     {
-        "Name": "Dillegrout",
-        "Origin": "England",
-        "Type": "Chicken stew",
-        "Details": "Chicken pottage made with almond milk, sugar, and spices traditionally presented at coronations of English monarchs by the lord of the manor of Addington."
+      "Name": "Dillegrout",
+      "Origin": "England",
+      "Type": "Chicken stew",
+      "Details": "Chicken pottage made with almond milk, sugar, and spices traditionally presented at coronations of English monarchs by the lord of the manor of Addington."
     },
     {
-        "Name": "Duck soup noodles",
-        "Origin": "Malaysia",
-        "Type": "Noodle",
-        "Details": "The dish consists of ingredients such as duck meat in hot soup with mixed herbs and Bee sua served in particular at Penang hawker centres."
+      "Name": "Duck soup noodles",
+      "Origin": "Malaysia",
+      "Type": "Noodle",
+      "Details": "The dish consists of ingredients such as duck meat in hot soup with mixed herbs and Bee sua served in particular at Penang hawker centres."
     },
     {
-        "Name": "Egg drop soup",
-        "Origin": "China",
-        "Type": "Noodle",
-        "Details": "Savory soup made by pouring beaten eggs into swirling boiling water or broth"
+      "Name": "Egg drop soup",
+      "Origin": "China",
+      "Type": "Noodle",
+      "Details": "Savory soup made by pouring beaten eggs into swirling boiling water or broth"
     },
     {
-        "Name": "Egusi soup",
-        "Origin": "Nigeria",
-        "Type": "Chunky (Medicine)",
-        "Details": "Vegetable soup"
+      "Name": "Egusi soup",
+      "Origin": "Nigeria",
+      "Type": "Chunky (Medicine)",
+      "Details": "Vegetable soup"
     },
     {
-        "Name": "Ezogelin soup",
-        "Origin": "Turkey",
-        "Type": "Chunky",
-        "Details": "Savory soup made by red lentil, bulgur, onion, garlic, salt, olive oil, black pepper, hot pepper and peppermint"
+      "Name": "Ezogelin soup",
+      "Origin": "Turkey",
+      "Type": "Chunky",
+      "Details": "Savory soup made by red lentil, bulgur, onion, garlic, salt, olive oil, black pepper, hot pepper and peppermint"
     },
     {
-        "Name": "Fabada Asturiana",
-        "Origin": "Spain (Asturias)",
-        "Type": "Chunky",
-        "Details": "Dried large white beans (fabes de la Granja, soaked overnight before use), shoulder of pork (lacón) or bacon (tocino), black pudding (morcilla), chorizo, and saffron (azafrán)"
+      "Name": "Fabada Asturiana",
+      "Origin": "Spain (Asturias)",
+      "Type": "Chunky",
+      "Details": "Dried large white beans (fabes de la Granja, soaked overnight before use), shoulder of pork (lacón) or bacon (tocino), black pudding (morcilla), chorizo, and saffron (azafrán)"
     },
     {
-        "Name": "Fanesca",
-        "Origin": "Ecuador",
-        "Type": "Fish",
-        "Details": "Cod soup"
+      "Name": "Fanesca",
+      "Origin": "Ecuador",
+      "Type": "Fish",
+      "Details": "Cod soup"
     },
     {
-        "Name": "Fish soup bee hoon",
-        "Origin": "Singapore",
-        "Type": "Fish/seafood",
-        "Details": "Seafood"
+      "Name": "Fish soup bee hoon",
+      "Origin": "Singapore",
+      "Type": "Fish/seafood",
+      "Details": "Seafood"
     },
     {
-        "Name": "Fish",
-        "Origin": "",
-        "Type": "Clear or Stock",
-        "Details": null
+      "Name": "Fish",
+      "Origin": "",
+      "Type": "Clear or Stock",
+      "Details": null
     },
     {
-        "Name": "Fisherman\u0027s Soup",
-        "Origin": "Hungary",
-        "Type": "Fish",
-        "Details": "Ηot and spicy river fish soup with a lot of hot paprika (Hungarian: Halászlé)"
+      "Name": "Fisherman\u0027s Soup",
+      "Origin": "Hungary",
+      "Type": "Fish",
+      "Details": "Ηot and spicy river fish soup with a lot of hot paprika (Hungarian: Halászlé)"
     },
     {
-        "Name": "French onion soup",
-        "Origin": "France",
-        "Type": "Potage",
-        "Details": "Deep, rich broth made with onions and beef. Often topped with croutons and gruyere cheese melted golden on top, over the edges of the bowl."
+      "Name": "French onion soup",
+      "Origin": "France",
+      "Type": "Potage",
+      "Details": "Deep, rich broth made with onions and beef. Often topped with croutons and gruyere cheese melted golden on top, over the edges of the bowl."
     },
     {
-        "Name": "Frittatensuppe",
-        "Origin": "Austria",
-        "Type": "Clear",
-        "Details": "Broth with crumbled slices of pancakes, also popular in South Germany and Switzerland (Pfannkuchensuppe, Flädlisuppe)"
+      "Name": "Frittatensuppe",
+      "Origin": "Austria",
+      "Type": "Clear",
+      "Details": "Broth with crumbled slices of pancakes, also popular in South Germany and Switzerland (Pfannkuchensuppe, Flädlisuppe)"
     },
     {
-        "Name": "Fruktsoppa",
-        "Origin": "Sweden",
-        "Type": "Dessert",
-        "Details": "Dried fruit such as raisins and prunes"
+      "Name": "Fruktsoppa",
+      "Origin": "Sweden",
+      "Type": "Dessert",
+      "Details": "Dried fruit such as raisins and prunes"
     },
     {
-        "Name": "Fufu and Egusi soup",
-        "Origin": "Nigeria",
-        "Type": "Chunky",
-        "Details": "Vegetables, meat, fish, and balls of ground melon seed"
+      "Name": "Fufu and Egusi soup",
+      "Origin": "Nigeria",
+      "Type": "Chunky",
+      "Details": "Vegetables, meat, fish, and balls of ground melon seed"
     },
     {
-        "Name": "Fumet",
-        "Origin": "France",
-        "Type": "Clear or Stock",
-        "Details": "Fish stock, often concentrated and used as a base for sauces, and usually made with fish heads and bones"
+      "Name": "Fumet",
+      "Origin": "France",
+      "Type": "Clear or Stock",
+      "Details": "Fish stock, often concentrated and used as a base for sauces, and usually made with fish heads and bones"
     },
     {
-        "Name": "Garmugia",
-        "Origin": "Italy (Lucca, Tuscany, central Italy)",
-        "Type": "Chunky",
-        "Details": "Primary ingredients include chicken or vegetable stock or broth, asparagus, artichoke hearts, fava beans, peas, onion and meats, such as pancetta and veal."
+      "Name": "Garmugia",
+      "Origin": "Italy (Lucca, Tuscany, central Italy)",
+      "Type": "Chunky",
+      "Details": "Primary ingredients include chicken or vegetable stock or broth, asparagus, artichoke hearts, fava beans, peas, onion and meats, such as pancetta and veal."
     },
     {
-        "Name": "Gazpacho",
-        "Origin": "Spain",
-        "Type": "Cold (chilled)",
-        "Details": "Pureed tomato and vegetables"
+      "Name": "Gazpacho",
+      "Origin": "Spain",
+      "Type": "Cold (chilled)",
+      "Details": "Pureed tomato and vegetables"
     },
     {
-        "Name": "Ginataan",
-        "Origin": "Philippines",
-        "Type": "Chunky",
-        "Details": "Method of cooking using coconut milk. Due to the general nature of the term, it can refer to a number of different dishes, each called ginataan, but distinct from one another."
+      "Name": "Ginataan",
+      "Origin": "Philippines",
+      "Type": "Chunky",
+      "Details": "Method of cooking using coconut milk. Due to the general nature of the term, it can refer to a number of different dishes, each called ginataan, but distinct from one another."
     },
     {
-        "Name": "Ginestrata",
-        "Origin": "Italy (Tuscany, Northern Italy)",
-        "Type": "Clear or stock",
-        "Details": "Thin, lightly spiced egg-based soup prepared with primary ingredients of egg yolks, chicken stock, and Marsala wine or white wine"
+      "Name": "Ginestrata",
+      "Origin": "Italy (Tuscany, Northern Italy)",
+      "Type": "Clear or stock",
+      "Details": "Thin, lightly spiced egg-based soup prepared with primary ingredients of egg yolks, chicken stock, and Marsala wine or white wine"
     },
     {
-        "Name": "Goat meat pepper soup",
-        "Origin": "Nigeria",
-        "Type": "",
-        "Details": "Common ingredients are goat meat, crayfish, Uziza, Negro Pepper (also called Uda Ewentia or Enge) and nutmeg, such as Calabash Nutmeg (also called Ehu or Ariwo)."
+      "Name": "Goat meat pepper soup",
+      "Origin": "Nigeria",
+      "Type": "",
+      "Details": "Common ingredients are goat meat, crayfish, Uziza, Negro Pepper (also called Uda Ewentia or Enge) and nutmeg, such as Calabash Nutmeg (also called Ehu or Ariwo)."
     },
     {
-        "Name": "Gogi guksu",
-        "Origin": "South Korea (Jeju Province)",
-        "Type": "",
-        "Details": "Pork and noodle soup"
+      "Name": "Gogi guksu",
+      "Origin": "South Korea (Jeju Province)",
+      "Type": "",
+      "Details": "Pork and noodle soup"
     },
     {
-        "Name": "Golden Mushroom",
-        "Origin": "USA",
-        "Type": "",
-        "Details": "A variation of Cream of Mushroom Soup"
+      "Name": "Golden Mushroom",
+      "Origin": "USA",
+      "Type": "",
+      "Details": "A variation of Cream of Mushroom Soup"
     },
     {
-        "Name": "Gomguk",
-        "Origin": "Korea",
-        "Type": "Chunky",
-        "Details": "Beef parts such as ribs, oxtail, brisket, ox\u0027s head or ox bones by slow simmering on a low flame. The broth of gomguk tends to have a milky color, with a rich and hearty taste."
+      "Name": "Gomguk",
+      "Origin": "Korea",
+      "Type": "Chunky",
+      "Details": "Beef parts such as ribs, oxtail, brisket, ox\u0027s head or ox bones by slow simmering on a low flame. The broth of gomguk tends to have a milky color, with a rich and hearty taste."
     },
     {
-        "Name": "Goulash soup",
-        "Origin": "Hungary",
-        "Type": "Chunky",
-        "Details": "Beef, pork, paprika, peppers, tomato, potato, and onion. Hungarian: gulyas translates roughly as cowboy"
+      "Name": "Goulash soup",
+      "Origin": "Hungary",
+      "Type": "Chunky",
+      "Details": "Beef, pork, paprika, peppers, tomato, potato, and onion. Hungarian: gulyas translates roughly as cowboy"
     },
     {
-        "Name": "Ground nut soup",
-        "Origin": "West Africa",
-        "Type": "",
-        "Details": "Groundnuts, also known as peanuts"
+      "Name": "Ground nut soup",
+      "Origin": "West Africa",
+      "Type": "",
+      "Details": "Groundnuts, also known as peanuts"
     },
     {
-        "Name": "Kimchi Guk",
-        "Origin": "Korea",
-        "Type": "Chunky",
-        "Details": "Kimchi soup"
+      "Name": "Kimchi Guk",
+      "Origin": "Korea",
+      "Type": "Chunky",
+      "Details": "Kimchi soup"
     },
     {
-        "Name": "Gumbo",
-        "Origin": "United States (Louisiana)",
-        "Type": "Chunky",
-        "Details": "Creole soup from the American South, most popular in New Orleans. Often includes seafood, made with shrimp or crab stock and andouille sausage and thickened with a dark roux."
+      "Name": "Gumbo",
+      "Origin": "United States (Louisiana)",
+      "Type": "Chunky",
+      "Details": "Creole soup from the American South, most popular in New Orleans. Often includes seafood, made with shrimp or crab stock and andouille sausage and thickened with a dark roux."
     },
     {
-        "Name": "Harira",
-        "Origin": "Magreb",
-        "Type": "Chunky",
-        "Details": "Popular as a starter but is also eaten on its own as a light snack. There are many variations and it is mostly served during Ramadan, although it can be made throughout the year."
+      "Name": "Harira",
+      "Origin": "Magreb",
+      "Type": "Chunky",
+      "Details": "Popular as a starter but is also eaten on its own as a light snack. There are many variations and it is mostly served during Ramadan, although it can be made throughout the year."
     },
     {
-        "Name": "Hot and sour soup",
-        "Origin": "Asia",
-        "Type": "Chunky",
-        "Details": "Soups from several Asian culinary traditions. In all cases, the soup contains ingredients to make it both spicy and sour."
+      "Name": "Hot and sour soup",
+      "Origin": "Asia",
+      "Type": "Chunky",
+      "Details": "Soups from several Asian culinary traditions. In all cases, the soup contains ingredients to make it both spicy and sour."
     },
     {
-        "Name": "Íslensk Kjötsúpa",
-        "Origin": "Iceland",
-        "Type": "Chunky",
-        "Details": "Meat soup made with lamb and vegetables"
+      "Name": "Íslensk Kjötsúpa",
+      "Origin": "Iceland",
+      "Type": "Chunky",
+      "Details": "Meat soup made with lamb and vegetables"
     },
     {
-        "Name": "Joumou",
-        "Origin": "Haiti",
-        "Type": "Chunky",
-        "Details": "Mildly spicy pumpkin soup made with pieces of beef, potato, plantains and vegetables such as parsley, carrots, green cabbage, celery and onions. It is eaten every first of January in honor of Haitian independence in 1804."
+      "Name": "Joumou",
+      "Origin": "Haiti",
+      "Type": "Chunky",
+      "Details": "Mildly spicy pumpkin soup made with pieces of beef, potato, plantains and vegetables such as parsley, carrots, green cabbage, celery and onions. It is eaten every first of January in honor of Haitian independence in 1804."
     },
     {
-        "Name": "Kharcho",
-        "Origin": "Georgia",
-        "Type": "Chunky",
-        "Details": "Lamb, rice, vegetables and a highly spiced bouillon"
+      "Name": "Kharcho",
+      "Origin": "Georgia",
+      "Type": "Chunky",
+      "Details": "Lamb, rice, vegetables and a highly spiced bouillon"
     },
     {
-        "Name": "Kusksu",
-        "Origin": "Malta",
-        "Type": "Chunky",
-        "Details": "Kusksu is a traditional Maltese soup made primarily from seasonal broad beans, small pasta beads - known locally as kusksu - and fresh ġbejniet. Although similar is shape, kusksu pasta, which gives the soup its name, is \"not to be confused with couscous\"."
+      "Name": "Kusksu",
+      "Origin": "Malta",
+      "Type": "Chunky",
+      "Details": "Kusksu is a traditional Maltese soup made primarily from seasonal broad beans, small pasta beads - known locally as kusksu - and fresh ġbejniet. Although similar is shape, kusksu pasta, which gives the soup its name, is \"not to be confused with couscous\"."
     },
     {
-        "Name": "Kwāti",
-        "Origin": "Nepal",
-        "Type": "Chunky",
-        "Details": "Mixed soup of nine types of sprouted beans: black gram, green gram, chickpea, field bean, soybean, field pea, garden pea, cowpea, and rice bean"
+      "Name": "Kwāti",
+      "Origin": "Nepal",
+      "Type": "Chunky",
+      "Details": "Mixed soup of nine types of sprouted beans: black gram, green gram, chickpea, field bean, soybean, field pea, garden pea, cowpea, and rice bean"
     },
     {
-        "Name": "Laksa",
-        "Origin": "Indonesia and Malaysia",
-        "Type": "Noodle",
-        "Details": "A Peranakan cuisine."
+      "Name": "Laksa",
+      "Origin": "Indonesia and Malaysia",
+      "Type": "Noodle",
+      "Details": "A Peranakan cuisine."
     },
     {
-        "Name": "Lagman",
-        "Origin": "Uzbekistan",
-        "Type": "Chunky",
-        "Details": "Pasta, vegetables, ground lamb and numerous spices"
+      "Name": "Lagman",
+      "Origin": "Uzbekistan",
+      "Type": "Chunky",
+      "Details": "Pasta, vegetables, ground lamb and numerous spices"
     },
     {
-        "Name": "Leek soup",
-        "Origin": "Wales",
-        "Type": "Chunky",
-        "Details": "Leeks and often potatoes. Popular during St. David\u0027s Day. Pictured is leek and potato soup."
+      "Name": "Leek soup",
+      "Origin": "Wales",
+      "Type": "Chunky",
+      "Details": "Leeks and often potatoes. Popular during St. David\u0027s Day. Pictured is leek and potato soup."
     },
     {
-        "Name": "Lettuce soup",
-        "Origin": "",
-        "Type": "",
-        "Details": "Lettuce is a primary ingredient. Some versions purée all of the ingredients together, and cream of lettuce soup is a type of lettuce soup."
+      "Name": "Lettuce soup",
+      "Origin": "",
+      "Type": "",
+      "Details": "Lettuce is a primary ingredient. Some versions purée all of the ingredients together, and cream of lettuce soup is a type of lettuce soup."
     },
     {
-        "Name": "Lentil soup",
-        "Origin": "Ancient",
-        "Type": "Chunky",
-        "Details": "Red, green, or brown lentils. Popular in the Middle East and Mediterranean area."
+      "Name": "Lentil soup",
+      "Origin": "Ancient",
+      "Type": "Chunky",
+      "Details": "Red, green, or brown lentils. Popular in the Middle East and Mediterranean area."
     },
     {
-        "Name": "Lobster stew",
-        "Origin": "Spain",
-        "Type": "Chunky",
-        "Details": "Cream or stock-based soup with chunks of lobster"
+      "Name": "Lobster stew",
+      "Origin": "Spain",
+      "Type": "Chunky",
+      "Details": "Cream or stock-based soup with chunks of lobster"
     },
     {
-        "Name": "Lobster bisque",
-        "Origin": "France",
-        "Type": "Bisque",
-        "Details": "Lobster stock, heavy cream, and sherry"
+      "Name": "Lobster bisque",
+      "Origin": "France",
+      "Type": "Bisque",
+      "Details": "Lobster stock, heavy cream, and sherry"
     },
     {
-        "Name": "Log-log",
-        "Origin": "Philippines",
-        "Type": "Noodle",
-        "Details": "Egg noodle soup (regional variants include Kinalas, Batchoy)"
+      "Name": "Log-log",
+      "Origin": "Philippines",
+      "Type": "Noodle",
+      "Details": "Egg noodle soup (regional variants include Kinalas, Batchoy)"
     },
     {
-        "Name": "Lohikeitto",
-        "Origin": "Finland",
-        "Type": "Fish",
-        "Details": "Salmon, potatoes (other root vegetables can be added such as rutabaga, carrots, onions), cream, and dill"
+      "Name": "Lohikeitto",
+      "Origin": "Finland",
+      "Type": "Fish",
+      "Details": "Salmon, potatoes (other root vegetables can be added such as rutabaga, carrots, onions), cream, and dill"
     },
     {
-        "Name": "Lung fung soup",
-        "Origin": "China",
-        "Type": "Snake",
-        "Details": "Oriental Ratsnake[further explanation needed] soup made with chicken, lemon, chili peppers, and Chinese vegetables"
+      "Name": "Lung fung soup",
+      "Origin": "China",
+      "Type": "Snake",
+      "Details": "Oriental Ratsnake[further explanation needed] soup made with chicken, lemon, chili peppers, and Chinese vegetables"
     },
     {
-        "Name": "Lyvzha",
-        "Origin": "Ossetia",
-        "Type": "Beef",
-        "Details": "Beef, potatoes, onion, garlic, carrots and thyme, etc."
+      "Name": "Lyvzha",
+      "Origin": "Ossetia",
+      "Type": "Beef",
+      "Details": "Beef, potatoes, onion, garlic, carrots and thyme, etc."
     },
     {
-        "Name": "Maccu",
-        "Origin": "Italy (Sicily)",
-        "Type": "Chunky",
-        "Details": "fava beans is a primary ingredient"
+      "Name": "Maccu",
+      "Origin": "Italy (Sicily)",
+      "Type": "Chunky",
+      "Details": "fava beans is a primary ingredient"
     },
     {
-        "Name": "Manhattan clam chowder",
-        "Origin": "United States (Rhode Island)",
-        "Type": "Chowder",
-        "Details": "Tomato-based clam chowder"
+      "Name": "Manhattan clam chowder",
+      "Origin": "United States (Rhode Island)",
+      "Type": "Chowder",
+      "Details": "Tomato-based clam chowder"
     },
     {
-        "Name": "Maryland crab soup",
-        "Origin": "United States (Maryland)",
-        "Type": "Chowder",
-        "Details": "Vegetables, blue crab, and Old Bay Seasoning in a tomato base"
+      "Name": "Maryland crab soup",
+      "Origin": "United States (Maryland)",
+      "Type": "Chowder",
+      "Details": "Vegetables, blue crab, and Old Bay Seasoning in a tomato base"
     },
     {
-        "Name": "Matzah ball soup",
-        "Origin": "Jewish (Ashkenazi)",
-        "Type": "Chunky",
-        "Details": "Staple food on Passover. The Matzah ball dumplings are traditionally served in chicken broth with sliced carrots, garnished with chopped parsley. Matzo balls are also referred to as knaidel or knaedle."
+      "Name": "Matzah ball soup",
+      "Origin": "Jewish (Ashkenazi)",
+      "Type": "Chunky",
+      "Details": "Staple food on Passover. The Matzah ball dumplings are traditionally served in chicken broth with sliced carrots, garnished with chopped parsley. Matzo balls are also referred to as knaidel or knaedle."
     },
     {
-        "Name": "Melon soup",
-        "Origin": "",
-        "Type": "Varies",
-        "Details": "Soup prepared with melon as a primary ingredient. Pictured is a muskmelon soup."
+      "Name": "Melon soup",
+      "Origin": "",
+      "Type": "Varies",
+      "Details": "Soup prepared with melon as a primary ingredient. Pictured is a muskmelon soup."
     },
     {
-        "Name": "Minestrone",
-        "Origin": "Italy",
-        "Type": "Chunky",
-        "Details": "Vegetables with noodles"
+      "Name": "Minestrone",
+      "Origin": "Italy",
+      "Type": "Chunky",
+      "Details": "Vegetables with noodles"
     },
     {
-        "Name": "Miso soup",
-        "Origin": "Japan",
-        "Type": "Fermented",
-        "Details": "Dashi stock base with dissolved miso paste (fermented rice, barley and/or soybeans). Common ingredients include tofu and seaweed."
+      "Name": "Miso soup",
+      "Origin": "Japan",
+      "Type": "Fermented",
+      "Details": "Dashi stock base with dissolved miso paste (fermented rice, barley and/or soybeans). Common ingredients include tofu and seaweed."
     },
     {
-        "Name": "Miyeok guk",
-        "Origin": "Korea",
-        "Type": "Chunky",
-        "Details": "Seaweed"
+      "Name": "Miyeok guk",
+      "Origin": "Korea",
+      "Type": "Chunky",
+      "Details": "Seaweed"
     },
     {
-        "Name": "Mohinga",
-        "Origin": "Burma",
-        "Type": "Fish",
-        "Details": "Chickpea flour and/or crushed toasted rice, garlic, onions, lemongrass, banana tree stem, ginger, fish paste, fish sauce, and catfish in a rich broth. Served with rice vermicelli."
+      "Name": "Mohinga",
+      "Origin": "Burma",
+      "Type": "Fish",
+      "Details": "Chickpea flour and/or crushed toasted rice, garlic, onions, lemongrass, banana tree stem, ginger, fish paste, fish sauce, and catfish in a rich broth. Served with rice vermicelli."
     },
     {
-        "Name": "Mote de queso",
-        "Origin": "Colombia",
-        "Type": "Cheese",
-        "Details": "made with ñame (yam) and Costeño cheese."
+      "Name": "Mote de queso",
+      "Origin": "Colombia",
+      "Type": "Cheese",
+      "Details": "made with ñame (yam) and Costeño cheese."
     },
     {
-        "Name": "Mulligan Stew",
-        "Origin": "United States",
-        "Type": "Chunky",
-        "Details": "Improvised stew, typically made with whatever ingredients are available"
+      "Name": "Mulligan Stew",
+      "Origin": "United States",
+      "Type": "Chunky",
+      "Details": "Improvised stew, typically made with whatever ingredients are available"
     },
     {
-        "Name": "Mulligatawny",
-        "Origin": "India",
-        "Type": "Chunky",
-        "Details": "Meat, vegetables, and spices. Based on an Indian sauce recipe."
+      "Name": "Mulligatawny",
+      "Origin": "India",
+      "Type": "Chunky",
+      "Details": "Meat, vegetables, and spices. Based on an Indian sauce recipe."
     },
     {
-        "Name": "Naengmyeon",
-        "Origin": "Korea",
-        "Type": "Cold (chilled)",
-        "Details": "Buckwheat noodles in a tangy iced beef broth, raw julienned vegetables, a slice of a Korean pear, and often a boiled egg and/or cold beef"
+      "Name": "Naengmyeon",
+      "Origin": "Korea",
+      "Type": "Cold (chilled)",
+      "Details": "Buckwheat noodles in a tangy iced beef broth, raw julienned vegetables, a slice of a Korean pear, and often a boiled egg and/or cold beef"
     },
     {
-        "Name": "Nettle soup",
-        "Origin": "Ancient",
-        "Type": "Chunky",
-        "Details": "Tender shoots of the stinging nettle, popular in Scandinavia and eastern Europe"
+      "Name": "Nettle soup",
+      "Origin": "Ancient",
+      "Type": "Chunky",
+      "Details": "Tender shoots of the stinging nettle, popular in Scandinavia and eastern Europe"
     },
     {
-        "Name": "New England clam chowder",
-        "Origin": "United States (New England)",
-        "Type": "Chowders",
-        "Details": "Bacon, mirepoix, clam juice and heavy cream, with other ingredients such as potatoes and chopped clams"
+      "Name": "New England clam chowder",
+      "Origin": "United States (New England)",
+      "Type": "Chowders",
+      "Details": "Bacon, mirepoix, clam juice and heavy cream, with other ingredients such as potatoes and chopped clams"
     },
     {
-        "Name": "Nikujaga",
-        "Origin": "Japan",
-        "Type": "",
-        "Details": "Meat, potatoes and onion stewed in sweetened soy sauce, sometimes with ito konnyaku and vegetables"
+      "Name": "Nikujaga",
+      "Origin": "Japan",
+      "Type": "",
+      "Details": "Meat, potatoes and onion stewed in sweetened soy sauce, sometimes with ito konnyaku and vegetables"
     },
     {
-        "Name": "Okra soup",
-        "Origin": "",
-        "Type": "",
-        "Details": "Okra"
+      "Name": "Okra soup",
+      "Origin": "",
+      "Type": "",
+      "Details": "Okra"
     },
     {
-        "Name": "Okroshka",
-        "Origin": "Ukraine",
-        "Type": null,
-        "Details": null
+      "Name": "Okroshka",
+      "Origin": "Ukraine",
+      "Type": null,
+      "Details": null
     },
     {
-        "Name": "Russia\"",
-        "Origin": "Cold (chilled)",
-        "Type": "Kvass-based vegetable and ham soup",
-        "Details": null
+      "Name": "Russia\"",
+      "Origin": "Cold (chilled)",
+      "Type": "Kvass-based vegetable and ham soup",
+      "Details": null
     },
     {
-        "Name": "Oxtail soup",
-        "Origin": "",
-        "Type": "Chunky",
-        "Details": "Oxtail soup is made with beef tails. The use of the word \"ox\" in this context is a legacy of nomenclature; no specialized stock of beef animals are used. At least five popular and unrelated versions of oxtail soup exist: a traditional Korean dish, a Chinese dish which is more like a stew, a fried/barbecued oxtail combined with soup variation which is a popular dish in Indonesia where it is called as sop buntut. An ethnic dish of the American South which traces its lineage back to the pre-revolutionary war era, and a thick, rich, gravy-like soup popular in the United Kingdom since the 18th century. Creole oxtail soup is made from a tomato base with oxtails, potatoes, green beans, corn, mirepoix, garlic, and herbs and spices. In Germany, there is a variety of oxtail soups (called Ochsenschwanzsuppe or Ochsenschleppsuppe) usually containing oxtail, various root vegetables, herbs, and also Sherry or Madeira."
+      "Name": "Oxtail soup",
+      "Origin": "",
+      "Type": "Chunky",
+      "Details": "Oxtail soup is made with beef tails. The use of the word \"ox\" in this context is a legacy of nomenclature; no specialized stock of beef animals are used. At least five popular and unrelated versions of oxtail soup exist: a traditional Korean dish, a Chinese dish which is more like a stew, a fried/barbecued oxtail combined with soup variation which is a popular dish in Indonesia where it is called as sop buntut. An ethnic dish of the American South which traces its lineage back to the pre-revolutionary war era, and a thick, rich, gravy-like soup popular in the United Kingdom since the 18th century. Creole oxtail soup is made from a tomato base with oxtails, potatoes, green beans, corn, mirepoix, garlic, and herbs and spices. In Germany, there is a variety of oxtail soups (called Ochsenschwanzsuppe or Ochsenschleppsuppe) usually containing oxtail, various root vegetables, herbs, and also Sherry or Madeira."
     },
     {
-        "Name": "Palm nut soup",
-        "Origin": "",
-        "Type": "",
-        "Details": "Palm kernel"
+      "Name": "Palm nut soup",
+      "Origin": "",
+      "Type": "",
+      "Details": "Palm kernel"
     },
     {
-        "Name": "Panada",
-        "Origin": "Europe",
-        "Type": "Potage",
-        "Details": "Bread soup made with leftover bread, eggs, beef broth and Parmigiano-Reggiano Cheese."
+      "Name": "Panada",
+      "Origin": "Europe",
+      "Type": "Potage",
+      "Details": "Bread soup made with leftover bread, eggs, beef broth and Parmigiano-Reggiano Cheese."
     },
     {
-        "Name": "Panadelsuppe",
-        "Origin": "Austria",
-        "Type": "Bread",
-        "Details": "Made with broth, rolls and eggs"
+      "Name": "Panadelsuppe",
+      "Origin": "Austria",
+      "Type": "Bread",
+      "Details": "Made with broth, rolls and eggs"
     },
     {
-        "Name": "Pasta fagioli",
-        "Origin": "Italy",
-        "Type": "Noodle",
-        "Details": "Chicken stock, pasta and vegetables."
+      "Name": "Pasta fagioli",
+      "Origin": "Italy",
+      "Type": "Noodle",
+      "Details": "Chicken stock, pasta and vegetables."
     },
     {
-        "Name": "Yellow pea soup",
-        "Origin": "Canada",
-        "Type": "Chunky",
-        "Details": "Pea soup, originating with French settlers in Canada. Also called \"French-Canadian pea soup\""
+      "Name": "Yellow pea soup",
+      "Origin": "Canada",
+      "Type": "Chunky",
+      "Details": "Pea soup, originating with French settlers in Canada. Also called \"French-Canadian pea soup\""
     },
     {
-        "Name": "Peanut soup",
-        "Origin": "Africa",
-        "Type": "Chunky",
-        "Details": "Made from peanuts, popular in African cuisine. Pictured is peanut soup (left) with fufu."
+      "Name": "Peanut soup",
+      "Origin": "Africa",
+      "Type": "Chunky",
+      "Details": "Made from peanuts, popular in African cuisine. Pictured is peanut soup (left) with fufu."
     },
     {
-        "Name": "Philadelphia Pepper Pot",
-        "Origin": "United States (Philadelphia)",
-        "Type": "Chunky",
-        "Details": "Beef tripe pepper soup"
+      "Name": "Philadelphia Pepper Pot",
+      "Origin": "United States (Philadelphia)",
+      "Type": "Chunky",
+      "Details": "Beef tripe pepper soup"
     },
     {
-        "Name": "Phở",
-        "Origin": "Vietnam",
-        "Type": "Noodle",
-        "Details": "Staple noodle soup made by simmering marrow-rich beef leg bones and knuckles with star anise, cinnamon, clove, cardamom, coriander, fennel, charred ginger, and charred onion to create the broth, served with rice noodles and various meats. Pho Dac Biet, or \"Special Combination\" Pho, usually includes rare beef slices, beef balls, tripe, and flank meat. Pho is garnished to taste with thai basil, squeezed lime, jalapeños, bean sprouts, and sometimes culantro. Sriracha and hoisin sauce are also popular additions. Chicken, seafood and vegetarian varieties also exist."
+      "Name": "Phở",
+      "Origin": "Vietnam",
+      "Type": "Noodle",
+      "Details": "Staple noodle soup made by simmering marrow-rich beef leg bones and knuckles with star anise, cinnamon, clove, cardamom, coriander, fennel, charred ginger, and charred onion to create the broth, served with rice noodles and various meats. Pho Dac Biet, or \"Special Combination\" Pho, usually includes rare beef slices, beef balls, tripe, and flank meat. Pho is garnished to taste with thai basil, squeezed lime, jalapeños, bean sprouts, and sometimes culantro. Sriracha and hoisin sauce are also popular additions. Chicken, seafood and vegetarian varieties also exist."
     },
     {
-        "Name": "Pickle soup",
-        "Origin": "",
-        "Type": "Chunky",
-        "Details": "Various types of pickled vegetables, dill pickle soup is a variety of pickle soup prepared with pickled cucumber. Pictured is kidney and pickle soup with barley (rassolnik)."
+      "Name": "Pickle soup",
+      "Origin": "",
+      "Type": "Chunky",
+      "Details": "Various types of pickled vegetables, dill pickle soup is a variety of pickle soup prepared with pickled cucumber. Pictured is kidney and pickle soup with barley (rassolnik)."
     },
     {
-        "Name": "Pork blood soup",
-        "Origin": "Thailand",
-        "Type": "",
-        "Details": "Thai cuisine; one version is called tom lueat mu. Also a part of Chinese cuisine, and was consumed by laborers in Kaifeng \"over 1,000 years ago\"."
+      "Name": "Pork blood soup",
+      "Origin": "Thailand",
+      "Type": "",
+      "Details": "Thai cuisine; one version is called tom lueat mu. Also a part of Chinese cuisine, and was consumed by laborers in Kaifeng \"over 1,000 years ago\"."
     },
     {
-        "Name": "Pozole",
-        "Origin": "Mexico",
-        "Type": "Chunky",
-        "Details": "Pork or chicken meat and broth, hominy, onion, garlic, dried chiles and cilantro, in a thick, hearty soup"
+      "Name": "Pozole",
+      "Origin": "Mexico",
+      "Type": "Chunky",
+      "Details": "Pork or chicken meat and broth, hominy, onion, garlic, dried chiles and cilantro, in a thick, hearty soup"
     },
     {
-        "Name": "Psarosoupa (ψαρόσουπα)",
-        "Origin": "Greece",
-        "Type": "Fish",
-        "Details": "Oil-and-lemon sauce, vegetables, rice, and salt-water fish"
+      "Name": "Psarosoupa (ψαρόσουπα)",
+      "Origin": "Greece",
+      "Type": "Fish",
+      "Details": "Oil-and-lemon sauce, vegetables, rice, and salt-water fish"
     },
     {
-        "Name": "Pumpkin",
-        "Origin": "North America",
-        "Type": "Smooth or chunky",
-        "Details": "Pumpkin cream soup may contain some green pepper (Italian), red bell pepper, onion, salt and some oil. Rucola leaves top the soup."
+      "Name": "Pumpkin",
+      "Origin": "North America",
+      "Type": "Smooth or chunky",
+      "Details": "Pumpkin cream soup may contain some green pepper (Italian), red bell pepper, onion, salt and some oil. Rucola leaves top the soup."
     },
     {
-        "Name": "Ramen",
-        "Origin": "Japan",
-        "Type": "Noodle",
-        "Details": "Fresh or dried noodles in a variety of broths with a variety of toppings such as various meats like pork or lobster, onion and other various herbs (miso), and sometimes even corn"
+      "Name": "Ramen",
+      "Origin": "Japan",
+      "Type": "Noodle",
+      "Details": "Fresh or dried noodles in a variety of broths with a variety of toppings such as various meats like pork or lobster, onion and other various herbs (miso), and sometimes even corn"
     },
     {
-        "Name": "Rasam",
-        "Origin": "India (southern)",
-        "Type": "Potage",
-        "Details": "Broth made in various ways using different spices and tamarind"
+      "Name": "Rasam",
+      "Origin": "India (southern)",
+      "Type": "Potage",
+      "Details": "Broth made in various ways using different spices and tamarind"
     },
     {
-        "Name": "Rassolnik",
-        "Origin": "Russia",
-        "Type": "Chunky",
-        "Details": "Dill pickle soup. It usually contains groats, such as pearl barley, rice or oatmeal, potatoes, greens and herbs. It is either vegetarian or more commonly made with meat (often offal, such as kidney)."
+      "Name": "Rassolnik",
+      "Origin": "Russia",
+      "Type": "Chunky",
+      "Details": "Dill pickle soup. It usually contains groats, such as pearl barley, rice or oatmeal, potatoes, greens and herbs. It is either vegetarian or more commonly made with meat (often offal, such as kidney)."
     },
     {
-        "Name": "Rawon",
-        "Origin": "Indonesia (Surabaya)",
-        "Type": "Chunky beef",
-        "Details": "A beef stew in black keluak soup that originated from Surabaya, East Java."
+      "Name": "Rawon",
+      "Origin": "Indonesia (Surabaya)",
+      "Type": "Chunky beef",
+      "Details": "A beef stew in black keluak soup that originated from Surabaya, East Java."
     },
     {
-        "Name": "Rishtay / Rqaq o Adas",
-        "Origin": "Middle East (Palestinian)",
-        "Type": "Bean / Noodle",
-        "Details": "A whole lentil soup made with hand cut wheat noodles (similar to linguine) and flavored with fried garlic."
+      "Name": "Rishtay / Rqaq o Adas",
+      "Origin": "Middle East (Palestinian)",
+      "Type": "Bean / Noodle",
+      "Details": "A whole lentil soup made with hand cut wheat noodles (similar to linguine) and flavored with fried garlic."
     },
     {
-        "Name": "Rumford\u0027s Soup",
-        "Origin": "Germany (Munich, Bavaria)",
-        "Type": "Potage",
-        "Details": "Simple soup prepared with barley or barley meal and dried peas as primary ingredients that was utilized to feed impoverished people."
+      "Name": "Rumford\u0027s Soup",
+      "Origin": "Germany (Munich, Bavaria)",
+      "Type": "Potage",
+      "Details": "Simple soup prepared with barley or barley meal and dried peas as primary ingredients that was utilized to feed impoverished people."
     },
     {
-        "Name": "Saimin",
-        "Origin": "United States (Hawaii)",
-        "Type": "Noodle",
-        "Details": "Fresh, soft, undried egg noodles in bonito fish or shrimp broth with Chinese, Japanese, Filipino, Hawaiian, Korean, and Portuguese influences"
+      "Name": "Saimin",
+      "Origin": "United States (Hawaii)",
+      "Type": "Noodle",
+      "Details": "Fresh, soft, undried egg noodles in bonito fish or shrimp broth with Chinese, Japanese, Filipino, Hawaiian, Korean, and Portuguese influences"
     },
     {
-        "Name": "Salmorejo",
-        "Origin": "Spain",
-        "Type": "Cold (chilled)",
-        "Details": "Tomato soup with garlic and bread crumbs"
+      "Name": "Salmorejo",
+      "Origin": "Spain",
+      "Type": "Cold (chilled)",
+      "Details": "Tomato soup with garlic and bread crumbs"
     },
     {
-        "Name": "Sambar",
-        "Origin": "India",
-        "Type": "Chunky, gelatinous",
-        "Details": "Sambar, also spelt sambhar, is a lentil-based vegetable stew or chowder based on a broth made with tamarind popular in South Indian and Sri Lankan Tamil cuisines, adapted in each to its taste and environment."
+      "Name": "Sambar",
+      "Origin": "India",
+      "Type": "Chunky, gelatinous",
+      "Details": "Sambar, also spelt sambhar, is a lentil-based vegetable stew or chowder based on a broth made with tamarind popular in South Indian and Sri Lankan Tamil cuisines, adapted in each to its taste and environment."
     },
     {
-        "Name": "Samgyetang",
-        "Origin": "Korea",
-        "Type": "Chunky",
-        "Details": "Chicken ginseng soup made with glutinous rice, jujubes, chestnuts, garlic, and ginger"
+      "Name": "Samgyetang",
+      "Origin": "Korea",
+      "Type": "Chunky",
+      "Details": "Chicken ginseng soup made with glutinous rice, jujubes, chestnuts, garlic, and ginger"
     },
     {
-        "Name": "Sayur Asem",
-        "Origin": "Indonesia",
-        "Type": "Cold",
-        "Details": "Vegetable soup, sour and spicy"
+      "Name": "Sayur Asem",
+      "Origin": "Indonesia",
+      "Type": "Cold",
+      "Details": "Vegetable soup, sour and spicy"
     },
     {
-        "Name": "Sayur Lodeh",
-        "Origin": "Indonesia (Java)",
-        "Type": "Chunky vegetable soup",
-        "Details": "Vegetables stew in coconut milk based soup."
+      "Name": "Sayur Lodeh",
+      "Origin": "Indonesia (Java)",
+      "Type": "Chunky vegetable soup",
+      "Details": "Vegetables stew in coconut milk based soup."
     },
     {
-        "Name": "Scotch Broth",
-        "Origin": "Scotland",
-        "Type": "Potage",
-        "Details": "Mutton, barley, and various vegetables"
+      "Name": "Scotch Broth",
+      "Origin": "Scotland",
+      "Type": "Potage",
+      "Details": "Mutton, barley, and various vegetables"
     },
     {
-        "Name": "Shark fin soup",
-        "Origin": "China",
-        "Type": "Gelatinous",
-        "Details": "Shark\u0027s fin, nearly tasteless, an expensive delicacy valued for its unusual texture"
+      "Name": "Shark fin soup",
+      "Origin": "China",
+      "Type": "Gelatinous",
+      "Details": "Shark\u0027s fin, nearly tasteless, an expensive delicacy valued for its unusual texture"
     },
     {
-        "Name": "Shchav, sorrel soup, green borscht, green shchi",
-        "Origin": "Eastern Europe",
-        "Type": "Chunky",
-        "Details": "Sorrel soup in Polish, Russian, Ukrainian and Yiddish cuisines. In some recipes, sorrel is replaced by spinach or garden orache."
+      "Name": "Shchav, sorrel soup, green borscht, green shchi",
+      "Origin": "Eastern Europe",
+      "Type": "Chunky",
+      "Details": "Sorrel soup in Polish, Russian, Ukrainian and Yiddish cuisines. In some recipes, sorrel is replaced by spinach or garden orache."
     },
     {
-        "Name": "Shchi",
-        "Origin": "Russia",
-        "Type": "Chunky",
-        "Details": "Cabbage soup, a national Russian dish"
+      "Name": "Shchi",
+      "Origin": "Russia",
+      "Type": "Chunky",
+      "Details": "Cabbage soup, a national Russian dish"
     },
     {
-        "Name": "Seafood chowder",
-        "Origin": "Ireland",
-        "Type": "Chowder",
-        "Details": "Salmon, mussels, shrimp, and scallops in a cream base"
+      "Name": "Seafood chowder",
+      "Origin": "Ireland",
+      "Type": "Chowder",
+      "Details": "Salmon, mussels, shrimp, and scallops in a cream base"
     },
     {
-        "Name": "She-crab soup",
-        "Origin": "United States (Charleston, South Carolina)",
-        "Type": "Chowder",
-        "Details": "Blue crab meat and crab roe"
+      "Name": "She-crab soup",
+      "Origin": "United States (Charleston, South Carolina)",
+      "Type": "Chowder",
+      "Details": "Blue crab meat and crab roe"
     },
     {
-        "Name": "Shrimp bisque",
-        "Origin": "France",
-        "Type": "Bisque",
-        "Details": "Shrimp"
+      "Name": "Shrimp bisque",
+      "Origin": "France",
+      "Type": "Bisque",
+      "Details": "Shrimp"
     },
     {
-        "Name": "Sliced fish soup",
-        "Origin": "Singapore",
-        "Type": "Fish",
-        "Details": "Fish, prawns, and vegetables"
+      "Name": "Sliced fish soup",
+      "Origin": "Singapore",
+      "Type": "Fish",
+      "Details": "Fish, prawns, and vegetables"
     },
     {
-        "Name": "Snert",
-        "Origin": "Netherlands",
-        "Type": "Chunky",
-        "Details": "Thick pea soup, eaten in the winter, traditionally served with sliced sausage"
+      "Name": "Snert",
+      "Origin": "Netherlands",
+      "Type": "Chunky",
+      "Details": "Thick pea soup, eaten in the winter, traditionally served with sliced sausage"
     },
     {
-        "Name": "Solyanka",
-        "Origin": "Russia",
-        "Type": "Chunky",
-        "Details": "Pickled cucumbers, sausages, smoked meat, fish or mushrooms, olives"
+      "Name": "Solyanka",
+      "Origin": "Russia",
+      "Type": "Chunky",
+      "Details": "Pickled cucumbers, sausages, smoked meat, fish or mushrooms, olives"
     },
     {
-        "Name": "Sop saudara",
-        "Origin": "Indonesia (Makassar)",
-        "Type": "Chunky",
-        "Details": "Spicy beef soup contains bits of beef and offals (usually fried cow\u0027s lungs), rice vermicelli, perkedel (fried potato patty) and hard boiled egg."
+      "Name": "Sop saudara",
+      "Origin": "Indonesia (Makassar)",
+      "Type": "Chunky",
+      "Details": "Spicy beef soup contains bits of beef and offals (usually fried cow\u0027s lungs), rice vermicelli, perkedel (fried potato patty) and hard boiled egg."
     },
     {
-        "Name": "Sopa de Gato",
-        "Origin": "Spain (southern)",
-        "Type": "",
-        "Details": "Simple soup, typically includes water, bread, oil, garlic, and salt"
+      "Name": "Sopa de Gato",
+      "Origin": "Spain (southern)",
+      "Type": "",
+      "Details": "Simple soup, typically includes water, bread, oil, garlic, and salt"
     },
     {
-        "Name": "Soto",
-        "Origin": "Indonesia",
-        "Type": "Chunky",
-        "Details": "Rich soups based on various spice pastes, broths and sometimes coconut milk, often named by their originating region. Soto usually features numerous garnishes, including sprouts, sambal, crackers, fritters, and sometimes noodles."
+      "Name": "Soto",
+      "Origin": "Indonesia",
+      "Type": "Chunky",
+      "Details": "Rich soups based on various spice pastes, broths and sometimes coconut milk, often named by their originating region. Soto usually features numerous garnishes, including sprouts, sambal, crackers, fritters, and sometimes noodles."
     },
     {
-        "Name": "Soto ayam",
-        "Origin": "Indonesia",
-        "Type": "Noodle",
-        "Details": "Spicy shredded chicken soup with noodles and a variety of garnishes which may include bean sprouts, boiled egg, green onions, fried onion flakes, chili sauce, compressed rice cakes, melinjo nut crackers and potato fritters."
+      "Name": "Soto ayam",
+      "Origin": "Indonesia",
+      "Type": "Noodle",
+      "Details": "Spicy shredded chicken soup with noodles and a variety of garnishes which may include bean sprouts, boiled egg, green onions, fried onion flakes, chili sauce, compressed rice cakes, melinjo nut crackers and potato fritters."
     },
     {
-        "Name": "Soup alla Canavese",
-        "Origin": "Italy",
-        "Type": "",
-        "Details": "White stock, tomato puree, butter, carrot, celery, onion, cauliflower, bacon fat, Parmesan cheese, parsley, sage, salt, and pepper"
+      "Name": "Soup alla Canavese",
+      "Origin": "Italy",
+      "Type": "",
+      "Details": "White stock, tomato puree, butter, carrot, celery, onion, cauliflower, bacon fat, Parmesan cheese, parsley, sage, salt, and pepper"
     },
     {
-        "Name": "Soup No. 5",
-        "Origin": "Philippines",
-        "Type": "Chunky (aphrodisiac)",
-        "Details": "The main ingredient of this dish are the bull\u0027s testes or/and penis, other ingredients include lemongrass, thai chili peppers, green onion, ginger, onions, garlic and fish sauce."
+      "Name": "Soup No. 5",
+      "Origin": "Philippines",
+      "Type": "Chunky (aphrodisiac)",
+      "Details": "The main ingredient of this dish are the bull\u0027s testes or/and penis, other ingredients include lemongrass, thai chili peppers, green onion, ginger, onions, garlic and fish sauce."
     },
     {
-        "Name": "Sour cherry soup",
-        "Origin": "Hungary",
-        "Type": "Cold (chilled)",
-        "Details": "Hungarian: megyleves. Sour cherries, sour cream"
+      "Name": "Sour cherry soup",
+      "Origin": "Hungary",
+      "Type": "Cold (chilled)",
+      "Details": "Hungarian: megyleves. Sour cherries, sour cream"
     },
     {
-        "Name": "Sour rye soup, white borscht, żur",
-        "Origin": "Poland, Belarus",
-        "Type": "",
-        "Details": "Made of soured rye flour (akin to sourdough) and meat (usually boiled pork sausage or pieces of smoked sausage, bacon or ham)"
+      "Name": "Sour rye soup, white borscht, żur",
+      "Origin": "Poland, Belarus",
+      "Type": "",
+      "Details": "Made of soured rye flour (akin to sourdough) and meat (usually boiled pork sausage or pieces of smoked sausage, bacon or ham)"
     },
     {
-        "Name": "Sour soup (fish soup)",
-        "Origin": "Vietnam",
-        "Type": "Fish",
-        "Details": "Rice, fish, various vegetables, and in some cases pineapple. The term also refers to various soups in a number of national cuisines."
+      "Name": "Sour soup (fish soup)",
+      "Origin": "Vietnam",
+      "Type": "Fish",
+      "Details": "Rice, fish, various vegetables, and in some cases pineapple. The term also refers to various soups in a number of national cuisines."
     },
     {
-        "Name": "Spinach soup",
-        "Origin": "",
-        "Type": "Broth- or cream-based",
-        "Details": "Prepared using spinach as a main ingredient"
+      "Name": "Spinach soup",
+      "Origin": "",
+      "Type": "Broth- or cream-based",
+      "Details": "Prepared using spinach as a main ingredient"
     },
     {
-        "Name": "Split pea",
-        "Origin": "Ancient",
-        "Type": "Chunky",
-        "Details": "Dried peas, such as the split pea. It is, with variations, a part of the cuisine of many cultures. It is greyish-green or yellow in color depending on the regional variety of peas used; all are cultivars of Pisum sativum."
+      "Name": "Split pea",
+      "Origin": "Ancient",
+      "Type": "Chunky",
+      "Details": "Dried peas, such as the split pea. It is, with variations, a part of the cuisine of many cultures. It is greyish-green or yellow in color depending on the regional variety of peas used; all are cultivars of Pisum sativum."
     },
     {
-        "Name": "Squash bisque",
-        "Origin": "France",
-        "Type": "Bisque",
-        "Details": null
+      "Name": "Squash bisque",
+      "Origin": "France",
+      "Type": "Bisque",
+      "Details": null
     },
     {
-        "Name": "Stone soup",
-        "Origin": "Portugal",
-        "Type": "Chunky",
-        "Details": "Pork meat products (such as black chouriço, common chouriço and bacon), red beans, and coriander"
+      "Name": "Stone soup",
+      "Origin": "Portugal",
+      "Type": "Chunky",
+      "Details": "Pork meat products (such as black chouriço, common chouriço and bacon), red beans, and coriander"
     },
     {
-        "Name": "Sup Kambing",
-        "Origin": "Indonesia and Malaysia",
-        "Type": "Chunky",
-        "Details": "Goat meat, tomato, celery, spring onion, ginger, candlenut and lime leaf, its broth is yellowish in color"
+      "Name": "Sup Kambing",
+      "Origin": "Indonesia and Malaysia",
+      "Type": "Chunky",
+      "Details": "Goat meat, tomato, celery, spring onion, ginger, candlenut and lime leaf, its broth is yellowish in color"
     },
     {
-        "Name": "Stracciatella",
-        "Origin": "Italy",
-        "Type": "Broth with chunks",
-        "Details": "Made by drizzling a preparation based on beaten eggs into boiling meat broth while stirring."
+      "Name": "Stracciatella",
+      "Origin": "Italy",
+      "Type": "Broth with chunks",
+      "Details": "Made by drizzling a preparation based on beaten eggs into boiling meat broth while stirring."
     },
     {
-        "Name": "Swedish fruit soup",
-        "Origin": "Sweden",
-        "Type": "Dessert soup",
-        "Details": "Typically prepared using dried fruits, and typically served as a dessert dish. It may be served hot or cold."
+      "Name": "Swedish fruit soup",
+      "Origin": "Sweden",
+      "Type": "Dessert soup",
+      "Details": "Typically prepared using dried fruits, and typically served as a dessert dish. It may be served hot or cold."
     },
     {
-        "Name": "Taco soup",
-        "Origin": "",
-        "Type": "Chunky",
-        "Details": "Similar ingredients to those used inside a taco: ground beef, tomatoes, chopped green chilis, olives, onions, corn, beans, and a packet of taco seasoning. Vegetarian versions combine beans with the other ingredients, except for the ground beef."
+      "Name": "Taco soup",
+      "Origin": "",
+      "Type": "Chunky",
+      "Details": "Similar ingredients to those used inside a taco: ground beef, tomatoes, chopped green chilis, olives, onions, corn, beans, and a packet of taco seasoning. Vegetarian versions combine beans with the other ingredients, except for the ground beef."
     },
     {
-        "Name": "Talbina",
-        "Origin": "Arabian Peninsula",
-        "Type": "",
-        "Details": "Talbina is a soup made from barley flour, formed by adding milk and honey to the dried barley powder. It is called talbina, which comes from the Arabic word laban meaning yogurt (milk/fermented churned milk), because of its resemblance to yogurt, as it is soft and white."
+      "Name": "Talbina",
+      "Origin": "Arabian Peninsula",
+      "Type": "",
+      "Details": "Talbina is a soup made from barley flour, formed by adding milk and honey to the dried barley powder. It is called talbina, which comes from the Arabic word laban meaning yogurt (milk/fermented churned milk), because of its resemblance to yogurt, as it is soft and white."
     },
     {
-        "Name": "Tāng Fěn",
-        "Origin": "China",
-        "Type": "Noodle",
-        "Details": "Rice noodles in broth, usually beef, chicken, or custom broth"
+      "Name": "Tāng Fěn",
+      "Origin": "China",
+      "Type": "Noodle",
+      "Details": "Rice noodles in broth, usually beef, chicken, or custom broth"
     },
     {
-        "Name": "Tāng miǎn",
-        "Origin": "China",
-        "Type": "Noodle",
-        "Details": "Egg noodles in broth, usually beef, chicken, or custom broth"
+      "Name": "Tāng miǎn",
+      "Origin": "China",
+      "Type": "Noodle",
+      "Details": "Egg noodles in broth, usually beef, chicken, or custom broth"
     },
     {
-        "Name": "Tapado",
-        "Origin": "Garifuna",
-        "Type": "Seafood",
-        "Details": "Coconut milk, seafood, plantains"
+      "Name": "Tapado",
+      "Origin": "Garifuna",
+      "Type": "Seafood",
+      "Details": "Coconut milk, seafood, plantains"
     },
     {
-        "Name": "Tarator",
-        "Origin": "Bulgaria",
-        "Type": "Cold (chilled)",
-        "Details": "Yogurt and cucumbers"
+      "Name": "Tarator",
+      "Origin": "Bulgaria",
+      "Type": "Cold (chilled)",
+      "Details": "Yogurt and cucumbers"
     },
     {
-        "Name": "Tarhana",
-        "Origin": "Turkey",
-        "Type": "Chunky",
-        "Details": "Fermented grain and dairy"
+      "Name": "Tarhana",
+      "Origin": "Turkey",
+      "Type": "Chunky",
+      "Details": "Fermented grain and dairy"
     },
     {
-        "Name": "Tekwan",
-        "Origin": "Indonesia (Palembang)",
-        "Type": "Chunky fishballs",
-        "Details": "Fishcake or fishballs, jicama and mushroom soup in savoury broth. Specialty of Palembang city."
+      "Name": "Tekwan",
+      "Origin": "Indonesia (Palembang)",
+      "Type": "Chunky fishballs",
+      "Details": "Fishcake or fishballs, jicama and mushroom soup in savoury broth. Specialty of Palembang city."
     },
     {
-        "Name": "Tinola",
-        "Origin": "Philippines",
-        "Type": "Potage",
-        "Details": "Chicken, sliced green papayas, malunggay"
+      "Name": "Tinola",
+      "Origin": "Philippines",
+      "Type": "Potage",
+      "Details": "Chicken, sliced green papayas, malunggay"
     },
     {
-        "Name": "Tom Yum",
-        "Origin": "Thailand",
-        "Type": "Chunky",
-        "Details": "Lemongrass, galangal and kaffir lime leaf, fish sauce and lime juice in the broth, often garnished with shrimp/seafood (Tom Yum Goong), straw mushrooms, hot chili peppers, and cilantro."
+      "Name": "Tom Yum",
+      "Origin": "Thailand",
+      "Type": "Chunky",
+      "Details": "Lemongrass, galangal and kaffir lime leaf, fish sauce and lime juice in the broth, often garnished with shrimp/seafood (Tom Yum Goong), straw mushrooms, hot chili peppers, and cilantro."
     },
     {
-        "Name": "Tomato bisque",
-        "Origin": "France",
-        "Type": "Bisque",
-        "Details": "Tomatoes and heavy cream; basil can be added to create tomato basil bisque"
+      "Name": "Tomato bisque",
+      "Origin": "France",
+      "Type": "Bisque",
+      "Details": "Tomatoes and heavy cream; basil can be added to create tomato basil bisque"
     },
     {
-        "Name": "Tomato soup",
-        "Origin": "",
-        "Type": "Smooth or chunky",
-        "Details": "Tomato is the primary ingredient. Also popular in many countries, including Hungary (Hungarian: paradicsomleves) and Poland (Polish: pomidorowa)"
+      "Name": "Tomato soup",
+      "Origin": "",
+      "Type": "Smooth or chunky",
+      "Details": "Tomato is the primary ingredient. Also popular in many countries, including Hungary (Hungarian: paradicsomleves) and Poland (Polish: pomidorowa)"
     },
     {
-        "Name": "Tongseng",
-        "Origin": "Indonesia (Solo)",
-        "Type": "Chunky meat",
-        "Details": "A sweet and spicy goat meat soup, specialty of Solo, Central Java."
+      "Name": "Tongseng",
+      "Origin": "Indonesia (Solo)",
+      "Type": "Chunky meat",
+      "Details": "A sweet and spicy goat meat soup, specialty of Solo, Central Java."
     },
     {
-        "Name": "Tortilla soup",
-        "Origin": "Mexico",
-        "Type": "Chunky",
-        "Details": "Fried corn tortilla pieces submerged into a broth of tomato and other ingredients."
+      "Name": "Tortilla soup",
+      "Origin": "Mexico",
+      "Type": "Chunky",
+      "Details": "Fried corn tortilla pieces submerged into a broth of tomato and other ingredients."
     },
     {
-        "Name": "Tteokguk",
-        "Origin": "Korea",
-        "Type": "Chunky",
-        "Details": "Tteok (rice cake) soup"
+      "Name": "Tteokguk",
+      "Origin": "Korea",
+      "Type": "Chunky",
+      "Details": "Tteok (rice cake) soup"
     },
     {
-        "Name": "Turkey soup",
-        "Origin": "United States, Canada",
-        "Type": "Chunky",
-        "Details": "Turkey stock and meat, vegetables (typically onions, carrots, celery), broad egg noodles or rice"
+      "Name": "Turkey soup",
+      "Origin": "United States, Canada",
+      "Type": "Chunky",
+      "Details": "Turkey stock and meat, vegetables (typically onions, carrots, celery), broad egg noodles or rice"
     },
     {
-        "Name": "Ukha or yushka",
-        "Origin": "Russia",
-        "Type": null,
-        "Details": null
+      "Name": "Ukha or yushka",
+      "Origin": "Russia",
+      "Type": null,
+      "Details": null
     },
     {
-        "Name": "Ukraine\"",
-        "Origin": "Fish",
-        "Type": "Various types of fish, vegetables, lime, dill, parsley, and black pepper",
-        "Details": null
+      "Name": "Ukraine\"",
+      "Origin": "Fish",
+      "Type": "Various types of fish, vegetables, lime, dill, parsley, and black pepper",
+      "Details": null
     },
     {
-        "Name": "Vegetable soup",
-        "Origin": "",
-        "Type": "Clear or Stock",
-        "Details": "Vegetables as a primary ingredient"
+      "Name": "Vegetable soup",
+      "Origin": "",
+      "Type": "Clear or Stock",
+      "Details": "Vegetables as a primary ingredient"
     },
     {
-        "Name": "Vichyssoise",
-        "Origin": "France",
-        "Type": "Cold (chilled)",
-        "Details": "Creamy potato and leek soup, served with chives"
+      "Name": "Vichyssoise",
+      "Origin": "France",
+      "Type": "Cold (chilled)",
+      "Details": "Creamy potato and leek soup, served with chives"
     },
     {
-        "Name": "Vori vori",
-        "Origin": "Paraguay",
-        "Type": "Chunky",
-        "Details": "Balls of corn flour and cheese, often with chicken"
+      "Name": "Vori vori",
+      "Origin": "Paraguay",
+      "Type": "Chunky",
+      "Details": "Balls of corn flour and cheese, often with chicken"
     },
     {
-        "Name": "Waterzooi",
-        "Origin": "Belgium",
-        "Type": "Fish",
-        "Details": "Stew made with fish (traditional) or chicken"
+      "Name": "Waterzooi",
+      "Origin": "Belgium",
+      "Type": "Fish",
+      "Details": "Stew made with fish (traditional) or chicken"
     },
     {
-        "Name": "Wedding soup",
-        "Origin": "United States (Italian-American)",
-        "Type": "Clear or Stock",
-        "Details": "Green vegetables, meat, chicken broth"
+      "Name": "Wedding soup",
+      "Origin": "United States (Italian-American)",
+      "Type": "Clear or Stock",
+      "Details": "Green vegetables, meat, chicken broth"
     },
     {
-        "Name": "White beef",
-        "Origin": "",
-        "Type": "Clear or Stock",
-        "Details": null
+      "Name": "White beef",
+      "Origin": "",
+      "Type": "Clear or Stock",
+      "Details": null
     },
     {
-        "Name": "White veal",
-        "Origin": "",
-        "Type": "Clear or Stock",
-        "Details": null
+      "Name": "White veal",
+      "Origin": "",
+      "Type": "Clear or Stock",
+      "Details": null
     },
     {
-        "Name": "Wine soup",
-        "Origin": "Hungary",
-        "Type": "Beverage soup",
-        "Details": "Hungarian: borleves. Pictured is a wine soup with bread"
+      "Name": "Wine soup",
+      "Origin": "Hungary",
+      "Type": "Beverage soup",
+      "Details": "Hungarian: borleves. Pictured is a wine soup with bread"
     },
     {
-        "Name": "Winter melon",
-        "Origin": "China",
-        "Type": "Chunky",
-        "Details": "Winter melon, filled with stock (usually chicken stock), vegetables, and meat, which has been steamed for a few hours"
+      "Name": "Winter melon",
+      "Origin": "China",
+      "Type": "Chunky",
+      "Details": "Winter melon, filled with stock (usually chicken stock), vegetables, and meat, which has been steamed for a few hours"
     },
     {
-        "Name": "Zuppa pavese",
-        "Origin": "Italy",
-        "Type": "Broth with chunks",
-        "Details": "Consists of broth into which fried slices of bread and poached eggs are placed. It is usually served with grated cheese."
+      "Name": "Zuppa pavese",
+      "Origin": "Italy",
+      "Type": "Broth with chunks",
+      "Details": "Consists of broth into which fried slices of bread and poached eggs are placed. It is usually served with grated cheese."
     }
-]
+  ]
+}

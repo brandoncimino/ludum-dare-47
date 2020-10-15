@@ -1,5 +1,3 @@
-using UnityEditor.Graphs;
-
 using UnityEngine;
 
 namespace DefaultNamespace {
@@ -28,7 +26,7 @@ namespace DefaultNamespace {
                 }
             }
         }
-        
+
         public override void Kill() {
             alive = false;
 
@@ -41,7 +39,7 @@ namespace DefaultNamespace {
 
             // collapse to the ground, be ejected into space, ...
             // TODO: write movement rule for when killed
-            
+
             // tell your AI that you are dead
             myBrain.AnnounceDeath();
         }

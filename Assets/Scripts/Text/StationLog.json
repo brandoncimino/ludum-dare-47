@@ -1,0 +1,84 @@
+﻿{
+  "Alerts": {
+    "Behave_Kitchen": [
+      "$NAME is making $SOUP."
+    ],
+    "Behave_Bridge": [
+      "$NAME is helming the station.",
+      "$NAME is promoting synergy.",
+      "$NAME is in the captain's chair.",
+      "$NAME is at the helm."
+    ],
+    "Behave_Recreation": [
+      "$NAME is working out.",
+      "$NAME is getting swole.",
+      "$NAME hates cardio, but they're doing it anyway. Good for them.",
+      "$NAME is leisurely walking while listening to murder mystery podcasts."
+    ],
+    "Behave_Lab": [
+      "$NAME wants to cure cancer, but erectile dysfunction pays the bills.",
+      "$NAME is looking for ways to use up their budget.",
+      "$NAME is wearing closed-toed shoes.",
+      "$NAME is googling \"research grants in my area\"."
+    ],
+    "Behave_Engine": [
+      "$NAME is using duct tape.",
+      "$NAME is looking for the 3/8 mm socket wrench."
+    ],
+    "Misbehave_Kitchen": [
+      "$NAME is on fire!",
+      "$NAME is too hot to handle!",
+      "$NAME is cooking!",
+      "$NAME is toast!",
+      "$NAME used too much tabasco!"
+    ],
+    "Misbehave_Bridge": [
+      "$NAME is watching cat videos!"
+    ],
+    "Misbehave_Lab": [
+      "$NAME is asking questions they aren't prepared to have answered!",
+      "$NAME is playing god!",
+      "$NAME will prove them all wrong!",
+      "$NAME is taking science <i>too far</i>!",
+      "$NAME is wearing open-toed shoes!"
+    ],
+    "Misbehave_Engine": [
+      "$NAME has an extra screw!",
+      "$NAME is pushing all of the buttons!",
+      "$NAME can't find the manual!"
+    ],
+    "Astronaut_Bored": [
+      "$NAME is bored!",
+      "$NAME is goofing off!"
+    ],
+    "Astronaut_Cloned": [
+      "$NAME has entered the universe.",
+      "$NAME was \"born\".",
+      "$NAME skipped right to puberty.",
+      "$NAME has 14 toes and 8 kidneys, but is otherwise healthy.",
+      "$NAME has been properly cloned, incubated, and lobotomized.",
+      "$NAME has been spanked on their newborn adult bottom."
+    ],
+    "Astronaut_Dead_Generic": [
+      "$NAME has left this not-world.",
+      "$NAME has ceased to be.",
+      "$NAME's next-of-kin will receive a tasteful gift basket."
+    ],
+    "Astronaut_Dead_Fire": [
+      "$NAME is well-done.",
+      "$NAME has sizzled out.",
+      "$NAME has immolated."
+    ],
+    "Astronaut_Dead_Monster": [
+      "$NAME was killed to establish the monster as a threat.",
+      "$NAME was in the room when the monster woke up.",
+      "$NAME kept tripping while they ran away."
+    ],
+    "Station_TooFast": [
+      "Exceeding maximum safe rotational velocity."
+    ],
+    "Station_TooSlow": [
+      "Subsceeding minimum safe rotational velocity."
+    ]
+  }
+}

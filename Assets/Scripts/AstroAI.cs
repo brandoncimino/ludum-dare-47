@@ -2,6 +2,7 @@
 using System.Data;
 
 using DefaultNamespace;
+using DefaultNamespace.Text;
 
 using UnityEngine;
 
@@ -87,6 +88,9 @@ public class AstroAI : CreatureAI {
 
             // what do you think about that?
             myBody.ChangeThought(Thought.Mischief);
+
+            // send a message about boredom
+            StationLogger.Log(StationAlertType.Astronaut_Bored, this);
         }
     }
 

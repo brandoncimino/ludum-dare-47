@@ -89,6 +89,11 @@ public class MisbehaveStation : ActivityStation {
             }
 
             Assignees.Add(astronaut);
+
+            // send an alert message for the arrival at this station.
+            //TODO: This would ideally use an event system, either with "real" events or UnityEvents, but that might require more refactoring than is worthwhile.
+            AlertArrival(this, astronaut);
+
             return true;
         }
         else {

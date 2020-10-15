@@ -9,7 +9,7 @@ public class BehaveStation : ActivityStation {
     private float            IncarnationProcess = 0;
     private float            IncarnationTime    = 30f;
     public  bool             MonsterInStorage   = true;
-    
+
     // public float OffsetAngle = 12
     public enum BehaveStationStates {
         Claimed,
@@ -39,6 +39,10 @@ public class BehaveStation : ActivityStation {
             OnTheirWay.Remove(astronaut);
             Assignees.Add(astronaut);
             currentState = BehaveStationStates.Occupied;
+
+            //alert that behaving has started
+            AlertArrival(this, astronaut);
+
             return true;
         }
         else {
@@ -101,13 +105,13 @@ public class BehaveStation : ActivityStation {
 
     private float ScienceUp(float timePassed) {
         IncarnationProcess += timePassed;
-        
+
         if (IncarnationProcess >= IncarnationTime) {
             home.SpawnAstronaut(PositionAngle);
             IncarnationProcess = 0;
             MonsterInStorage   = false;
         }
-        
+
         return 0;
     }
 }

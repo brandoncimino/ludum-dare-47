@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
 
+using DefaultNamespace.Text;
+
+using Packages.BrandonUtils.Runtime.Enums;
+
 using UnityEngine;
 
 namespace DefaultNamespace {
-    public abstract class ActivityStation : MonoBehaviour {
+    public abstract class ActivityStation : MonoBehaviour, IAlertReplacements {
         public List<AstroAI>  Assignees;
         public SpaceStation   home;
         public SpriteRenderer mySpriteRenderer;
@@ -117,8 +121,33 @@ namespace DefaultNamespace {
             return Assignees.Count * (IsBehaviourStation() ? -1.0f : +1.0f);
         }
 
+        public static StationAlertType GetAlert(ActivityRoom room, bool isBehaveStation) {
+            switch (room) {
+                case ActivityRoom.Bridge:
+                    return isBehaveStation ? StationAlertType.Behave_Bridge : StationAlertType.Misbehave_Bridge;
+                case ActivityRoom.Rec:
+                    return isBehaveStation ? StationAlertType.Behave_Recreation : StationAlertType.Misbehave_Recreation;
+                case ActivityRoom.Kitchen:
+                    return isBehaveStation ? StationAlertType.Behave_Kitchen : StationAlertType.Misbehave_Kitchen;
+                case ActivityRoom.Lab:
+                    return isBehaveStation ? StationAlertType.Behave_Lab : StationAlertType.Misbehave_Lab;
+                case ActivityRoom.Engine:
+                    return isBehaveStation ? StationAlertType.Behave_Engine : StationAlertType.Misbehave_Engine;
+                default:
+                    throw EnumUtils.InvalidEnumArgumentException(nameof(room), room);
+            }
+        }
+
+        protected void AlertArrival(params IAlertReplacements[] replacementSources) {
+            StationLogger.Log(GetAlert(DoorSign, IsBehaviourStation()), replacementSources);
+        }
+
         public abstract bool Arrive(AstroAI astronaut);
 
         public abstract bool Leave(AstroAI astronaut);
+
+        public Dictionary<string, string> GetAlertReplacements() {
+            return StationLogger.SoupOfTheDay.GetAlertReplacements();
+        }
     }
 }

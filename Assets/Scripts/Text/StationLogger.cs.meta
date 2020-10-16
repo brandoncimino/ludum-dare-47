@@ -1,3 +1,14 @@
 ﻿fileFormatVersion: 2
 guid: a4c221a32990475596ded621a8c2d08a
-timeCreated: 1602620854
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - StationLogAsset: {fileID: 4900000, guid: ae2f8a79e2ce44fbaabc6c1752c4a0db, type: 3}
+  - SoupDatabaseAsset: {fileID: 4900000, guid: e59a657ed616fd24baf9440c57858bd3, type: 3}
+  - StationLogMesh: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

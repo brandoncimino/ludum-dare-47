@@ -2,29 +2,47 @@
 
 using Newtonsoft.Json;
 
-using Packages.BrandonUtils.Runtime;
 using Packages.BrandonUtils.Runtime.Collections;
-
-using TMPro;
+using Packages.BrandonUtils.Runtime.Strings;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DefaultNamespace.Text {
     public class StationLogger : MonoBehaviour {
-        public TextAsset StationLogAsset;
-        public TextAsset SoupDatabaseAsset;
-        public TMP_Text  StationLogMesh;
+        public static StationLogger       Single;
+        public        VerticalLayoutGroup StationLogGroup;
 
+
+        #region Text Assets
+
+        #region StationLog
+
+        public  TextAsset  StationLogAsset;
         private StationLog _StationLog;
         private StationLog StationLog =>
             _StationLog ?? (_StationLog = JsonConvert.DeserializeObject<StationLog>(StationLogAsset.text));
 
-        public static StationLogger Single;
+        #endregion
 
+        #region SoupDatabase
+
+        public  TextAsset    SoupDatabaseAsset;
         private SoupDatabase _SoupDatabase;
         public SoupDatabase SoupDatabase => _SoupDatabase ??
                                             (_SoupDatabase =
                                                  JsonConvert.DeserializeObject<SoupDatabase>(SoupDatabaseAsset.text));
+
+        #endregion
+
+        #endregion
+
+        #region Alerts
+
+        public  AlertRenderer AlertPrefab;
+        private List<Alert>   Alerts;
+
+        #endregion
 
         private void Awake() {
             if (Single == null) {
@@ -36,6 +54,15 @@ namespace DefaultNamespace.Text {
         }
 
         public static void Alert(StationAlertType alertType, params IAlertReplacements[] replacementSources) {
+            var message = GenerateAlertMessage(alertType, replacementSources);
+
+            if (Single.StationLogGroup) { }
+        }
+
+        private static string GenerateAlertMessage(
+            StationAlertType alertType,
+            IAlertReplacements[] replacementSources
+        ) {
             string message;
             try {
                 var alert = Single.StationLog.Alerts[alertType].Random();
@@ -46,7 +73,7 @@ namespace DefaultNamespace.Text {
                 message = $"{error}: {alertType}";
             }
 
-            Single.StationLogMesh.text += $"\n{message}";
+            return message;
         }
 
         /// <summary>
@@ -57,5 +84,9 @@ namespace DefaultNamespace.Text {
         /// </remarks>
         /// <returns></returns>
         public static Soup SoupOfTheDay => Single.SoupDatabase.Soups.Random();
+
+        private AlertRenderer CreateAlert() {
+            return Instantiate(AlertPrefab, StationLogGroup.transform);
+        }
     }
 }

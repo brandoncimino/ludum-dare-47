@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using DefaultNamespace;
+using DefaultNamespace.Text;
 
 public class BehaveStation : ActivityStation {
     public  MisbehaveStation behaveTwin;
@@ -113,5 +114,13 @@ public class BehaveStation : ActivityStation {
         }
 
         return 0;
+    }
+
+    public override Alert GiveWarning() {
+        throw new NotImplementedException("need to make alerts");
+    }
+
+    public override Alert GiveUpdate() {
+        throw new NotImplementedException("need to make updates");
     }
 }

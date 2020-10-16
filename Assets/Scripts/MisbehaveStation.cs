@@ -178,7 +178,7 @@ public class MisbehaveStation : ActivityStation {
             var nonLethal = astronaut.myBody.TakeDamage(0.5f, 1.5f * astronaut.myBody.getDmgVisualTime());
 
             if (!nonLethal) {
-                Scheduler.Single.ReportImportant(StationAlertType.Astronaut_Dead_Fire, astronaut);
+                Scheduler.Single.ReportEmergency(StationAlertType.Astronaut_Dead_Fire, astronaut);
             }
         }
 
@@ -204,5 +204,13 @@ public class MisbehaveStation : ActivityStation {
 
         // freeing a monster doesn't cause acceleration
         return 0;
+    }
+
+    public override Alert GiveWarning() {
+        throw new NotImplementedException("need to make alerts");
+    }
+
+    public override Alert GiveUpdate() {
+        throw new NotImplementedException("need to make updates");
     }
 }

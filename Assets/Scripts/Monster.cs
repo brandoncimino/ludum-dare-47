@@ -1,8 +1,9 @@
+using DefaultNamespace.Text;
+
 using UnityEngine;
 
 namespace DefaultNamespace {
     public class Monster : Creature {
-        private bool  MovingRight   = true;
         private float FleeAuraAngle = 30f;
         private float DmgAuraAngle  = 15f;
 
@@ -42,7 +43,13 @@ namespace DefaultNamespace {
 
                         if (distance < DmgAuraAngle) {
                             // deliver damage
-                            astronaut.TakeDamage(6.0f);
+                            var nonLethal = astronaut.TakeDamage(6.0f);
+                            if (!nonLethal) {
+                                Scheduler.Single.ReportImportant(
+                                    StationAlertType.Astronaut_Dead_Monster,
+                                    astronaut.myBrain
+                                );
+                            }
                         }
                     }
                 }

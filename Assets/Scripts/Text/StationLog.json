@@ -70,7 +70,8 @@
     "Astronaut_Dead_Fire": [
       "$NAME is well-done.",
       "$NAME has sizzled out.",
-      "$NAME has immolated."
+      "$NAME has immolated.",
+      "$NAME is toast."
     ],
     "Astronaut_Dead_Monster": [
       "$NAME was killed to establish the monster as a threat.",

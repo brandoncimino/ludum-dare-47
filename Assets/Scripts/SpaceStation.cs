@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using DefaultNamespace.Text;
+
 using UnityEngine;
 
 namespace DefaultNamespace {
@@ -198,6 +200,7 @@ namespace DefaultNamespace {
             newAstronaut.transform.parent = transform;
             newAstronaut.positionAngle    = angle;
             Astronauts.Add(newAstronaut);
+            Scheduler.Single.ReportImportant(StationAlertType.Astronaut_Cloned, newAstronaut.myBrain);
 
             // distribute evenly
             noAstronauts++;

@@ -1,6 +1,7 @@
 ﻿using System;
 
 using DefaultNamespace;
+using DefaultNamespace.Text;
 
 using UnityEngine;
 
@@ -92,7 +93,7 @@ public class MisbehaveStation : ActivityStation {
 
             // send an alert message for the arrival at this station.
             //TODO: This would ideally use an event system, either with "real" events or UnityEvents, but that might require more refactoring than is worthwhile.
-            AlertArrival(this, astronaut);
+            //AlertArrival(this, astronaut);
 
             return true;
         }
@@ -174,7 +175,11 @@ public class MisbehaveStation : ActivityStation {
         // arson spot, which changes the Assignees list and hence breaks the for-loop over its items
         if (Random.Next(0, 100) == 0) {
             var astronaut = Assignees[Random.Next(0, Assignees.Count)];
-            astronaut.myBody.TakeDamage(0.5f, 1.5f * astronaut.myBody.getDmgVisualTime());
+            var nonLethal = astronaut.myBody.TakeDamage(0.5f, 1.5f * astronaut.myBody.getDmgVisualTime());
+
+            if (!nonLethal) {
+                Scheduler.Single.ReportImportant(StationAlertType.Astronaut_Dead_Fire, astronaut);
+            }
         }
 
         // fire doesn't cause acceleration

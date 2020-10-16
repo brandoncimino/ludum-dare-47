@@ -15,15 +15,13 @@ public class Creature : MonoBehaviour {
 
     #region Movement & Position
 
+    public    float targetAngle   = 90;
     public    float positionAngle = 0;
     public    float speedAngle    = 1;
     public    int   layer         = 0;
     protected bool  hasArrived    = false;
 
     #endregion
-
-    // target location
-    public float targetAngle = 90;
 
     // information about the space station
     // TODO: call SpaceStation class instead
@@ -239,7 +237,7 @@ public class Creature : MonoBehaviour {
         // TODO: write movement rule for when killed
     }
 
-    public void TakeDamage(float dmg, float maxDmgImmunityTime = 0) {
+    public bool TakeDamage(float dmg, float maxDmgImmunityTime = 0) {
         if (dmgImmunityTime == 0) {
             // deliver the damage
             currentHitPoints -= dmg;
@@ -256,6 +254,8 @@ public class Creature : MonoBehaviour {
 
             dmgImmunityTime = maxDmgImmunityTime;
         }
+
+        return alive;
     }
 
     public void Heal() {

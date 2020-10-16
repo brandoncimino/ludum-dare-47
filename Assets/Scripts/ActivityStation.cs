@@ -12,6 +12,7 @@ namespace DefaultNamespace {
         public List<AstroAI>  Assignees;
         public SpaceStation   home = SpaceStation.Single;
         public SpriteRenderer mySpriteRenderer;
+        public StationLogger  StationLogger = StationLogger.Single;
 
         // positional and type information
         public float        PositionAngle;
@@ -26,11 +27,6 @@ namespace DefaultNamespace {
         public Sprite LabSprite;
         public Sprite RecSprite;
         public Sprite EngineSprite;
-
-        private void Awake() {
-            //Let foreman know you exist
-        }
-
 
         public virtual bool CanRegister() {
             return true;
@@ -67,6 +63,10 @@ namespace DefaultNamespace {
         }
 
         public bool Occuppied => Assignees.Count != 0;
+
+        public abstract bool Arrive(AstroAI astronaut);
+
+        public abstract bool Leave(AstroAI astronaut);
 
         protected void NameOnDoor() {
             switch (DoorSign) {
@@ -105,9 +105,7 @@ namespace DefaultNamespace {
             }
         }
 
-        protected virtual bool IsBehaviourStation() {
-            throw new NotImplementedException("needs to be implemented in subclass");
-        }
+        protected abstract bool IsBehaviourStation();
 
         public abstract float DetermineConsequences(float timePassed);
 
@@ -131,10 +129,6 @@ namespace DefaultNamespace {
         protected void AlertArrival(params IAlertReplacements[] replacementSources) {
             StationLogger.Alert(GetAlert(DoorSign, IsBehaviourStation()), replacementSources);
         }
-
-        public abstract bool Arrive(AstroAI astronaut);
-
-        public abstract bool Leave(AstroAI astronaut);
 
         public Dictionary<string, string> GetAlertReplacements() {
             return StationLogger.SoupOfTheDay.GetAlertReplacements();

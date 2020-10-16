@@ -41,7 +41,7 @@ public class BehaveStation : ActivityStation {
             currentState = BehaveStationStates.Occupied;
 
             //alert that behaving has started
-            AlertArrival(this, astronaut);
+            //AlertArrival(this, astronaut);
 
             return true;
         }

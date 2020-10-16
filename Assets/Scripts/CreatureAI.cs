@@ -30,11 +30,11 @@ namespace DefaultNamespace {
             };
         }
 
-        public Alert GiveWarning() {
+        public virtual Alert GiveWarning() {
             throw new NotImplementedException();
         }
 
-        public Alert GiveUpdate() {
+        public virtual Alert GiveUpdate() {
             throw new NotImplementedException();
         }
     }

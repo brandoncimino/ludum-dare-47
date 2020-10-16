@@ -1,6 +1,6 @@
 namespace DefaultNamespace.Text {
     public interface IMessengers {
-        public Alert GiveWarning();
-        public Alert GiveUpdate();
+        Alert GiveWarning();
+        Alert GiveUpdate();
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using Packages.BrandonUtils.Runtime.Collections;
+
 using UnityEngine;
 
 using Random = System.Random;
@@ -30,10 +32,11 @@ namespace DefaultNamespace.Text {
         private float UpdateThreshold = 4f;
 
         // info messages
-        private float MeanInfoTime  = 2.5f;
-        private float MaxInfoTime   = 6f;
-        private float InfoCounter   = 0f;
-        private float InfoThreshold = 0f;
+        private float InfoTimeMean   = 2.5f;
+        private float InfoTimeStdDev = 0.8f;
+        private float InfoTimeMax    = 6f;
+        private float InfoCounter    = 0f;
+        private float InfoThreshold  = 0f;
 
         #endregion
 
@@ -59,19 +62,31 @@ namespace DefaultNamespace.Text {
                 return;
             }
 
-            // prefer warnings
+            // warnings come first
             if (myWarnings.Count > 0 && WarnCounter >= WarnThreshold) {
-                // select messenger
-                var messenger = myWarnings[0];
+                // give out the warning
+                GiveWarning();
 
-                // deliver message
-
-                // remove messenger
-                myWarnings.Remove(messenger);
-
-                // determine new warning threshold
+                // determine new warning threshold and reset timer
                 WarnThreshold = Math.Min(GaussSample(WarnTimeMean, WarnTimeStdDev), WarnTimeMax);
+                WarnCounter   = 0;
                 return;
+            }
+
+            // prefer scheduled updates over disturbing the astronauts
+            if (UpdateCounter >= UpdateThreshold) {
+                Ask4Update_Station();
+                UpdateCounter = 0;
+                return;
+            }
+
+            // now ask astronauts if they have something to say
+            if (InfoCounter >= InfoThreshold) {
+                Ask4Update_Astronaut();
+
+                // reset timer and find new threshold
+                InfoCounter   = 0;
+                InfoThreshold = Math.Min(GaussSample(InfoTimeMean, InfoTimeStdDev), InfoTimeMax);
             }
         }
 
@@ -95,11 +110,40 @@ namespace DefaultNamespace.Text {
         /// <param name="mean">mean</param>
         /// <param name="stdDev">standard deviation = sqrt(variance)</param>
         /// <returns></returns>
-        public float GaussSample(float mean, float stdDev) {
+        private float GaussSample(float mean, float stdDev) {
             var u1            = 1.0 - rand.NextDouble();
             var u2            = 1.0 - rand.NextDouble();
             var randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1) * Math.Sin(2.0 * Math.PI * u2));
             return (float) (mean + stdDev * randStdNormal);
+        }
+
+        private void GiveWarning() {
+            // select messenger
+            var messenger = myWarnings[0];
+
+            // deliver message
+            // TODO: find out how to do this!
+
+            // remove messenger
+            myWarnings.Remove(messenger);
+        }
+
+        private void Ask4Update_Station() {
+            // choose which station should give the update
+
+            // ask for the alert
+
+            // pass the alert to the StationLogger
+        }
+
+        private void Ask4Update_Astronaut() {
+            // choose which station should give the update
+            var astronaut = SpaceStation.Single.Astronauts.Random().myBrain;
+
+            // ask for the alert
+            var alert = astronaut.GiveUpdate();
+
+            // pass the alert to the StationLogger
         }
     }
 }

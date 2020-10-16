@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-using Packages.BrandonUtils.Runtime;
+﻿using Packages.BrandonUtils.Runtime;
 
 using TMPro;
 
@@ -13,12 +11,7 @@ namespace DefaultNamespace.Text {
         public Image    Background;
         public Alert    Alert;
 
-        #region Severity
-
-        [Header("Severity Colors")]
-        public List<Color> SeverityColors;
-
-        #endregion
+        public SeverityColorPalette SeverityColorPalette;
 
         [EditorInvocationButton]
         private void SetReferencesToDefault() {
@@ -27,8 +20,12 @@ namespace DefaultNamespace.Text {
         }
 
         private void UpdateRenderer() {
-            Mesh.text = Alert.AlertMessage;
-            //TODO: set the background color based on severity
+            Mesh.text        = Alert.AlertMessage;
+            Background.color = SeverityColorPalette[Alert.Severity];
+        }
+
+        private void Update() {
+            UpdateRenderer();
         }
     }
 }

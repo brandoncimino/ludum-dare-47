@@ -200,7 +200,7 @@ namespace DefaultNamespace {
             newAstronaut.transform.parent = transform;
             newAstronaut.positionAngle    = angle;
             Astronauts.Add(newAstronaut);
-            Scheduler.Single.ReportImportant(StationAlertType.Astronaut_Cloned, newAstronaut.myBrain);
+            Scheduler.Single.ReportEmergency(StationAlertType.Astronaut_Cloned, newAstronaut.myBrain);
 
             // distribute evenly
             noAstronauts++;

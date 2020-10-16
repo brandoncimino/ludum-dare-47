@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using DefaultNamespace.Text;
@@ -5,7 +6,7 @@ using DefaultNamespace.Text;
 using UnityEngine;
 
 namespace DefaultNamespace {
-    public class CreatureAI : MonoBehaviour, IAlertReplacements {
+    public class CreatureAI : MonoBehaviour, IAlertReplacements, IMessengers {
         /// <summary>
         /// The name of the <see cref="CreatureAI"/>, for use in alerts.
         /// </summary>
@@ -27,6 +28,14 @@ namespace DefaultNamespace {
             return new Dictionary<string, string> {
                 {"NAME", DisplayName}
             };
+        }
+
+        public Alert GiveWarning() {
+            throw new NotImplementedException();
+        }
+
+        public Alert GiveUpdate() {
+            throw new NotImplementedException();
         }
     }
 }

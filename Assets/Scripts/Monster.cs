@@ -45,7 +45,7 @@ namespace DefaultNamespace {
                             // deliver damage
                             var nonLethal = astronaut.TakeDamage(6.0f);
                             if (!nonLethal) {
-                                Scheduler.Single.ReportImportant(
+                                Scheduler.Single.ReportEmergency(
                                     StationAlertType.Astronaut_Dead_Monster,
                                     astronaut.myBrain
                                 );

@@ -8,7 +8,7 @@ using Packages.BrandonUtils.Runtime.Enums;
 using UnityEngine;
 
 namespace DefaultNamespace {
-    public abstract class ActivityStation : MonoBehaviour, IAlertReplacements {
+    public abstract class ActivityStation : MonoBehaviour, IAlertReplacements, IMessengers {
         public List<AstroAI>  Assignees;
         public SpaceStation   home = SpaceStation.Single;
         public SpriteRenderer mySpriteRenderer;
@@ -67,6 +67,9 @@ namespace DefaultNamespace {
         public abstract bool Arrive(AstroAI astronaut);
 
         public abstract bool Leave(AstroAI astronaut);
+
+        public abstract Alert GiveWarning();
+        public abstract Alert GiveUpdate();
 
         protected void NameOnDoor() {
             switch (DoorSign) {

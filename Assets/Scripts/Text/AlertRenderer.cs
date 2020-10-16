@@ -24,6 +24,10 @@ namespace DefaultNamespace.Text {
             Background.color = SeverityColorPalette[Alert.Severity];
         }
 
+        private void Start() {
+            UpdateRenderer();
+        }
+
         private void Update() {
             UpdateRenderer();
         }

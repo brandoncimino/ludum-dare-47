@@ -9,6 +9,8 @@ using Packages.BrandonUtils.Runtime.Strings;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Random = System.Random;
+
 namespace DefaultNamespace.Text {
     public class StationLogger : MonoBehaviour {
         public static StationLogger       Single;
@@ -56,7 +58,11 @@ namespace DefaultNamespace.Text {
 
         [Obsolete("Use the version that REQUIRES the severity instead")]
         public static void Alert(StationAlertType alertType, params IAlertReplacements[] replacementSources) {
-            Alert(alertType, Text.Alert.SeverityLevel.Info, replacementSources);
+            var randomSeverity = (Alert.SeverityLevel) new Random().Next(
+                0,
+                Enum.GetValues(typeof(Alert.SeverityLevel)).Length
+            );
+            Alert(alertType, randomSeverity, replacementSources);
         }
 
         public static void Alert(

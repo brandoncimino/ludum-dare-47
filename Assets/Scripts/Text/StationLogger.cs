@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using Newtonsoft.Json;
 
@@ -53,10 +54,26 @@ namespace DefaultNamespace.Text {
             }
         }
 
+        [Obsolete("Use the version that REQUIRES the severity instead")]
         public static void Alert(StationAlertType alertType, params IAlertReplacements[] replacementSources) {
+            Alert(alertType, Text.Alert.SeverityLevel.Info, replacementSources);
+        }
+
+        public static void Alert(
+            StationAlertType alertType,
+            Alert.SeverityLevel severity,
+            params IAlertReplacements[] replacementSources
+        ) {
             var message = GenerateAlertMessage(alertType, replacementSources);
 
-            if (Single.StationLogGroup) { }
+            if (Single.StationLogGroup) {
+                var newAlert = Single.CreateAlert();
+                newAlert.Alert = new Alert {
+                    AlertMessage = message,
+                    Severity     = severity,
+                    TimeStamp    = DateTime.Now
+                };
+            }
         }
 
         private static string GenerateAlertMessage(

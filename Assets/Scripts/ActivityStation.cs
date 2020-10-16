@@ -68,8 +68,8 @@ namespace DefaultNamespace {
 
         public abstract bool Leave(AstroAI astronaut);
 
-        public abstract Alert GiveWarning();
-        public abstract Alert GiveUpdate();
+        public abstract void GiveWarning();
+        public abstract void GiveUpdate();
 
         protected void NameOnDoor() {
             switch (DoorSign) {

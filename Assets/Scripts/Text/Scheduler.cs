@@ -25,18 +25,19 @@ namespace DefaultNamespace.Text {
         private float             WarnTimeStdDev = 0.5f;
         private float             WarnTimeMax    = 3f;
         private float             WarnCounter    = 0f;
-        private float             WarnThreshold  = 0f;
+        private float             WarnThreshold  = 1f;
 
         // scheduled update messages
         private float UpdateCounter   = 0f;
         private float UpdateThreshold = 4f;
+        private int   UpdateIndex     = 0;
 
         // info messages
         private float InfoTimeMean   = 2.5f;
         private float InfoTimeStdDev = 0.8f;
         private float InfoTimeMax    = 6f;
         private float InfoCounter    = 0f;
-        private float InfoThreshold  = 0f;
+        private float InfoThreshold  = 2f;
 
         #endregion
 
@@ -75,14 +76,25 @@ namespace DefaultNamespace.Text {
 
             // prefer scheduled updates over disturbing the astronauts
             if (UpdateCounter >= UpdateThreshold) {
-                Ask4Update_Station();
+                // choose which station should give the update
+                var station = SpaceStation.Single.BehaveStations[UpdateIndex];
+                UpdateIndex = (UpdateIndex + 1) % SpaceStation.Single.BehaveStations.Count;
+
+                // ask for the alert
+                station.GiveUpdate();
+
+                // reset timer
                 UpdateCounter = 0;
                 return;
             }
 
             // now ask astronauts if they have something to say
             if (InfoCounter >= InfoThreshold) {
-                Ask4Update_Astronaut();
+                // choose which station should give the update
+                var astronaut = SpaceStation.Single.Astronauts.Random().myBrain;
+
+                // ask for the alert
+                astronaut.GiveUpdate();
 
                 // reset timer and find new threshold
                 InfoCounter   = 0;
@@ -126,24 +138,6 @@ namespace DefaultNamespace.Text {
 
             // remove messenger
             myWarnings.Remove(messenger);
-        }
-
-        private void Ask4Update_Station() {
-            // choose which station should give the update
-
-            // ask for the alert
-
-            // pass the alert to the StationLogger
-        }
-
-        private void Ask4Update_Astronaut() {
-            // choose which station should give the update
-            var astronaut = SpaceStation.Single.Astronauts.Random().myBrain;
-
-            // ask for the alert
-            var alert = astronaut.GiveUpdate();
-
-            // pass the alert to the StationLogger
         }
     }
 }

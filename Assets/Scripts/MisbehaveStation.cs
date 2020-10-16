@@ -206,11 +206,11 @@ public class MisbehaveStation : ActivityStation {
         return 0;
     }
 
-    public override Alert GiveWarning() {
-        throw new NotImplementedException("need to make alerts");
+    public override void GiveWarning() {
+        behaveTwin.GiveWarning();
     }
 
-    public override Alert GiveUpdate() {
-        throw new NotImplementedException("need to make updates");
+    public override void GiveUpdate() {
+        behaveTwin.GiveUpdate();
     }
 }

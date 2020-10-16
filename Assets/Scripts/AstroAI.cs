@@ -202,4 +202,9 @@ public class AstroAI : CreatureAI {
         myStats.myBehaveStation.Leave(this);
         myStats.myMisbehaveStation.Leave(this);
     }
+
+    public override void GiveUpdate() {
+        // TODO: customize so that it comes from the astonaut
+        myStats.myBehaveStation.GiveUpdate();
+    }
 }

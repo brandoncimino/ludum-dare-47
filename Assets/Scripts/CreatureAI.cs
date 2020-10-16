@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 using DefaultNamespace.Text;
@@ -30,12 +29,12 @@ namespace DefaultNamespace {
             };
         }
 
-        public virtual Alert GiveWarning() {
-            throw new NotImplementedException();
+        public virtual void GiveWarning() {
+            GiveUpdate();
         }
 
-        public virtual Alert GiveUpdate() {
-            throw new NotImplementedException();
+        public virtual void GiveUpdate() {
+            // just do nothing
         }
     }
 }

@@ -116,11 +116,13 @@ public class BehaveStation : ActivityStation {
         return 0;
     }
 
-    public override Alert GiveWarning() {
-        throw new NotImplementedException("need to make alerts");
+    public override void GiveWarning() {
+        // TODO: implement how warnings work
+        GiveUpdate();
     }
 
-    public override Alert GiveUpdate() {
-        throw new NotImplementedException("need to make updates");
+    public override void GiveUpdate() {
+        // TODO: put in the replacements
+        StationLogger.Alert(GetAlert(DoorSign, true), Alert.SeverityLevel.Info);
     }
 }

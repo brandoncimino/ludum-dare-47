@@ -1117,6 +1117,7 @@ GameObject:
   - component: {fileID: 1510500600}
   - component: {fileID: 1510500602}
   - component: {fileID: 1510500601}
+  - component: {fileID: 1510500603}
   m_Layer: 5
   m_Name: Log Panel
   m_TagString: Untagged
@@ -1182,6 +1183,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1510500599}
   m_CullTransparentMesh: 0
+--- !u!114 &1510500603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510500599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c221a32990475596ded621a8c2d08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StationLogGroup: {fileID: 2091973601}
+  StationLogAsset: {fileID: 4900000, guid: ae2f8a79e2ce44fbaabc6c1752c4a0db, type: 3}
+  SoupDatabaseAsset: {fileID: 4900000, guid: e59a657ed616fd24baf9440c57858bd3, type: 3}
+  AlertPrefab: {fileID: 6887358642591424800, guid: 7a625040d4123bb4ebbd50a6a8334935, type: 3}
 --- !u!1 &1513227206
 GameObject:
   m_ObjectHideFlags: 0

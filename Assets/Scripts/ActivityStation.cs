@@ -10,7 +10,7 @@ using UnityEngine;
 namespace DefaultNamespace {
     public abstract class ActivityStation : MonoBehaviour, IAlertReplacements {
         public List<AstroAI>  Assignees;
-        public SpaceStation   home;
+        public SpaceStation   home = SpaceStation.Single;
         public SpriteRenderer mySpriteRenderer;
 
         // positional and type information
@@ -36,11 +36,11 @@ namespace DefaultNamespace {
             return true;
         }
 
-        public void PlaceDown(float newAngle, int newLayer, SpaceStation newHome, ActivityRoom newDoorSign) {
+        public void PlaceDown(float newAngle, int newLayer, ActivityRoom newDoorSign) {
             DoorSign      = newDoorSign;
             PositionAngle = (newAngle + OffsetAngle) % 360;
             PositionLayer = newLayer;
-            home          = newHome;
+            home          = SpaceStation.Single;
 
             OffsetDistance = home.radius * ((float) Math.PI) * OffsetAngle / 180f;
             NameOnDoor(); // also corrects offsetDistance for some room types
@@ -67,12 +67,6 @@ namespace DefaultNamespace {
         }
 
         public bool Occuppied => Assignees.Count != 0;
-
-        /*public float GetNewTargetAngle() {
-            //Either the new Station has the angle baked in, or use a function to find the angle
-            return AstronautVisuals.SetTarget(gameObject.transform.position);
-        }
-        */
 
         protected void NameOnDoor() {
             switch (DoorSign) {
@@ -115,11 +109,7 @@ namespace DefaultNamespace {
             throw new NotImplementedException("needs to be implemented in subclass");
         }
 
-        public virtual float DetermineConsequences(float timePassed) {
-            // returns average acceleration over last time interval
-            // here, accelation is modelled as piecewise constant - hence timePassed cancels out
-            return Assignees.Count * (IsBehaviourStation() ? -1.0f : +1.0f);
-        }
+        public abstract float DetermineConsequences(float timePassed);
 
         public static StationAlertType GetAlert(ActivityRoom room, bool isBehaveStation) {
             switch (room) {

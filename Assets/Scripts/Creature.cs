@@ -55,6 +55,9 @@ public class Creature : MonoBehaviour {
 
         // set hit points
         currentHitPoints = maxHitPoints;
+
+        // give home
+        home = SpaceStation.Single;
     }
 
     // Update is called once per frame
@@ -89,10 +92,6 @@ public class Creature : MonoBehaviour {
 
     public void ChangeLayer(int newLayer) {
         layer = newLayer;
-    }
-
-    public void GiveHome(SpaceStation newHome) {
-        home = newHome;
     }
 
     protected void MoveTowardTarget() {

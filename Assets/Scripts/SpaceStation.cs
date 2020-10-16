@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace DefaultNamespace {
     public class SpaceStation : MonoBehaviour {
+        public static SpaceStation Single = null;
+
         #region Geometric information about the space station
 
         // geoometric information about the space station
@@ -55,6 +57,16 @@ namespace DefaultNamespace {
 
         #endregion
 
+
+        private void Awake() {
+            if (Single == null) {
+                Single = this;
+            }
+            else {
+                Destroy(this.gameObject);
+            }
+        }
+
         private void Start() {
             noLayers = noAstronauts + 2;
 
@@ -64,12 +76,12 @@ namespace DefaultNamespace {
                 // add Behave Stations
                 var newBehaveStation = Instantiate(BehaveStationPrefab).GetComponent<BehaveStation>();
                 newBehaveStation.transform.parent = transform;
-                newBehaveStation.PlaceDown(angle, 1, this, doorSign);
+                newBehaveStation.PlaceDown(angle, 1, doorSign);
 
                 // add Misbehave Stations
                 var newMisbehaveStation = Instantiate(MisbehaveStationPrefab).GetComponent<MisbehaveStation>();
                 newMisbehaveStation.transform.parent = transform;
-                newMisbehaveStation.PlaceDown(angle, 1, this, doorSign);
+                newMisbehaveStation.PlaceDown(angle, 1, doorSign);
 
                 // inform about their twins
                 newBehaveStation.behaveTwin    = newMisbehaveStation;
@@ -89,7 +101,6 @@ namespace DefaultNamespace {
                 var newAstronaut = Instantiate(AstronautPrefab).GetComponent<Astronaut>();
                 newAstronaut.transform.parent = transform;
                 newAstronaut.ChangeLayer(noLayers - i);
-                newAstronaut.GiveHome(this);
                 Astronauts.Add(newAstronaut);
             }
         }
@@ -167,7 +178,6 @@ namespace DefaultNamespace {
             var newMonster = Instantiate(MonsterPrefab).GetComponent<Monster>();
             newMonster.transform.parent = transform;
             newMonster.ChangeLayer(noLayers);
-            newMonster.GiveHome(this);
             newMonster.positionAngle = angle;
             Monsters.Add(newMonster);
         }
@@ -186,8 +196,7 @@ namespace DefaultNamespace {
             // make new astronaut
             var newAstronaut = Instantiate(AstronautPrefab).GetComponent<Astronaut>();
             newAstronaut.transform.parent = transform;
-            newAstronaut.GiveHome(this);
-            newAstronaut.positionAngle = angle;
+            newAstronaut.positionAngle    = angle;
             Astronauts.Add(newAstronaut);
 
             // distribute evenly

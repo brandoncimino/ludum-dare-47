@@ -71,6 +71,7 @@ namespace DefaultNamespace.Text {
                 // determine new warning threshold and reset timer
                 WarnThreshold = Math.Min(GaussSample(WarnTimeMean, WarnTimeStdDev), WarnTimeMax);
                 WarnCounter   = 0;
+                WaitCounter   = 0;
                 return;
             }
 
@@ -85,6 +86,7 @@ namespace DefaultNamespace.Text {
 
                 // reset timer
                 UpdateCounter = 0;
+                WaitCounter   = 0;
                 return;
             }
 
@@ -98,6 +100,7 @@ namespace DefaultNamespace.Text {
 
                 // reset timer and find new threshold
                 InfoCounter   = 0;
+                WaitCounter   = 0;
                 InfoThreshold = Math.Min(GaussSample(InfoTimeMean, InfoTimeStdDev), InfoTimeMax);
             }
         }

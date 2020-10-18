@@ -28,10 +28,6 @@ namespace DefaultNamespace {
         public Sprite RecSprite;
         public Sprite EngineSprite;
 
-        public virtual bool CanRegister() {
-            return true;
-        }
-
         public void PlaceDown(float newAngle, int newLayer, ActivityRoom newDoorSign) {
             DoorSign      = newDoorSign;
             PositionAngle = (newAngle + OffsetAngle) % 360;

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using DefaultNamespace;
+
 using JetBrains.Annotations;
 
 using Packages.BrandonUtils.Runtime.Collections;
@@ -41,8 +43,7 @@ public class AstroForeman : MonoBehaviour {
     }
 
     public BehaveStation AvailableBehaveStation() {
-        return BehaveStations.Where(station => station.currentState == BehaveStation.BehaveStationStates.Abandoned)
-                             .Random();
+        return BehaveStations.Where(station => station.currentState == BehaveStationStates.Abandoned).Random();
     }
 
     public MisbehaveStation DistantMisbehaveStation(BehaveStation currentLocation) {
@@ -55,7 +56,7 @@ public class AstroForeman : MonoBehaviour {
                                        .ToList();
         //Find closest abandoned station
         foreach (var station in BehaveStations) {
-            if (station.currentState == BehaveStation.BehaveStationStates.Abandoned) {
+            if (station.currentState == BehaveStationStates.Abandoned) {
                 //set astronaut's station to that station
                 station.Claim(astronaut);
                 astronaut.myStats.myBehaveStation = station;

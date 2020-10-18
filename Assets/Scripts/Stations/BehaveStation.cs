@@ -5,18 +5,8 @@ using DefaultNamespace;
 using DefaultNamespace.Text;
 
 public class BehaveStation : ActivityStation {
-    public  MisbehaveStation behaveTwin;
-    public  List<AstroAI>    OnTheirWay;
-    private float            IncarnationProcess = 0;
-    private float            IncarnationTime    = 30f;
-    public  bool             MonsterInStorage   = true;
-
-    // public float OffsetAngle = 12
-    public enum BehaveStationStates {
-        Claimed,
-        Occupied,
-        Abandoned
-    }
+    public MisbehaveStation behaveTwin;
+    public List<AstroAI>    OnTheirWay;
 
     public BehaveStationStates currentState = BehaveStationStates.Abandoned;
 
@@ -72,7 +62,7 @@ public class BehaveStation : ActivityStation {
 
     public override float DetermineConsequences(float timePassed) {
         if (currentState == BehaveStationStates.Occupied) {
-            if (behaveTwin.currentState != MisbehaveStation.MisbehaveStationStates.Fixed) {
+            if (behaveTwin.currentState != MisbehaveStationStates.Fixed) {
                 // if the station next to you is broken, repair it first
                 RepairTwin(timePassed);
 
@@ -80,40 +70,14 @@ public class BehaveStation : ActivityStation {
                 return 0;
             }
 
-            switch (DoorSign) {
-                case ActivityRoom.Bridge:
-                    return -1.5f;
-                case ActivityRoom.Rec:
-                    return -1f;
-                case ActivityRoom.Kitchen:
-                    return -1f;
-                case ActivityRoom.Lab:
-                    // do "good" science
-                    return ScienceUp(timePassed);
-                case ActivityRoom.Engine:
-                    return -2f;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            return -1f;
         }
 
         return 0;
     }
 
-    private void RepairTwin(float deltaTime) {
+    protected void RepairTwin(float deltaTime) {
         behaveTwin.Repair(deltaTime);
-    }
-
-    private float ScienceUp(float timePassed) {
-        IncarnationProcess += timePassed;
-
-        if (IncarnationProcess >= IncarnationTime) {
-            home.SpawnAstronaut(PositionAngle);
-            IncarnationProcess = 0;
-            MonsterInStorage   = false;
-        }
-
-        return 0;
     }
 
     public override void GiveWarning() {

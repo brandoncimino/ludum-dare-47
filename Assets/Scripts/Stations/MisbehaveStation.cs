@@ -51,9 +51,8 @@ public class MisbehaveStation : ActivityStation {
 
             return true;
         }
-        else {
-            return false;
-        }
+
+        return false;
     }
 
     public override bool Leave(AstroAI astronaut) {
@@ -70,7 +69,6 @@ public class MisbehaveStation : ActivityStation {
         // this function gets overriden in the subclasses with specific negative consequences, but as a generic version for new misbehave stations in the future, Assignees.Count is a first good value.
         return Assignees.Count;
     }
-
 
     public override void GiveWarning() {
         behaveTwin.GiveWarning();

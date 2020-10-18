@@ -21,6 +21,11 @@ namespace DefaultNamespace {
         public int          PositionLayer;
         public ActivityRoom DoorSign;
 
+        /// <summary>
+        /// This function positions the activity station on the circular space station, and rotates it accordingly. For a position, it needs the angle of the room's center and the layer (depth) at which to place the station.
+        /// </summary>
+        /// <param name="newAngle">center or the room</param>
+        /// <param name="newLayer">depth layer into the station</param>
         public void PlaceDown(float newAngle, int newLayer) {
             PositionAngle = (newAngle + OffsetAngle) % 360;
             PositionLayer = newLayer;

@@ -36,9 +36,8 @@ public class BehaveStation : ActivityStation {
 
             return true;
         }
-        else {
-            throw new ArgumentException("Arrive: Astronaut arrived without claiming first!");
-        }
+
+        throw new ArgumentException("Arrive: Astronaut arrived without claiming first!");
     }
 
     public bool Claim(AstroAI astronaut = null) {
@@ -47,9 +46,8 @@ public class BehaveStation : ActivityStation {
             OnTheirWay.Add(astronaut);
             return true;
         }
-        else {
-            return false;
-        }
+
+        return false;
     }
 
     protected override bool IsBehaviourStation() {

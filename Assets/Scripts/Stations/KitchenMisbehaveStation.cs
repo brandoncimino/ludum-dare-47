@@ -16,14 +16,12 @@ namespace DefaultNamespace {
         private float SetFire(float timePassed) {
             // returns acceleration caused in the process
 
-            // fire in the kitchen harms a random astronaut at the arson spot
-            // the random choice prevents an error where an astronaut dies from fire damage, gets unassigned from the
-            // arson spot, which changes the Assignees list and hence breaks the for-loop over its items
-            if (Random.Next(0, 100) == 0) {
-                var astronaut = Assignees[Random.Next(0, Assignees.Count)];
+            // fire in the kitchen harms a all astronauts at the arson spot
+            foreach (var astronaut in Assignees) {
                 var nonLethal = astronaut.myBody.TakeDamage(0.5f, 1.5f * astronaut.myBody.getDmgVisualTime());
 
                 if (!nonLethal) {
+                    // report that someone has died
                     Scheduler.Single.ReportEmergency(StationAlertType.Astronaut_Dead_Fire, astronaut);
                 }
             }

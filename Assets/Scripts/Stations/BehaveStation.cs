@@ -55,11 +55,18 @@ public class BehaveStation : ActivityStation {
     }
 
     private void Start() {
+        // informs the foreman about this object
         AstroForeman.Single.Register(this);
     }
 
+    /// <summary>
+    /// This function tells us what happens from work at the station. It gets called from the space station with the time that has passed since the frame update. It return the acceleration (negative: deceleration) caused by the worker at this station. If the work has additional consequences than acceleration / deceleration, this is where they get called and come to life.
+    /// </summary>
+    /// <param name="timePassed">time passed since the last update</param>
+    /// <returns>acceleration caused by this station (not weighted by the time)</returns>
     public override float DetermineConsequences(float timePassed) {
         if (currentState == BehaveStationStates.Occupied) {
+            // there are only consequences if someone is here
             if (behaveTwin.currentState != MisbehaveStationStates.Fixed) {
                 // if the station next to you is broken, repair it first
                 RepairTwin(timePassed);
@@ -75,6 +82,7 @@ public class BehaveStation : ActivityStation {
     }
 
     protected void RepairTwin(float deltaTime) {
+        // the misbehave station is the one that can break or be repaired
         behaveTwin.Repair(deltaTime);
     }
 

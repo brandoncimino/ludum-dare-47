@@ -63,18 +63,16 @@ namespace DefaultNamespace {
             transform.localRotation = TargetRotation;
             if (isGameOver) {
                 timeUntilReset -= Time.deltaTime;
-                if (timeUntilReset <=0) {
+                if (timeUntilReset <= 0) {
                     SceneManager.LoadScene("TitleScreen");
                 }
-                
+
                 MaxPitch /= (1 - 0.5f * Time.deltaTime);
                 MaxPitch =  Math.Min(MaxPitch, 180);
-                
             }
         }
 
         public void Convert2Wobbling(float excessSpeed) {
-
             if (Math.Abs(excessSpeed) < 1e-4) {
                 RemainingRecTime -= Time.deltaTime;
                 if (RemainingRecTime <= 0) {
@@ -88,7 +86,7 @@ namespace DefaultNamespace {
                 WobbleSpeed       += excessSpeed;
                 RemainingRecTime  =  MaxRecTime;
             }
-            
+
             WobbleLerpAmount = (float) (Math.Abs(2 * Math.Atan(WobbleSpeed * 5e-2) / Math.PI));
 
             if (WobbleLerpAmount > 0.65) {
@@ -97,7 +95,7 @@ namespace DefaultNamespace {
             }
         }
 
-        public float        timeUntilReset = 7f;
-        public bool         isGameOver     = false;
+        public float timeUntilReset = 7f;
+        public bool  isGameOver     = false;
     }
 }

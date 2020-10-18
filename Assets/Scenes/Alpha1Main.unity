@@ -234,11 +234,6 @@ MonoBehaviour:
   OffsetAngle: -9
   PositionLayer: 0
   DoorSign: 2
-  BridgeSprite: {fileID: 0}
-  KitchenSprite: {fileID: 0}
-  LabSprite: {fileID: 0}
-  RecSprite: {fileID: 0}
-  EngineSprite: {fileID: 0}
   behaveTwin: {fileID: 1586298385}
   OnTheirWay: []
   currentState: 2
@@ -392,17 +387,11 @@ MonoBehaviour:
   OffsetAngle: 9
   PositionLayer: 0
   DoorSign: 3
-  BridgeSprite: {fileID: 0}
-  KitchenSprite: {fileID: 0}
-  LabSprite: {fileID: 0}
-  RecSprite: {fileID: 0}
-  EngineSprite: {fileID: 0}
-  BridgeSpriteCat: {fileID: 0}
-  behaveTwin: {fileID: 808479036}
+  behaveTwin: {fileID: 0}
   maxTimeToBreak: 8
   remainingBreakTime: 0
   currentState: 0
-  behaveTwin: {fileID: 0}
+  behaveTwinLab: {fileID: 808479036}
 --- !u!212 &64121440 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3424702222072115097, guid: 28820da464aba436c987055a204f15ed, type: 3}
@@ -445,12 +434,6 @@ MonoBehaviour:
   OffsetAngle: 9
   PositionLayer: 0
   DoorSign: 1
-  BridgeSprite: {fileID: 0}
-  KitchenSprite: {fileID: 0}
-  LabSprite: {fileID: 0}
-  RecSprite: {fileID: 0}
-  EngineSprite: {fileID: 0}
-  BridgeSpriteCat: {fileID: 0}
   behaveTwin: {fileID: 1956059373}
   maxTimeToBreak: 8
   remainingBreakTime: 0
@@ -801,12 +784,6 @@ MonoBehaviour:
   OffsetAngle: 9
   PositionLayer: 0
   DoorSign: 4
-  BridgeSprite: {fileID: 0}
-  KitchenSprite: {fileID: 0}
-  LabSprite: {fileID: 0}
-  RecSprite: {fileID: 0}
-  EngineSprite: {fileID: 0}
-  BridgeSpriteCat: {fileID: 0}
   behaveTwin: {fileID: 1894965827}
   maxTimeToBreak: 8
   remainingBreakTime: 0
@@ -920,11 +897,6 @@ MonoBehaviour:
   OffsetAngle: -9
   PositionLayer: 0
   DoorSign: 3
-  BridgeSprite: {fileID: 0}
-  KitchenSprite: {fileID: 0}
-  LabSprite: {fileID: 0}
-  RecSprite: {fileID: 0}
-  EngineSprite: {fileID: 0}
   behaveTwin: {fileID: 64121439}
   OnTheirWay: []
   currentState: 2
@@ -1716,12 +1688,6 @@ MonoBehaviour:
   OffsetAngle: 9
   PositionLayer: 0
   DoorSign: 2
-  BridgeSprite: {fileID: 0}
-  KitchenSprite: {fileID: 0}
-  LabSprite: {fileID: 0}
-  RecSprite: {fileID: 0}
-  EngineSprite: {fileID: 0}
-  BridgeSpriteCat: {fileID: 0}
   behaveTwin: {fileID: 30805546}
   maxTimeToBreak: 8
   remainingBreakTime: 0
@@ -6569,16 +6535,12 @@ MonoBehaviour:
   OffsetAngle: 9
   PositionLayer: 0
   DoorSign: 0
-  BridgeSprite: {fileID: 0}
-  KitchenSprite: {fileID: 0}
-  LabSprite: {fileID: 0}
-  RecSprite: {fileID: 0}
-  EngineSprite: {fileID: 0}
-  BridgeSpriteCat: {fileID: 21300000, guid: 186ae82c552af98498b10013bdcabf91, type: 3}
   behaveTwin: {fileID: 1688604677}
   maxTimeToBreak: 8
   remainingBreakTime: 0
   currentState: 0
+  BridgeSprite: {fileID: 21300000, guid: 3ca90b08c16a81944ba805816f4a6d86, type: 3}
+  BridgeSpriteCat: {fileID: 21300000, guid: 186ae82c552af98498b10013bdcabf91, type: 3}
 --- !u!212 &1656246471 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3424702222072115097, guid: 28820da464aba436c987055a204f15ed, type: 3}
@@ -6705,11 +6667,6 @@ MonoBehaviour:
   OffsetAngle: -9
   PositionLayer: 0
   DoorSign: 0
-  BridgeSprite: {fileID: 0}
-  KitchenSprite: {fileID: 0}
-  LabSprite: {fileID: 0}
-  RecSprite: {fileID: 0}
-  EngineSprite: {fileID: 0}
   behaveTwin: {fileID: 1656246470}
   OnTheirWay: []
   currentState: 2
@@ -6868,11 +6825,6 @@ MonoBehaviour:
   OffsetAngle: -9
   PositionLayer: 0
   DoorSign: 4
-  BridgeSprite: {fileID: 0}
-  KitchenSprite: {fileID: 0}
-  LabSprite: {fileID: 0}
-  RecSprite: {fileID: 0}
-  EngineSprite: {fileID: 0}
   behaveTwin: {fileID: 538598759}
   OnTheirWay: []
   currentState: 2
@@ -6907,11 +6859,6 @@ MonoBehaviour:
   OffsetAngle: -9
   PositionLayer: 0
   DoorSign: 1
-  BridgeSprite: {fileID: 0}
-  KitchenSprite: {fileID: 0}
-  LabSprite: {fileID: 0}
-  RecSprite: {fileID: 0}
-  EngineSprite: {fileID: 0}
   behaveTwin: {fileID: 294533374}
   OnTheirWay: []
   currentState: 2

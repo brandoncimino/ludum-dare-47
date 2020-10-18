@@ -1,6 +1,7 @@
 ﻿using System;
 
 using DefaultNamespace;
+using DefaultNamespace.Text;
 
 public class MisbehaveStation : ActivityStation {
     // public float OffsetAngle = -12;
@@ -15,7 +16,7 @@ public class MisbehaveStation : ActivityStation {
 
     public MisbehaveStationStates currentState = MisbehaveStationStates.Fixed;
 
-    void Start() {
+    private void Start() {
         remainingBreakTime = maxTimeToBreak;
         AstroForeman.Single.Register(this);
     }
@@ -38,7 +39,7 @@ public class MisbehaveStation : ActivityStation {
         }
     }
 
-    protected override bool IsBehaviourStation() {
+    protected override bool IsBehaveStation() {
         return false;
     }
 
@@ -86,5 +87,10 @@ public class MisbehaveStation : ActivityStation {
 
     public override void GiveUpdate() {
         behaveTwin.GiveUpdate();
+    }
+
+    public override StationAlertType AstronautInfo() {
+        // as a generic version, we give the behaviour message of the station
+        return GetAlert(DoorSign, false);
     }
 }

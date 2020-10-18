@@ -27,6 +27,10 @@
         Astronaut_Dead_Generic,
         Astronaut_Dead_Fire,
         Astronaut_Dead_Monster,
+        Astronaut_Fleeing,
+        Astronaut_Idle,
+        Astronaut_Moving_Behaving,
+        Astronaut_Moving_Misbehaving,
 
         #endregion
 

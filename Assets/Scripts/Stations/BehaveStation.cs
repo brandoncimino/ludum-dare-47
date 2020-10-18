@@ -50,7 +50,7 @@ public class BehaveStation : ActivityStation {
         return false;
     }
 
-    protected override bool IsBehaviourStation() {
+    protected override bool IsBehaveStation() {
         return true;
     }
 
@@ -94,5 +94,10 @@ public class BehaveStation : ActivityStation {
     public override void GiveUpdate() {
         // TODO: put in the replacements
         StationLogger.Alert(GetAlert(DoorSign, true), Alert.SeverityLevel.Info);
+    }
+
+    public override StationAlertType AstronautInfo() {
+        // as a generic version, we give the behaviour message of the station
+        return GetAlert(DoorSign, true);
     }
 }

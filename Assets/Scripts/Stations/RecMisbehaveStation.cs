@@ -34,5 +34,12 @@ namespace DefaultNamespace {
             // TODO: maybe a percentage?
             return 0;
         }
+
+        protected override void PlaceDownCorrection() {
+            // make the window big, centered, and behind the treadmill
+            OffsetDistance       =  0;
+            transform.localScale *= 2;
+            PositionLayer        -= 1;
+        }
     }
 }

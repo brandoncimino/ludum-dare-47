@@ -72,29 +72,17 @@ namespace DefaultNamespace {
         private void Start() {
             noLayers = noAstronauts + 2;
 
-            // spawn activity stations
+            // position the behave stations in your list
             var angle = 18f;
-            foreach (ActivityRoom doorSign in Enum.GetValues(typeof(ActivityRoom))) {
-                // add Behave Stations
-                var newBehaveStation = Instantiate(BehaveStationPrefab).GetComponent<BehaveStation>();
-                newBehaveStation.transform.parent = transform;
-                newBehaveStation.PlaceDown(angle, 1, doorSign);
+            foreach (var station in BehaveStations) {
+                station.PlaceDown(angle, 1);
+                angle += 72;
+            }
 
-                // add Misbehave Stations
-                var newMisbehaveStation = Instantiate(MisbehaveStationPrefab).GetComponent<MisbehaveStation>();
-                newMisbehaveStation.transform.parent = transform;
-                newMisbehaveStation.PlaceDown(angle, 1, doorSign);
-
-                // inform about their twins
-                newBehaveStation.behaveTwin    = newMisbehaveStation;
-                newMisbehaveStation.behaveTwin = newBehaveStation;
-
-                // add to station list
-                // TODO: write setter routine, make twinStations private property
-                BehaveStations.Add(newBehaveStation);
-                MisbehaveStations.Add(newMisbehaveStation);
-
-                // change where to position the next station center
+            // position the misbehave stations in your list
+            angle = 18f;
+            foreach (var station in MisbehaveStations) {
+                station.PlaceDown(angle, 1);
                 angle += 72;
             }
 

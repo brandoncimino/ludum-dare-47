@@ -56,7 +56,7 @@ public class BehaveStation : ActivityStation {
         return true;
     }
 
-    void Awake() {
+    private void Start() {
         AstroForeman.Single.Register(this);
     }
 

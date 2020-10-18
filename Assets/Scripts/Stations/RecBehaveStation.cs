@@ -15,5 +15,10 @@ namespace DefaultNamespace {
 
             return 0;
         }
+
+        protected override void PlaceDownCorrection() {
+            // the sprite for the treadmill is a bit small so we scale it up
+            transform.localScale *= 1.5f;
+        }
     }
 }

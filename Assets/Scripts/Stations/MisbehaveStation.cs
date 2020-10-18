@@ -1,12 +1,10 @@
-﻿using DefaultNamespace;
+﻿using System;
 
-using UnityEngine;
-
-using Random = System.Random;
+using DefaultNamespace;
 
 public class MisbehaveStation : ActivityStation {
     // public float OffsetAngle = -12;
-    public    Sprite BridgeSpriteCat;
+
     protected Random Random = new Random();
 
     public BehaveStation behaveTwin;
@@ -17,7 +15,7 @@ public class MisbehaveStation : ActivityStation {
 
     public MisbehaveStationStates currentState = MisbehaveStationStates.Fixed;
 
-    void Awake() {
+    void Start() {
         remainingBreakTime = maxTimeToBreak;
         AstroForeman.Single.Register(this);
     }
@@ -45,10 +43,6 @@ public class MisbehaveStation : ActivityStation {
                 astronaut.myBody.ChangeThought(Thought.Pyromania);
             }
 
-            if (DoorSign == ActivityRoom.Bridge) {
-                mySpriteRenderer.sprite = BridgeSpriteCat;
-            }
-
             Assignees.Add(astronaut);
 
             // send an alert message for the arrival at this station.
@@ -64,10 +58,6 @@ public class MisbehaveStation : ActivityStation {
 
     public override bool Leave(AstroAI astronaut) {
         if (Assignees.Contains(astronaut)) {
-            if (DoorSign == ActivityRoom.Bridge) {
-                mySpriteRenderer.sprite = BridgeSprite;
-            }
-
             Assignees.Remove(astronaut);
             return true;
         }

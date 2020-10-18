@@ -90,10 +90,6 @@ namespace DefaultNamespace {
             }
         }
 
-        protected void AlertArrival(params IAlertReplacements[] replacementSources) {
-            StationLogger.Alert(GetAlert(DoorSign, IsBehaveStation()), replacementSources);
-        }
-
         public Dictionary<string, string> GetAlertReplacements() {
             return StationLogger.SoupOfTheDay.GetAlertReplacements();
         }

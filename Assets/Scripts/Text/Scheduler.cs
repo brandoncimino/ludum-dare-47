@@ -106,7 +106,7 @@ namespace DefaultNamespace.Text {
         }
 
         public void ReportEmergency(StationAlertType alertType, params IAlertReplacements[] replacementSources) {
-            StationLogger.Alert(alertType, replacementSources);
+            StationLogger.Alert(alertType, Alert.SeverityLevel.Emergency, replacementSources);
             WaitCounter = 0f;
         }
 

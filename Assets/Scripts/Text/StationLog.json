@@ -78,6 +78,19 @@
       "$NAME was in the room when the monster woke up.",
       "$NAME kept tripping while they ran away."
     ],
+    "Astronaut_Fleeing": [
+      "$NAME does not want to find out if the monster is a threat."
+    ],
+    "Astronaut_Idle": [
+      "$NAME looks busy."
+    ],
+    "Astronaut_Moving_Behaving": [
+      "$NAME is on their way.",
+      "$NAME is going to save the world!"
+    ],
+    "Astronaut_Moving_Misbehaving": [
+      "$NAME was seen with a pickaxe on their way to $STATION."
+    ],
     "Station_TooFast": [
       "Exceeding maximum safe rotational velocity."
     ],

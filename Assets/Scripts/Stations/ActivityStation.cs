@@ -70,7 +70,7 @@ namespace DefaultNamespace {
 
         public abstract void GiveWarning();
         public abstract void GiveUpdate();
-        protected abstract bool IsBehaviourStation();
+        protected abstract bool IsBehaveStation();
         public abstract float DetermineConsequences(float timePassed);
 
         public static StationAlertType GetAlert(ActivityRoom room, bool isBehaveStation) {
@@ -93,5 +93,7 @@ namespace DefaultNamespace {
         public Dictionary<string, string> GetAlertReplacements() {
             return StationLogger.SoupOfTheDay.GetAlertReplacements();
         }
+
+        public abstract StationAlertType AstronautInfo();
     }
 }

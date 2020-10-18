@@ -6,7 +6,6 @@ public class AstroStats : MonoBehaviour {
         Behaving,
         MoveToMisbehaving,
         Misbehaving,
-        Fixing,
         Fleeing,
         Idle,
         Dead

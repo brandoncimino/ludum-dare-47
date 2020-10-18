@@ -43,8 +43,6 @@ public class AstroAI : CreatureAI {
                 break;
             case AstroStats.AIStates.Misbehaving:
                 break;
-            case AstroStats.AIStates.Fixing:
-                break;
             case AstroStats.AIStates.Fleeing:
                 remainingFleeTime = Math.Max(remainingFleeTime - Time.deltaTime, 0);
                 if (remainingFleeTime == 0) {
@@ -204,7 +202,34 @@ public class AstroAI : CreatureAI {
     }
 
     public override void GiveUpdate() {
-        // TODO: customize so that it comes from the astonaut
-        myStats.myBehaveStation.GiveUpdate();
+        StationAlertType myAlert;
+
+        switch (myStats.myState) {
+            case AstroStats.AIStates.MoveToBehaving:
+                myAlert = StationAlertType.Astronaut_Moving_Behaving;
+                break;
+            case AstroStats.AIStates.Behaving:
+                myAlert = myStats.myBehaveStation.AstronautInfo();
+                break;
+            case AstroStats.AIStates.MoveToMisbehaving:
+                myAlert = StationAlertType.Astronaut_Moving_Misbehaving;
+                break;
+            case AstroStats.AIStates.Misbehaving:
+                myAlert = myStats.myMisbehaveStation.AstronautInfo();
+                break;
+            case AstroStats.AIStates.Fleeing:
+                myAlert = StationAlertType.Astronaut_Fleeing;
+                break;
+            case AstroStats.AIStates.Idle:
+                myAlert = StationAlertType.Astronaut_Idle;
+                break;
+            case AstroStats.AIStates.Dead:
+                myAlert = StationAlertType.Astronaut_Dead_Generic;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        StationLogger.Alert(myAlert, Alert.SeverityLevel.Info);
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1026636825}
-  m_IndirectSpecularColor: {r: 0.055840977, g: 0.059985302, b: 0.06393147, a: 1}
+  m_IndirectSpecularColor: {r: 0.056030706, g: 0.060287483, b: 0.06404633, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -230,9 +230,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 30805547}
   StationLogger: {fileID: 619792224}
   PositionAngle: 0
-  OffsetDistance: 0
   OffsetAngle: -9
-  PositionLayer: 0
   DoorSign: 2
   behaveTwin: {fileID: 1586298385}
   OnTheirWay: []
@@ -383,9 +381,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 64121440}
   StationLogger: {fileID: 619792224}
   PositionAngle: 0
-  OffsetDistance: 0
   OffsetAngle: 9
-  PositionLayer: 0
   DoorSign: 3
   behaveTwin: {fileID: 0}
   maxTimeToBreak: 8
@@ -430,9 +426,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 294533375}
   StationLogger: {fileID: 619792224}
   PositionAngle: 0
-  OffsetDistance: 0
   OffsetAngle: 9
-  PositionLayer: 0
   DoorSign: 1
   behaveTwin: {fileID: 1956059373}
   maxTimeToBreak: 8
@@ -780,9 +774,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 538598760}
   StationLogger: {fileID: 619792224}
   PositionAngle: 0
-  OffsetDistance: 0
   OffsetAngle: 9
-  PositionLayer: 0
   DoorSign: 4
   behaveTwin: {fileID: 1894965827}
   maxTimeToBreak: 8
@@ -893,9 +885,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 808479037}
   StationLogger: {fileID: 619792224}
   PositionAngle: 0
-  OffsetDistance: 0
   OffsetAngle: -9
-  PositionLayer: 0
   DoorSign: 3
   behaveTwin: {fileID: 64121439}
   OnTheirWay: []
@@ -981,7 +971,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1684,9 +1674,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 1586298386}
   StationLogger: {fileID: 619792224}
   PositionAngle: 0
-  OffsetDistance: 0
   OffsetAngle: 9
-  PositionLayer: 0
   DoorSign: 2
   behaveTwin: {fileID: 30805546}
   maxTimeToBreak: 8
@@ -6531,9 +6519,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 1656246471}
   StationLogger: {fileID: 619792224}
   PositionAngle: 0
-  OffsetDistance: 0
   OffsetAngle: 9
-  PositionLayer: 0
   DoorSign: 0
   behaveTwin: {fileID: 1688604677}
   maxTimeToBreak: 8
@@ -6663,9 +6649,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 1688604678}
   StationLogger: {fileID: 619792224}
   PositionAngle: 0
-  OffsetDistance: 0
   OffsetAngle: -9
-  PositionLayer: 0
   DoorSign: 0
   behaveTwin: {fileID: 1656246470}
   OnTheirWay: []
@@ -6821,9 +6805,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 1894965828}
   StationLogger: {fileID: 619792224}
   PositionAngle: 0
-  OffsetDistance: 0
   OffsetAngle: -9
-  PositionLayer: 0
   DoorSign: 4
   behaveTwin: {fileID: 538598759}
   OnTheirWay: []
@@ -6855,9 +6837,7 @@ MonoBehaviour:
   mySpriteRenderer: {fileID: 1956059374}
   StationLogger: {fileID: 619792224}
   PositionAngle: 0
-  OffsetDistance: 0
   OffsetAngle: -9
-  PositionLayer: 0
   DoorSign: 1
   behaveTwin: {fileID: 294533374}
   OnTheirWay: []
@@ -7199,7 +7179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3971122356428510199, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3971122356428510199, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7211,7 +7191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3971122356428510199, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 3971122356428510199, guid: 043d140a7b697a44db4b5fb216d59ab1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

@@ -132,10 +132,20 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-# Excluded by Brandon on 5/12/2020 - not sure what it is but it doesn't seem important
-# Update from Brandon on 8/21/2020 - this includes settings like "Use experimental .NET features." When / why we'd want that, I'm still not sure of.
-/com.fowlfever.fortunefountaing.runtime.csproj.DotSettings
+# Excluded by Brandon on 5/12/2020  - Not sure what it is but it doesn't seem important
+# Update from Brandon on 8/21/2020  - This includes settings like "Use experimental .NET features." When / why we'd want that, I'm still not sure of.
+# Update from Brandon on 10/18/2020 - Made this generic (I hope), rather than fortunefountaing-specific.
+/*.DotSettings
 
 # Use this folder for things you want to play with locally but not commit
 Assets/Scripts/Runtime/Sketchbook/
 /Ludum Dare 47 Final Build/
+
+# This keeps adding and removing the "Assets" folder and stuff...
+# According to:
+#   https://rider-support.jetbrains.com/hc/en-us/articles/207097529-What-is-the-idea-folder-
+# this file SHOULD be included, however, it doesn't actually do what they claim it does.
+# Plus, as noted in the first comment, the .gitignore that they link to in that article,
+#   https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
+# is inaccurate.
+# indexLayout.xml

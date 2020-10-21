@@ -41,5 +41,10 @@ namespace DefaultNamespace {
             transform.localScale *= 2;
             PositionLayer        -= 1;
         }
+
+        protected override bool Reason2Warn(float threshold = 0.5f) {
+            // a reason to warn is if the window's hp have been reduced by at least (threshold * 100)%
+            return remainingBreakTime / maxTimeToBreak <= threshold;
+        }
     }
 }

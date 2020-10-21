@@ -66,13 +66,14 @@ namespace DefaultNamespace.Text {
             // warnings come first
             if (myWarnings.Count > 0 && WarnCounter >= WarnThreshold) {
                 // give out the warning
-                GiveWarning();
-
-                // determine new warning threshold and reset timer
-                WarnThreshold = Math.Min(GaussSample(WarnTimeMean, WarnTimeStdDev), WarnTimeMax);
-                WarnCounter   = 0;
-                WaitCounter   = 0;
-                return;
+                var warned = GiveWarning();
+                if (warned) {
+                    // determine new warning threshold and reset timer
+                    WarnThreshold = Math.Min(GaussSample(WarnTimeMean, WarnTimeStdDev), WarnTimeMax);
+                    WarnCounter   = 0;
+                    WaitCounter   = 0;
+                    return;
+                }
             }
 
             // prefer scheduled updates over disturbing the astronauts
@@ -132,15 +133,27 @@ namespace DefaultNamespace.Text {
             return (float) (mean + stdDev * randStdNormal);
         }
 
-        private void GiveWarning() {
-            // select messenger
-            var messenger = myWarnings[0];
+        /// <summary>
+        /// This function selects a random messenger who has before reported that they wanted to warn, and gives them the change to do so. If the messenger no longer sees a reason to warn, another messenger is chosen, until a warning has been raised or all messengers have been cleared.
+        /// </summary>
+        /// <returns>returns (bool) whether or not a warning has been raised</returns>
+        private bool GiveWarning() {
+            var warned = false;
+            while (!warned && myWarnings.Count > 0) {
+                // we are nice and only reset the warning timer if we have indeed warned
 
-            // deliver message
-            // TODO: find out how to do this!
+                // select messenger, for now randomly
+                // TODO: base choice on importance
+                var messenger = myWarnings.Random();
 
-            // remove messenger
-            myWarnings.Remove(messenger);
+                // deliver message
+                warned = messenger.GiveWarning();
+
+                // remove messenger
+                myWarnings.Remove(messenger);
+            }
+
+            return warned;
         }
     }
 }

@@ -1,3 +1,5 @@
+using System.Linq;
+
 using DefaultNamespace.Text;
 
 namespace DefaultNamespace {
@@ -40,6 +42,13 @@ namespace DefaultNamespace {
 
             // fire doesn't cause acceleration
             return 0;
+        }
+
+        protected override bool Reason2Warn(float threshold = 0.5f) {
+            // a reason to warn is if there exists an astronaut at this station with less than (threshold * 100)% health
+            return Assignees.Any(
+                astronaut => astronaut.myBody.currentHitPoints / astronaut.myBody.maxHitPoints <= threshold
+            );
         }
     }
 }

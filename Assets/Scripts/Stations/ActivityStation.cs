@@ -68,7 +68,7 @@ namespace DefaultNamespace {
 
         public abstract bool Leave(AstroAI astronaut);
 
-        public abstract void GiveWarning();
+        public abstract bool GiveWarning();
         public abstract void GiveUpdate();
         protected abstract bool IsBehaveStation();
         public abstract float DetermineConsequences(float timePassed);

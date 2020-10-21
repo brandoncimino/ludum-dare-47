@@ -1,7 +1,9 @@
-﻿using System;
-
-using DefaultNamespace;
+﻿using DefaultNamespace;
 using DefaultNamespace.Text;
+
+using UnityEngine;
+
+using Random = System.Random;
 
 public class MisbehaveStation : ActivityStation {
     // public float OffsetAngle = -12;
@@ -16,13 +18,39 @@ public class MisbehaveStation : ActivityStation {
 
     public MisbehaveStationStates currentState = MisbehaveStationStates.Fixed;
 
+    #region information to do with warnings
+
+    protected float WarnCounter      = 0;
+    protected float MaxWaitTime      = 5f;
+    protected bool  reportedWarning  = false;
+    protected bool  canReportWarning = true;
+
+    #endregion
+
     private void Start() {
         remainingBreakTime = maxTimeToBreak;
         AstroForeman.Single.Register(this);
     }
 
     private void Update() {
-        // TODO: change sprites
+        // see if enough time has passed since last warning to regain warning ability
+        if (!canReportWarning && !reportedWarning) {
+            WarnCounter -= Time.deltaTime;
+            if (WarnCounter <= 0) {
+                // wait time has passed, can report again
+                WarnCounter      = 0;
+                canReportWarning = true;
+            }
+        }
+
+        // check if it is worth reporting a warning and do so if needed
+        if (canReportWarning && Assignees.Count > 0 && Reason2Warn()) {
+            Scheduler.Single.ReportWarning(this);
+            reportedWarning  = true;
+            canReportWarning = false;
+        }
+
+        // TODO: change sprites to reflect state of the station
         // TODO: update health bars
     }
 
@@ -59,11 +87,16 @@ public class MisbehaveStation : ActivityStation {
     public override bool Leave(AstroAI astronaut) {
         if (Assignees.Contains(astronaut)) {
             Assignees.Remove(astronaut);
-            return true;
+            return Leave_individual(astronaut);
         }
 
         return false;
     }
+
+    protected virtual bool Leave_individual(AstroAI astronaut) {
+        return true;
+    }
+
 
     /// <summary>
     /// This function tells us what happens from work at the station. It gets called from the space station with the time that has passed since the frame update. It return the acceleration (negative: deceleration) caused by the worker at this station. If the work has additional consequences than acceleration / deceleration, this is where they get called and come to life.
@@ -76,16 +109,32 @@ public class MisbehaveStation : ActivityStation {
         return Assignees.Count;
     }
 
-    public override void GiveWarning() {
-        behaveTwin.GiveWarning();
+    public override bool GiveWarning() {
+        if (Reason2Warn(0.7f)) {
+            reportedWarning = false;
+            WarnCounter     = MaxWaitTime;
+
+            // TODO: implement own functionality here
+            behaveTwin.GiveWarning();
+
+            return true;
+        }
+
+        return false;
     }
 
     public override void GiveUpdate() {
+        // actually, a misbehave station should never be called upon to give an info update
         behaveTwin.GiveUpdate();
     }
 
     public override StationAlertType AstronautInfo() {
         // as a generic version, we give the behaviour message of the station instead of what an astronaut might write
         return GetAlert(DoorSign, false);
+    }
+
+    protected virtual bool Reason2Warn(float threshold = 0.5f) {
+        // no reason to warn by default
+        return false;
     }
 }

@@ -16,22 +16,10 @@ namespace DefaultNamespace {
             PositionLayer -= 1;
         }
 
-        public override bool Arrive(AstroAI astronaut) {
-            if (!Assignees.Contains(astronaut)) {
-                // start showing cat videos
-                mySpriteRenderer.sprite = BridgeSpriteCat;
-
-                Assignees.Add(astronaut);
-
-                // send an alert message for the arrival at this station.
-                //TODO: This would ideally use an event system, either with "real" events or UnityEvents, but that might require more refactoring than is worthwhile.
-                //AlertArrival(this, astronaut);
-
-                return true;
-            }
-            else {
-                return false;
-            }
+        protected override bool Arrive_individual(AstroAI astronaut) {
+            // start showing cat videos
+            mySpriteRenderer.sprite = BridgeSpriteCat;
+            return true;
         }
 
         public override bool Leave(AstroAI astronaut) {
@@ -42,6 +30,15 @@ namespace DefaultNamespace {
             }
 
             return false;
+        }
+
+        protected override bool Leave_individual(AstroAI astronaut) {
+            if (Assignees.Count == 0) {
+                // stop showing cat videos
+                mySpriteRenderer.sprite = BridgeSprite;
+            }
+
+            return true;
         }
     }
 }

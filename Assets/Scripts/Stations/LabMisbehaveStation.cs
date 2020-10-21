@@ -38,5 +38,10 @@ namespace DefaultNamespace {
             // freeing a monster doesn't cause acceleration
             return 0;
         }
+
+        protected override bool Reason2Warn(float threshold = 0.5f) {
+            // a reason to warn is if the incarnation tube's hp have been reduced by at least (threshold * 100)%
+            return remainingBreakTime / maxTimeToBreak <= threshold;
+        }
     }
 }

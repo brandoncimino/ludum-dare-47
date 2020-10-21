@@ -83,9 +83,10 @@ public class BehaveStation : ActivityStation {
         behaveTwin.Repair(deltaTime);
     }
 
-    public override void GiveWarning() {
+    public override bool GiveWarning() {
         // TODO: implement how warnings work
         GiveUpdate();
+        return true;
     }
 
     public override void GiveUpdate() {

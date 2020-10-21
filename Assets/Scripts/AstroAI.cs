@@ -89,18 +89,17 @@ public class AstroAI : CreatureAI {
             myBody.ChangeThought(Thought.Mischief);
 
             // send a message about boredom
-            StationLogger.Alert(StationAlertType.Astronaut_Bored, Alert.SeverityLevel.Warning, this);
+            // StationLogger.Alert(StationAlertType.Astronaut_Bored, Alert.SeverityLevel.Warning, this);
+            // N: I commented out the message about boredom because it happens too often and takes away from the importance of warnings.
         }
     }
 
     private void MisbehaveProgression(float multiplier = 1f) {
-        //Probably could use different numbers
         //This would also be where gradual difficulty increase could come into effect
         myStats.timeUntilMisbehave -= (Time.deltaTime * multiplier);
     }
 
     private bool IsAngularCloseEnough() {
-        //return Math.Abs(myAngle-targetAngle) <= interactAngle
         return myBody.Distance2TargetAsAngle() <= myStats.interactAngle;
     }
 
@@ -110,7 +109,7 @@ public class AstroAI : CreatureAI {
     }
 
     private void ConvertingToGood() {
-        //Debug.Log(AstroForeman.Single);
+        // show a thought adequate for working like a cat
         myBody.ChangeThought(Thought.Memes);
 
         // leave the misbehave station if there

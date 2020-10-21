@@ -29,8 +29,9 @@ namespace DefaultNamespace {
             };
         }
 
-        public virtual void GiveWarning() {
+        public virtual bool GiveWarning() {
             GiveUpdate();
+            return true;
         }
 
         public virtual void GiveUpdate() {

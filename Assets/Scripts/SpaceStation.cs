@@ -7,7 +7,7 @@ using DefaultNamespace.Text;
 using UnityEngine;
 
 namespace DefaultNamespace {
-    public class SpaceStation : MonoBehaviour {
+    public class SpaceStation : MonoBehaviour, IMessengers {
         public static SpaceStation Single = null;
 
         #region Geometric information about the space station
@@ -59,6 +59,15 @@ namespace DefaultNamespace {
 
         #endregion
 
+        #region information to do with warnings
+
+        private float WarnCounter      = 0;
+        private float MaxWaitTime      = 5f;
+        private bool  reportedWarning  = false;
+        private bool  canReportWarning = true;
+
+        #endregion
+
 
         private void Awake() {
             if (Single == null) {
@@ -96,6 +105,15 @@ namespace DefaultNamespace {
         }
 
         void Update() {
+            // see if enough time has passed since last warning to regain warning ability
+            if (!canReportWarning && !reportedWarning) {
+                WarnCounter -= Time.deltaTime;
+                if (WarnCounter <= 0) {
+                    WarnCounter      = 0;
+                    canReportWarning = true;
+                }
+            }
+
             // update the speed based on current accelerations and decelerations
             ChangeSpeed();
 
@@ -157,10 +175,17 @@ namespace DefaultNamespace {
             var newSpeed2 = Math.Min(newSpeed1, MaxSpeed);
             Speed       =  Math.Max(MinSpeed, newSpeed2);
             excessSpeed += (newSpeed1 - Speed);
-            // var excessAcceleration = excessSpeed / Time.deltaTime;
 
             // provide excess data to the Wobbler
             Wobbler.Convert2Wobbling(excessSpeed);
+
+            // report warning if maximum or minimum speed have been reached
+            // we don't report going above or below the acceleration bounds because that information will be present in the speedometer
+            if (canReportWarning || Math.Abs(Speed - MaxSpeed) < 1e-6 || Math.Abs(Speed - MinSpeed) < 1e-6) {
+                Scheduler.Single.ReportWarning(this);
+                reportedWarning  = true;
+                canReportWarning = false;
+            }
         }
 
         public void SpawnMonster(float angle = 0) {
@@ -208,6 +233,29 @@ namespace DefaultNamespace {
             }
 
             MonsterBreakAngle = angle;
+        }
+
+        public bool GiveWarning() {
+            reportedWarning = false;
+            WarnCounter     = MaxWaitTime;
+
+            if (Math.Abs(Speed - MaxSpeed) < 1f) {
+                StationLogger.Alert(StationAlertType.Station_TooFast, Alert.SeverityLevel.Warning);
+                return true;
+            }
+
+            if (Math.Abs(Speed - MinSpeed) < 1f) {
+                StationLogger.Alert(StationAlertType.Station_TooSlow, Alert.SeverityLevel.Warning);
+                return true;
+            }
+
+            // no reason to raise a warning has been found
+            WarnCounter /= 2f;
+            return false;
+        }
+
+        public void GiveUpdate() {
+            // nothing - the space station itself never gives updates
         }
     }
 }

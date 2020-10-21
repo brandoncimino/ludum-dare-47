@@ -96,6 +96,9 @@
     ],
     "Station_TooSlow": [
       "Subsceeding minimum safe rotational velocity."
+    ],
+    "Monster_Spawn": [
+      "An alien life form has been detected on board this space craft."
     ]
   }
 }

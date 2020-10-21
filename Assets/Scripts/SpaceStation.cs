@@ -41,7 +41,7 @@ namespace DefaultNamespace {
         private       float MaxSpeed              = 80f;
         private       float MinSpeed              = 5f;
         private       float MaxStableAcceleration = 5f;
-        private       float MinStableDeceleration = -1;
+        private       float MinStableDeceleration = -1.5f;
         public        float Speed                 = 10f; // degrees per time step
         public        float AccelerationMod       = 0f;
         public        float ActiveAcceleration    = 0f;
@@ -195,6 +195,7 @@ namespace DefaultNamespace {
             newMonster.ChangeLayer(noLayers);
             newMonster.positionAngle = angle;
             Monsters.Add(newMonster);
+            Scheduler.Single.ReportEmergency(StationAlertType.Monster_Spawn);
         }
 
         public void Tragedy(Astronaut deadBody) {

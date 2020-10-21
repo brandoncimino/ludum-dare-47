@@ -20,7 +20,7 @@ namespace DefaultNamespace.Text {
         private float WaitCounter = 0f;
 
         // warnings
-        private List<IMessengers> myWarnings     = new List<IMessengers>();
+        public  List<IMessengers> myWarnings     = new List<IMessengers>();
         private float             WarnTimeMean   = 1.5f;
         private float             WarnTimeStdDev = 0.5f;
         private float             WarnTimeMax    = 3f;

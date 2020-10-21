@@ -40,5 +40,11 @@
         Station_TooSlow,
 
         #endregion
+
+        #region Monster
+
+        Monster_Spawn
+
+        #endregion
     }
 }

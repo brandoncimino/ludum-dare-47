@@ -110,16 +110,19 @@ public class MisbehaveStation : ActivityStation {
     }
 
     public override bool GiveWarning() {
-        if (Reason2Warn(0.7f)) {
+        if (Reason2Warn()) {
+            // reset warn counter
             reportedWarning = false;
             WarnCounter     = MaxWaitTime;
 
-            // TODO: implement own functionality here
-            behaveTwin.GiveWarning();
+            // give warning
+            StationLogger.Alert(GetAlert(DoorSign, false), Alert.SeverityLevel.Warning);
 
+            // warning has indeed happened
             return true;
         }
 
+        // there was no reason for a warning
         return false;
     }
 
@@ -133,7 +136,7 @@ public class MisbehaveStation : ActivityStation {
         return GetAlert(DoorSign, false);
     }
 
-    protected virtual bool Reason2Warn(float threshold = 0.5f) {
+    protected virtual bool Reason2Warn(float threshold = 0.7f) {
         // no reason to warn by default
         return false;
     }

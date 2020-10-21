@@ -21,11 +21,11 @@ namespace DefaultNamespace.Text {
 
         // warnings
         public  List<IMessengers> myWarnings     = new List<IMessengers>();
-        private float             WarnTimeMean   = 1.5f;
-        private float             WarnTimeStdDev = 0.5f;
+        private float             WarnTimeMean   = 3.0f;
+        private float             WarnTimeStdDev = 1.5f;
         private float             WarnTimeMax    = 3f;
         private float             WarnCounter    = 0f;
-        private float             WarnThreshold  = 1f;
+        public  float             WarnThreshold  = 1f;
 
         // scheduled update messages
         private float UpdateCounter   = 0f;
@@ -33,11 +33,11 @@ namespace DefaultNamespace.Text {
         private int   UpdateIndex     = 0;
 
         // info messages
-        private float InfoTimeMean   = 2.5f;
-        private float InfoTimeStdDev = 0.8f;
-        private float InfoTimeMax    = 6f;
+        private float InfoTimeMean   = 4f;
+        private float InfoTimeStdDev = 1.5f;
+        private float InfoTimeMax    = 10f;
         private float InfoCounter    = 0f;
-        private float InfoThreshold  = 2f;
+        public  float InfoThreshold  = 2f;
 
         #endregion
 
@@ -129,7 +129,7 @@ namespace DefaultNamespace.Text {
         private float GaussSample(float mean, float stdDev) {
             var u1            = 1.0 - rand.NextDouble();
             var u2            = 1.0 - rand.NextDouble();
-            var randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1) * Math.Sin(2.0 * Math.PI * u2));
+            var randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
             return (float) (mean + stdDev * randStdNormal);
         }
 

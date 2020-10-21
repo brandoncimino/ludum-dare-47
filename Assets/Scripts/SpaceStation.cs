@@ -181,7 +181,7 @@ namespace DefaultNamespace {
 
             // report warning if maximum or minimum speed have been reached
             // we don't report going above or below the acceleration bounds because that information will be present in the speedometer
-            if (canReportWarning || Math.Abs(Speed - MaxSpeed) < 1e-6 || Math.Abs(Speed - MinSpeed) < 1e-6) {
+            if (canReportWarning && (Math.Abs(Speed - MaxSpeed) < 1e-6 || Math.Abs(Speed - MinSpeed) < 1e-6)) {
                 Scheduler.Single.ReportWarning(this);
                 reportedWarning  = true;
                 canReportWarning = false;

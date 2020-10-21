@@ -31,9 +31,6 @@ public class BehaveStation : ActivityStation {
             Assignees.Add(astronaut);
             currentState = BehaveStationStates.Occupied;
 
-            //alert that behaving has started
-            //AlertArrival(this, astronaut);
-
             return true;
         }
 

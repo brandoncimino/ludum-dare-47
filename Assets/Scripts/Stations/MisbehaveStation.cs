@@ -45,20 +45,15 @@ public class MisbehaveStation : ActivityStation {
 
     public override bool Arrive(AstroAI astronaut) {
         if (!Assignees.Contains(astronaut)) {
-            if (DoorSign == ActivityRoom.Kitchen) {
-                astronaut.myBody.ChangeThought(Thought.Pyromania);
-            }
-
             Assignees.Add(astronaut);
-
-            // send an alert message for the arrival at this station.
-            //TODO: This would ideally use an event system, either with "real" events or UnityEvents, but that might require more refactoring than is worthwhile.
-            //AlertArrival(this, astronaut);
-
-            return true;
+            return Arrive_individual(astronaut);
         }
 
         return false;
+    }
+
+    protected virtual bool Arrive_individual(AstroAI astronaut) {
+        return true;
     }
 
     public override bool Leave(AstroAI astronaut) {
@@ -90,7 +85,7 @@ public class MisbehaveStation : ActivityStation {
     }
 
     public override StationAlertType AstronautInfo() {
-        // as a generic version, we give the behaviour message of the station
+        // as a generic version, we give the behaviour message of the station instead of what an astronaut might write
         return GetAlert(DoorSign, false);
     }
 }

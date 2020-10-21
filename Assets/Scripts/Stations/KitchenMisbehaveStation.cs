@@ -2,6 +2,11 @@ using DefaultNamespace.Text;
 
 namespace DefaultNamespace {
     public class KitchenMisbehaveStation : MisbehaveStation {
+        protected override bool Arrive_individual(AstroAI astronaut) {
+            astronaut.myBody.ChangeThought(Thought.Pyromania);
+            return true;
+        }
+
         public override float DetermineConsequences(float timePassed) {
             // returns average acceleration over last time interval
 

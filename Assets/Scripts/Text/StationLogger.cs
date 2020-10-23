@@ -14,7 +14,6 @@ namespace DefaultNamespace.Text {
         public static StationLogger       Single;
         public        VerticalLayoutGroup StationLogGroup;
 
-
         #region Text Assets
 
         #region StationLog

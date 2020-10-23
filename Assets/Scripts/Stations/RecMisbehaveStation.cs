@@ -42,7 +42,7 @@ namespace DefaultNamespace {
             PositionLayer        -= 1;
         }
 
-        protected override bool Reason2Warn(float threshold = 0.5f) {
+        protected override bool Reason2Warn(float threshold = 0.7f) {
             // a reason to warn is if the window's hp have been reduced by at least (threshold * 100)%
             return remainingBreakTime / maxTimeToBreak <= threshold;
         }

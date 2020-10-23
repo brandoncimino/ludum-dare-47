@@ -33,7 +33,7 @@ public class Creature : MonoBehaviour {
     public    bool  alive                   = true;
     protected float dmgVisualizationTime    = 0;
     protected float maxDmgVisualizationTime = 0.25f;
-    protected Color colorBeforeDmg;
+    protected Color suitcolor;
     protected bool  needColorChange = false;
     protected float dmgImmunityTime = 0;
 
@@ -46,7 +46,7 @@ public class Creature : MonoBehaviour {
             rando.Next(0, 255) / 255f,
             rando.Next(0, 255) / 255f
         );
-        colorBeforeDmg = mySpriteRenderer.color;
+        suitcolor = mySpriteRenderer.color;
 
         // resize to the correct size (relative to parent space station)
         transform.localScale = new Vector3(5.243802f, 5.243802f, 5.243802f);
@@ -66,7 +66,7 @@ public class Creature : MonoBehaviour {
         // check for end-of-damage-color time
         dmgVisualizationTime = Math.Max(dmgVisualizationTime - Time.deltaTime, 0);
         if (needColorChange && dmgVisualizationTime == 0) {
-            mySpriteRenderer.color = colorBeforeDmg;
+            mySpriteRenderer.color = suitcolor;
             needColorChange        = false;
         }
 
@@ -213,12 +213,11 @@ public class Creature : MonoBehaviour {
 
     public virtual void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
-            // randomly assign a new color, because it's fun. And for visual feedback, of course.
-            mySpriteRenderer.color = new Color(
-                rando.Next(0, 255) / 255f,
-                rando.Next(0, 255) / 255f,
-                rando.Next(0, 255) / 255f
-            );
+            // briefly change color to show that click has been registered
+            // return to original color because random color changes are above people's understanding
+            dmgVisualizationTime   = maxDmgVisualizationTime;
+            mySpriteRenderer.color = Color.white;
+            needColorChange        = true;
         }
     }
 
@@ -230,7 +229,7 @@ public class Creature : MonoBehaviour {
         speedAngle = 0;
 
         // let's make you a skeleton
-        mySpriteRenderer.color = new Color(1, 1, 1);
+        mySpriteRenderer.color = new Color(1f - suitcolor.r, 1f - suitcolor.g, 1f - suitcolor.b);
         // TODO: Sprite for dead creature
 
         // collapse to the ground, be ejected into space, ...
@@ -241,18 +240,17 @@ public class Creature : MonoBehaviour {
         if (dmgImmunityTime == 0) {
             // deliver the damage
             currentHitPoints -= dmg;
+            dmgImmunityTime  =  maxDmgImmunityTime;
 
             // visualization
             dmgVisualizationTime   = maxDmgVisualizationTime;
-            colorBeforeDmg         = mySpriteRenderer.color;
-            mySpriteRenderer.color = new Color(1, 0, 0);
+            mySpriteRenderer.color = Color.red;
             needColorChange        = true;
 
+            // check for lethal
             if (currentHitPoints <= 0) {
                 Kill();
             }
-
-            dmgImmunityTime = maxDmgImmunityTime;
         }
 
         return alive;
@@ -260,11 +258,16 @@ public class Creature : MonoBehaviour {
 
     public void Heal() {
         currentHitPoints       = maxHitPoints;
-        mySpriteRenderer.color = colorBeforeDmg;
+        mySpriteRenderer.color = suitcolor;
         needColorChange        = false;
     }
 
     public float getDmgVisualTime() {
         return maxDmgVisualizationTime;
+    }
+
+    public void setSuitcolor(Color newColor) {
+        suitcolor              = newColor;
+        mySpriteRenderer.color = suitcolor;
     }
 }

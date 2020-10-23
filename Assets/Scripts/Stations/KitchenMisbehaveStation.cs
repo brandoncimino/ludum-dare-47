@@ -44,7 +44,7 @@ namespace DefaultNamespace {
             return 0;
         }
 
-        protected override bool Reason2Warn(float threshold = 0.5f) {
+        protected override bool Reason2Warn(float threshold = 0.7f) {
             // a reason to warn is if there exists an astronaut at this station with less than (threshold * 100)% health
             return Assignees.Any(
                 astronaut => astronaut.myBody.currentHitPoints / astronaut.myBody.maxHitPoints <= threshold

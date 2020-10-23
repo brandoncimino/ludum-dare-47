@@ -90,7 +90,7 @@ namespace DefaultNamespace {
             }
         }
 
-        public Dictionary<string, string> GetAlertReplacements() {
+        public virtual Dictionary<string, string> GetAlertReplacements() {
             return StationLogger.SoupOfTheDay.GetAlertReplacements();
         }
 

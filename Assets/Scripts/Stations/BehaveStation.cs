@@ -90,8 +90,9 @@ public class BehaveStation : ActivityStation {
     }
 
     public override void GiveUpdate() {
-        // TODO: put in the replacements
-        StationLogger.Alert(GetAlert(DoorSign, true), Alert.SeverityLevel.Info);
+        // TODO: also put in the Assignee as replacement source if there is one
+        // TODO: reformat station updates so that they are actual updates as discussed in the version 2.0 file
+        StationLogger.Alert(GetAlert(DoorSign, true), Alert.SeverityLevel.Info, this);
     }
 
     public override StationAlertType AstronautInfo() {

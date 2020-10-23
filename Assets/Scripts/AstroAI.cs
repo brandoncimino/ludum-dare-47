@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 using DefaultNamespace;
@@ -202,19 +203,26 @@ public class AstroAI : CreatureAI {
 
     public override void GiveUpdate() {
         StationAlertType myAlert;
+        var replacements = new List<IAlertReplacements>() {
+            this
+        };
 
         switch (myStats.myState) {
             case AstroStats.AIStates.MoveToBehaving:
                 myAlert = StationAlertType.Astronaut_Moving_Behaving;
+                replacements.Add(myStats.myBehaveStation);
                 break;
             case AstroStats.AIStates.Behaving:
                 myAlert = myStats.myBehaveStation.AstronautInfo();
+                replacements.Add(myStats.myBehaveStation);
                 break;
             case AstroStats.AIStates.MoveToMisbehaving:
                 myAlert = StationAlertType.Astronaut_Moving_Misbehaving;
+                replacements.Add(myStats.myMisbehaveStation);
                 break;
             case AstroStats.AIStates.Misbehaving:
                 myAlert = myStats.myMisbehaveStation.AstronautInfo();
+                replacements.Add(myStats.myMisbehaveStation);
                 break;
             case AstroStats.AIStates.Fleeing:
                 myAlert = StationAlertType.Astronaut_Fleeing;
@@ -229,6 +237,6 @@ public class AstroAI : CreatureAI {
                 throw new ArgumentOutOfRangeException();
         }
 
-        StationLogger.Alert(myAlert, Alert.SeverityLevel.Info);
+        StationLogger.Alert(myAlert, Alert.SeverityLevel.Info, replacements.ToArray());
     }
 }

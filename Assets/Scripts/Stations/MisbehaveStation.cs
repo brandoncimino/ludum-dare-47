@@ -116,7 +116,7 @@ public class MisbehaveStation : ActivityStation {
             WarnCounter     = MaxWaitTime;
 
             // give warning
-            StationLogger.Alert(GetAlert(DoorSign, false), Alert.SeverityLevel.Warning);
+            StationLogger.Alert(GetAlert(DoorSign, false), Alert.SeverityLevel.Warning, this);
 
             // warning has indeed happened
             return true;

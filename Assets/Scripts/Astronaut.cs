@@ -24,8 +24,12 @@ namespace DefaultNamespace {
                 }
             }
             else {
-                // the creature moves toward its target location
-                if (!hasArrived) {
+                if (hasArrived) {
+                    // if you are there, move a little to show that you are doing something
+                    Fidget();
+                }
+                else {
+                    // the creature moves toward its target location
                     MoveTowardTarget();
                 }
             }
@@ -58,6 +62,9 @@ namespace DefaultNamespace {
             }
 
             myBrain.StartFleeing(fleeRight);
+
+            // reset fidget rotation for when you can stand still again
+            fidgetAngle = 0;
         }
     }
 }

@@ -23,6 +23,17 @@ public class Creature : MonoBehaviour {
 
     #endregion
 
+
+    #region Fidgeting
+
+    protected float fidgetAngle       = 0;
+    private   float maxFidgetAngle    = 15f;
+    private   float minFidgetAngle    = 2f; // needs to be non-zero
+    private   float fidgetSpeedAngle  = 30f;
+    private   float fidgetTargetAngle = 10f; // needs to be initialized as non-zero
+
+    #endregion
+
     // information about the space station
     // TODO: call SpaceStation class instead
     public SpaceStation home;
@@ -78,8 +89,11 @@ public class Creature : MonoBehaviour {
     }
 
     protected virtual void MovementRule() {
-        // the creature moves toward its target location
-        if (!hasArrived) {
+        if (hasArrived) {
+            Fidget();
+        }
+        else {
+            // the creature moves toward its target location
             MoveTowardTarget();
         }
     }
@@ -155,9 +169,27 @@ public class Creature : MonoBehaviour {
         transform1.localEulerAngles = new Vector3(90, 0, positionAngle + 90);
     }
 
+    protected void Fidget() {
+        // if you are there already, find new target angle for fidgeting
+        if (Math.Abs(fidgetAngle - fidgetTargetAngle) < 1e-6) {
+            // random angle between minFidgetAngle and maxFidgetAngle (uniform distribution), but at the other side of 0 than the previous fidgetTargetAngle
+            // attention: Math.Sign(0) = 0. Hence, if fidgetTargetAngle == 0 it will stay as 0. At the moment this can only happen if minFidgetAngle == 0.
+            fidgetTargetAngle = -(minFidgetAngle + (maxFidgetAngle - minFidgetAngle) * (float) rando.NextDouble()) *
+                                Math.Sign(fidgetTargetAngle);
+        }
+
+        // change angle toward target angle, remain within limits
+        fidgetAngle += Time.deltaTime * fidgetSpeedAngle * Math.Sign(fidgetTargetAngle - fidgetAngle);
+        fidgetAngle =  Math.Max(-Math.Abs(fidgetTargetAngle), Math.Min(Math.Abs(fidgetTargetAngle), fidgetAngle));
+
+        // rotate to new fidgeting angle
+        transform.localEulerAngles = new Vector3(90, 0, positionAngle + fidgetAngle + 90);
+    }
+
     public void SetTarget(float newAngle) {
         targetAngle = Math.Abs(newAngle) % 360f;
         hasArrived  = false;
+        fidgetAngle = 0;
     }
 
     public void SetTarget(Vector3 location) {
@@ -220,6 +252,7 @@ public class Creature : MonoBehaviour {
             needColorChange        = true;
         }
     }
+
 
     public virtual void Kill() {
         alive = false;

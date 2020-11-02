@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace DefaultNamespace {
     public class Astronaut : Creature {
         public ThoughtBubble myThoughtBubble;
@@ -33,23 +31,6 @@ namespace DefaultNamespace {
                     MoveTowardTarget();
                 }
             }
-        }
-
-        public override void Kill() {
-            alive = false;
-
-            // no more moving around when you are dead! (for now)
-            speedAngle = 0;
-
-            // let's make you a skeleton
-            mySpriteRenderer.color = new Color(1, 1, 1);
-            // TODO: Sprite for dead creature
-
-            // collapse to the ground, be ejected into space, ...
-            // TODO: write movement rule for when killed
-
-            // tell your AI that you are dead
-            myBrain.AnnounceDeath();
         }
 
         public void Scare(float monsterAngle) {

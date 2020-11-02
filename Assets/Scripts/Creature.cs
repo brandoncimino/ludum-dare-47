@@ -72,7 +72,9 @@ public class Creature : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // apply movement rule
-        MovementRule();
+        if (alive) {
+            MovementRule();
+        }
 
         // check for end-of-damage-color time
         dmgVisualizationTime = Math.Max(dmgVisualizationTime - Time.deltaTime, 0);
@@ -262,11 +264,11 @@ public class Creature : MonoBehaviour {
         speedAngle = 0;
 
         // let's make you a skeleton
-        mySpriteRenderer.color = new Color(1f - suitcolor.r, 1f - suitcolor.g, 1f - suitcolor.b);
+        mySpriteRenderer.color = Color.white;
         // TODO: Sprite for dead creature
 
-        // collapse to the ground, be ejected into space, ...
-        // TODO: write movement rule for when killed
+        // collapse to the ground
+        transform.localEulerAngles = new Vector3(90, 0, positionAngle);
     }
 
     public bool TakeDamage(float dmg, float maxDmgImmunityTime = 0) {

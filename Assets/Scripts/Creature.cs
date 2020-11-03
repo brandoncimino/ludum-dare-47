@@ -26,11 +26,19 @@ public class Creature : MonoBehaviour {
 
     #region Fidgeting
 
-    protected float fidgetAngle       = 0;
-    private   float maxFidgetAngle    = 15f;
-    private   float minFidgetAngle    = 2f; // needs to be non-zero
-    private   float fidgetSpeedAngle  = 30f;
-    private   float fidgetTargetAngle = 10f; // needs to be initialized as non-zero
+    // rotation
+    protected float rFidgetAngle       = 0;
+    private   float rMaxFidgetAngle    = 12f;
+    private   float rMinFidgetAngle    = 2f; // needs to be non-zero
+    private   float rFidgetSpeedAngle  = 30f;
+    private   float rFidgetTargetAngle = 10f; // needs to be initialized as non-zero
+
+    // translation
+    public  float tFidgetAngle       = 0;
+    private float tMaxFidgetAngle    = 3.5f;
+    private float tMinFidgetAngle    = 1.5f; // needs to be non-zero
+    private float tFidgetSpeedAngle  = 5f;
+    public  float tFidgetTargetAngle = 0.1f; // needs to be initialized as non-zero
 
     #endregion
 
@@ -172,26 +180,54 @@ public class Creature : MonoBehaviour {
     }
 
     protected void Fidget() {
+        // ROTATION
         // if you are there already, find new target angle for fidgeting
-        if (Math.Abs(fidgetAngle - fidgetTargetAngle) < 1e-6) {
+        if (Math.Abs(rFidgetAngle - rFidgetTargetAngle) < 1e-6) {
             // random angle between minFidgetAngle and maxFidgetAngle (uniform distribution), but at the other side of 0 than the previous fidgetTargetAngle
             // attention: Math.Sign(0) = 0. Hence, if fidgetTargetAngle == 0 it will stay as 0. At the moment this can only happen if minFidgetAngle == 0.
-            fidgetTargetAngle = -(minFidgetAngle + (maxFidgetAngle - minFidgetAngle) * (float) rando.NextDouble()) *
-                                Math.Sign(fidgetTargetAngle);
+            rFidgetTargetAngle = -(rMinFidgetAngle + (rMaxFidgetAngle - rMinFidgetAngle) * (float) rando.NextDouble()) *
+                                 Math.Sign(rFidgetTargetAngle);
         }
 
         // change angle toward target angle, remain within limits
-        fidgetAngle += Time.deltaTime * fidgetSpeedAngle * Math.Sign(fidgetTargetAngle - fidgetAngle);
-        fidgetAngle =  Math.Max(-Math.Abs(fidgetTargetAngle), Math.Min(Math.Abs(fidgetTargetAngle), fidgetAngle));
+        // factor (0.5 + rando.NextDouble()) is so that fiddling speed is not uniform
+        rFidgetAngle += Time.deltaTime * rFidgetSpeedAngle * Math.Sign(rFidgetTargetAngle - rFidgetAngle) *
+                        (float) (0.5 + rando.NextDouble());
+        rFidgetAngle = Math.Max(-Math.Abs(rFidgetTargetAngle), Math.Min(Math.Abs(rFidgetTargetAngle), rFidgetAngle));
 
         // rotate to new fidgeting angle
-        transform.localEulerAngles = new Vector3(90, 0, positionAngle + fidgetAngle + 90);
+        transform.localEulerAngles = new Vector3(90, 0, positionAngle + rFidgetAngle + 90);
+
+        // TRANSLATION
+        // if you are there already, find new target angle for fidgeting
+        if (Math.Abs(tFidgetAngle - tFidgetTargetAngle) < 1e-6) {
+            // random angle between minFidgetAngle and maxFidgetAngle (uniform distribution), but at the other side of 0 than the previous fidgetTargetAngle
+            // attention: Math.Sign(0) = 0. Hence, if fidgetTargetAngle == 0 it will stay as 0. At the moment this can only happen if minFidgetAngle == 0.
+            tFidgetTargetAngle = -(tMinFidgetAngle + (tMaxFidgetAngle - tMinFidgetAngle) * (float) rando.NextDouble()) *
+                                 Math.Sign(tFidgetTargetAngle);
+        }
+
+        // change angle toward target angle, remain within limits
+        // factor (0.5 + rando.NextDouble()) is so that fiddling speed is not uniform
+        var oldAngle = tFidgetAngle;
+        tFidgetAngle += Time.deltaTime * tFidgetSpeedAngle * Math.Sign(tFidgetTargetAngle - tFidgetAngle) *
+                        (float) (0.5 + rando.NextDouble());
+        tFidgetAngle = Math.Max(-Math.Abs(tFidgetTargetAngle), Math.Min(Math.Abs(tFidgetTargetAngle), tFidgetAngle));
+        var offsetDistance = home.radius * ((float) Math.PI) * (tFidgetAngle - oldAngle) / 180f;
+
+        // move sideways
+        transform.localPosition += new Vector3(
+            (float) (-offsetDistance * Math.Sin(positionAngle)),
+            0,
+            (float) (+offsetDistance * Math.Cos(positionAngle))
+        );
     }
 
     public void SetTarget(float newAngle) {
-        targetAngle = Math.Abs(newAngle) % 360f;
-        hasArrived  = false;
-        fidgetAngle = 0;
+        targetAngle  = Math.Abs(newAngle) % 360f;
+        hasArrived   = false;
+        rFidgetAngle = 0;
+        tFidgetAngle = 0;
     }
 
     public void SetTarget(Vector3 location) {

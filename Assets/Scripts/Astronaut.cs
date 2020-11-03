@@ -45,7 +45,8 @@ namespace DefaultNamespace {
             myBrain.StartFleeing(fleeRight);
 
             // reset fidget rotation for when you can stand still again
-            fidgetAngle = 0;
+            rFidgetAngle = 0;
+            tFidgetAngle = 0;
         }
     }
 }

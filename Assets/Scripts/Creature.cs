@@ -278,7 +278,7 @@ public class Creature : MonoBehaviour {
             // briefly change color to show that click has been registered
             // return to original color because random color changes are above people's understanding
             dmgVisualizationTime   = maxDmgVisualizationTime;
-            mySpriteRenderer.color = Color.white;
+            mySpriteRenderer.color = Color.green;
             needColorChange        = true;
         }
     }

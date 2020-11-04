@@ -20,6 +20,7 @@ public class Creature : MonoBehaviour {
     public    float speedAngle    = 1;
     public    int   layer         = 0;
     protected bool  hasArrived    = false;
+    public    float speedMod      = 1f;
 
     #endregion
 
@@ -115,20 +116,19 @@ public class Creature : MonoBehaviour {
     }
 
     protected void MoveTowardTarget() {
-        if (Math.Abs((targetAngle - positionAngle + 360) % 360) < speedAngle * Time.deltaTime) {
+        var angularDistance = speedAngle * Time.deltaTime * speedMod;
+        if (Math.Abs((targetAngle - positionAngle + 360) % 360) < angularDistance) {
             positionAngle = targetAngle;
             hasArrived    = true;
             myBrain.AnnounceArrival();
         }
         else {
             if (Math.Abs(targetAngle - positionAngle) < 180) {
-                positionAngle = (positionAngle + Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime) %
-                                360;
+                positionAngle = (positionAngle + Math.Sign(targetAngle - positionAngle) * angularDistance) % 360;
                 mySpriteRenderer.flipX = Math.Sign(targetAngle - positionAngle) <= 0;
             }
             else {
-                positionAngle = (positionAngle - Math.Sign(targetAngle - positionAngle) * speedAngle * Time.deltaTime +
-                                 360) % 360;
+                positionAngle = (positionAngle - Math.Sign(targetAngle - positionAngle) * angularDistance + 360) % 360;
                 mySpriteRenderer.flipX = Math.Sign(targetAngle - positionAngle) >= 0;
             }
         }
@@ -217,6 +217,7 @@ public class Creature : MonoBehaviour {
     public void SetTarget(float newAngle) {
         targetAngle  = Math.Abs(newAngle) % 360f;
         hasArrived   = false;
+        speedMod     = 0.75f + 0.5f * (float) rando.NextDouble(); // random speed modifier until next arrival
         rFidgetAngle = 0;
         tSidesteps   = tMaxSidesteps / 2;
     }

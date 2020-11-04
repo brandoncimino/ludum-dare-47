@@ -120,15 +120,13 @@ public class AstroAI : CreatureAI {
         if (AstroForeman.Single.AssignBehavior(this)) {
             // free behave station was found
             GetNewTargetAngle(myStats.myBehaveStation);
-            myStats.myState = AstroStats.AIStates.MoveToBehaving;
-            myBody.Heal();
+            myStats.myState            = AstroStats.AIStates.MoveToBehaving;
             myStats.timeUntilMisbehave = Random.Range(15f, 23f);
         }
         else {
             // no free behave station was found
             myBody.SetTarget(myBody.positionAngle + Random.Range(-50f, 50f));
-            myStats.myState = AstroStats.AIStates.Idle;
-            myBody.Heal();
+            myStats.myState            = AstroStats.AIStates.Idle;
             myStats.timeUntilMisbehave = Random.Range(15f, 23f);
         }
     }

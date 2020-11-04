@@ -46,14 +46,14 @@ public class Creature : MonoBehaviour {
     public SpaceStation home;
 
     // damage and stuff
-    public    float maxHitPoints = 5f;
-    public    float currentHitPoints;
-    public    bool  alive                   = true;
-    protected float dmgVisualizationTime    = 0;
-    protected float maxDmgVisualizationTime = 0.25f;
-    protected Color suitcolor;
-    protected bool  needColorChange = false;
-    protected float dmgImmunityTime = 0;
+    public const float maxHitPoints = 5f;
+    public       float currentHitPoints;
+    public       bool  alive                   = true;
+    protected    float dmgVisualizationTime    = 0;
+    protected    float maxDmgVisualizationTime = 0.25f;
+    protected    Color suitcolor;
+    protected    bool  needColorChange = false;
+    protected    float dmgImmunityTime = 0;
 
 
     // Start is called before the first frame update
@@ -116,13 +116,17 @@ public class Creature : MonoBehaviour {
     }
 
     protected void MoveTowardTarget() {
+        // determine angular change based on speed and passed time
         var angularDistance = speedAngle * Time.deltaTime * speedMod;
+
         if (Math.Abs((targetAngle - positionAngle + 360) % 360) < angularDistance) {
+            // if you have more movement than distance, stop at the target position
             positionAngle = targetAngle;
             hasArrived    = true;
             myBrain.AnnounceArrival();
         }
         else {
+            // determine movement direction based on smallest angle and new position angle
             if (Math.Abs(targetAngle - positionAngle) < 180) {
                 positionAngle = (positionAngle + Math.Sign(targetAngle - positionAngle) * angularDistance) % 360;
                 mySpriteRenderer.flipX = Math.Sign(targetAngle - positionAngle) <= 0;
@@ -133,6 +137,7 @@ public class Creature : MonoBehaviour {
             }
         }
 
+        // move creature sprite to positional angle
         var       angle = Math.PI * (positionAngle) / 180;
         Transform transform1;
         (transform1 = transform).localPosition = new Vector3(
@@ -141,6 +146,7 @@ public class Creature : MonoBehaviour {
             (float) (home.radius * Math.Sin(angle))
         );
 
+        // adjust rotation
         transform1.localEulerAngles = new Vector3(90, 0, positionAngle + 90);
     }
 
@@ -275,11 +281,14 @@ public class Creature : MonoBehaviour {
 
     public virtual void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
-            // briefly change color to show that click has been registered
-            // return to original color because random color changes are above people's understanding
-            dmgVisualizationTime   = maxDmgVisualizationTime;
-            mySpriteRenderer.color = Color.green;
-            needColorChange        = true;
+            if (!needColorChange) {
+                // briefly change color to show that click has been registered
+                // return to original color because random color changes are above people's understanding
+                dmgVisualizationTime   = maxDmgVisualizationTime;
+                mySpriteRenderer.color = Color.green;
+                needColorChange        = true;
+                Heal(0.5f);
+            }
         }
     }
 
@@ -319,10 +328,14 @@ public class Creature : MonoBehaviour {
         return alive;
     }
 
-    public void Heal() {
-        currentHitPoints       = maxHitPoints;
-        mySpriteRenderer.color = suitcolor;
-        needColorChange        = false;
+    public void Heal(float increase = maxHitPoints) {
+        currentHitPoints = Math.Min(currentHitPoints + increase, maxHitPoints);
+        //mySpriteRenderer.color = suitcolor;
+        //needColorChange        = false;
+    }
+
+    public float getLifePercentage() {
+        return currentHitPoints / maxHitPoints;
     }
 
     public float getDmgVisualTime() {

@@ -46,7 +46,7 @@ namespace DefaultNamespace {
 
             // reset fidget rotation for when you can stand still again
             rFidgetAngle = 0;
-            tFidgetAngle = 0;
+            tSidesteps   = tMaxSidesteps / 2;
         }
     }
 }

@@ -28,17 +28,15 @@ public class Creature : MonoBehaviour {
 
     // rotation
     protected float rFidgetAngle       = 0;
-    private   float rMaxFidgetAngle    = 12f;
+    private   float rMaxFidgetAngle    = 15f;
     private   float rMinFidgetAngle    = 2f; // needs to be non-zero
-    private   float rFidgetSpeedAngle  = 30f;
+    private   float rFidgetSpeedAngle  = 28f;
     private   float rFidgetTargetAngle = 10f; // needs to be initialized as non-zero
 
     // translation
-    public  float tFidgetAngle       = 0;
-    private float tMaxFidgetAngle    = 3.5f;
-    private float tMinFidgetAngle    = 1.5f; // needs to be non-zero
-    private float tFidgetSpeedAngle  = 5f;
-    public  float tFidgetTargetAngle = 0.1f; // needs to be initialized as non-zero
+    protected int  tSidesteps    = 25;
+    protected int  tMaxSidesteps = 50;
+    protected bool fidgetRight   = false;
 
     #endregion
 
@@ -143,7 +141,6 @@ public class Creature : MonoBehaviour {
             (float) (home.radius * Math.Sin(angle))
         );
 
-        // transform.Rotate(new Vector3(1, 0, 1), speedAngle);
         transform1.localEulerAngles = new Vector3(90, 0, positionAngle + 90);
     }
 
@@ -159,7 +156,6 @@ public class Creature : MonoBehaviour {
             (float) (home.radius * Math.Sin(angle))
         );
 
-        // transform.Rotate(new Vector3(1, 0, 1), speedAngle);
         transform1.localEulerAngles = new Vector3(90, 0, positionAngle + 90);
     }
 
@@ -175,11 +171,30 @@ public class Creature : MonoBehaviour {
             (float) (home.radius * Math.Sin(angle))
         );
 
-        // transform.Rotate(new Vector3(1, 0, 1), speedAngle);
         transform1.localEulerAngles = new Vector3(90, 0, positionAngle + 90);
     }
 
     protected void Fidget() {
+        // TRANSLATION
+        // translation must happen before rotation since MoveClockwise and MoveCounterClockwise reset rotation
+        // 20% change for taking a step sideways
+        if (rando.NextDouble() < 0.2) {
+            // if stepped far enough sideways, switch stepping direction
+            if (tSidesteps == tMaxSidesteps) {
+                fidgetRight = !fidgetRight;
+                tSidesteps  = 0;
+            }
+
+            // take a step
+            tSidesteps++;
+            if (fidgetRight) {
+                MoveClockwise();
+            }
+            else {
+                MoveCounterClockwise();
+            }
+        }
+
         // ROTATION
         // if you are there already, find new target angle for fidgeting
         if (Math.Abs(rFidgetAngle - rFidgetTargetAngle) < 1e-6) {
@@ -197,37 +212,13 @@ public class Creature : MonoBehaviour {
 
         // rotate to new fidgeting angle
         transform.localEulerAngles = new Vector3(90, 0, positionAngle + rFidgetAngle + 90);
-
-        // TRANSLATION
-        // if you are there already, find new target angle for fidgeting
-        if (Math.Abs(tFidgetAngle - tFidgetTargetAngle) < 1e-6) {
-            // random angle between minFidgetAngle and maxFidgetAngle (uniform distribution), but at the other side of 0 than the previous fidgetTargetAngle
-            // attention: Math.Sign(0) = 0. Hence, if fidgetTargetAngle == 0 it will stay as 0. At the moment this can only happen if minFidgetAngle == 0.
-            tFidgetTargetAngle = -(tMinFidgetAngle + (tMaxFidgetAngle - tMinFidgetAngle) * (float) rando.NextDouble()) *
-                                 Math.Sign(tFidgetTargetAngle);
-        }
-
-        // change angle toward target angle, remain within limits
-        // factor (0.5 + rando.NextDouble()) is so that fiddling speed is not uniform
-        var oldAngle = tFidgetAngle;
-        tFidgetAngle += Time.deltaTime * tFidgetSpeedAngle * Math.Sign(tFidgetTargetAngle - tFidgetAngle) *
-                        (float) (0.5 + rando.NextDouble());
-        tFidgetAngle = Math.Max(-Math.Abs(tFidgetTargetAngle), Math.Min(Math.Abs(tFidgetTargetAngle), tFidgetAngle));
-        var offsetDistance = home.radius * ((float) Math.PI) * (tFidgetAngle - oldAngle) / 180f;
-
-        // move sideways
-        transform.localPosition += new Vector3(
-            (float) (-offsetDistance * Math.Sin(positionAngle)),
-            0,
-            (float) (+offsetDistance * Math.Cos(positionAngle))
-        );
     }
 
     public void SetTarget(float newAngle) {
         targetAngle  = Math.Abs(newAngle) % 360f;
         hasArrived   = false;
         rFidgetAngle = 0;
-        tFidgetAngle = 0;
+        tSidesteps   = tMaxSidesteps / 2;
     }
 
     public void SetTarget(Vector3 location) {

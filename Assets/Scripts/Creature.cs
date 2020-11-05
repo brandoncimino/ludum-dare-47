@@ -120,7 +120,7 @@ public class Creature : MonoBehaviour {
         var angularDistance = speedAngle * Time.deltaTime * speedMod;
 
         if (Math.Abs((targetAngle - positionAngle + 360) % 360) < angularDistance) {
-            // if you have more movement than distance, stop at the target position
+            // if you have more movement than remaining distance, stop at the target position
             positionAngle = targetAngle;
             hasArrived    = true;
             myBrain.AnnounceArrival();
@@ -330,8 +330,6 @@ public class Creature : MonoBehaviour {
 
     public void Heal(float increase = maxHitPoints) {
         currentHitPoints = Math.Min(currentHitPoints + increase, maxHitPoints);
-        //mySpriteRenderer.color = suitcolor;
-        //needColorChange        = false;
     }
 
     public float getLifePercentage() {

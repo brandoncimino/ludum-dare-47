@@ -39,8 +39,9 @@ namespace DefaultNamespace.Text {
 
         #region Alerts
 
-        public  AlertRenderer AlertPrefab;
-        private List<Alert>   Alerts;
+        public  AlertRenderer       AlertPrefab;
+        private List<AlertRenderer> Alerts    = new List<AlertRenderer>();
+        private int                 maxAlerts = 5;
 
         #endregion
 
@@ -97,7 +98,18 @@ namespace DefaultNamespace.Text {
         public static Soup SoupOfTheDay => Single.SoupDatabase.Soups.Random();
 
         private AlertRenderer CreateAlert() {
-            return Instantiate(AlertPrefab, StationLogGroup.transform);
+            // create the alert object and add it to the ones we already have
+            var newAlertRenderer = Instantiate(AlertPrefab, StationLogGroup.transform);
+            Alerts.Add(newAlertRenderer);
+
+            // check if max alert amount has been reached, and delete oldest one if so
+            if (Alerts.Count > maxAlerts) {
+                var oldAlert = Alerts[0];
+                Alerts.Remove(oldAlert);
+                Destroy(oldAlert.gameObject);
+            }
+
+            return newAlertRenderer;
         }
     }
 }

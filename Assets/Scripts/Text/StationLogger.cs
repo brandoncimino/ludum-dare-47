@@ -54,15 +54,21 @@ namespace DefaultNamespace.Text {
             }
         }
 
+        /// <summary>
+        /// creates one combined alert for all alertTypes in the given list according to the order they have in the list.
+        /// </summary>
+        /// <param name="alertType"></param>
+        /// <param name="severity"></param>
+        /// <param name="replacementSources"></param>
         public static void Alert(
-            StationAlertType alertType,
+            List<StationAlertType> alertType,
             Alert.SeverityLevel severity,
             params IAlertReplacements[] replacementSources
         ) {
             var message = GenerateAlertMessage(alertType, replacementSources);
 
             if (Single.StationLogGroup) {
-                var newAlert = Single.CreateAlert();
+                var newAlert = Single.CreateAlert(); // newAlert is an instance of the AlertRenderer class
                 newAlert.Alert = new Alert {
                     AlertMessage = message,
                     Severity     = severity,
@@ -71,25 +77,60 @@ namespace DefaultNamespace.Text {
             }
         }
 
-        private static string GenerateAlertMessage(
+        /// <summary>
+        /// creates alert for a single given alertType
+        /// </summary>
+        /// <param name="alertType"></param>
+        /// <param name="severity"></param>
+        /// <param name="replacementSources"></param>
+        public static void Alert(
             StationAlertType alertType,
+            Alert.SeverityLevel severity,
+            params IAlertReplacements[] replacementSources
+        ) {
+            Alert(new List<StationAlertType>() {alertType}, severity, replacementSources);
+        }
+
+        /// <summary>
+        /// chooses random message phrases according to the given list of alert types, replaces placeholder names and joins the messages together in the order they are in the list.
+        /// </summary>
+        /// <param name="alertTypeList">List of all the alert types to be put into one alert</param>
+        /// <param name="replacementSources"></param>
+        /// <returns></returns>
+        private static string GenerateAlertMessage(
+            List<StationAlertType> alertTypeList,
             IAlertReplacements[] replacementSources
         ) {
-            string message;
-            try {
-                var alert = Single.StationLog.Alerts[alertType].Random();
-                message = StationLog.FormatAlert(alert, replacementSources);
-            }
-            catch (KeyNotFoundException) {
-                var error = $"Missing {alertType.GetType().Name}".Colorize(Color.red);
-                message = $"{error}: {alertType}";
+            string message = "";
+            foreach (var alertType in alertTypeList) {
+                try {
+                    var alert = Single.StationLog.Alerts[alertType].Random();
+                    message = String.Join("", message, StationLog.FormatAlert(alert, replacementSources), " ");
+                }
+                catch (KeyNotFoundException) {
+                    var error = $"Missing {alertType.GetType().Name}".Colorize(Color.red);
+                    message = String.Join(" ", message, $"{error}: {alertType}");
+                }
             }
 
             return message;
         }
 
         /// <summary>
-        ///
+        /// chooses a random message phrase based on the given alert type and replaces the placeholder name.
+        /// </summary>
+        /// <param name="alertType"></param>
+        /// <param name="replacementSources"></param>
+        /// <returns></returns>
+        private static string GenerateAlertMessage(
+            StationAlertType alertType,
+            IAlertReplacements[] replacementSources
+        ) {
+            return GenerateAlertMessage(new List<StationAlertType>() {alertType}, replacementSources);
+        }
+
+        /// <summary>
+        /// chooses a random soup. Is it yummy? Ask the chef.
         /// </summary>
         /// <remarks>
         /// As of 10/15/2020, this is NOT actually based on the day/night cycle.

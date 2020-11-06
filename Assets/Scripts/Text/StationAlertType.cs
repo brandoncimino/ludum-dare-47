@@ -3,6 +3,8 @@
         #region captions for the console
 
         Console_Line_Generic,
+        Data_1,
+        Data_2,
 
         #endregion
 

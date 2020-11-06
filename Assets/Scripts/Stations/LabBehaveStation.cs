@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+
+using UnityEngine;
+
 namespace DefaultNamespace {
     public class LabBehaveStation : BehaveStation {
         private float IncarnationProcess = 0;
@@ -35,6 +39,21 @@ namespace DefaultNamespace {
             }
 
             return 0;
+        }
+
+        protected override int UpdateDataCount => 2;
+
+        public override Dictionary<string, string> GetAlertReplacements() {
+            return new Dictionary<string, string>() {
+                {"CAPTION1", "Research Progression"},
+                {"DATA1", string.Join("", ((int) (IncarnationProcess / IncarnationTime)).ToString(), "%")},
+                {"CAPTION2", "Incarnation Tube Quality"}, {
+                    "DATA2",
+                    string.Join("", ((int) (behaveTwin.remainingBreakTime / behaveTwin.maxTimeToBreak)).ToString(), "%")
+                },
+                {"ROOM", "LAB"},
+                {"TIME", Time.realtimeSinceStartup.ToString()}
+            };
         }
     }
 }

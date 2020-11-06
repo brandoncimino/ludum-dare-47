@@ -7,6 +7,7 @@ using DefaultNamespace.Text;
 public class BehaveStation : ActivityStation {
     public MisbehaveStation behaveTwin;
     public List<AstroAI>    OnTheirWay;
+    //protected int              UpdateDataCount = 0;
 
     public BehaveStationStates currentState = BehaveStationStates.Abandoned;
 
@@ -90,14 +91,21 @@ public class BehaveStation : ActivityStation {
     }
 
     public override void GiveUpdate() {
+        // collect the different parts of the update in a list
         var alerts = new List<StationAlertType>() {StationAlertType.Console_Line_Generic};
-        alerts.AddRange(GiveUpdate_Stats());
+        alerts.AddRange(GiveUpdate_DataLines());
         alerts.AddRange(GiveUpdate_Usage());
         alerts.AddRange(behaveTwin.GiveUpdate_Usage());
 
-        // TODO: also put in the Assignee as replacement source if there is one
-        // TODO: reformat station updates so that they are actual updates as discussed in the version 2.0 file
-        StationLogger.Alert(alerts, Alert.SeverityLevel.Info, this);
+        // collect every instance that might know how a placeholder in the alert shall be replaced
+        var replacements = new List<IAlertReplacements>() {
+            this
+        };
+        if (Assignees.Count > 0) {
+            replacements.Add(Assignees[0]);
+        }
+
+        StationLogger.Alert(alerts, Alert.SeverityLevel.Info, replacements.ToArray());
     }
 
     public override StationAlertType AstronautInfo() {
@@ -105,7 +113,26 @@ public class BehaveStation : ActivityStation {
         return GetAlert(DoorSign, true);
     }
 
-    protected virtual IEnumerable<StationAlertType> GiveUpdate_Stats() {
-        return new List<StationAlertType>();
+    protected virtual IEnumerable<StationAlertType> GiveUpdate_DataLines() {
+        var dataLines = new List<StationAlertType>();
+        switch (UpdateDataCount) {
+            case 0:
+                break;
+            case 1:
+                dataLines.Add(StationAlertType.Data_1);
+                break;
+            case 2:
+                dataLines.Add(StationAlertType.Data_2);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(
+                    "UpdateDataCount",
+                    "did not account for this much data to be shown in the scheduled update."
+                );
+        }
+
+        return dataLines;
     }
+
+    protected virtual int UpdateDataCount => 0;
 }

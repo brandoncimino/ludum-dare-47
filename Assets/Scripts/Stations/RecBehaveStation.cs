@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+
+using UnityEngine;
+
 namespace DefaultNamespace {
     public class RecBehaveStation : BehaveStation {
         public override float DetermineConsequences(float timePassed) {
@@ -19,6 +23,21 @@ namespace DefaultNamespace {
         protected override void PlaceDownCorrection() {
             // the sprite for the treadmill is a bit small so we scale it up
             transform.localScale *= 1.5f;
+        }
+
+        protected override int UpdateDataCount => 1;
+
+        public override Dictionary<string, string> GetAlertReplacements() {
+            return new Dictionary<string, string>() {
+                {"CAPTION1", "Window Effectivity"}, {
+                    "DATA1",
+                    string.Join("", ((int) (behaveTwin.remainingBreakTime / behaveTwin.maxTimeToBreak)).ToString(), "%")
+                },
+                {"CAPTION2", ""},
+                {"DATA2", ""},
+                {"ROOM", "GYM"},
+                {"TIME", Time.realtimeSinceStartup.ToString()}
+            };
         }
     }
 }

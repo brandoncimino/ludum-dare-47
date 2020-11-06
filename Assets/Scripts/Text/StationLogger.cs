@@ -105,7 +105,7 @@ namespace DefaultNamespace.Text {
             foreach (var alertType in alertTypeList) {
                 try {
                     var alert = Single.StationLog.Alerts[alertType].Random();
-                    message = String.Join("", message, StationLog.FormatAlert(alert, replacementSources), " ");
+                    message = String.Join("", message, StationLog.FormatAlert(alert, replacementSources));
                 }
                 catch (KeyNotFoundException) {
                     var error = $"Missing {alertType.GetType().Name}".Colorize(Color.red);

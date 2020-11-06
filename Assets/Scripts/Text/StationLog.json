@@ -1,7 +1,13 @@
 ﻿{
   "Alerts": {
     "Console_Line_Generic": [
-      "At $TIME: received update from $STATION:"
+      "At $TIME: received update from $ROOM:\n"
+    ],
+    "Data_1": [
+      "$CAPTION1: $DATA1 \n"
+    ],
+    "Data_2": [
+      "$CAPTION1: $DATA1 \n $CAPTION2: $DATA2 \n"
     ],
     "Behave_Kitchen": [
       "$NAME is making $SOUP."

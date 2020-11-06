@@ -98,7 +98,7 @@
       "$NAME is going to save the world!"
     ],
     "Astronaut_Moving_Misbehaving": [
-      "$NAME was seen with a pickaxe on their way to $STATION."
+      "$NAME was seen with a pickaxe on their way to $ROOM."
     ],
     "Station_TooFast": [
       "Exceeding maximum safe rotational velocity."

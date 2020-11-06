@@ -31,7 +31,11 @@ namespace DefaultNamespace {
             return new Dictionary<string, string>() {
                 {"CAPTION1", "Window Effectivity"}, {
                     "DATA1",
-                    string.Join("", ((int) (behaveTwin.remainingBreakTime / behaveTwin.maxTimeToBreak)).ToString(), "%")
+                    string.Join(
+                        "",
+                        ((int) (behaveTwin.remainingBreakTime / behaveTwin.maxTimeToBreak) * 100).ToString(),
+                        "%"
+                    )
                 },
                 {"CAPTION2", ""},
                 {"DATA2", ""},

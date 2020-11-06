@@ -90,13 +90,22 @@ public class BehaveStation : ActivityStation {
     }
 
     public override void GiveUpdate() {
+        var alerts = new List<StationAlertType>() {StationAlertType.Console_Line_Generic};
+        alerts.AddRange(GiveUpdate_Stats());
+        alerts.AddRange(GiveUpdate_Usage());
+        alerts.AddRange(behaveTwin.GiveUpdate_Usage());
+
         // TODO: also put in the Assignee as replacement source if there is one
         // TODO: reformat station updates so that they are actual updates as discussed in the version 2.0 file
-        StationLogger.Alert(GetAlert(DoorSign, true), Alert.SeverityLevel.Info, this);
+        StationLogger.Alert(alerts, Alert.SeverityLevel.Info, this);
     }
 
     public override StationAlertType AstronautInfo() {
         // as a generic version, we give the behaviour message of the station
         return GetAlert(DoorSign, true);
+    }
+
+    protected virtual IEnumerable<StationAlertType> GiveUpdate_Stats() {
+        return new List<StationAlertType>();
     }
 }

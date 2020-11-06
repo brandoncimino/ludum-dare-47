@@ -1,5 +1,11 @@
 ﻿namespace DefaultNamespace.Text {
     public enum StationAlertType {
+        #region captions for the console
+
+        Console_Line_Generic,
+
+        #endregion
+
         #region Behaving
 
         Behave_Kitchen,

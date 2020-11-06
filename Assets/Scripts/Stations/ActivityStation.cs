@@ -71,9 +71,10 @@ namespace DefaultNamespace {
         public abstract bool GiveWarning();
         public abstract void GiveUpdate();
         protected abstract bool IsBehaveStation();
+        public abstract StationAlertType AstronautInfo();
         public abstract float DetermineConsequences(float timePassed);
 
-        public static StationAlertType GetAlert(ActivityRoom room, bool isBehaveStation) {
+        protected static StationAlertType GetAlert(ActivityRoom room, bool isBehaveStation) {
             switch (room) {
                 case ActivityRoom.Bridge:
                     return isBehaveStation ? StationAlertType.Behave_Bridge : StationAlertType.Misbehave_Bridge;
@@ -94,6 +95,10 @@ namespace DefaultNamespace {
             return StationLogger.SoupOfTheDay.GetAlertReplacements();
         }
 
-        public abstract StationAlertType AstronautInfo();
+        public virtual IEnumerable<StationAlertType> GiveUpdate_Usage() {
+            return Assignees.Count > 0
+                       ? new List<StationAlertType>() {GetAlert(DoorSign, IsBehaveStation())}
+                       : new List<StationAlertType>();
+        }
     }
 }

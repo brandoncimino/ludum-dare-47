@@ -181,15 +181,15 @@ public class MisbehaveStation : ActivityStation {
         // see which room you are in and give the update alert accordingly
         switch (DoorSign) {
             case ActivityRoom.Bridge:
-                return StationAlertType.Misbehave_Bridge;
+                return StationAlertType.Astronaut_Misbehave_Bridge;
             case ActivityRoom.Rec:
-                return StationAlertType.Misbehave_Recreation;
+                return StationAlertType.Astronaut_Misbehave_Recreation;
             case ActivityRoom.Kitchen:
-                return StationAlertType.Misbehave_Kitchen;
+                return StationAlertType.Astronaut_Misbehave_Kitchen;
             case ActivityRoom.Lab:
-                return StationAlertType.Misbehave_Lab;
+                return StationAlertType.Astronaut_Misbehave_Lab;
             case ActivityRoom.Engine:
-                return StationAlertType.Misbehave_Engine;
+                return StationAlertType.Astronaut_Misbehave_Engine;
             default:
                 throw new ArgumentOutOfRangeException("DoorSign", "unknown room detected for AstronautInfo");
         }

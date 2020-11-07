@@ -48,6 +48,16 @@
 
         #region Astronaut Events
 
+        Astronaut_Behave_Kitchen,
+        Astronaut_Behave_Bridge,
+        Astronaut_Behave_Recreation,
+        Astronaut_Behave_Lab,
+        Astronaut_Behave_Engine,
+        Astronaut_Misbehave_Kitchen,
+        Astronaut_Misbehave_Bridge,
+        Astronaut_Misbehave_Recreation,
+        Astronaut_Misbehave_Lab,
+        Astronaut_Misbehave_Engine,
         Astronaut_Bored,
         Astronaut_Cloned,
         Astronaut_Dead_Generic,
@@ -57,6 +67,7 @@
         Astronaut_Idle,
         Astronaut_Moving_Behaving,
         Astronaut_Moving_Misbehaving,
+        Astronaut_Repairing,
 
         #endregion
 

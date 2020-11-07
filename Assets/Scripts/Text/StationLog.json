@@ -65,9 +65,71 @@
       "$NAME is pushing all of the buttons!",
       "$NAME can't find the manual!"
     ],
+    "Astronaut_Behave_Kitchen": [
+      "I'm making $SOUP!"
+    ],
+    "Astronaut_Behave_Bridge": [
+      "I'm helming the station!",
+      "I'm promoting synergy!",
+      "\"I\" am in the captain's chair!",
+      "I'm a helm.",
+      "I'm pressing down the deceleration button so we don't get motion sick. Isn't that nice?"
+    ],
+    "Astronaut_Behave_Recreation": [
+      "I'm working out. Someone has to.",
+      "I'm getting swole. Got a problem with that?",
+      "I hate cardio, but I'm doing. Aren't I great?",
+      "At least I get to listen to murder mystery podcasts while I exercise.",
+      "By walking against the station's rotation on the treadmill, I decelerate it. Is that really how physics work?",
+      "I'm so sweaty... Got that I'm into that, if you know what I mean."
+    ],
+    "Astronaut_Behave_Lab": [
+      "I want to cure cancer, but erectile dysfunction pays the bills.",
+      "How to prove that a proof is wrong?",
+      "I will prove that some things can't be proven!",
+      "Why do I have to wear closed-toed shoes again? All I do is google.",
+      "Actually, I am trying to create life."
+    ],
+    "Astronaut_Behave_Engine": [
+      "I'm using duct tape to hold the deceleration lever down instead of me.",
+      "I'm looking for the 3/8 mm socket wrench. Do you know where it is?",
+      "I'm holding down the deceleration lever. What did you think I'm doing?"
+    ],
+    "Astronaut_Misbehave_Kitchen": [
+      "I believe I am on fire. Maybe I shouldn't be? At least I don't care much for it.",
+      "I am too hot to handle! Live with it.",
+      "I am cooking. For real, I am. I fixed the arson spot. I'm not doing anything I shouldn't. Really. Trust me.",
+      "I'm transforming myself into toast.",
+      "I think I used too much tabasco! It burns a bit."
+    ],
+    "Astronaut_Misbehave_Bridge": [
+      "These are just the cutest little cats! You should check them out!",
+      "I hope watching these videos on the control panel doesn't mess with our speed.",
+      "These cats are worth getting motion-sick for."
+    ],
+    "Astronaut_Misbehave_Recreation": [
+      "I thought I let in some fresh air. It's a bit stinky in here.",
+      "I'm quite sure we can open this window.",
+      "Yes, you are required to use a pickaxe on this window. That's how you open it correctly.",
+      "Honestly, people here are so stupid I just want to bang my head against the window."
+    ],
+    "Astronaut_Misbehave_Lab": [
+      "I am asking questions nobody is prepared to have answered! Hah hah hah!",
+      "I will prove them all wrong!",
+      "You can let this out before the humanity meter reaches 100%. There's a safety buffer.",
+      "Wait, has something moved in this tube thing? Fancy!",
+      "I am wearing open-toed shoes, and nobody is stopping me, because I am an adult!"
+    ],
+    "Astronaut_Misbehave_Engine": [
+      "I collecting as many screws as I can. This thing can't need them all.",
+      "I'm pushing all of these buttons! It's super fun, you should try!",
+      "I couldn't find the manual, so I'm working from memory.",
+      "I'm an engineer, I don't need the \"manual\". Why would I?",
+      "I'm digging a hole into our spaceship. I know it's not smart, but as long as it's fun...? Well, I guess it's goodbye and good flight."
+    ],
     "Astronaut_Bored": [
-      "$NAME is bored!",
-      "$NAME is goofing off!"
+      "I am so bored!",
+      "Honestly, I'm goofing off right now. You probably should send me back to work."
     ],
     "Astronaut_Cloned": [
       "$NAME has entered the universe.",
@@ -94,17 +156,28 @@
       "$NAME kept tripping while they ran away."
     ],
     "Astronaut_Fleeing": [
-      "$NAME does not want to find out if the monster is a threat."
+      "I do not want to find out if the monster is a threat.",
+      "Please let me run away first, I'll give you my update later.",
+      "Ah... There is a monster. Have you seen it?",
+      "Is this thing a thread (threat?)?",
+      "After careful evaluation I have decided to leave my post and maximize the distance to this monster instead.",
+      "The protocol says to \"click\" on the monster... How am I supposed to do that again?"
     ],
     "Astronaut_Idle": [
-      "$NAME looks busy."
+      "I am busy looking busy, thank you very much."
     ],
     "Astronaut_Moving_Behaving": [
-      "$NAME is on their way.",
-      "$NAME is going to save the world!"
+      "I am on my way to behave properly.",
+      "I am going to save the world! And nothing is going to stop me!",
+      "I am on my way to work in the $ROOM, if you really need to now."
     ],
     "Astronaut_Moving_Misbehaving": [
-      "$NAME was seen with a pickaxe on their way to $ROOM."
+      "I found this pickaxe. I'm going to the $ROOM with it."
+    ],
+    "Astronaut_Repairing": [
+      "Something tells me I have a screw loose. I'm doing my best to find it.",
+      "I'm trying to repair the damage in the $ROOM so we can use it again.",
+      "How did the $ROOM get so damaged?"
     ],
     "Station_TooFast": [
       "Exceeding maximum safe rotational velocity."

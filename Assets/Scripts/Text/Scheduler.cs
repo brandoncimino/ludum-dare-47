@@ -36,7 +36,7 @@ namespace DefaultNamespace.Text {
         private float InfoTimeMean   = 8f;
         private float InfoTimeStdDev = 3f;
         private float InfoTimeMax    = 10f;
-        private float InfoCounter    = 0f;
+        public  float InfoCounter    = 0f;
         public  float InfoThreshold  = 2f;
 
         #endregion

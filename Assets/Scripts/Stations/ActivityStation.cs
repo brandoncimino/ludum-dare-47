@@ -72,6 +72,7 @@ namespace DefaultNamespace {
         public abstract void GiveUpdate();
         protected abstract bool IsBehaveStation();
         public abstract StationAlertType AstronautInfo();
+        public abstract StationAlertType StationInfo();
         public abstract float DetermineConsequences(float timePassed);
 
         protected static StationAlertType GetAlert(ActivityRoom room, bool isBehaveStation) {
@@ -91,14 +92,12 @@ namespace DefaultNamespace {
             }
         }
 
-        public virtual Dictionary<string, string> GetAlertReplacements() {
-            return StationLogger.SoupOfTheDay.GetAlertReplacements();
+        public virtual IEnumerable<StationAlertType> GiveUpdate_Usage() {
+            return Assignees.Count > 0 ? new List<StationAlertType>() {StationInfo()} : new List<StationAlertType>();
         }
 
-        public virtual IEnumerable<StationAlertType> GiveUpdate_Usage() {
-            return Assignees.Count > 0
-                       ? new List<StationAlertType>() {GetAlert(DoorSign, IsBehaveStation())}
-                       : new List<StationAlertType>();
+        public virtual Dictionary<string, string> GetAlertReplacements() {
+            return new Dictionary<string, string>();
         }
     }
 }

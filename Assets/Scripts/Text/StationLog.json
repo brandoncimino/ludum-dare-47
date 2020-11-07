@@ -1,7 +1,13 @@
 ﻿{
   "Alerts": {
     "Console_Line_Generic": [
-      "At $TIME: received update from $ROOM:\n"
+      "At $TIME:\n"
+    ],
+    "Console_Line_Station": [
+      "$ROOM at $TIME:\n"
+    ],
+    "Console_Line_Astronaut": [
+      "$NAME at $TIME in $ROOM:\n"
     ],
     "Data_1": [
       "$CAPTION1: $DATA1 \n"
@@ -108,6 +114,52 @@
     ],
     "Monster_Spawn": [
       "An alien life form has been detected on board this space craft."
+    ],
+    "Room_Behave_Kitchen": [
+      "$NAME is making $SOUP."
+    ],
+    "Room_Behave_Bridge": [
+      "Detected $NAME in the captain's chair",
+      "Deceleration button is pressed down."
+    ],
+    "Room_Behave_Recreation": [
+      "Converting $NAME's movement to deceleration.",
+      "$NAME is registered on the treadmill",
+      "Treadmill registered complaining."
+    ],
+    "Room_Behave_Lab": [
+      "Searching: \"Ways to use up my budget \"",
+      "Searching: \"Research grant in my area \"",
+      "Searching: \"What are closed-toed shoes? \"",
+      "Searching: \"How to be god? \"",
+      "Incarnation tube detected tapping from inside.\"",
+      "Movement detected in incarnation tube."
+    ],
+    "Room_Behave_Engine": [
+      "Deceleration lever is pulled down."
+    ],
+    "Room_Misbehave_Kitchen": [
+      "Unscheduled use of arson spot.",
+      "Detected unusual heat distribution"
+    ],
+    "Room_Misbehave_Bridge": [
+      "Buffering: \"Cutest cat compilation 2017\"",
+      "Buffering: \"funny cat videos part 3\""
+    ],
+    "Room_Misbehave_Recreation": [
+      "Sensed tapping on window from inside.",
+      "Detected crackling sound from window."
+    ],
+    "Room_Misbehave_Lab": [
+      "Incarnation tube detected tapping from outside.",
+      "Detected grimacing sounds outside incarnation tube.",
+      "Detected open-toed shoes."
+    ],
+    "Room_Misbehave_Engine": [
+      "\"ScrewCheck()\" returned \"false\"",
+      "\"ScrewUpCheck()\" returned \"true\"",
+      "Cannot determine location of manual",
+      "Manual location: unknown"
     ]
   }
 }

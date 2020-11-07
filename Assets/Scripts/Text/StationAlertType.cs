@@ -3,8 +3,26 @@
         #region captions for the console
 
         Console_Line_Generic,
+        Console_Line_Station,
+        Console_Line_Astronaut,
         Data_1,
         Data_2,
+
+        #endregion
+
+        #region Station Updates
+
+        Room_Behave_Kitchen,
+        Room_Behave_Bridge,
+        Room_Behave_Recreation,
+        Room_Behave_Lab,
+        Room_Behave_Engine,
+
+        Room_Misbehave_Kitchen,
+        Room_Misbehave_Bridge,
+        Room_Misbehave_Recreation,
+        Room_Misbehave_Lab,
+        Room_Misbehave_Engine,
 
         #endregion
 

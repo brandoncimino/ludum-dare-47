@@ -92,7 +92,7 @@ public class BehaveStation : ActivityStation {
 
     public override void GiveUpdate() {
         // collect the different parts of the update in a list
-        var alerts = new List<StationAlertType>() {StationAlertType.Console_Line_Generic};
+        var alerts = new List<StationAlertType>() {StationAlertType.Console_Line_Station};
         alerts.AddRange(GiveUpdate_DataLines());
         alerts.AddRange(GiveUpdate_Usage());
         alerts.AddRange(behaveTwin.GiveUpdate_Usage());
@@ -108,9 +108,50 @@ public class BehaveStation : ActivityStation {
         StationLogger.Alert(alerts, Alert.SeverityLevel.Info, replacements.ToArray());
     }
 
+    /// <summary>
+    /// tells an astronaut's AI how to describe what they are doing based on the type of station they are at.
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     public override StationAlertType AstronautInfo() {
-        // as a generic version, we give the behaviour message of the station
-        return GetAlert(DoorSign, true);
+        // see which room you are in and give the update alert accordingly
+        switch (DoorSign) {
+            case ActivityRoom.Bridge:
+                return StationAlertType.Behave_Bridge;
+            case ActivityRoom.Rec:
+                return StationAlertType.Behave_Recreation;
+            case ActivityRoom.Kitchen:
+                return StationAlertType.Behave_Kitchen;
+            case ActivityRoom.Lab:
+                return StationAlertType.Behave_Lab;
+            case ActivityRoom.Engine:
+                return StationAlertType.Behave_Engine;
+            default:
+                throw new ArgumentOutOfRangeException("DoorSign", "unknown room detected for AstronautInfo");
+        }
+    }
+
+    /// <summary>
+    /// tells the station how to describe what they are doing (for an update) based on the type of station they are at.
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    public override StationAlertType StationInfo() {
+        // see which room you are in and give the update alert accordingly
+        switch (DoorSign) {
+            case ActivityRoom.Bridge:
+                return StationAlertType.Room_Behave_Bridge;
+            case ActivityRoom.Rec:
+                return StationAlertType.Room_Behave_Recreation;
+            case ActivityRoom.Kitchen:
+                return StationAlertType.Room_Behave_Kitchen;
+            case ActivityRoom.Lab:
+                return StationAlertType.Room_Behave_Lab;
+            case ActivityRoom.Engine:
+                return StationAlertType.Room_Behave_Engine;
+            default:
+                throw new ArgumentOutOfRangeException("DoorSign", "unknown room detected for AstronautInfo");
+        }
     }
 
     protected virtual IEnumerable<StationAlertType> GiveUpdate_DataLines() {

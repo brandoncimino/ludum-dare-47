@@ -21,20 +21,20 @@ namespace DefaultNamespace.Text {
 
         // warnings
         public  List<IMessengers> myWarnings     = new List<IMessengers>();
-        private float             WarnTimeMean   = 3.0f;
+        private float             WarnTimeMean   = 4.0f;
         private float             WarnTimeStdDev = 1.5f;
-        private float             WarnTimeMax    = 3f;
+        private float             WarnTimeMax    = 5f;
         private float             WarnCounter    = 0f;
         public  float             WarnThreshold  = 1f;
 
         // scheduled update messages
         private float UpdateCounter   = 0f;
-        private float UpdateThreshold = 4f;
+        private float UpdateThreshold = 7f;
         private int   UpdateIndex     = 0;
 
         // info messages
-        private float InfoTimeMean   = 4f;
-        private float InfoTimeStdDev = 1.5f;
+        private float InfoTimeMean   = 8f;
+        private float InfoTimeStdDev = 3f;
         private float InfoTimeMax    = 10f;
         private float InfoCounter    = 0f;
         public  float InfoThreshold  = 2f;
@@ -92,7 +92,7 @@ namespace DefaultNamespace.Text {
             }
 
             // now ask astronauts if they have something to say
-            if (InfoCounter >= InfoThreshold) {
+            if (InfoCounter >= InfoThreshold && SpaceStation.Single.noAstronauts > 0) {
                 // choose which station should give the update
                 var astronaut = SpaceStation.Single.Astronauts.Random().myBrain;
 

@@ -200,36 +200,38 @@ public class AstroAI : CreatureAI {
     }
 
     public override void GiveUpdate() {
-        StationAlertType myAlert;
+        var myAlert = new List<StationAlertType>() {
+            StationAlertType.Console_Line_Astronaut
+        };
         var replacements = new List<IAlertReplacements>() {
             this
         };
 
         switch (myStats.myState) {
             case AstroStats.AIStates.MoveToBehaving:
-                myAlert = StationAlertType.Astronaut_Moving_Behaving;
+                myAlert.Add(StationAlertType.Astronaut_Moving_Behaving);
                 replacements.Add(myStats.myBehaveStation);
                 break;
             case AstroStats.AIStates.Behaving:
-                myAlert = myStats.myBehaveStation.AstronautInfo();
+                myAlert.Add(myStats.myBehaveStation.AstronautInfo());
                 replacements.Add(myStats.myBehaveStation);
                 break;
             case AstroStats.AIStates.MoveToMisbehaving:
-                myAlert = StationAlertType.Astronaut_Moving_Misbehaving;
+                myAlert.Add(StationAlertType.Astronaut_Moving_Misbehaving);
                 replacements.Add(myStats.myMisbehaveStation);
                 break;
             case AstroStats.AIStates.Misbehaving:
-                myAlert = myStats.myMisbehaveStation.AstronautInfo();
+                myAlert.Add(myStats.myMisbehaveStation.AstronautInfo());
                 replacements.Add(myStats.myMisbehaveStation);
                 break;
             case AstroStats.AIStates.Fleeing:
-                myAlert = StationAlertType.Astronaut_Fleeing;
+                myAlert.Add(StationAlertType.Astronaut_Fleeing);
                 break;
             case AstroStats.AIStates.Idle:
-                myAlert = StationAlertType.Astronaut_Idle;
+                myAlert.Add(StationAlertType.Astronaut_Idle);
                 break;
             case AstroStats.AIStates.Dead:
-                myAlert = StationAlertType.Astronaut_Dead_Generic;
+                myAlert.Add(StationAlertType.Astronaut_Dead_Generic);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

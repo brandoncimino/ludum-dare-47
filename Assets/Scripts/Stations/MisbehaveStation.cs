@@ -1,4 +1,7 @@
-﻿using DefaultNamespace;
+﻿using System;
+using System.Collections.Generic;
+
+using DefaultNamespace;
 using DefaultNamespace.Text;
 
 using UnityEngine;
@@ -116,13 +119,18 @@ public class MisbehaveStation : ActivityStation {
             WarnCounter     = MaxWaitTime;
 
             // give warning
-            StationLogger.Alert(GetAlert(DoorSign, false), Alert.SeverityLevel.Warning, this);
+            StationLogger.Alert(
+                new List<StationAlertType>() {StationAlertType.Console_Line_Station, StationInfo()},
+                Alert.SeverityLevel.Warning,
+                this
+            );
+            // TODO: create custom warning messages
 
             // warning has indeed happened
             return true;
         }
 
-        // there was no reason for a warning
+        // no reason for a warning was found, no warning has happened
         return false;
     }
 
@@ -131,9 +139,83 @@ public class MisbehaveStation : ActivityStation {
         behaveTwin.GiveUpdate();
     }
 
+    public override Dictionary<string, string> GetAlertReplacements() {
+        // TODO: include severity key
+        var replacement = new Dictionary<string, string>() {
+            {"ROOM", "UNKNOWN"}
+        };
+
+        // determine name of the room
+        switch (DoorSign) {
+            case ActivityRoom.Bridge:
+                replacement["ROOM"] = "Bridge";
+                break;
+            case ActivityRoom.Rec:
+                replacement["ROOM"] = "Gym";
+                break;
+            case ActivityRoom.Kitchen:
+                replacement["ROOM"] = "Kitchen";
+                break;
+            case ActivityRoom.Lab:
+                replacement["ROOM"] = "Lab";
+                break;
+            case ActivityRoom.Engine:
+                replacement["ROOM"] = "Engine";
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(
+                    "DoorSign",
+                    "Unknown room in GetAlertReplacements (Misbehave Station)"
+                );
+        }
+
+        return replacement;
+    }
+
+    /// <summary>
+    /// tells an astronaut's AI how to describe what they are doing based on the type of station they are at.
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     public override StationAlertType AstronautInfo() {
-        // as a generic version, we give the behaviour message of the station instead of what an astronaut might write
-        return GetAlert(DoorSign, false);
+        // see which room you are in and give the update alert accordingly
+        switch (DoorSign) {
+            case ActivityRoom.Bridge:
+                return StationAlertType.Misbehave_Bridge;
+            case ActivityRoom.Rec:
+                return StationAlertType.Misbehave_Recreation;
+            case ActivityRoom.Kitchen:
+                return StationAlertType.Misbehave_Kitchen;
+            case ActivityRoom.Lab:
+                return StationAlertType.Misbehave_Lab;
+            case ActivityRoom.Engine:
+                return StationAlertType.Misbehave_Engine;
+            default:
+                throw new ArgumentOutOfRangeException("DoorSign", "unknown room detected for AstronautInfo");
+        }
+    }
+
+    /// <summary>
+    /// tells the station how to describe what they are doing (for an update) based on the type of station they are at.
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    public override StationAlertType StationInfo() {
+        // see which room you are in and give the update alert accordingly
+        switch (DoorSign) {
+            case ActivityRoom.Bridge:
+                return StationAlertType.Room_Misbehave_Bridge;
+            case ActivityRoom.Rec:
+                return StationAlertType.Room_Misbehave_Recreation;
+            case ActivityRoom.Kitchen:
+                return StationAlertType.Room_Misbehave_Kitchen;
+            case ActivityRoom.Lab:
+                return StationAlertType.Room_Misbehave_Lab;
+            case ActivityRoom.Engine:
+                return StationAlertType.Room_Misbehave_Engine;
+            default:
+                throw new ArgumentOutOfRangeException("DoorSign", "unknown room detected for AstronautInfo");
+        }
     }
 
     protected virtual bool Reason2Warn(float threshold = 0.7f) {

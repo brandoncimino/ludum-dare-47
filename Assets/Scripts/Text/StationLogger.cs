@@ -41,7 +41,7 @@ namespace DefaultNamespace.Text {
 
         public  AlertRenderer       AlertPrefab;
         private List<AlertRenderer> Alerts    = new List<AlertRenderer>();
-        private int                 maxAlerts = 5;
+        private int                 maxAlerts = 3;
 
         #endregion
 

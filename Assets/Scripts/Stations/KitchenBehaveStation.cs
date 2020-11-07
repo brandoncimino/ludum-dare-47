@@ -24,12 +24,15 @@ namespace DefaultNamespace {
         protected override int UpdateDataCount => 1;
 
         public override Dictionary<string, string> GetAlertReplacements() {
-            var health = home.Astronauts.Sum(astronaut => astronaut.currentHitPoints) / home.noAstronauts;
+            var health = 0;
+            if (home.noAstronauts > 0) {
+                health = (int) home.Astronauts.Sum(astronaut => astronaut.getLifePercentage()) / (home.noAstronauts);
+            }
 
             // create the dictionary with the general stuff
             var stdDictionary = new Dictionary<string, string>() {
                 {"CAPTION1", "Average Astronaut health"},
-                {"DATA1", health.ToString()},
+                {"DATA1", string.Join("", health.ToString(), "%")},
                 {"CAPTION2", ""},
                 {"DATA2", ""},
                 {"ROOM", "KITCHEN"},

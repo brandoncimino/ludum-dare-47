@@ -45,7 +45,7 @@ namespace DefaultNamespace {
             return new Dictionary<string, string>() {
                 {"CAPTION1", "Research Progression"},
                 {"DATA1", string.Join("", ((int) (IncarnationProcess / IncarnationTime) * 100).ToString(), "%")},
-                {"CAPTION2", "Incarnation Tube Quality"}, {
+                {"CAPTION2", "Tube Quality"}, {
                     "DATA2",
                     string.Join(
                         "",

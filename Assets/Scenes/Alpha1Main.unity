@@ -1522,6 +1522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WarnThreshold: 1
+  InfoCounter: 0
   InfoThreshold: 2
 --- !u!4 &1168301578
 Transform:
@@ -7029,6 +7030,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 842989879}
     m_Modifications:
+    - target: {fileID: 3800482951416375503, guid: 38ef2e7195e6c0a4990569b4aa4de180, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1033
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800482951416375503, guid: 38ef2e7195e6c0a4990569b4aa4de180, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800482951416375503, guid: 38ef2e7195e6c0a4990569b4aa4de180, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3800482951861468119, guid: 38ef2e7195e6c0a4990569b4aa4de180, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -142,7 +142,8 @@ public class MisbehaveStation : ActivityStation {
     public override Dictionary<string, string> GetAlertReplacements() {
         // TODO: include severity key
         var replacement = new Dictionary<string, string>() {
-            {"ROOM", "UNKNOWN"}
+            {"ROOM", "UNKNOWN"},
+            {"TIME", Time.realtimeSinceStartup.ToString()}
         };
 
         // determine name of the room

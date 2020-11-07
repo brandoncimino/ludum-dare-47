@@ -3,8 +3,6 @@ using System.Linq;
 
 using DefaultNamespace.Text;
 
-using UnityEngine;
-
 namespace DefaultNamespace {
     public class KitchenBehaveStation : BehaveStation {
         public override float DetermineConsequences(float timePassed) {
@@ -35,7 +33,7 @@ namespace DefaultNamespace {
                 {"CAPTION2", ""},
                 {"DATA2", ""},
                 {"ROOM", "KITCHEN"},
-                {"TIME", Time.realtimeSinceStartup.ToString()}
+                {"TIME", TimeStamp()}
             };
 
             // also include the special (key, value) pairings for the soup and its description

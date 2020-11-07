@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 
-using UnityEngine;
-
 namespace DefaultNamespace {
     public class BridgeBehaveStation : BehaveStation {
         public override float DetermineConsequences(float timePassed) {
@@ -29,7 +27,7 @@ namespace DefaultNamespace {
                 {"CAPTION2", ""},
                 {"DATA2", ""},
                 {"ROOM", "BRIDGE"},
-                {"TIME", Time.realtimeSinceStartup.ToString()}
+                {"TIME", TimeStamp()}
             };
         }
     }

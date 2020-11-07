@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 
-using UnityEngine;
-
 namespace DefaultNamespace {
     public class RecBehaveStation : BehaveStation {
         public override float DetermineConsequences(float timePassed) {
@@ -40,7 +38,7 @@ namespace DefaultNamespace {
                 {"CAPTION2", ""},
                 {"DATA2", ""},
                 {"ROOM", "GYM"},
-                {"TIME", Time.realtimeSinceStartup.ToString()}
+                {"TIME", TimeStamp()}
             };
         }
     }

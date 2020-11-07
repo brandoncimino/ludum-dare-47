@@ -143,7 +143,7 @@ public class MisbehaveStation : ActivityStation {
         // TODO: include severity key
         var replacement = new Dictionary<string, string>() {
             {"ROOM", "UNKNOWN"},
-            {"TIME", Time.realtimeSinceStartup.ToString()}
+            {"TIME", TimeStamp()}
         };
 
         // determine name of the room

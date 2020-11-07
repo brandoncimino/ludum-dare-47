@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 
-using UnityEngine;
-
 namespace DefaultNamespace {
     public class LabBehaveStation : BehaveStation {
         private float IncarnationProcess = 0;
@@ -56,7 +54,7 @@ namespace DefaultNamespace {
                     )
                 },
                 {"ROOM", "LAB"},
-                {"TIME", Time.realtimeSinceStartup.ToString()}
+                {"TIME", TimeStamp()}
             };
         }
     }

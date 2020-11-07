@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 
-using UnityEngine;
-
 namespace DefaultNamespace {
     public class EngineBehaveStation : BehaveStation {
         public override float DetermineConsequences(float timePassed) {
@@ -29,7 +27,7 @@ namespace DefaultNamespace {
                 {"CAPTION2", "Wobble-Speed"},
                 {"DATA2", home.Wobbler.WobbleSpeed.ToString()},
                 {"ROOM", "ENGINE"},
-                {"TIME", Time.realtimeSinceStartup.ToString()}
+                {"TIME", TimeStamp()}
             };
         }
     }

@@ -99,5 +99,14 @@ namespace DefaultNamespace {
         public virtual Dictionary<string, string> GetAlertReplacements() {
             return new Dictionary<string, string>();
         }
+
+        protected static string TimeStamp() {
+            var time      = Time.timeSinceLevelLoad;
+            var min       = (int) time / 60;
+            var sec       = (int) time % 60;
+            var secString = sec < 10 ? string.Join("", "0", sec.ToString()) : sec.ToString();
+
+            return string.Join(":", min.ToString(), secString);
+        }
     }
 }

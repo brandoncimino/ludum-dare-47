@@ -109,7 +109,7 @@ namespace DefaultNamespace.Text {
                 }
                 catch (KeyNotFoundException) {
                     var error = $"Missing {alertType.GetType().Name}".Colorize(Color.red);
-                    message = String.Join(" ", message, $"{error}: {alertType}");
+                    message = String.Join("", message, $"{error}: {alertType}");
                 }
             }
 

@@ -26,7 +26,8 @@ namespace DefaultNamespace {
         public override Dictionary<string, string> GetAlertReplacements() {
             var health = 0;
             if (home.noAstronauts > 0) {
-                health = (int) home.Astronauts.Sum(astronaut => astronaut.getLifePercentage()) / (home.noAstronauts);
+                health = (int) (home.Astronauts.Sum(astronaut => astronaut.getLifePercentage()) * 100 /
+                                (home.noAstronauts));
             }
 
             // create the dictionary with the general stuff

@@ -26,6 +26,9 @@ public class AstroStats : MonoBehaviour {
     public BehaveStation    myBehaveStation;
     public MisbehaveStation myMisbehaveStation;
 
+    // my name
+    public string myName = "\"Somebody\"";
+
     //Unused. Will be used to randomly generate my space suit's color. Poorly executed, probably.
     //public Color myColor = new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f));
     void Awake() {

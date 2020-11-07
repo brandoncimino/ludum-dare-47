@@ -9,7 +9,7 @@ namespace DefaultNamespace {
         /// <summary>
         /// The name of the <see cref="CreatureAI"/>, for use in alerts.
         /// </summary>
-        public string DisplayName => name;
+        public virtual string DisplayName => name;
 
         public virtual void AnnounceArrival() {
             // nothing

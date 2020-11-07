@@ -11,14 +11,15 @@ using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Astronaut))]
 public class AstroAI : CreatureAI {
-    // Start is called before the first frame update
-    public  AstroStats myStats;
-    public  Astronaut  myBody;
-    private float      remainingFleeTime = 0;
-    private float      maxFleeTime       = 5.0f;
-    private float      timeBeforeDelete  = 5f;
+    public          AstroStats myStats;
+    public          Astronaut  myBody;
+    private         float      remainingFleeTime = 0;
+    private         float      maxFleeTime       = 5.0f;
+    private         float      timeBeforeDelete  = 5f;
+    public override string     DisplayName => myStats.myName;
 
     private void Start() {
+        // Start is called before the first frame update
         myStats                    = gameObject.GetComponent<AstroStats>();
         myBody                     = gameObject.GetComponent<Astronaut>();
         myStats.myMisbehaveStation = AstroForeman.Single.AssignMisbehavior();

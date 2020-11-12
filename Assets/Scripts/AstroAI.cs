@@ -16,7 +16,8 @@ public class AstroAI : CreatureAI {
     private         float      remainingFleeTime = 0;
     private         float      maxFleeTime       = 5.0f;
     private         float      timeBeforeDelete  = 5f;
-    public override string     DisplayName => myStats.myName;
+    public override string     DisplayName => "\"Somebody\"";
+    // TODO: fix bug where when "DisplayName => myStats.myName" we get the error that myStats.myName is not set to an instance of an object after the astronaut has been freshly spawned.
 
     private void Start() {
         // Start is called before the first frame update

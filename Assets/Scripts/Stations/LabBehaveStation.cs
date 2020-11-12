@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace DefaultNamespace {
     public class LabBehaveStation : BehaveStation {
-        private float IncarnationProcess = 0;
-        private float IncarnationTime    = 30f;
-        public  bool  MonsterInStorage   = true;
+        private       float IncarnationProcess = 0;
+        private const float IncarnationTime    = 30f;
+        public        bool  MonsterInStorage   = true;
 
         public override float DetermineConsequences(float timePassed) {
             if (currentState == BehaveStationStates.Occupied) {

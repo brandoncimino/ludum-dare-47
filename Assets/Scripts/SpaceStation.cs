@@ -21,15 +21,16 @@ namespace DefaultNamespace {
 
         #region information about the astronauts living on the space station
 
-        public  GameObject      AstronautPrefab;
-        public  GameObject      MonsterPrefab;
-        public  List<Astronaut> Astronauts;
-        public  List<Monster>   Monsters;
-        public  int             noAstronauts        = 2;
-        public  int             noLayers            = 7;
-        private float           MaxMonsterSpawnTime = 1f;
-        public  float           MonsterSpawnTime    = 0f;
-        private float           MonsterBreakAngle   = -1f;
+        public GameObject      AstronautPrefab;
+        public GameObject      MonsterPrefab;
+        public List<Astronaut> Astronauts;
+        public List<Monster>   Monsters;
+        public int             noAstronauts = 2;
+        //public  int             noLayers            = 7;
+        private float MaxMonsterSpawnTime = 1f;
+        public  float MonsterSpawnTime    = 0f;
+        private float MonsterBreakAngle   = -1f;
+        public  int   noLayers => noAstronauts + 2;
 
         #endregion
 
@@ -79,8 +80,6 @@ namespace DefaultNamespace {
         }
 
         private void Start() {
-            noLayers = noAstronauts + 2;
-
             // position the behave stations in your list
             var angle = 18f;
             foreach (var station in BehaveStations) {
@@ -214,7 +213,6 @@ namespace DefaultNamespace {
             newAstronaut.transform.parent = transform;
             newAstronaut.positionAngle    = angle;
             Astronauts.Add(newAstronaut);
-            Scheduler.Single.ReportEmergency(StationAlertType.Astronaut_Cloned, newAstronaut.myBrain);
 
             // distribute evenly
             noAstronauts++;
@@ -222,6 +220,10 @@ namespace DefaultNamespace {
                 var astronaut = Astronauts[i];
                 astronaut.ChangeLayer(noLayers - i);
             }
+
+            // say "hello" to the world so it knows you are there
+            Scheduler.Single.ReportEmergency(StationAlertType.Astronaut_Cloned, newAstronaut.myBrain);
+            // TODO: if "DisplayName => myStats.myName" in AstroAI, this call raises an error (myStats.myName not set to an instance of an object), and the station continues to spawn astronauts.
         }
 
         public void JailBreak(float angle = 0) {

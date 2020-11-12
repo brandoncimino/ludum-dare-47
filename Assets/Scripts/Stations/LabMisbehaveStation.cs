@@ -2,7 +2,7 @@ namespace DefaultNamespace {
     public class LabMisbehaveStation : MisbehaveStation {
         public new LabBehaveStation behaveTwinLab;
 
-        void Start() {
+        private void Start() {
             remainingBreakTime = maxTimeToBreak;
             AstroForeman.Single.Register(this);
             base.behaveTwin = behaveTwinLab;

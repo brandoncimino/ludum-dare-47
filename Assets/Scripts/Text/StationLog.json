@@ -1,13 +1,13 @@
 ﻿{
   "Alerts": {
     "Console_Line_Generic": [
-      "At $TIME:\n"
+      "<u>At $TIME:</u>\n"
     ],
     "Console_Line_Station": [
-      "$ROOM at $TIME:\n"
+      "<u>$ROOM at $TIME:</u>\n"
     ],
     "Console_Line_Astronaut": [
-      "$NAME at $TIME in $ROOM:\n"
+      "<u>$NAME at $TIME in $ROOM:</u>\n"
     ],
     "Data_1": [
       "$CAPTION1: $DATA1 \n"

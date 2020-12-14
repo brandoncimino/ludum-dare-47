@@ -13,10 +13,11 @@ namespace DefaultNamespace.Text {
 
         public override string ToString() {
             //grab all of the "extra" info we want that _isn't null or whitespace_
-            var extras = new List<string> {Origin, Type}.Where(it => !string.IsNullOrWhiteSpace(it));
+            var extras = new List<string> {Origin, Type}.Where(it => !string.IsNullOrWhiteSpace(it)).ToList();
 
             //if we have any extras, append them to the name in parentheses; otherwise, just return the name
-            return extras.Any() ? $"{Name} ({extras})" : Name;
+            var enumerable = extras.ToList();
+            return enumerable.Any() ? $"{Name} ({string.Join(", ", enumerable)})" : Name;
         }
 
         public Dictionary<string, string> GetAlertReplacements() {
